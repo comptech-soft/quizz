@@ -1,5 +1,11 @@
 <?php
 
+
+/*
+| Free routes
+*/
+Route::post('get-system-configuration', 'System\ConfigurationController@get')->name('get-system-configuration');
+
 Route::group(['middleware' => 'visitor', 'namespace' => 'Frontend'], function(){
 
 	/*

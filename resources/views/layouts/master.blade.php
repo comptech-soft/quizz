@@ -30,9 +30,14 @@
         'js/jquery.min.js',
         'js/fancybox/jquery.fancybox.pack.js',
         'js/jquery.mobile.customized.min.js',
+        'js/jquery.easing.1.3.js',
         'js/camera.min.js',
         'js/bootstrap.min.js',
+        /*
         'js/custom.js',
+        */
+        'js/boot/boot.js',
+        'js/frontend/app.js',
     ]])
 
     @yield('scripts')    
