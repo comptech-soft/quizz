@@ -9,6 +9,7 @@
         'css/bootstrap-theme.css',
         'css/style.css',
         'css/camera.css',
+        'css/frontend/app.css',
     ]])
     @yield('styles')
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->

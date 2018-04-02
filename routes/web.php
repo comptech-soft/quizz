@@ -5,13 +5,14 @@
 | Free routes
 */
 Route::post('get-system-configuration', 'System\ConfigurationController@get')->name('get-system-configuration');
+Route::get('/', 'Frontend\Visitors\WelcomeController@index')->name('frontend-welcome-index');
 
 Route::group(['middleware' => 'visitor', 'namespace' => 'Frontend'], function(){
 
 	/*
 	| Pagina welcome visitor (utilizator nelogat)
 	*/
-	Route::get('/', 'Visitors\WelcomeController@index')->name('frontend-welcome-index');
+	
 
 	// Route::get('register/{usertype}', 'Auth\RegisterController@index')->name('register-index');
 	// Route::post('register', 'Auth\RegisterController@register')->name('register');
@@ -25,6 +26,14 @@ Route::group(['middleware' => 'visitor', 'namespace' => 'Frontend'], function(){
 	// 	->name('subscriptions-requests-insert');
 
 	// Route::get('login/{usertype}', 'Auth\LoginController@index')->name('login-index');
-	// Route::post('login/{usertype}', 'Auth\LoginController@login')->name('login');
+	Route::post('login', 'Auth\LoginController@login')->name('login');
+
+});
+
+Route::group(['middleware' => 'authenticated', 'namespace' => 'Frontend'], function(){
+
+	
+	Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
 
 });

@@ -48,5 +48,6 @@ class Kernel extends HttpKernel
         // 'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 
         'visitor' => \App\Http\Middleware\IsNotAuthenticated::class,
+        'authenticated' => \App\Http\Middleware\IsAuthenticated::class,
     ];
 }

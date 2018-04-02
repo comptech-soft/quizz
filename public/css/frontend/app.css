@@ -1,0 +1,42 @@
+.modal-content {
+  border-radius: 0px;
+}
+
+.modal-content .modal-header {
+  background-color: #3d84e6;
+  color: #fff;
+}
+
+.modal-content .modal-header h2 {
+  margin: 0px;
+}
+
+#row-forgot-password {
+  margin-bottom: 20px;
+}
+
+#row-forgot-password a {
+  text-decoration: underline;
+}
+
+#row-social-links {
+  margin-bottom: 22px;
+}
+
+.btn-facebook-login {
+  background: #304e96;
+  color: #fff;
+  padding: 8px 15px;
+  text-decoration: none;
+  border-radius: 1px;
+  margin-right: 6px;
+}
+
+.btn-linkedin-login {
+  background: #e0e0e0;
+  color: #3c3b3b;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 1px;
+}
+

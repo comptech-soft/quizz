@@ -24,11 +24,11 @@ const getters = {
 	// 	return '';
 	// },
 
-	// paths: state => state.paths,
+	config: state => state.config,
 
-	// content: state => state.content,
+	navbar: state => state.navbar,
 
-	// ready: state => state.ready,
+	ready: state => state.ready,
 
 	
 }

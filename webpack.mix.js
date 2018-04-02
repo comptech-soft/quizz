@@ -20,12 +20,9 @@ mix
 | Sass
 |
 */
-// mix
+mix
 
-	// .sass('resources/assets/sass/app.scss', 'public/css/global')
+	.sass('resources/assets/sass/frontend/app.scss', 'public/css/frontend/app.css')
 
-	// .sass('resources/assets/sass/frontend/all.scss', 'public/css/frontend/custom.css')
 
-	// .sass('resources/assets/sass/admin/all.scss', 'public/css/admin/custom.css')
-
-// ;
+;

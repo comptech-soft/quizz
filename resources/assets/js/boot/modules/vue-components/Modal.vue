@@ -1,7 +1,7 @@
 <template>
 
     <transition name="modal">
-        <div class="modal modal-mask" style="display: block">
+        <div v-if="visible" class="modal modal-mask">
             <div :class="modal_class" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -31,7 +31,8 @@
     	props:
     	{
             id: {type: String, required: true},
-    		closable: {type: Boolean, default: true}
+    		closable: {type: Boolean, default: true},
+            visible: {type: Boolean, required: true},
     	},
 
         computed:
@@ -55,6 +56,7 @@
             }
         },
 
+        
         name: 'modal'
     }
 

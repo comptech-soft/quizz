@@ -49,7 +49,7 @@ trait Loginable
             */
             return [
                 'success'       => true, 
-                'redirect'      => $role_slug == 'admin' ? route($role_slug . '-welcome-index') : route('welcome-user-index', ['usertype' => $role_slug]),
+                'redirect'      => '',
                 'notification'  => [
                     'type' => 'success',
                     'message' => 'Successfull login',

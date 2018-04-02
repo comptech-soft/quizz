@@ -6,15 +6,13 @@ const state = {
 	user: null,
 	// roles: null,
 	
-	// /*
-	// | Diverse path-uri
-	// */
-	// paths: null,
+	/*
+	| Diverse configs
+	*/
+	config: null,
 	
 	
-	// | frontend | admin
-	
-	// app: null,
+	navbar: [],
 
 	// /*
 	// | content

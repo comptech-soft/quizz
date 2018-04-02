@@ -14,6 +14,36 @@ class ConfigurationController extends Controller
 
         return [
             'user' =>  $user = Sentinel::check(),
+            
+            'config' => [
+            	'base_url' => config('app.url'),
+            	'logo' => asset('images/logo.png'),
+            ],
+
+            'navbar' => [
+            	'current' => NULL,
+            	'options' => 
+	            	$user 
+	            	? 
+	            	[
+	            		[
+	            			'id' => 'logout',
+	            			'caption' => 'Logout'
+	            		],
+	            	]
+	            	:
+	            	[
+	            		[
+	            			'id' => 'login',
+	            			'caption' => 'Login'
+	            		],
+
+	            		[
+	            			'id' => 'register',
+	            			'caption' => 'Register'
+	            		]
+	            	]
+            ]
         ];
     }
 

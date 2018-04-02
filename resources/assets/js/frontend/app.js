@@ -10,3 +10,18 @@ window.Quizz = new Vue({
     },
 
 })
+
+// Navbar
+import vueNavbar from './~components/navbar/Navbar'
+
+new window.Vue({
+
+    el: '#navbar-app',
+
+    components:
+    {
+        'vue-navbar': vueNavbar
+    },    
+
+    name: 'quizz-navbar',
+})
