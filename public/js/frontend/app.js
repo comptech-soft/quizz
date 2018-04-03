@@ -1543,6 +1543,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -1618,6 +1623,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             Requests.post('logout').then(function (r) {
                 Requests.redirect(r.data.url);
             });
+        },
+        onClickquizz: function onClickquizz(bar) {
+            Requests.redirect('quiz');
         },
         onBar: function onBar(bar) {
             Quizz.$store.dispatch('setCurrentNavbar', bar);
@@ -9792,37 +9800,57 @@ var render = function() {
                 staticClass: "nav navbar-nav pull-right mainNav",
                 attrs: { id: "main-nav" }
               },
-              _vm._l(_vm.options, function(bar) {
-                return _c(
-                  "li",
-                  {
-                    class: {
-                      active: _vm.current != null && bar.id == _vm.current.id
-                    }
-                  },
-                  [
-                    _c(
-                      "a",
+              [
+                _vm.user
+                  ? _c(
+                      "li",
                       {
-                        attrs: { href: "#" },
-                        on: {
-                          click: function($event) {
-                            $event.preventDefault()
-                            _vm.onBar(bar)
-                          }
-                        }
+                        staticClass: "no-option-item",
+                        attrs: { id: "hello-item" }
                       },
                       [
                         _vm._v(
-                          "\n                    " +
-                            _vm._s(bar.caption) +
-                            "\n                "
+                          "\n                Hi " +
+                            _vm._s(_vm.user.username) +
+                            "\n            "
                         )
                       ]
                     )
-                  ]
-                )
-              })
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm._l(_vm.options, function(bar) {
+                  return _c(
+                    "li",
+                    {
+                      class: {
+                        active: _vm.current != null && bar.id == _vm.current.id
+                      }
+                    },
+                    [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              _vm.onBar(bar)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(bar.caption) +
+                              "\n                "
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                })
+              ],
+              2
             )
           ]),
           _vm._v(" "),

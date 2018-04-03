@@ -32,8 +32,10 @@ Route::group(['middleware' => 'visitor', 'namespace' => 'Frontend'], function(){
 
 Route::group(['middleware' => 'authenticated', 'namespace' => 'Frontend'], function(){
 
-	
 	Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
+	Route::get('quiz', 'Quizz\QuizzController@index')->name('quizz-index');
+	Route::post('quizes/fetch', 'Quizz\QuizzController@fetch')->name('quizz-fetch');
 
+	Route::get('quiz-detail/{quiz_slug}', 'Quizz\QuizzDetailController@index')->name('quizz-detail-index');
 });

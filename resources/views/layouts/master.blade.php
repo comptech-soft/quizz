@@ -22,6 +22,8 @@
 <body>
     @include('layouts.components.navbar')
 
+    @yield('header')
+
     <div class="container">
         @yield('content')
     </div>

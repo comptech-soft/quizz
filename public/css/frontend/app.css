@@ -1,3 +1,16 @@
+#main-nav li.no-option-item {
+  line-height: 44px;
+  padding: 0px 4px;
+  color: #B8B8B8;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 400 !important;
+  font-size: 16px;
+}
+
+#head h1 {
+  margin-top: 20px;
+}
+
 .modal-content {
   border-radius: 0px;
 }
@@ -38,5 +51,19 @@
   text-decoration: none;
   padding: 8px 15px;
   border-radius: 1px;
+}
+
+#quizz-selector {
+  margin-top: 20px;
+}
+
+#quizz-selector .isotopeWrapper article {
+  min-height: 240px;
+}
+
+#quizz-selector .isotopeWrapper article h5 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 

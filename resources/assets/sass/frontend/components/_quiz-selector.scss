@@ -1,0 +1,19 @@
+#quizz-selector
+{
+	margin-top: 20px;
+
+	.isotopeWrapper
+	{
+		article
+		{
+			min-height: 240px;
+
+			h5
+			{
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+		}
+	}
+}

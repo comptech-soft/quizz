@@ -26,6 +26,12 @@ class ConfigurationController extends Controller
 	            	$user 
 	            	? 
 	            	[
+
+	            		[
+	            			'id' => 'quizz',
+	            			'caption' => 'Quizes',
+	            		],
+
 	            		[
 	            			'id' => 'logout',
 	            			'caption' => 'Logout'

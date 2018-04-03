@@ -25,6 +25,11 @@
         <div class="navbar-collapse collapse">
 
             <ul id="main-nav" class="nav navbar-nav pull-right mainNav">
+
+                <li v-if="user" id="hello-item" class="no-option-item">
+                    Hi {{user.username}}
+                </li>
+
                 <li
                     v-for="bar in options" 
                     :class="{active: (current != null) && (bar.id == current.id) }"
@@ -185,6 +190,11 @@
                     .then(r => {
                         Requests.redirect(r.data.url)
                     })
+            },
+
+            onClickquizz(bar)
+            {
+                Requests.redirect('quiz')
             },
 
             onBar(bar)
