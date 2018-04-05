@@ -1,17 +1,19 @@
 <?php
 
-namespace App\Models\Quizes\Quizes;
+namespace App\Models\Quizes\Answers;
 
 use Illuminate\Database\Eloquent\Model;
 // use Illuminate\Http\Request;
 // use Exception;
 
-class Quiz extends Model
+class Answer extends Model
 {
 
 	
-	protected $table = 'quizes';
+	protected $table = 'quiz_questons_answers';
 	protected $guarded = ['id'];
+
+
 
 	/*
 	| Appended computed attributes
@@ -20,8 +22,5 @@ class Quiz extends Model
 	// 	'items_count',
 	// ];
 
-	public function questions()
-	{
-		return $this->hasMany(\App\Models\Quizes\Questions\Question::class, 'quiz_id')->orderBy('order_no');
-	}
+	
 }

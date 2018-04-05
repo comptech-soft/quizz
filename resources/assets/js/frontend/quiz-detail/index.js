@@ -1,3 +1,5 @@
+window.Timer = require('easytimer.js');
+
 import vueQuizDetail from './~components/QuizDetail'
 
 new window.Vue({

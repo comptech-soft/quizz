@@ -16,11 +16,11 @@ return [
 
     'fallback_locale' => 'en',
 
-    'key' => env('APP_KEY'),
+    'key' => env('APP_KEY', 'base64:0o4/ZdoedVgRgzujFLzFwXfPorceKtVaCGbCoTWPrLI='),
 
     'cipher' => 'AES-256-CBC',
 
-    'log' => env('APP_LOG', 'single'),
+    'log' => env('APP_LOG', 'daily'),
 
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
 

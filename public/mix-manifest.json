@@ -1,7 +1,7 @@
 {
     "/js/boot/boot.js": "/js/boot/boot.js",
     "/css/frontend/app.css": "/css/frontend/app.css",
+    "/js/frontend/quiz-detail/index.js": "/js/frontend/quiz-detail/index.js",
     "/js/frontend/app.js": "/js/frontend/app.js",
-    "/js/frontend/quizz/index.js": "/js/frontend/quizz/index.js",
-    "/js/frontend/quiz-detail/index.js": "/js/frontend/quiz-detail/index.js"
+    "/js/frontend/quizz/index.js": "/js/frontend/quizz/index.js"
 }

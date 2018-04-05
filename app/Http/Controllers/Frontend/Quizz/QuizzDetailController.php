@@ -22,8 +22,12 @@ class QuizzDetailController extends Controller
         ;
 	}
 
-	// public function fetch(Request $request)
-	// {
-	// 	return Quiz::latest()->paginate(6);
-	// }
+	public function getRecord(Request $request)
+	{
+		return Quiz::with([
+			'questions.answers'
+		])
+		->where('id', $request->id)
+		->first();
+	}
 }

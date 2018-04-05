@@ -22,6 +22,13 @@
 
 @section('scripts')
 	@include('layouts.elements.scripts', ['scripts' => [
+        'vendors/icheck/icheck.js',
         'js/frontend/quiz-detail/index.js',
+    ]])
+@endsection
+
+@section('styles')
+    @include('layouts.elements.styles', ['styles' => [
+        'vendors/icheck/all.css',
     ]])
 @endsection

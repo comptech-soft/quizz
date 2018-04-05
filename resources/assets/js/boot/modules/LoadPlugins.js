@@ -16,8 +16,10 @@ class LoadPlugins
   	boot()
   	{
       window._ = require('lodash');
-      window.$ = window.jQuery = require('jquery');
-      require('bootstrap-sass');
+      // window.$ = window.jQuery = require('jquery');
+      // require('bootstrap-sass');
+      // am scos cele doua randuri de sus asta deoarece se incarca in master.blade.php
+      
       require('jquery.scrollto');
 
       // https://craftpip.github.io/jquery-confirm/
