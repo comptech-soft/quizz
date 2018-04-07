@@ -32,7 +32,9 @@
         'js/modernizr-latest.js',
         'js/jquery.min.js',
         'js/jquery-ui.min.js',
-        /*'js/fancybox/jquery.fancybox.pack.js',
+        'vendors/scrollto/scrollto.js',
+        /*
+        'js/fancybox/jquery.fancybox.pack.js',
         'js/jquery.mobile.customized.min.js',
         'js/jquery.easing.1.3.js',
         'js/camera.min.js',

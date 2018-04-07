@@ -50,7 +50,6 @@
         {
             type: {type:String, default: 'text'},
             icon: {type:String, default: '' },
-            
             size: {type:String, default: '' },
         },
 

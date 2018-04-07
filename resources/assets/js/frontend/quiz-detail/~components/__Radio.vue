@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div :id="id" class="radio-answer-container">
         <ul class="listview">
             <li v-for="answer in answers">
                 <label class="radiobutton checked">
@@ -26,6 +26,7 @@
 
     	props:
         {
+            id: {required: true},
             question: {required: true},
             user_answer: {required: true},
         },
@@ -50,13 +51,13 @@
         {
             onRadioClick(jq_option)
             {
-                let id = jq_option.attr('id'), value = $('#' + id).val();
+                let vm = this, id = jq_option.attr('id'), value = $('#' + vm.id + ' #' + id).val();
                 setTimeout( () => {
                     if(this.selected == value)
                     {
                         this.selected = '';
-                        $('#' + id).iCheck('uncheck');
-                        $('#' + id).removeAttr('checked').iCheck('update');
+                        $('#' + vm.id + ' #' + id).iCheck('uncheck');
+                        $('#' + vm.id + ' #' + id).removeAttr('checked').iCheck('update');
                     }
                     else
                     {
@@ -72,10 +73,14 @@
             iCheck()
             {
                 let vm = this, i = setInterval(() => {
-                    if( $('label.radiobutton input').length == vm.answers.length )
+
+                    let selector = '#' + vm.id + ' label.radiobutton input';
+                    let jq = $(selector);
+                    console.log('iCheckRadio' + selector + ' (' + jq.length + ', ' + vm.answers.length + ')');
+                    if( jq.length == vm.answers.length )
                     {
                         clearInterval(i);
-                        vm.icheck = $('label.radiobutton input').iCheck({
+                        vm.icheck = $('#' + vm.id + ' label.radiobutton input').iCheck({
                             checkboxClass: 'icheckbox_square-blue',
                             radioClass: 'iradio_square-blue',
                             increaseArea: '20%',

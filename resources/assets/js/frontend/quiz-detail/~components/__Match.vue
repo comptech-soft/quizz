@@ -2,7 +2,7 @@
 	<div id="match-container" class="match-container row">
 
         <div class="col-xs-12">
-            <div style="background-color: blue; color: yellow; margin-bottom:5px" v-for="ua in user_answer">
+            <div style="background-color: blue; color: yellow; margin-bottom:5px" v-for="ua in user_answer.answer">
                 {{ ua }}
             </div>
         </div>
@@ -25,8 +25,14 @@
                     class="list-group-item is-snaper is-droppable has-response"
                     :id="'is-droppable-'+answer.id" 
                     :data-answer-id="answer.id"
-                >              
-                     
+                >
+                    <div 
+                        v-if="getAnswerUserResponse(answer) != null"
+                        class="is-draggable"
+                        :data-response-id="getAnswerUserResponse(answer).id"
+                    >
+                        {{ getAnswerUserResponse(answer).value }}
+                    </div>                   
                 </li>
             </ul>
         </div>
@@ -38,6 +44,7 @@
                     class="list-group-item"
                 >
                     <div 
+                        v-if="! responseExists(response)"
                         class="is-draggable"
                         :data-response-id="response.id"
                     >
@@ -54,18 +61,14 @@
 
 <script>
 
-    import vueDraggable from 'vuedraggable'
 
     export default 
     {
 
-        components:
-        {
-            'vue-draggable': vueDraggable,
-        },
 
     	props:
         {
+            id: {required: true},
             question: {required: true},
             user_answer: {required: true},
         },
@@ -115,6 +118,22 @@
                 return r;
             },
 
+            getAnswerUserResponse(answer)
+            {
+                let r = _.find(this.user_answer.answer, item => item.answer_id == answer.id)
+                if( (r == undefined) || (r.response_id == null) )
+                {
+                    return null;
+                }
+                return _.find(this.question.answers, answer => answer.id == r.response_id)
+            },
+
+            responseExists(response)
+            {
+                let r = _.find(this.user_answer.answer, item => item.response_id == response.id)
+                return r != undefined;
+            },
+
             draggable()
             {
                 let vm = this;
@@ -125,10 +144,11 @@
                     zIndex: 100,
                     helper: 'clone',
                     revert: 'invalid',
-                    revertDuration: 1000,
+                    revertDuration: 500,
                     start: function(e, ui){
                         vm.dragged = $(this).closest('li');
                         let response_id = $(this).data('response-id');
+                        $(this).addClass('is-dragged');
                         let response = _.find(vm.responses, response => response.id == response_id)
                         response.status = 'start';
                         vm.$forceUpdate();
@@ -137,6 +157,7 @@
                     stop: function(e, ui) {
                         let response_id = $(this).data('response-id');
                         let response = _.find(vm.responses, response => response.id == response_id)
+                        $(this).removeClass('is-dragged');
                         if( response.status != 'drop')
                         {
                             response.status = 'initial'
@@ -186,7 +207,7 @@
                                 question_id: vm.question.id,
                                 answer: vm.makeResponse(),
                             });
-                        }, 250);
+                        }, 50);
                     }
                 });
             },
@@ -220,6 +241,7 @@
     {
         /*background-color: red;
         color: #fff;*/
+       
     }
 
     .is-droppable
@@ -246,5 +268,11 @@
     .is-activate
     {
        /* background-color: yellow;*/
+    }
+
+    .is-dragged
+    {
+        font-weight: bold;
+        color: #000;
     }
 </style>

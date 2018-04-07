@@ -67,7 +67,46 @@
   text-overflow: ellipsis;
 }
 
-.match-container .list-group-item {
-  min-height: 42px;
+@media only screen and (min-width: 320px) {
+  #quiz-detail-container {
+    margin: 30px 0px;
+  }
+
+  #quiz-detail-container .panel-title {
+    font-size: 22px;
+  }
+
+  #question-text-section p {
+    border: 1px solid #ccc;
+    background-color: #fcfcfc;
+    padding: 20px;
+    color: #222;
+  }
+
+  #question-options {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #fcfcfc;
+  }
+
+  #question-options .text-answer-container .form-group {
+    margin-bottom: 0px;
+  }
+
+  #question-options .check-answer-container ul {
+    margin-bottom: 0px;
+  }
+
+  #question-options .radio-answer-container ul {
+    margin-bottom: 0px;
+  }
+
+  #question-options .match-container ul {
+    margin-bottom: 0px;
+  }
+
+  #question-options .match-container .list-group-item {
+    min-height: 42px;
+  }
 }
 

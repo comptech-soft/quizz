@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div :id="id" class="check-answer-container">
         <ul class="listview">
             <li v-for="answer in answers">
                 <label class="checkbutton checked">
@@ -27,6 +27,7 @@
 
     	props:
         {
+            id: {required: true},
             question: {required: true},
             user_answer: {required: true},
         },
