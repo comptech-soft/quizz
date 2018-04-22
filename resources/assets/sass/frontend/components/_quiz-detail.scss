@@ -8,6 +8,14 @@
 		{
 			font-size: 22px;
 		}
+
+		.btn-success
+		{
+			&:hover
+			{
+				background-color: #5cb85c;
+			}
+		}
 	}
 
 	#question-text-section

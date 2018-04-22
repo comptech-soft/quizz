@@ -39,4 +39,7 @@ Route::group(['middleware' => 'authenticated', 'namespace' => 'Frontend'], funct
 
 	Route::get('quiz-detail/{quiz_slug}', 'Quizz\QuizzDetailController@index')->name('quizz-detail-index');
 	Route::post('quiz-detail/get-record', 'Quizz\QuizzDetailController@getRecord')->name('quiz-detail-get-record');
+	Route::post('quiz-detail/start', 'Quizz\QuizzDetailController@start')->name('quiz-detail-start');
+	Route::post('quiz-detail/sending-responses', 'Quizz\QuizzDetailController@saveResponses')->name('quiz-detail-sending-responses');
 });
+

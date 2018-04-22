@@ -1,7 +1,7 @@
 <template>
 	<div id="match-container" class="match-container row">
 
-        <div class="col-xs-12">
+        <div v-if="0" class="col-xs-12">
             <div style="background-color: blue; color: yellow; margin-bottom:5px" v-for="ua in user_answer.answer">
                 {{ ua }}
             </div>

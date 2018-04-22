@@ -1,0 +1,16 @@
+.response-container
+{
+	border:1px solid #f7f7f7;
+	padding: 10px;
+	margin-bottom: 10px;
+
+	.question-container
+	{
+		margin-top: 10px;
+	}
+}
+
+.response-container:last-child
+{
+	margin-bottom:0px;
+}

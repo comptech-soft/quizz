@@ -7,8 +7,11 @@
         'css/bootstrap.min.css',
         'css/font-awesome.min.css',
         'css/bootstrap-theme.css',
+        'vendors/jquery-confirm/jquery-confirm.css',
         'css/style.css',
+        /*
         'css/camera.css',
+        */
         'css/frontend/app.css',
     ]])
     @yield('styles')
@@ -33,6 +36,7 @@
         'js/jquery.min.js',
         'js/jquery-ui.min.js',
         'vendors/scrollto/scrollto.js',
+        'vendors/jquery-confirm/jquery-confirm.js',
         /*
         'js/fancybox/jquery.fancybox.pack.js',
         'js/jquery.mobile.customized.min.js',

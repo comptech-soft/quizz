@@ -76,7 +76,6 @@
 
                     let selector = '#' + vm.id + ' label.radiobutton input';
                     let jq = $(selector);
-                    console.log('iCheckRadio' + selector + ' (' + jq.length + ', ' + vm.answers.length + ')');
                     if( jq.length == vm.answers.length )
                     {
                         clearInterval(i);

@@ -24,6 +24,15 @@
   margin: 0px;
 }
 
+.jconfirm .jconfirm-box {
+  border-radius: 0px !important;
+}
+
+.jconfirm .jconfirm-buttons button.btn {
+  border-radius: 0px !important;
+  text-transform: none !important;
+}
+
 #row-forgot-password {
   margin-bottom: 20px;
 }
@@ -76,6 +85,10 @@
     font-size: 22px;
   }
 
+  #quiz-detail-container .btn-success:hover {
+    background-color: #5cb85c;
+  }
+
   #question-text-section p {
     border: 1px solid #ccc;
     background-color: #fcfcfc;
@@ -108,5 +121,19 @@
   #question-options .match-container .list-group-item {
     min-height: 42px;
   }
+}
+
+.response-container {
+  border: 1px solid #f7f7f7;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.response-container .question-container {
+  margin-top: 10px;
+}
+
+.response-container:last-child {
+  margin-bottom: 0px;
 }
 
