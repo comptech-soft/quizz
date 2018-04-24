@@ -1,11 +1,11 @@
 <template>
 	<div :id="id" class="radio-answer-container">
-        <ul class="listview">
+        <ul class="listview-radio-question" :id="'listview-radio-question-' + question.id">
             <li v-for="answer in answers">
-                <label class="radiobutton checked">
+                <label class="radio-button-question">
                     <input 
                         :name="'question-' + question.id"
-                        :id="'answer-' + answer.id" 
+                        :id="'answer-question-' + answer.id" 
                         :value="answer.value" 
                         :checked="answer.value == user_answer.answer"
                         type="radio"
@@ -20,6 +20,8 @@
 </template>
 
 <script>
+
+    import ICheck from './../../../boot/modules/jquery/ICheck.js'
 
     export default 
     {
@@ -73,17 +75,13 @@
             iCheck()
             {
                 let vm = this, i = setInterval(() => {
-
-                    let selector = '#' + vm.id + ' label.radiobutton input';
-                    let jq = $(selector);
-                    if( jq.length == vm.answers.length )
+                    let selector = '#' + vm.id +  ' #listview-radio-question-' + this.question.id + ' label.radio-button-question input';
+                    if( $(selector).length == vm.answers.length )
                     {
                         clearInterval(i);
-                        vm.icheck = $('#' + vm.id + ' label.radiobutton input').iCheck({
-                            checkboxClass: 'icheckbox_square-blue',
-                            radioClass: 'iradio_square-blue',
-                            increaseArea: '20%',
-                        }).on('ifClicked', function(event){
+                        let _icheck = new ICheck(selector);
+                        vm.icheck = _icheck.create();
+                        vm.icheck.on('ifClicked', function(event){
                             vm.onRadioClick($(this));
                         });                        
                     }
@@ -96,7 +94,7 @@
             this.iCheck();
         },
 
-        name: 'answers-radio'
+        name: 'question-answers-radio'
     }
 
 </script>

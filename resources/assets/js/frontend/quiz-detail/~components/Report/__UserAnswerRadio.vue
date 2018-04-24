@@ -1,19 +1,17 @@
 <template>
-	<div class="correct-answer-component">
-        <ul class="listview-radio-correct" :id="'listview-radio-correct-' + question.id">
+	<div>
+        <ul class="listview-radio-user" :id="'listview-radio-user-' + question.id">
             <li v-for="answer in answers">
-                <label class="radio-button-correct">
+                <label class="radio-button-user">
                     <input 
-                        :name="'question-correct-' + question.id"
-                        :id="'answer-correct-' + answer.id" 
+                        :name="'question-user-' + question.id"
+                        :id="'answer-user-' + answer.id" 
                         :value="answer.value" 
-                        :checked="answer.value == correct_answer"
-                        :data-value="answer.value"
-                        :data-correct="correct_answer"
+                        :checked="answer.value == user_answer.toLowerCase()"
                         type="radio"
                     >
                     <span class="label-text">
-                        {{ answer.caption }} / {{answer.value == correct_answer }}
+                        {{ answer.caption }}
                     </span>
                 </label>
             </li>
@@ -30,37 +28,33 @@
 
     	props:
     	{
-    		correct: {required: true},
+    		user_answer: {required: true},
             question: {required: true}
     	},
 
+        data()
+        {
+            return {
+                icheck: null,
+            }
+        },
+
         computed:
         {
-            correct_answer()
-            {
-                return this.correct.toLowerCase();
-            },
-
             answers()
             {
                 return this.question.answers;
             }
         },
 
-        data()
-        {
-            return { 
-                icheck: null,
-            };
-        },
-
         methods:
         {
+
             iCheck()
             {
                 let vm = this, i = setInterval(() => {
 
-                    let selector = '#listview-radio-correct-' + this.question.id + ' label.radio-button-correct input';
+                    let selector = '#listview-radio-user-' + this.question.id + ' label.radio-button-user input';
 
                     if( $(selector).length == vm.answers.length )
                     {
@@ -68,7 +62,7 @@
                         let _icheck = new ICheck(selector);
                         vm.icheck = _icheck.create();
                         vm.icheck.iCheck('disable');  
-                        $('#listview-radio-correct-' + this.question.id + ' .iradio_square-blue').removeClass('disabled'); 
+                        $('#listview-radio-user-' + this.question.id + ' .iradio_square-blue').removeClass('disabled'); 
                     }
                 }, 10);
             }
@@ -76,10 +70,10 @@
 
         mounted()
         {
-           this.iCheck();
+            this.iCheck();
         },
 
-        name: 'correct-answer-radio'
+        name: 'user-answer-radio'
     }
 
 </script>

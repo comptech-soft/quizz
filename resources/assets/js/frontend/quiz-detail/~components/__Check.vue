@@ -1,8 +1,8 @@
 <template>
 	<div :id="id" class="check-answer-container">
-        <ul class="listview">
+        <ul class="listview-check-question" :id="'listview-check-question-' + question.id">
             <li v-for="answer in answers">
-                <label class="checkbutton checked">
+                <label class="check-button-question">
                     <input 
                         :name="'question-' + question.id"
                         :id="'answer-' + answer.id" 
@@ -12,7 +12,7 @@
                         type="checkbox"
                     >
                     <span class="label-text">
-                        {{ answer.caption }} / {{ existsInUserAnswer(answer.value, answer.id) }}
+                        {{ answer.caption }}
                     </span>
                 </label>
             </li>
@@ -21,6 +21,8 @@
 </template>
 
 <script>
+
+    import ICheck from './../../../boot/modules/jquery/ICheck.js'
 
     export default 
     {
@@ -112,14 +114,13 @@
             iCheck()
             {
                 let vm = this, i = setInterval(() => {
-                    if( $('label.checkbutton input').length == vm.answers.length )
+                    let selector = '#' + vm.id +  ' #listview-check-question-' + this.question.id + ' label.check-button-question input';
+                    if( $(selector).length == vm.answers.length )
                     {
                         clearInterval(i);
-                        vm.icheck = $('label.checkbutton input').iCheck({
-                            checkboxClass: 'icheckbox_square-blue',
-                            radioClass: 'iradio_square-blue',
-                            increaseArea: '20%',
-                        }).on('ifClicked', function(event){
+                        let _icheck = new ICheck(selector);
+                        vm.icheck = _icheck.create();
+                        vm.icheck.on('ifClicked', function(event){
                             vm.onClickCheckbox( $(this))           
                         });
                     }

@@ -1,14 +1,14 @@
 <template>
-	<div class="correct-answer-component">
-        <ul class="listview-check-correct" :id="'listview-check-correct-' + question.id">
+	<div>
+        <ul class="listview-check-user" :id="'listview-check-user-' + question.id">
             <li v-for="answer in answers">
-                <label class="check-button-correct">
+                <label class="check-button-user">
                     <input 
-                        :name="'question-correct-' + question.id"
-                        :id="'answer-correct-' + answer.id" 
+                        :name="'question-user-' + question.id"
+                        :id="'answer-user-' + answer.id" 
                         :data-answer_id="answer.id"
                         :value="answer.value" 
-                        :checked="existsInCorrectAnswer(answer.value, answer.id)" 
+                        :checked="existsInUserAnswer(answer.value, answer.id)" 
                         type="checkbox"
                     >
                     <span class="label-text">
@@ -29,35 +29,30 @@
 
     	props:
     	{
-    		correct: {required: true},
+    		user_answer: {required: true},
             question: {required: true}
     	},
 
+        data()
+        {
+            return {
+                icheck: null,
+            }
+        },
+
         computed:
         {
-            correct_answer()
-            {
-                return JSON.parse(this.correct)
-            },
-
             answers()
             {
                 return this.question.answers;
             }
         },
 
-        data()
-        {
-            return {
-                icheck: null,
-            };
-        },
-
         methods:
         {
-            existsInCorrectAnswer(value, id)
+            existsInUserAnswer(value, id)
             {
-                let r = _.find(this.correct_answer, item => item.toLowerCase() == value );
+                let r = _.find(this.user_answer, item => (item.selected == value) && (item.answer_id == id) );
                 return r != undefined;
             },
 
@@ -65,15 +60,14 @@
             {
                 let vm = this, i = setInterval(() => {
 
-                    let selector = '#listview-check-correct-' + this.question.id + ' label.check-button-correct input';
-
+                    let selector = '#listview-check-user-' + this.question.id + ' label.check-button-user input';
                     if( $(selector).length == vm.answers.length )
                     {
                         clearInterval(i);
                         let _icheck = new ICheck(selector);
                         vm.icheck = _icheck.create();
                         vm.icheck.iCheck('disable');  
-                        $('#listview-check-correct-' + this.question.id + ' .icheckbox_square-blue').removeClass('disabled'); 
+                        $('#listview-check-user-' + this.question.id + ' .icheckbox_square-blue').removeClass('disabled'); 
                     }
                 }, 10);
             }
@@ -84,7 +78,7 @@
             this.iCheck();
         },
 
-        name: 'correct-answer-check'
+        name: 'user-answer-check'
     }
 
 </script>

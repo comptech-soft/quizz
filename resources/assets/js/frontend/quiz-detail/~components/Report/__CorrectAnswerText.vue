@@ -12,24 +12,8 @@
     	props:
     	{
     		correct: {required: true},
+            question: {required: true}
     	},
-
-        computed:
-        {
-
-        },
-
-        data()
-        {
-            return {
-
-            };
-        },
-
-        methods:
-        {
-
-        },
 
         name: 'correct-answer-text'
     }

@@ -8,9 +8,78 @@
 	{
 		margin-top: 10px;
 	}
+
+	h5
+	{
+		font-size: 16px;
+		font-weight: 500;
+		i.fa
+		{
+			font-weight: 500;
+			font-size:20px;
+		}
+	}
 }
 
 .response-container:last-child
 {
 	margin-bottom:0px;
+}
+
+
+div.is_correct
+{
+	>div
+	{
+		h5
+		{
+			color: #2d8c0b !important;
+		}
+		>div
+		{
+			background-color: #effcea !important;
+			border:1px solid #2d8c0b !important;
+			color: #2d8c0b !important;
+			padding: 10px;
+		}
+	}
+}
+
+div.is_not_correct
+{
+	>div
+	{
+		h5
+		{
+			color: #d33724 !important;
+		}
+		>div
+		{
+			background-color: #fce9e8 !important;
+			border:1px solid #d33724 !important;
+			color: #d33724 !important;
+			padding: 10px;
+		}
+	}
+}
+
+h4.is_correct
+{
+	color: #2d8c0b !important;
+}
+
+h4.is_not_correct
+{
+	color: #d33724 !important;
+	text-decoration: line-through;
+}
+
+ul.listview
+{
+	margin-bottom: 0px;
+}
+
+.icheckbox_square-blue, .iradio_square-blue
+{
+	
 }
