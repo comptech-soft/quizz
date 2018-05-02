@@ -1106,7 +1106,7 @@ var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(281)
 /* template */
-var __vue_template__ = __webpack_require__(329)
+var __vue_template__ = __webpack_require__(332)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -2376,12 +2376,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2553,26 +2547,6 @@ var render = function() {
     "div",
     { staticClass: "match-container row", attrs: { id: "match-container" } },
     [
-      0
-        ? _c(
-            "div",
-            { staticClass: "col-xs-12" },
-            _vm._l(_vm.user_answer.answer, function(ua) {
-              return _c(
-                "div",
-                {
-                  staticStyle: {
-                    "background-color": "blue",
-                    color: "yellow",
-                    "margin-bottom": "5px"
-                  }
-                },
-                [_vm._v("\n                " + _vm._s(ua) + "\n            ")]
-              )
-            })
-          )
-        : _vm._e(),
-      _vm._v(" "),
       _c("div", { staticClass: "col-xs-12 col-sm-4" }, [
         _c(
           "ul",
@@ -2962,7 +2936,7 @@ var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(303)
 /* template */
-var __vue_template__ = __webpack_require__(328)
+var __vue_template__ = __webpack_require__(331)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -3083,7 +3057,7 @@ var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(305)
 /* template */
-var __vue_template__ = __webpack_require__(327)
+var __vue_template__ = __webpack_require__(330)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -3142,6 +3116,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__UserAnswerCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__UserAnswerCheck__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__UserAnswerRadio__ = __webpack_require__(324);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__UserAnswerRadio___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__UserAnswerRadio__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__UserAnswerMatch__ = __webpack_require__(327);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__UserAnswerMatch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__UserAnswerMatch__);
 //
 //
 //
@@ -3235,8 +3211,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
+
 
 
 
@@ -3258,7 +3233,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         'user-answer-text': __WEBPACK_IMPORTED_MODULE_4__UserAnswerText___default.a,
         'user-answer-check': __WEBPACK_IMPORTED_MODULE_5__UserAnswerCheck___default.a,
-        'user-answer-radio': __WEBPACK_IMPORTED_MODULE_6__UserAnswerRadio___default.a
+        'user-answer-radio': __WEBPACK_IMPORTED_MODULE_6__UserAnswerRadio___default.a,
+        'user-answer-match': __WEBPACK_IMPORTED_MODULE_7__UserAnswerMatch___default.a
     },
 
     props: {
@@ -3282,6 +3258,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
                 if (this.question.type == 'radio') {
                     return this.response.response.toLowerCase();
+                }
+                if (this.question.type == 'match') {
+                    return JSON.parse(this.response.response);
                 }
             }
             return '';
@@ -3899,17 +3878,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
     props: {
-        correct: { required: true }
+        correct: { required: true },
+        question: { required: true }
     },
 
     computed: {
         correct_answer: function correct_answer() {
             return JSON.parse(this.correct);
+        },
+        answers: function answers() {
+            return this.question.answers;
         }
     },
 
@@ -3933,7 +3926,26 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "correct-answer-component" }, [
-    _vm._v("\n        " + _vm._s(_vm.correct_answer) + "\n    ")
+    _c(
+      "ul",
+      { staticClass: "list-group" },
+      _vm._l(_vm.answers, function(answer) {
+        return _c("li", { staticClass: "list-group-item" }, [
+          _vm._v(
+            "\n                " +
+              _vm._s(answer.caption) +
+              " \n                "
+          ),
+          _c("span", { staticClass: "badge" }, [
+            _vm._v(
+              "\n                    " +
+                _vm._s(_vm.correct_answer[answer.caption]) +
+                "\n                "
+            )
+          ])
+        ])
+      })
+    )
   ])
 }
 var staticRenderFns = []
@@ -4012,7 +4024,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
 
 	props: {
-		user_answer: { required: true }
+		user_answer: { required: true },
+		question: { required: true }
 	},
 
 	name: 'user-answer-text'
@@ -4417,6 +4430,100 @@ if (false) {
 /***/ 327:
 /***/ (function(module, exports, __webpack_require__) {
 
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(328)
+/* template */
+var __vue_template__ = __webpack_require__(329)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\Report\\__UserAnswerMatch.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-783ed5ea", Component.options)
+  } else {
+    hotAPI.reload("data-v-783ed5ea", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 328:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+	props: {
+		user_answer: { required: true },
+		question: { required: true }
+	},
+
+	name: 'user-answer-text'
+});
+
+/***/ }),
+
+/***/ 329:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("span", [_vm._v("\n        " + _vm._s(_vm.user_answer) + "\n    ")])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-783ed5ea", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 330:
+/***/ (function(module, exports, __webpack_require__) {
+
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -4474,7 +4581,7 @@ var render = function() {
           "div",
           { staticClass: "col-xs-12 col-sm-6" },
           [
-            _c("h5", [_vm._v("Accepted Answer")]),
+            _vm._m(0),
             _vm._v(" "),
             _c("correct-answer-" + _vm.question.type, {
               tag: "component",
@@ -4532,39 +4639,52 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _vm.question.answer_image_url != null
-          ? _c("div", { staticClass: "col-xs-12 col-sm-6" }, [
-              _c("img", {
-                staticClass: "img-responsive",
-                attrs: { src: "/" + _vm.question.answer_image_url }
-              })
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            class: {
-              "col-xs-12": _vm.question.answer_image_url == null,
-              "col-sm-12": _vm.question.answer_image_url == null,
-              "col-sm-6": _vm.question.answer_image_url != null
-            }
-          },
-          [
-            _c("div", {
-              domProps: { innerHTML: _vm._s(_vm.question.answer_description) }
-            })
-          ]
-        )
-      ])
-    ])
+    _vm.question.answer_description
+      ? _c("div", [
+          _vm._m(1),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _vm.question.answer_image_url != null
+              ? _c("div", { staticClass: "col-xs-12 col-sm-6" }, [
+                  _c("img", {
+                    staticClass: "img-responsive",
+                    attrs: { src: "/" + _vm.question.answer_image_url }
+                  })
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                class: {
+                  "col-xs-12": _vm.question.answer_image_url == null,
+                  "col-sm-12": _vm.question.answer_image_url == null,
+                  "col-sm-6": _vm.question.answer_image_url != null
+                }
+              },
+              [
+                _c("div", {
+                  domProps: {
+                    innerHTML: _vm._s(_vm.question.answer_description)
+                  }
+                })
+              ]
+            )
+          ])
+        ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h5", [
+      _c("i", { staticClass: "fa fa-fw fa-thumbs-up" }),
+      _vm._v("Accepted Answer")
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -4586,7 +4706,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 328:
+/***/ 331:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -4631,7 +4751,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 329:
+/***/ 332:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

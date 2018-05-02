@@ -32,15 +32,13 @@
         <div class="question-container">
             <div class="row">
                 <div class="col-xs-12 col-sm-6">
-                    <h5>Accepted Answer</h5>
-                    
+                    <h5><i class="fa fa-fw fa-thumbs-up"></i>Accepted Answer</h5>
                     <component
                         :is="'correct-answer-' + question.type"
                         :correct="question.correct_answer"
                         :question="question"
                     >
                     </component>
-
                 </div>
                 <div 
                     :class="{
@@ -74,7 +72,7 @@
             </div>
         </div>
 
-        <div>
+        <div v-if="question.answer_description">
             <h5><i class="fa fa-fw fa-exclamation-circle"></i>Explanation</h5>
             <div class="row">
                 <div v-if="question.answer_image_url != null" class="col-xs-12 col-sm-6">
@@ -103,6 +101,7 @@
     import vueUserAnswerText from './__UserAnswerText'
     import vueUserAnswerCheck from './__UserAnswerCheck'
     import vueUserAnswerRadio from './__UserAnswerRadio'
+    import vueUserAnswerMatch from './__UserAnswerMatch'
 
     export default 
     {
@@ -117,6 +116,7 @@
             'user-answer-text': vueUserAnswerText,
             'user-answer-check': vueUserAnswerCheck,
             'user-answer-radio': vueUserAnswerRadio,
+            'user-answer-match': vueUserAnswerMatch,
         },
 
     	props:
@@ -149,6 +149,10 @@
                     if(this.question.type == 'radio')
                     {
                         return this.response.response.toLowerCase();
+                    }
+                    if(this.question.type == 'match')
+                    {
+                        return JSON.parse(this.response.response);
                     }
                 }
                 return '';

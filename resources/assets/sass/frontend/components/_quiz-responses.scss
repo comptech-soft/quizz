@@ -74,12 +74,17 @@ h4.is_not_correct
 	text-decoration: line-through;
 }
 
-ul.listview
+.response-container
 {
+	ul
+	{
 	margin-bottom: 0px;
+	}
 }
 
-.icheckbox_square-blue, .iradio_square-blue
+.correct-answer-component
 {
-	
+	border:1px solid #ccc;
+	padding: 10px;
+	background-color: #FDFDFD;
 }
