@@ -78,7 +78,7 @@ h4.is_not_correct
 {
 	ul
 	{
-	margin-bottom: 0px;
+		margin-bottom: 0px;
 	}
 }
 
@@ -87,4 +87,27 @@ h4.is_not_correct
 	border:1px solid #ccc;
 	padding: 10px;
 	background-color: #FDFDFD;
+}
+
+.user-response-match-container
+{
+	span.is-correct
+	{
+		color: #2d8c0b !important;
+	}
+
+	span.is-wrong
+	{
+		color: #d33724 !important;
+	}
+
+	span.badge-is-correct
+	{
+		background-color: #2d8c0b !important;
+	}
+
+	span.badge-is-wrong
+	{
+		background-color: #d33724 !important;
+	}
 }

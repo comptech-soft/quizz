@@ -64,6 +64,7 @@
                                 :is="'user-answer-' + question.type"
                                 :user_answer="user_answer"
                                 :question="question"
+                                :correct="question.correct_answer"
                             >
                             </component>
                         </div>
@@ -172,11 +173,19 @@
                 {
                     return this.is_correct_radio.is_correct;
                 }
+                if( this.question.type == 'match')
+                {
+                    return this.is_correct_match.is_correct;
+                }
                 return false;
             },
 
             is_correct_text()
             {
+                if( this.question.type != 'text')
+                {
+                    return false;
+                }
                 let correct_answers = _.split(this.question.correct_answer, ',');
                 correct_answers = _.map(correct_answers, answer => answer.trim().toLowerCase());
                 let founded = _.find(correct_answers, item => item == this.user_answer)
@@ -195,6 +204,10 @@
 
             is_correct_check()
             {
+                if( this.question.type != 'check')
+                {
+                    return false;
+                }
                 let correct_answers = JSON.parse(this.question.correct_answer);
                 correct_answers = _.map(correct_answers, answer => answer.trim().toLowerCase());
                 correct_answers = _.orderBy(correct_answers);
@@ -211,10 +224,40 @@
 
             is_correct_radio()
             {
+                if( this.question.type != 'radio')
+                {
+                    return false;
+                }
                 return {
                     correct_answers: this.question.correct_answer.toLowerCase(),
                     user_answer: this.user_answer.toLowerCase(),
                     is_correct: this.question.correct_answer.toLowerCase() == this.user_answer.toLowerCase(),
+                };
+            },
+
+            is_correct_match()
+            {
+                if( this.question.type != 'match')
+                {
+                    return false;
+                }
+                if(this.user_answer.length < this.answers.length)
+                {
+                    return false;
+                }
+                let is_correct = true;
+                for(let i = 0; i < this.user_answer.length; i++)
+                {
+                    if(this.user_answer[i].answer_id != this.user_answer[i].response_id )
+                    {
+                        is_correct = false;
+                        break;
+                    }
+                }
+                return {
+                    correct_answers: this.question.correct_answer,
+                    user_answer: this.user_answer,
+                    is_correct: is_correct,
                 };
             }
         },

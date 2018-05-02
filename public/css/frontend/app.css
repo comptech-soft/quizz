@@ -188,3 +188,19 @@ h4.is_not_correct {
   background-color: #FDFDFD;
 }
 
+.user-response-match-container span.is-correct {
+  color: #2d8c0b !important;
+}
+
+.user-response-match-container span.is-wrong {
+  color: #d33724 !important;
+}
+
+.user-response-match-container span.badge-is-correct {
+  background-color: #2d8c0b !important;
+}
+
+.user-response-match-container span.badge-is-wrong {
+  background-color: #d33724 !important;
+}
+

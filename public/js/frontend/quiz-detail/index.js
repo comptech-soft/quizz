@@ -3211,6 +3211,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -3275,11 +3276,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.question.type == 'radio') {
                 return this.is_correct_radio.is_correct;
             }
+            if (this.question.type == 'match') {
+                return this.is_correct_match.is_correct;
+            }
             return false;
         },
         is_correct_text: function is_correct_text() {
             var _this = this;
 
+            if (this.question.type != 'text') {
+                return false;
+            }
             var correct_answers = _.split(this.question.correct_answer, ',');
             correct_answers = _.map(correct_answers, function (answer) {
                 return answer.trim().toLowerCase();
@@ -3299,6 +3306,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
         },
         is_correct_check: function is_correct_check() {
+            if (this.question.type != 'check') {
+                return false;
+            }
             var correct_answers = JSON.parse(this.question.correct_answer);
             correct_answers = _.map(correct_answers, function (answer) {
                 return answer.trim().toLowerCase();
@@ -3317,10 +3327,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
         },
         is_correct_radio: function is_correct_radio() {
+            if (this.question.type != 'radio') {
+                return false;
+            }
             return {
                 correct_answers: this.question.correct_answer.toLowerCase(),
                 user_answer: this.user_answer.toLowerCase(),
                 is_correct: this.question.correct_answer.toLowerCase() == this.user_answer.toLowerCase()
+            };
+        },
+        is_correct_match: function is_correct_match() {
+            if (this.question.type != 'match') {
+                return false;
+            }
+            if (this.user_answer.length < this.answers.length) {
+                return false;
+            }
+            var is_correct = true;
+            for (var i = 0; i < this.user_answer.length; i++) {
+                if (this.user_answer[i].answer_id != this.user_answer[i].response_id) {
+                    is_correct = false;
+                    break;
+                }
+            }
+            return {
+                correct_answers: this.question.correct_answer,
+                user_answer: this.user_answer,
+                is_correct: is_correct
             };
         }
     },
@@ -4486,16 +4519,67 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
-	props: {
-		user_answer: { required: true },
-		question: { required: true }
-	},
+    props: {
+        user_answer: { required: true },
+        question: { required: true },
+        correct: { required: true }
+    },
 
-	name: 'user-answer-text'
+    computed: {
+        correct_answer: function correct_answer() {
+            return JSON.parse(this.correct);
+        },
+        answers: function answers() {
+            return this.question.answers;
+        }
+    },
+
+    methods: {
+        getUserResponse: function getUserResponse(answer_id) {
+            var r = _.find(this.user_answer, function (item) {
+                return item.answer_id == answer_id;
+            });
+            if (r == undefined) {
+                return '';
+            }
+            var response = _.find(this.answers, function (item) {
+                return item.id == r.response_id;
+            });
+            if (response == undefined) {
+                return '';
+            }
+            return response.value;
+        }
+    },
+
+    name: 'user-answer-match'
 });
 
 /***/ }),
@@ -4507,7 +4591,60 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("span", [_vm._v("\n        " + _vm._s(_vm.user_answer) + "\n    ")])
+  return _c("div", { staticClass: "user-response-match-container" }, [
+    _c(
+      "ul",
+      { staticClass: "list-group" },
+      _vm._l(_vm.answers, function(answer) {
+        return _c("li", { staticClass: "list-group-item" }, [
+          _c(
+            "span",
+            {
+              class: {
+                "is-correct":
+                  _vm.correct_answer[answer.caption] ==
+                  _vm.getUserResponse(answer.id),
+                "is-wrong":
+                  _vm.correct_answer[answer.caption] !=
+                  _vm.getUserResponse(answer.id)
+              }
+            },
+            [
+              _vm._v(
+                "\n                    " +
+                  _vm._s(answer.caption) +
+                  "\n                "
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _vm.getUserResponse(answer.id)
+            ? _c(
+                "span",
+                {
+                  class: {
+                    badge: true,
+                    "badge-is-correct":
+                      _vm.correct_answer[answer.caption] ==
+                      _vm.getUserResponse(answer.id),
+                    "badge-is-wrong":
+                      _vm.correct_answer[answer.caption] !=
+                      _vm.getUserResponse(answer.id)
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.getUserResponse(answer.id)) +
+                      "\n                "
+                  )
+                ]
+              )
+            : _vm._e()
+        ])
+      })
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -4627,7 +4764,8 @@ var render = function() {
                     tag: "component",
                     attrs: {
                       user_answer: _vm.user_answer,
-                      question: _vm.question
+                      question: _vm.question,
+                      correct: _vm.question.correct_answer
                     }
                   })
                 ],
