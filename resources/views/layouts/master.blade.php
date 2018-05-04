@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}" data-app="frontend">
+<html lang="{{ app()->getLocale() }}" data-app="{{ $app }}">
 <head>
-    @include('layouts.elements.head', ['title' => 'Facility'])
+    @include('layouts.elements.head', ['title' => 'Quizes'])
     @include('layouts.elements.styles', ['styles' => [
         'http://fonts.googleapis.com/css?family=Open+Sans:300,400,700',
         'css/bootstrap.min.css',

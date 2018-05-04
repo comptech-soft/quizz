@@ -1,0 +1,18 @@
++--------+----------+-------------------------------+-------------------------------+-------------------------------------------------------------------------+-------------------+
+| Domain | Method   | URI                           | Name                          | Action                                                                  | Middleware        |
++--------+----------+-------------------------------+-------------------------------+-------------------------------------------------------------------------+-------------------+
+|        | GET|HEAD | /                             | frontend-welcome-index        | App\Http\Controllers\Frontend\Visitors\WelcomeController@index          | web,visitor       |
+|        | GET|HEAD | admin                         | admin-welcome-index           | App\Http\Controllers\Admin\WelcomeController@index                      | web,admin         |
+|        | GET|HEAD | admin/login                   | admin-login                   | App\Http\Controllers\Admin\Auth\LoginController@login                   | web,visitor       |
+|        | POST     | admin/logout                  | admin-logout                  | App\Http\Controllers\Admin\Auth\LoginController@logout                  | web,admin         |
+|        | GET|HEAD | api/user                      |                               | Closure                                                                 | api,auth:api      |
+|        | POST     | get-system-configuration      | get-system-configuration      | App\Http\Controllers\System\ConfigurationController@get                 | web               |
+|        | POST     | login                         | login                         | App\Http\Controllers\Frontend\Auth\LoginController@login                | web,visitor       |
+|        | POST     | logout                        | logout                        | App\Http\Controllers\Frontend\Auth\LoginController@logout               | web,authenticated |
+|        | GET|HEAD | quiz                          | quizz-index                   | App\Http\Controllers\Frontend\Quizz\QuizzController@index               | web,authenticated |
+|        | POST     | quiz-detail/get-record        | quiz-detail-get-record        | App\Http\Controllers\Frontend\Quizz\QuizzDetailController@getRecord     | web,authenticated |
+|        | POST     | quiz-detail/sending-responses | quiz-detail-sending-responses | App\Http\Controllers\Frontend\Quizz\QuizzDetailController@saveResponses | web,authenticated |
+|        | POST     | quiz-detail/start             | quiz-detail-start             | App\Http\Controllers\Frontend\Quizz\QuizzDetailController@start         | web,authenticated |
+|        | GET|HEAD | quiz-detail/{quiz_slug}       | quizz-detail-index            | App\Http\Controllers\Frontend\Quizz\QuizzDetailController@index         | web,authenticated |
+|        | POST     | quizes/fetch                  | quizz-fetch                   | App\Http\Controllers\Frontend\Quizz\QuizzController@fetch               | web,authenticated |
++--------+----------+-------------------------------+-------------------------------+-------------------------------------------------------------------------+-------------------+

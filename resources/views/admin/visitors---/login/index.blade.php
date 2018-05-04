@@ -1,13 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    {{ $app }}. Visitor welcome page
-    <hr/>
-    {{ Sentinel::check() }}
-    <hr/>
-    @if(Sentinel::check())
-    	{{ Sentinel::check()->roles }}
-    @endif
+    {{ $app }}. Welcome page
 @endsection
 
 @section('styles')

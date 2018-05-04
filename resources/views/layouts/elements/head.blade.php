@@ -5,6 +5,6 @@
 <meta name="base-url" content="{{ config('app.url') }}" />
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <title>
-    ..:: Site title ::..
+    ..:: {{ $title }} ::..
 </title>
 <link rel="favicon" href="/images/favicon.png">

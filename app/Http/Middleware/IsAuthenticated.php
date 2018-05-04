@@ -12,10 +12,10 @@ class IsAuthenticated
     {
         if( Sentinel::check() )
         {
-        	if( Sentinel::inRole('admin') )
-            {
-                return redirect(route('admin-welcome-index'));
-            }
+        	// if( Sentinel::inRole('admin') )
+         //    {
+         //        return redirect(route('admin-welcome-index'));
+         //    }
             return $next($request);
         } 
         return redirect('/');

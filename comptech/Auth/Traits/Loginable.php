@@ -49,7 +49,7 @@ trait Loginable
             */
             return [
                 'success'       => true, 
-                'redirect'      => '',
+                'redirect'      => route('welcome-index', ['app' => $role_slug]),
                 'notification'  => [
                     'type' => 'success',
                     'message' => 'Successfull login',

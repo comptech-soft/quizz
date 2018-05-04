@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Frontend\Visitors;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
@@ -9,8 +9,7 @@ class WelcomeController extends Controller
 
 	public function index()
 	{
-		return 
-            view('frontend.visitors.welcome.index')
-        ;
+		return view('admin.welcome.index')->with(['app' => 'admin']);
 	}
+	
 }

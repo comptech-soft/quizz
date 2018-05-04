@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    {{ $app }}. Visitor welcome page
+    {{ $app }}. admn.welcome.index
     <hr/>
     {{ Sentinel::check() }}
     <hr/>

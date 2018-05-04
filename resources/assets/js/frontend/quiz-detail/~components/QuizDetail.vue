@@ -5,6 +5,7 @@
             v-if="0 < responses.length"
             :record="record"
             :responses="responses"
+            :solving="solving"
         >
         </vue-response-report>
 
@@ -161,7 +162,7 @@
             questions()
             {
                 return this.record.questions;
-            },
+            },            
         },
 
         data()
@@ -333,7 +334,8 @@
                     user_answers: this.user_answers
                 })
                     .then(r => {
-                        vm.responses = r.data;
+                        vm.responses = r.data.responses;
+                        vm.solving = r.data.solving;
                     })
             },
 

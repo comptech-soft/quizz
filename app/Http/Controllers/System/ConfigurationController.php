@@ -5,6 +5,7 @@ namespace App\Http\Controllers\System;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Sentinel;
+use App\Models\System\Navbar;
 
 class ConfigurationController extends Controller
 {
@@ -18,38 +19,11 @@ class ConfigurationController extends Controller
             'config' => [
             	'base_url' => config('app.url'),
             	'logo' => asset('images/logo.png'),
+            	'app' => $request->app,
+                'roles' => $user ? $user->roles : [],
             ],
 
-            'navbar' => [
-            	'current' => NULL,
-            	'options' => 
-	            	$user 
-	            	? 
-	            	[
-
-	            		[
-	            			'id' => 'quizz',
-	            			'caption' => 'Quizes',
-	            		],
-
-	            		[
-	            			'id' => 'logout',
-	            			'caption' => 'Logout'
-	            		],
-	            	]
-	            	:
-	            	[
-	            		[
-	            			'id' => 'login',
-	            			'caption' => 'Login'
-	            		],
-
-	            		[
-	            			'id' => 'register',
-	            			'caption' => 'Register'
-	            		]
-	            	]
-            ]
+            'navbar' => Navbar::get($user, $request->app),
         ];
     }
 

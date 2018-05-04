@@ -83,6 +83,11 @@
             formmix
         ],
 
+        props:
+        {
+            app: {required: true}
+        },
+
         data()
         {
             return {
@@ -118,6 +123,7 @@
                 vm.email_field_name = 'email';
                 vm.password_field_name = 'password';
                 vm.password_field_type = 'password';
+                vm.fields['app'] = vm.app;
 
             }, 1000);
         },
@@ -126,9 +132,3 @@
     }
 
 </script>
-
-<style scoped lang="scss">
-    /*
-
-    */
-</style>

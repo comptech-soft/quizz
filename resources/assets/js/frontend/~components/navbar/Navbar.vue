@@ -71,6 +71,7 @@
                     :is="current.id + 'form'"
                     :rules="rules[current.id]"
                     :endpoint="endpoint[current.id]"
+                    :app="app"
                     @start-submiting="notification=null"
                     @end-submiting="onEndSubmiting"
                 >
@@ -97,7 +98,7 @@
 
     	props:
     	{
-    		
+    		app: {required: true}
     	},
 
         data()
@@ -163,8 +164,6 @@
             {
                 return {
                     login: 'login',
-                
-
                     register: 'register'
                 }
             }  
@@ -186,10 +185,20 @@
 
             onClicklogout(bar)
             {
-                Requests.post('logout')
-                    .then(r => {
+                if(this.app == 'frontend')
+                {
+                    Requests.post('logout').then(r => {
+                        alert(r.data.url);
                         Requests.redirect(r.data.url)
                     })
+                }
+                else
+                {
+                    Requests.post('admin/logout').then(r => {
+                        alert(r.data.url);
+                        Requests.redirect(r.data.url)
+                    })
+                }
             },
 
             onClickquizz(bar)
@@ -217,6 +226,7 @@
                 }
                 else
                 {
+                    alert(r.redirect);
                     Requests.redirect(r.redirect);
                 }
             }

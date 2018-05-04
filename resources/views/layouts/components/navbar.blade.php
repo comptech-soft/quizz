@@ -1,4 +1,6 @@
 <div id="navbar-app" class="navbar navbar-inverse">
-    <vue-navbar>
+    <vue-navbar
+    	app="{{ $app }}"
+    >
     </vue-navbar>
 </div>

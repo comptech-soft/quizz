@@ -13,7 +13,7 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        return $result = User::login($request, 'student');
+        return $result = User::login($request, ($request->app == 'admin' ? 'admin' : 'student'));
     }
 
     public function logout()
@@ -26,7 +26,7 @@ class LoginController extends Controller
         /*
         | Redirect catre home pageul general
         */
-        return ['url' => route('frontend-welcome-index')];
+        return ['url' => route('welcome-index')];
     }
     
 }

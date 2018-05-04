@@ -2,9 +2,8 @@ const mutations = {
 
 	setConfig(state)
 	{
-
 		state.ready = false;
-		Requests.post('get-system-configuration', {})
+		Requests.post('get-system-configuration', {app: $('html').data('app')})
 			.then( r => {
 
 				state.user = r.data.user ? r.data.user : null;
@@ -14,7 +13,6 @@ const mutations = {
 				state.ready = true;
 
 			})
-
 	},
 
 	setCurrentNavbar(state, bar)

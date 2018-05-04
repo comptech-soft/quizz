@@ -19,7 +19,32 @@
         </div>
 
         <div class="panel-footer">
-            ???
+            <ul class="list-group">
+                <li class="list-group-item">
+                    Number of points achieved
+                    <span class="badge">
+                        {{ solving.total_real_points }}
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    Number of points available
+                    <span class="badge">
+                        {{ record.total_available_points }}
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    Percentage
+                    <span class="badge">
+                        {{ percentage }} %
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    Success Percentage
+                    <span class="badge">
+                        {{ record.success_percentage }} %
+                    </span>
+                </li>
+            </ul>
         </div>
     </div>
 </template>
@@ -39,7 +64,8 @@
     	props:
     	{
     		record: {required: true},
-            responses: {required: true}
+            responses: {required: true},
+            solving: {required: true},
     	},
 
         computed:
@@ -48,6 +74,12 @@
             {
                 return this.record.questions;
             },
+
+            percentage()
+            {
+                let r = 100 * this.solving.total_real_points / this.record.total_available_points;
+                return r.toFixed(2);
+            }
         },
 
         data()
@@ -70,3 +102,10 @@
     }
 
 </script>
+
+<style lang="scss" scoped>
+    ul.list-group
+    {
+        margin-bottom: 0px;
+    }
+</style>

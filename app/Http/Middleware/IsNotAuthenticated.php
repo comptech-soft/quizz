@@ -14,7 +14,15 @@ class IsNotAuthenticated
         {
             return $next($request);
         }
-        dd(__METHOD__ . '::' . __CLASS__);
+        Sentinel::logout();
+        return $next($request);
+        
+        // if( Sentinel::inRole('admin') )
+        // {
+        // 	return redirect( route('admin-welcome-index') );
+        // }
+        // // return redirect( route('frontend-welcome-index') );
+        // dd($user);
+        // return $next($request);
     }
-
 }
