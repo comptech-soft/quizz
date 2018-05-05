@@ -188,14 +188,12 @@
                 if(this.app == 'frontend')
                 {
                     Requests.post('logout').then(r => {
-                        alert(r.data.url);
                         Requests.redirect(r.data.url)
                     })
                 }
                 else
                 {
                     Requests.post('admin/logout').then(r => {
-                        alert(r.data.url);
                         Requests.redirect(r.data.url)
                     })
                 }
@@ -226,7 +224,6 @@
                 }
                 else
                 {
-                    alert(r.redirect);
                     Requests.redirect(r.redirect);
                 }
             }

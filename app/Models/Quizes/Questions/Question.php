@@ -64,4 +64,9 @@ class Question extends Model
 
 		return $user_answer === $correct_answer;
 	}
+
+	protected static function prepareData(array $data)
+	{
+		return collect($data)->only(['type', 'order_no', 'points', 'question', 'correct_answer', 'answer_description', 'answer_image_url'])->toArray();
+	}
 }

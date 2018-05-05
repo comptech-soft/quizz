@@ -1589,12 +1589,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         onClicklogout: function onClicklogout(bar) {
             if (this.app == 'frontend') {
                 Requests.post('logout').then(function (r) {
-                    alert(r.data.url);
                     Requests.redirect(r.data.url);
                 });
             } else {
                 Requests.post('admin/logout').then(function (r) {
-                    alert(r.data.url);
                     Requests.redirect(r.data.url);
                 });
             }
@@ -1614,7 +1612,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (!r.success) {
                 this.notification = r.notification;
             } else {
-                alert(r.redirect);
                 Requests.redirect(r.redirect);
             }
         }

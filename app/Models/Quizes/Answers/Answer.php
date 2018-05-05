@@ -10,7 +10,7 @@ class Answer extends Model
 {
 
 	
-	protected $table = 'quiz_questons_answers';
+	protected $table = 'quiz_questions_answers';
 	protected $guarded = ['id'];
 
 

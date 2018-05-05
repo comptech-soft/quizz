@@ -1,14 +1,6 @@
 <?php
 
 /*
-| FREE ROUTES
-*/
-Route::get('/{app?}', 'WelcomeController@index')->name('welcome-index');
-// Route::get('admin', 'WelcomeController@index')->name('welcome-admin-index');
-
-Route::post('get-system-configuration', 'System\ConfigurationController@get')->name('get-system-configuration');
-
-/*
 | FRONTEND
 */
 Route::group(['middleware' => 'visitor', 'namespace' => 'Frontend'], function(){
@@ -45,3 +37,11 @@ Route::group(['middleware' => 'admin', 'namespace' => 'Admin', 'prefix' => 'admi
 	Route::post('logout', 'Auth\LoginController@logout')->name('admin-logout');
 
 });
+
+/*
+| FREE ROUTES
+*/
+Route::get('/{app?}', 'WelcomeController@index')->name('welcome-index');
+// Route::get('admin', 'WelcomeController@index')->name('welcome-admin-index');
+
+Route::post('get-system-configuration', 'System\ConfigurationController@get')->name('get-system-configuration');

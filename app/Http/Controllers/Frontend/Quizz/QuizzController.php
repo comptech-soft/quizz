@@ -11,9 +11,7 @@ class QuizzController extends Controller
 
 	public function index()
 	{
-		return 
-            view('frontend.quizz.index')
-        ;
+		return view('frontend.quizz.index')->with(['app' => 'frontend']);
 	}
 
 	public function fetch(Request $request)

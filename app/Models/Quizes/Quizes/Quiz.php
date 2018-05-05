@@ -3,8 +3,9 @@
 namespace App\Models\Quizes\Quizes;
 
 use Illuminate\Database\Eloquent\Model;
-// use Illuminate\Http\Request;
-// use Exception;
+use DB;
+use Exception;
+use App\Models\Quizes\Questions\Question;
 
 class Quiz extends Model
 {
@@ -26,4 +27,40 @@ class Quiz extends Model
 	{
 		return $this->questions->sum('points');
 	}
+
+	protected static function prepareData(array $data)
+	{
+		$data['slug'] = str_slug($data['name']);
+		return collect($data)->only(['name', 'slug', 'title', 'descriprion', 'image_url', 'time', 'success_percentage'])->toArray();
+	}
+
+	protected function createQuestions(array $questions)
+	{
+		$result = [];
+		foreach($questions as $i => $data)
+		{
+			$question = $this->questions()->create(Question::prepareData($data));
+			$question->answers()->createMany($data['answers']);
+			$result[] = $question;
+		}
+		return $result;
+	}
+
+	public static function createQuiz($data)
+	{
+		DB::beginTransaction();
+		try
+		{
+			$quiz = self::create( self::prepareData($data) );
+			$quiz->createQuestions($data['questions']);
+		}
+		catch(Exception $e)
+		{
+			DB::rollback();
+			dd($e->getMessage());
+		}
+		DB::commit();
+		dd('Success');
+	}
+
 }

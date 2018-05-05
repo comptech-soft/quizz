@@ -19,11 +19,7 @@ class QuizzDetailController extends Controller
 		{
 			return redirect( route('quizz-index') );
 		}	
-
-		return 
-            view('frontend.quizz-detail.index')
-            ->withQuiz($quiz)
-        ;
+		return view('frontend.quizz-detail.index')->withQuiz($quiz)->withApp('frontend');
 	}
 
 	public function getRecord(Request $request)
