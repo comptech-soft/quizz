@@ -25,7 +25,7 @@ class LoadPlugins
       window.Axios.defaults.headers.common['X-CSRF-TOKEN'] = document.head.querySelector('meta[name="csrf-token"]').content;
 
       window.Moment = require('moment');
-      window.Autonumeric = require('AutoNumeric');
+      // window.Autonumeric = require('AutoNumeric');
       
       Vue.prototype.DateTime = window.DateTime = DateTime;
       Vue.prototype.Strings = window.Strings = Strings;

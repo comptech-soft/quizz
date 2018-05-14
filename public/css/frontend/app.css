@@ -204,3 +204,18 @@ h4.is_not_correct {
   background-color: #d33724 !important;
 }
 
+header#head.secondary.admin {
+  padding: 0 !important;
+  height: initial !important;
+  min-height: initial !important;
+}
+
+header#head.secondary.admin h1 {
+  margin: 0px 0px;
+  line-height: initial;
+}
+
+h3.tab-header {
+  margin: 20px 0px;
+}
+

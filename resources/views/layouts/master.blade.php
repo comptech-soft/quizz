@@ -6,7 +6,9 @@
         'http://fonts.googleapis.com/css?family=Open+Sans:300,400,700',
         'css/bootstrap.min.css',
         'css/font-awesome.min.css',
+        /*
         'css/bootstrap-theme.css',
+        */
         'vendors/jquery-confirm/jquery-confirm.css',
         'css/style.css',
         /*
@@ -22,7 +24,7 @@
     <![endif]-->
 </head>
 
-<body>
+<body class="{{ $app }}">
     @include('layouts.components.navbar')
 
     @yield('header')

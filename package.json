@@ -20,7 +20,7 @@
     "popper.js": "^1.14.1"
   },
   "dependencies": {
-    "autonumeric": "^4.2.9",
+    "autonumeric": "^4.2.12",
     "easytimer.js": "^2.2.1",
     "jquery-confirm": "^3.3.2",
     "jquery.scrollto": "^2.1.2",

@@ -36,6 +36,8 @@ Route::group(['middleware' => 'admin', 'namespace' => 'Admin', 'prefix' => 'admi
 	// Route::get('/', 'WelcomeController@index')->name('admin-welcome-index');
 	Route::post('logout', 'Auth\LoginController@logout')->name('admin-logout');
 
+	Route::get('quizes/new', 'Quiz\CreateController@index')->name('quiz-create-index');
+	Route::post('quizes/insert', 'Quiz\CreateController@insert')->name('quiz-create-insert');
 });
 
 /*

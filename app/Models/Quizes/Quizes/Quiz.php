@@ -31,7 +31,7 @@ class Quiz extends Model
 	protected static function prepareData(array $data)
 	{
 		$data['slug'] = str_slug($data['name']);
-		return collect($data)->only(['name', 'slug', 'title', 'descriprion', 'image_url', 'time', 'success_percentage'])->toArray();
+		return collect($data)->only(['name', 'slug', 'title', 'description', 'image_url', 'time', 'success_percentage'])->toArray();
 	}
 
 	protected function createQuestions(array $questions)

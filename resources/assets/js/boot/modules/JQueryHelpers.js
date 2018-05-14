@@ -1,3 +1,5 @@
+import AutoNumeric from 'autonumeric';
+
 class JQueryHelpers 
 {
 
@@ -21,7 +23,7 @@ class JQueryHelpers
             if( _this.byId(id).length ===  1)
             {
                 clearInterval(i);
-                new Autonumeric('#' + id, options);
+                new AutoNumeric('#' + id, options);
             }
         }, 250);
     }	

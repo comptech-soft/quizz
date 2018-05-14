@@ -18,7 +18,7 @@ class IsAdmin
             }
             return redirect( route('welcome-index') );
         }
-        return redirect( route('admin-login') );
+        return redirect( route('welcome-index', ['app' => 'admin']) );
     }
     
 }
