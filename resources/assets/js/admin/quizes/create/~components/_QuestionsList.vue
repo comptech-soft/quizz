@@ -47,6 +47,7 @@
 
     import vueListTextAnswer from './Text/ListAnswer'
     import vueListRadioAnswer from './Radio/ListAnswer'
+    import vueListCheckAnswer from './Check/ListAnswer'
 
     export default 
     {
@@ -55,6 +56,7 @@
         {
             'vue-list-text-answer': vueListTextAnswer,
             'vue-list-radio-answer': vueListRadioAnswer,
+            'vue-list-check-answer': vueListCheckAnswer,
         },
 
     	props:

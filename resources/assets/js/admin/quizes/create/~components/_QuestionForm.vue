@@ -271,6 +271,14 @@
                         this.error_by_type = '';
                     }
                 }
+                if( this.type == 'check')
+                {
+                    this.correct_answer = e.accepted_answers; // _.join( _.map(e.accepted_answers, (item) => { return item.caption}), ', ');
+                    if(this.correct_answer.trim().length > 0)
+                    {
+                        this.error_by_type = '';
+                    }
+                }
             },
 
             isValidByType()
@@ -294,6 +302,20 @@
                     return {
                         valid: this.correct_answer.trim().length > 0,
                         message: 'Please define the correct option'
+                    }
+                }
+                if( this.type == 'check' )
+                {
+                    if(this.answers.length == 0)
+                    {
+                        return {
+                            valid: false,
+                            message: 'Please define the options list'
+                        }
+                    }
+                    return {
+                        valid: this.correct_answer.length > 0,
+                        message: 'Please define the corrects option'
                     }
                 }
             },

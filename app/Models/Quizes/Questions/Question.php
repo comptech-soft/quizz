@@ -67,6 +67,15 @@ class Question extends Model
 
 	protected static function prepareData(array $data)
 	{
-		return collect($data)->only(['type', 'order_no', 'points', 'question', 'correct_answer', 'answer_description', 'answer_image_url'])->toArray();
+		$result = collect($data)->only(['type', 'order_no', 'points', 'question', 'correct_answer', 'answer_description', 'answer_image_url'])->toArray();
+
+		if( $result['type'] == 'check')
+		{
+			$result['correct_answer'] = json_encode(collect($result['correct_answer'])->map( function($item) {
+				return $item['caption'];
+			})->toArray());
+		}
+		
+		return $result;
 	}
 }
