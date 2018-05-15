@@ -19,7 +19,7 @@
 
 <script>
 
-    import vueAcceptedAnswers from './Check/AcceptedAnswers'
+    import vueAcceptedAnswers from './AcceptedAnswers'
 
     export default 
     {
@@ -32,11 +32,6 @@
         props:
         {
             error: {required: true}
-        },
-
-        computed:
-        {
-
         },
 
         data()
@@ -53,15 +48,15 @@
             {
                 let answers = [];
                 _.map(this.accepted_answers, (answer, index) => {
-                    let caption = answer.caption.toLowerCase();
                     answers.push({
-                        caption: caption.charAt(0).toUpperCase() + caption.slice(1),
-                        value: caption,
+                        caption: Strings.capitalizeWords(answer.caption),
+                        value: Strings.capitalizeWords(answer.value),
                         order_no: index + 1,
                     })
                 })
-                let correct = _.filter(this.accepted_answers, (answer) => {
-                    return answer.correct;
+                let correct = {};
+                _.map(this.accepted_answers, (answer, index) => {
+                    correct[Strings.capitalizeWords(answer.caption)] = Strings.capitalizeWords(answer.value)
                 })
                 this.$emit('update', {
                     accepted_answers: correct,
@@ -77,7 +72,7 @@
 
         },
 
-        name: 'definition-answers-check'
+        name: 'definition-answers-match'
     }
 
 </script>

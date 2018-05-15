@@ -1,5 +1,5 @@
 <template>
-	<div class="answers-container answers-container-radio">
+    <div class="answers-container answers-container-radio">
 
         <div class="row">
             <div class="col-xs-12 col-accepted-answers">
@@ -19,7 +19,7 @@
 
 <script>
 
-    import vueAcceptedAnswers from './Radio/AcceptedAnswers'
+    import vueAcceptedAnswers from './AcceptedAnswers'
 
     export default 
     {
@@ -29,14 +29,9 @@
             'accepted-answers': vueAcceptedAnswers, 
         },
 
-    	props:
+        props:
         {
             error: {required: true}
-        },
-
-        computed:
-        {
-
         },
 
         data()
@@ -60,11 +55,11 @@
                         order_no: index + 1,
                     })
                 })
-                let correct = _.find(this.accepted_answers, (answer) => {
+                let correct = _.filter(this.accepted_answers, (answer) => {
                     return answer.correct;
                 })
                 this.$emit('update', {
-                    accepted_answers: ((correct == undefined) ? '' : correct.caption),
+                    accepted_answers: correct,
                     answers: answers
                 });
             },
@@ -77,7 +72,7 @@
 
         },
 
-        name: 'definition-answers-radio'
+        name: 'definition-answers-check'
     }
 
 </script>

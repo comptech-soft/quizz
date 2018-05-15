@@ -33,7 +33,7 @@
 
 <script>
 
-    import vueAcceptedAnswers from './Text/AcceptedAnswers'
+    import vueAcceptedAnswers from './AcceptedAnswers'
 
     export default 
     {

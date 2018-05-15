@@ -15,32 +15,14 @@
                     <ul class="list-group">
                         <li 
                             v-for="(answer, index) in accepted_answers" 
-                            :class="{ 'list-group-item': true, correct: answer.correct}"
                             :key="'item-' + index"
+                            :class="{ 'list-group-item': true}"
                         >
-                            <span
-                                :class="{correct: answer.correct}"
-                            >
-                                {{index + 1}}. {{ answer.caption }}
+                            <span>
+                                {{index + 1}}. {{ answer.caption }} - {{answer.value}}
                             </span>
                             <span class="pull-right">
                                 
-                                <i 
-                                    v-if="! answer.correct"
-                                    title="Make correct option" 
-                                    class="fa fa-fw fa-thumbs-up"
-                                    @click="makeCorrectItem(answer)"
-                                >
-                                </i>
-
-                                <i 
-                                    v-if="answer.correct"
-                                    title="Make incorrect option" 
-                                    class="fa fa-fw fa-thumbs-down"
-                                    @click="makeInCorrectItem(answer)"
-                                >
-                                </i>
-
                                 <i 
                                     title="Edit this item" 
                                     class="fa fa-fw fa-pencil"
@@ -71,6 +53,13 @@
                     >
                     </vue-textbox>
 
+                    <vue-textbox
+                        field="answer_match"
+                        placeholder="Match Item"
+                        v-model="answer_match"
+                    >
+                    </vue-textbox>
+
                     <button 
                         type="button"
                         class="btn btn-primary"
@@ -96,9 +85,11 @@
             return {
                 accepted_answers: [],
                 answer_item: '',
+                answer_match: '',
 
                 action: 'insert',
-                answer_old: ''
+                answer_old: '',
+                match_old: ''
             };
         },
 
@@ -116,8 +107,12 @@
                 {
                     if(this.action == 'insert')
                     {
-                        this.accepted_answers.push({caption: Strings.capitalizeWords(this.answer_item), correct: false});
+                        this.accepted_answers.push({
+                            caption: Strings.capitalizeWords(this.answer_item), 
+                            value: Strings.capitalizeWords(this.answer_match),
+                        });
                         this.answer_item = '';
+                        this.answer_match = '';
                     }
                     else
                     {
@@ -125,15 +120,20 @@
                         {
                             let items = this.accepted_answers;
                             this.accepted_answers = _.map(items, (item) => {
-                                if( item.caption == this.answer_old )
+                                if( (item.caption == this.answer_old) && (item.value == this.match_old) )
                                 {
-                                    return {caption: Strings.capitalizeWords(this.answer_item), correct: item.correct};
+                                    return {
+                                        caption: Strings.capitalizeWords(this.answer_item), 
+                                        value: Strings.capitalizeWords(this.answer_match),
+                                    };
                                 }
                                 return item;
                             })
                             this.action = 'insert';
                             this.answer_old = '';
                             this.answer_item = '';
+                            this.match_old = '';
+                            this.answer_match = '';
                         }
                     }
                     this.update();
@@ -146,7 +146,7 @@
                 let items = this.accepted_answers;
                 this.accepted_answers = [];
                 let removed = _.remove(items, (item) => { 
-                    return item.caption === answer.caption
+                    return (item.caption === answer.caption) && (item.value == answer.value)
                 });
                 this.accepted_answers = items;
                 this.update();
@@ -155,26 +155,19 @@
             editItem(answer)
             {
                 this.action = 'update';
+                
                 this.answer_item = answer.caption;
+                this.answer_match = answer.value;
+                
                 this.answer_old = answer.caption;
+                this.match_old = answer.value;
+                
                 this.update();
                 $('#answer_item').focus();
             },
-
-            makeCorrectItem(answer)
-            {
-                answer.correct = true;
-                this.update();
-            },
-
-            makeInCorrectItem(answer)
-            {
-                answer.correct = false;
-                this.update();
-            }
         },
 
-        name: 'check-accepted-answers'
+        name: 'match-accepted-answers'
     }
 
 </script>
@@ -236,15 +229,6 @@
             &:hover
             {
                 color: #2d8c0b !important
-            }
-        }
-
-        i.fa-thumbs-down
-        {
-            cursor: pointer;
-            &:hover
-            {
-                color: red !important
             }
         }
 

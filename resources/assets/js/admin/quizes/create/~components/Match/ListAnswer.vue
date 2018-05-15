@@ -1,5 +1,10 @@
 <template>
-	<i v-if="true" class="fa fa-spinner fa-spin"></i>
+	<div class="list-answer">
+		<strong>Accepted answers</strong>
+		<div>
+			{{ question.correct_answer }}
+		</div>
+	</div>
 </template>
 
 <script>
@@ -9,7 +14,7 @@
 
     	props:
     	{
-    		
+    		question: {required: true}
     	},
 
         computed:
@@ -29,7 +34,7 @@
 
         },
 
-        name: 'answers-match'
+        name: 'list-answers-radio-item'
     }
 
 </script>

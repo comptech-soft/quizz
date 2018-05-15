@@ -135,10 +135,10 @@
 
     import veeValidation from './../../../../boot/modules/validation/Validation'
 
-    import vueAnswersText from './_AnswersText'
-    import vueAnswersRadio from './_AnswersRadio'
-    import vueAnswersCheck from './_AnswersCheck'
-    import vueAnswersMatch from './_AnswersMatch'
+    import vueAnswersText from './Text/_AnswersText'
+    import vueAnswersRadio from './Radio/_AnswersRadio'
+    import vueAnswersCheck from './Check/_AnswersCheck'
+    import vueAnswersMatch from './Match/_AnswersMatch'
 
     export default 
     {
@@ -273,8 +273,16 @@
                 }
                 if( this.type == 'check')
                 {
-                    this.correct_answer = e.accepted_answers; // _.join( _.map(e.accepted_answers, (item) => { return item.caption}), ', ');
-                    if(this.correct_answer.trim().length > 0)
+                    this.correct_answer = e.accepted_answers; 
+                    if(this.correct_answer.length > 0)
+                    {
+                        this.error_by_type = '';
+                    }
+                }
+                if( this.type == 'match')
+                {
+                    this.correct_answer = e.accepted_answers; 
+                    if(_.keys(this.correct_answer).length > 0)
                     {
                         this.error_by_type = '';
                     }
@@ -316,6 +324,20 @@
                     return {
                         valid: this.correct_answer.length > 0,
                         message: 'Please define the corrects option'
+                    }
+                }
+                if( this.type == 'match' )
+                {
+                    if(this.answers.length == 0)
+                    {
+                        return {
+                            valid: false,
+                            message: 'Please define the options list'
+                        }
+                    }
+                    return {
+                        valid: _.keys(this.correct_answer).length > 0,
+                        message: 'Please define the matching option'
                     }
                 }
             },

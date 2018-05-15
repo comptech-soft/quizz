@@ -48,6 +48,7 @@
     import vueListTextAnswer from './Text/ListAnswer'
     import vueListRadioAnswer from './Radio/ListAnswer'
     import vueListCheckAnswer from './Check/ListAnswer'
+    import vueListMatchAnswer from './Match/ListAnswer'
 
     export default 
     {
@@ -57,6 +58,7 @@
             'vue-list-text-answer': vueListTextAnswer,
             'vue-list-radio-answer': vueListRadioAnswer,
             'vue-list-check-answer': vueListCheckAnswer,
+            'vue-list-match-answer': vueListMatchAnswer,
         },
 
     	props:

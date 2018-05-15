@@ -75,7 +75,13 @@ class Question extends Model
 				return $item['caption'];
 			})->toArray());
 		}
-		
+		else
+		{
+			if( $result['type'] == 'match')
+			{
+				$result['correct_answer'] = json_encode($result['correct_answer']);
+			}
+		}
 		return $result;
 	}
 }
