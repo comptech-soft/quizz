@@ -30035,6 +30035,13 @@ Object.freeze(instance);
 	capitalize: function capitalize(string) {
 		return _.capitalize(string);
 	},
+	capitalizeWords: function capitalizeWords(string) {
+		var a = string.split(' ');
+		a = _.map(a, function (item) {
+			return _.capitalize(item);
+		});
+		return a.join(' ');
+	},
 	humanSize: function humanSize(bytes) {
 		var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
 		if (bytes === 0) {

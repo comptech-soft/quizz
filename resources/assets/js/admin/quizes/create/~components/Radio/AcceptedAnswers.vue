@@ -1,37 +1,39 @@
 <template>
     <div class="text-accepted-answers">
         
-        <div v-if="0" class="row">
-            <div class="col-xs-12">
-                <div class="alert alert-info">
-                    <strong>
-                        <i class="fa fa-info">
-                        </i>
-                    </strong>
-                    Here you can define the accepted answers!
-                </div>
-            </div>
-        </div>
-
         <div class="row">
 
             <!-- Lista cu raspunsuri acceptate -->
             <div class="col-xs-8">
-                <strong>Accepted items list</strong>
+                <strong>Options list</strong>
                
                 <div v-if="accepted_answers.length == 0" class="alert alert-danger">
-                    No accepted answers items defined.
+                    No options list items are defined.
                 </div>
                
                 <div v-else>
                     <ul class="list-group">
                         <li 
                             v-for="(answer, index) in accepted_answers" 
-                            class="list-group-item"
+                            :class="{ 'list-group-item': true, correct: answer.correct}"
                             :key="'item-' + index"
                         >
-                            {{index + 1}}. {{ answer }}
+                            <span
+                                :class="{correct: answer.correct}"
+                            >
+                                {{index + 1}}. {{ answer.caption }}
+                            </span>
                             <span class="pull-right">
+                                
+                                <i 
+                                    v-if="! answer.correct"
+                                    title="Make correct option" 
+                                    class="fa fa-fw fa-thumbs-up"
+                                    @click="makeCorrectItem(answer)"
+                                >
+
+                                </i>
+
                                 <i 
                                     title="Edit this item" 
                                     class="fa fa-fw fa-pencil"
@@ -107,7 +109,7 @@
                 {
                     if(this.action == 'insert')
                     {
-                        this.accepted_answers.push(this.answer_item);
+                        this.accepted_answers.push({caption: Strings.capitalizeWords(this.answer_item), correct: false});
                         this.answer_item = '';
                     }
                     else
@@ -116,9 +118,9 @@
                         {
                             let items = this.accepted_answers;
                             this.accepted_answers = _.map(items, (item) => {
-                                if( item == this.answer_old )
+                                if( item.caption == this.answer_old )
                                 {
-                                    return this.answer_item;
+                                    return {caption: Strings.capitalizeWords(this.answer_item), correct: item.correct};
                                 }
                                 return item;
                             })
@@ -137,7 +139,7 @@
                 let items = this.accepted_answers;
                 this.accepted_answers = [];
                 let removed = _.remove(items, (item) => { 
-                    return item === answer
+                    return item.caption === answer.caption
                 });
                 this.accepted_answers = items;
                 this.update();
@@ -146,13 +148,23 @@
             editItem(answer)
             {
                 this.action = 'update';
-                this.answer_item = answer;
-                this.answer_old = answer;
+                this.answer_item = answer.caption;
+                this.answer_old = answer.caption;
+                this.update();
                 $('#answer_item').focus();
+            },
+
+            makeCorrectItem(answer)
+            {
+                _.map(this.accepted_answers, (item) => {
+                    item.correct = false;
+                });
+                answer.correct = true;
+                this.update();
             }
         },
 
-        name: 'text-accepted-answers'
+        name: 'radio-accepted-answers'
     }
 
 </script>
@@ -206,6 +218,26 @@
             {
                 color: #3d84e6;
             }
+        }
+
+        i.fa-thumbs-up
+        {
+            cursor: pointer;
+            &:hover
+            {
+                color: #2d8c0b !important
+            }
+        }
+
+        li.correct
+        {
+            background-color: #effcea !important;
+        }
+
+        span.correct
+        {
+            color: #2d8c0b !important;
+            font-weight: bold;
         }
     }
 </style>

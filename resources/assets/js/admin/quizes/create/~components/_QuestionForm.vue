@@ -83,6 +83,7 @@
                     <div class="col-xs-12">
                         <component
                             :is="'answers-' + type"
+                            :error="error_by_type"
                             @update="onUpdateAnswers"
                         >
                         </component>
@@ -93,7 +94,7 @@
                     Descrierea/explicatia raspunsului corect
                 -->
                 <div v-if="type != '-'" class="row">
-                    <div class="col-xs-12">
+                    <div class="col-xs-12 col-answer-description">
                         <vue-summernote
                             field="answer_description"
                             label="Answer Description"
@@ -152,7 +153,7 @@
 
     	props:
     	{
-    		
+    		next_no: {required: true},
     	},
 
         computed:
@@ -190,9 +191,9 @@
                 answer_image_url: null,
                 answers: [],
 
-                /* ----- */
                 vee_validator: null,
 
+                error_by_type: '',
             };
         },
 
@@ -200,13 +201,53 @@
         {
             'type': function(newValue, oldValue)
             {
-                console.log(oldValue + ' ====> ' + newValue);
                 if(newValue != '-')
                 {
                     this.vee_validator.removeError('type');
                 }
+                else
+                {
+                    this.vee_validator.validateField('type', newValue)
+                }
                 this.answers = [];
-            } 
+            },
+
+            'order_no': function(newValue, oldValue)
+            {
+                if(newValue > 0)
+                {
+                    this.vee_validator.removeError('order_no');
+                }
+                else
+                {
+                    this.vee_validator.validateField('order_no', newValue)
+                }
+            },
+
+            'points': function(newValue, oldValue)
+            {
+                if(newValue > 0)
+                {
+                    this.vee_validator.removeError('points');
+                }
+                else
+                {
+                    this.vee_validator.validateField('points', newValue)
+                }
+            },
+
+            'question': function(newValue, oldValue)
+            {
+                if(newValue.trim().length > 0)
+                {
+                    this.vee_validator.removeError('question');
+                }
+                else
+                {
+                    this.vee_validator.validateField('question', newValue)
+                }
+            }
+
         },
 
         methods:
@@ -214,24 +255,73 @@
             onUpdateAnswers(e)
             {
                 this.answers = e.answers;
-                this.correct_answer = _.join(e.accepted_answers, ', ');
+                if( this.type == 'text')
+                {
+                    this.correct_answer = _.join(e.accepted_answers, ', ');
+                    if(this.correct_answer.trim().length > 0)
+                    {
+                        this.error_by_type = '';
+                    }
+                }
+                if( this.type == 'radio')
+                {
+                    this.correct_answer = e.accepted_answers;
+                    if(this.correct_answer.trim().length > 0)
+                    {
+                        this.error_by_type = '';
+                    }
+                }
+            },
+
+            isValidByType()
+            {
+                if( this.type == 'text' )
+                {
+                    return {
+                        valid: this.correct_answer.trim().length > 0,
+                        message: 'Please define the accepted answers'
+                    }
+                }
+                if( this.type == 'radio' )
+                {
+                    if(this.answers.length == 0)
+                    {
+                        return {
+                            valid: false,
+                            message: 'Please define the options list'
+                        }
+                    }
+                    return {
+                        valid: this.correct_answer.trim().length > 0,
+                        message: 'Please define the correct option'
+                    }
+                }
             },
 
             addQuestion()
             {
+                this.error_by_type = '';
                 this.vee_validator.validate(this.form_data).then( valid => {
                     if( valid )
                     {
-                        this.$emit('add', {
-                            type: this.type,
-                            order_no: this.order_no,
-                            points: this.points,
-                            question: this.question,
-                            correct_answer: this.correct_answer,
-                            answer_description: this.answer_description,
-                            answer_image_url: this.answer_image_url,
-                            answers: this.answers,
-                        })
+                        let valid_by_type = this.isValidByType();
+                        if(  valid_by_type.valid )
+                        {
+                            this.$emit('add', {
+                                type: this.type,
+                                order_no: this.order_no,
+                                points: this.points,
+                                question: this.question,
+                                correct_answer: this.correct_answer,
+                                answer_description: this.answer_description,
+                                answer_image_url: this.answer_image_url,
+                                answers: this.answers,
+                            })
+                        }
+                        else
+                        {
+                            this.error_by_type = valid_by_type.message;
+                        }
                     }
                 })
             }
@@ -246,9 +336,17 @@
                 points: 'min_value:1',
                 question: 'required'
             })
+            this.order_no = this.next_no;
         },
 
         name: 'question-form'
     }
 
 </script>
+
+<style scoped lang="scss">
+    .col-answer-description
+    {
+        margin-top: 10px;
+    }
+</style>

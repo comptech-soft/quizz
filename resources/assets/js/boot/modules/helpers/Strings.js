@@ -35,6 +35,13 @@ export default {
 		return _.capitalize(string);
 	},
 
+	capitalizeWords(string)
+	{
+		let a = string.split(' ');
+		a = _.map(a, item => _.capitalize(item));
+		return a.join(' ');
+	},
+
 	humanSize(bytes) 
     {
         const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB']

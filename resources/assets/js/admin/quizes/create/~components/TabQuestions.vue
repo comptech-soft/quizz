@@ -1,8 +1,14 @@
 <template>
 	<div id="questions" class="tab-pane fade">
 
+        <!--
+            Toolbar
+        -->
         <div v-if="! form.visible" class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-6">
+                <label class="number-of-questions">Number of questions: <strong>{{questions.length}}</strong></label>
+            </div>
+            <div class="col-xs-6">
                 <div class="btn-group toolbar pull-right" role="group">
                     <button 
                         type="button" 
@@ -15,10 +21,14 @@
             </div>
         </div>
 
+        <!--
+            The form to attach question to a quiz
+        -->
         <div v-if="form.visible" class="row">
             <div class="col-xs-12">
                 <div id="question-form-container">
                     <question-form
+                        :next_no="questions.length + 1"
                         @add="addQuestion"
                         @cancel="form.visible=false"
                     >
@@ -32,38 +42,10 @@
         -->
         <div v-if="! form.visible" class="row">
             <div class="col-xs-12">
-                
-                <div v-if="questions.length == 0" class="alert alert-info">
-                    No questions
-                </div>
-
-                <div v-else class="table-responsive">
-                    <table class="table table-bordered table-condensed">
-                        <thead>
-                            <tr>
-                                <th>Order Position</th>
-                                <th>Type</th>
-                                <th>Question</th>
-                                <th>Points</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="q in questions">
-                                <td>
-                                    {{ q.order_no }}
-                                </td>
-                                <td>
-                                    {{ q.type }}
-                                </td>
-                                <td v-html="q.question">
-                                </td>
-                                <td>
-                                    {{ q.points }}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <questions-list
+                    :questions="questions"
+                >
+                </questions-list>                
             </div>
         </div>
 
@@ -73,6 +55,7 @@
 <script>
 
     import vueQuestionForm from './_QuestionForm'
+    import vueQuestionsList from './_QuestionsList'
 
     export default 
     {
@@ -80,16 +63,7 @@
         components:
         {
             'question-form': vueQuestionForm,
-        },
-
-    	props:
-    	{
-    		
-    	},
-
-        computed:
-        {
-
+            'questions-list': vueQuestionsList,
         },
 
         data()
@@ -137,7 +111,7 @@
 </script>
 
 <style scoped lang="scss">
-    .toolbar
+    .toolbar, .number-of-questions
     {
         margin: 6px 0px;
     }
@@ -150,5 +124,10 @@
     #question-form-container
     {
         margin-top: 30px;
+    }
+
+    .number-of-questions
+    {
+        line-height: 34px;
     }
 </style>
