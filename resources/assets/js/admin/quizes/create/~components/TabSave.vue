@@ -81,15 +81,3 @@
     }
 
 </script>
-
-<style scoped lang="scss">
-    #questions-row, #actions-row
-    {
-        margin-top: 20px;
-    }
-
-    button.btn
-    {
-        border-radius: 0px;
-    }
-</style>

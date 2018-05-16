@@ -1,13 +1,15 @@
 <template>
 	<div id="questions" class="tab-pane fade">
-
-        <!--
-            Toolbar
-        -->
+        <!-- Toolbar -->
         <div v-if="! form.visible" class="row">
             <div class="col-xs-6">
-                <label class="number-of-questions">Number of questions: <strong>{{questions.length}}</strong></label>
+                <label class="number-of-questions">
+                    Number of questions: 
+                    <strong>{{questions.length}}
+                    </strong>
+                </label>
             </div>
+            <!-- New question button -->
             <div class="col-xs-6">
                 <div class="btn-group toolbar pull-right" role="group">
                     <button 
@@ -20,10 +22,7 @@
                 </div>
             </div>
         </div>
-
-        <!--
-            The form to attach question to a quiz
-        -->
+        <!-- The form to attach question to a quiz -->
         <div v-if="form.visible" class="row">
             <div class="col-xs-12">
                 <div id="question-form-container">
@@ -36,10 +35,7 @@
                 </div>
             </div>
         </div>
-
-        <!--
-            The list of defined questions
-        -->
+        <!-- The list of defined questions -->
         <div v-if="! form.visible" class="row">
             <div class="col-xs-12">
                 <questions-list
@@ -48,7 +44,6 @@
                 </questions-list>                
             </div>
         </div>
-
     </div>
 </template>
 
@@ -109,25 +104,3 @@
     }
 
 </script>
-
-<style scoped lang="scss">
-    .toolbar, .number-of-questions
-    {
-        margin: 6px 0px;
-    }
-
-    button.btn, div.alert
-    {
-        border-radius: 0px;
-    }
-
-    #question-form-container
-    {
-        margin-top: 30px;
-    }
-
-    .number-of-questions
-    {
-        line-height: 34px;
-    }
-</style>

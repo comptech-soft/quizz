@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 247);
+/******/ 	return __webpack_require__(__webpack_require__.s = 346);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -7461,1555 +7461,45 @@ var index_esm = {
 
 /***/ }),
 
-/***/ 2:
-/***/ (function(module, exports) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
-
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
-
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
-
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
-
-	return [content].join('\n');
-}
-
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-	return '/*# ' + data + ' */';
-}
-
-
-/***/ }),
-
-/***/ 247:
+/***/ 346:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(248);
+module.exports = __webpack_require__(347);
 
 
 /***/ }),
 
-/***/ 248:
+/***/ 347:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__store_Store__ = __webpack_require__(249);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_navbar_Navbar__ = __webpack_require__(255);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_navbar_Navbar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_navbar_Navbar__);
-
-
-window.Quizz = new Vue({
-
-    store: __WEBPACK_IMPORTED_MODULE_0__store_Store__["a" /* default */],
-
-    created: function created() {
-        this.$store.commit('setConfig');
-    }
-});
-
-// Navbar
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_QuizList__ = __webpack_require__(348);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_QuizList___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_QuizList__);
 
 
 new window.Vue({
 
-    el: '#navbar-app',
+    el: '#quiz-list',
 
     components: {
-        'vue-navbar': __WEBPACK_IMPORTED_MODULE_1__components_navbar_Navbar___default.a
+        'vue-quiz-list': __WEBPACK_IMPORTED_MODULE_0__components_QuizList___default.a
     },
 
-    name: 'quizz-navbar'
+    name: 'admin-quiz-list'
 });
 
 /***/ }),
 
-/***/ 249:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(250);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__state_js__ = __webpack_require__(251);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__getters_js__ = __webpack_require__(252);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mutations_js__ = __webpack_require__(253);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions_js__ = __webpack_require__(254);
-
-
-
-
-
-
-
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_vuex__["a" /* default */]);
-
-/* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0_vuex__["a" /* default */].Store({
-	state: __WEBPACK_IMPORTED_MODULE_1__state_js__["a" /* default */],
-	getters: __WEBPACK_IMPORTED_MODULE_2__getters_js__["a" /* default */],
-	mutations: __WEBPACK_IMPORTED_MODULE_3__mutations_js__["a" /* default */],
-	actions: __WEBPACK_IMPORTED_MODULE_4__actions_js__["a" /* default */]
-}));
-
-/***/ }),
-
-/***/ 250:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export Store */
-/* unused harmony export install */
-/* unused harmony export mapState */
-/* unused harmony export mapMutations */
-/* unused harmony export mapGetters */
-/* unused harmony export mapActions */
-/* unused harmony export createNamespacedHelpers */
-/**
- * vuex v3.0.1
- * (c) 2017 Evan You
- * @license MIT
- */
-var applyMixin = function (Vue) {
-  var version = Number(Vue.version.split('.')[0]);
-
-  if (version >= 2) {
-    Vue.mixin({ beforeCreate: vuexInit });
-  } else {
-    // override init and inject vuex init procedure
-    // for 1.x backwards compatibility.
-    var _init = Vue.prototype._init;
-    Vue.prototype._init = function (options) {
-      if ( options === void 0 ) options = {};
-
-      options.init = options.init
-        ? [vuexInit].concat(options.init)
-        : vuexInit;
-      _init.call(this, options);
-    };
-  }
-
-  /**
-   * Vuex init hook, injected into each instances init hooks list.
-   */
-
-  function vuexInit () {
-    var options = this.$options;
-    // store injection
-    if (options.store) {
-      this.$store = typeof options.store === 'function'
-        ? options.store()
-        : options.store;
-    } else if (options.parent && options.parent.$store) {
-      this.$store = options.parent.$store;
-    }
-  }
-};
-
-var devtoolHook =
-  typeof window !== 'undefined' &&
-  window.__VUE_DEVTOOLS_GLOBAL_HOOK__;
-
-function devtoolPlugin (store) {
-  if (!devtoolHook) { return }
-
-  store._devtoolHook = devtoolHook;
-
-  devtoolHook.emit('vuex:init', store);
-
-  devtoolHook.on('vuex:travel-to-state', function (targetState) {
-    store.replaceState(targetState);
-  });
-
-  store.subscribe(function (mutation, state) {
-    devtoolHook.emit('vuex:mutation', mutation, state);
-  });
-}
-
-/**
- * Get the first item that pass the test
- * by second argument function
- *
- * @param {Array} list
- * @param {Function} f
- * @return {*}
- */
-/**
- * Deep copy the given object considering circular structure.
- * This function caches all nested objects and its copies.
- * If it detects circular structure, use cached copy to avoid infinite loop.
- *
- * @param {*} obj
- * @param {Array<Object>} cache
- * @return {*}
- */
-
-
-/**
- * forEach for object
- */
-function forEachValue (obj, fn) {
-  Object.keys(obj).forEach(function (key) { return fn(obj[key], key); });
-}
-
-function isObject (obj) {
-  return obj !== null && typeof obj === 'object'
-}
-
-function isPromise (val) {
-  return val && typeof val.then === 'function'
-}
-
-function assert (condition, msg) {
-  if (!condition) { throw new Error(("[vuex] " + msg)) }
-}
-
-var Module = function Module (rawModule, runtime) {
-  this.runtime = runtime;
-  this._children = Object.create(null);
-  this._rawModule = rawModule;
-  var rawState = rawModule.state;
-  this.state = (typeof rawState === 'function' ? rawState() : rawState) || {};
-};
-
-var prototypeAccessors$1 = { namespaced: { configurable: true } };
-
-prototypeAccessors$1.namespaced.get = function () {
-  return !!this._rawModule.namespaced
-};
-
-Module.prototype.addChild = function addChild (key, module) {
-  this._children[key] = module;
-};
-
-Module.prototype.removeChild = function removeChild (key) {
-  delete this._children[key];
-};
-
-Module.prototype.getChild = function getChild (key) {
-  return this._children[key]
-};
-
-Module.prototype.update = function update (rawModule) {
-  this._rawModule.namespaced = rawModule.namespaced;
-  if (rawModule.actions) {
-    this._rawModule.actions = rawModule.actions;
-  }
-  if (rawModule.mutations) {
-    this._rawModule.mutations = rawModule.mutations;
-  }
-  if (rawModule.getters) {
-    this._rawModule.getters = rawModule.getters;
-  }
-};
-
-Module.prototype.forEachChild = function forEachChild (fn) {
-  forEachValue(this._children, fn);
-};
-
-Module.prototype.forEachGetter = function forEachGetter (fn) {
-  if (this._rawModule.getters) {
-    forEachValue(this._rawModule.getters, fn);
-  }
-};
-
-Module.prototype.forEachAction = function forEachAction (fn) {
-  if (this._rawModule.actions) {
-    forEachValue(this._rawModule.actions, fn);
-  }
-};
-
-Module.prototype.forEachMutation = function forEachMutation (fn) {
-  if (this._rawModule.mutations) {
-    forEachValue(this._rawModule.mutations, fn);
-  }
-};
-
-Object.defineProperties( Module.prototype, prototypeAccessors$1 );
-
-var ModuleCollection = function ModuleCollection (rawRootModule) {
-  // register root module (Vuex.Store options)
-  this.register([], rawRootModule, false);
-};
-
-ModuleCollection.prototype.get = function get (path) {
-  return path.reduce(function (module, key) {
-    return module.getChild(key)
-  }, this.root)
-};
-
-ModuleCollection.prototype.getNamespace = function getNamespace (path) {
-  var module = this.root;
-  return path.reduce(function (namespace, key) {
-    module = module.getChild(key);
-    return namespace + (module.namespaced ? key + '/' : '')
-  }, '')
-};
-
-ModuleCollection.prototype.update = function update$1 (rawRootModule) {
-  update([], this.root, rawRootModule);
-};
-
-ModuleCollection.prototype.register = function register (path, rawModule, runtime) {
-    var this$1 = this;
-    if ( runtime === void 0 ) runtime = true;
-
-  if (true) {
-    assertRawModule(path, rawModule);
-  }
-
-  var newModule = new Module(rawModule, runtime);
-  if (path.length === 0) {
-    this.root = newModule;
-  } else {
-    var parent = this.get(path.slice(0, -1));
-    parent.addChild(path[path.length - 1], newModule);
-  }
-
-  // register nested modules
-  if (rawModule.modules) {
-    forEachValue(rawModule.modules, function (rawChildModule, key) {
-      this$1.register(path.concat(key), rawChildModule, runtime);
-    });
-  }
-};
-
-ModuleCollection.prototype.unregister = function unregister (path) {
-  var parent = this.get(path.slice(0, -1));
-  var key = path[path.length - 1];
-  if (!parent.getChild(key).runtime) { return }
-
-  parent.removeChild(key);
-};
-
-function update (path, targetModule, newModule) {
-  if (true) {
-    assertRawModule(path, newModule);
-  }
-
-  // update target module
-  targetModule.update(newModule);
-
-  // update nested modules
-  if (newModule.modules) {
-    for (var key in newModule.modules) {
-      if (!targetModule.getChild(key)) {
-        if (true) {
-          console.warn(
-            "[vuex] trying to add a new module '" + key + "' on hot reloading, " +
-            'manual reload is needed'
-          );
-        }
-        return
-      }
-      update(
-        path.concat(key),
-        targetModule.getChild(key),
-        newModule.modules[key]
-      );
-    }
-  }
-}
-
-var functionAssert = {
-  assert: function (value) { return typeof value === 'function'; },
-  expected: 'function'
-};
-
-var objectAssert = {
-  assert: function (value) { return typeof value === 'function' ||
-    (typeof value === 'object' && typeof value.handler === 'function'); },
-  expected: 'function or object with "handler" function'
-};
-
-var assertTypes = {
-  getters: functionAssert,
-  mutations: functionAssert,
-  actions: objectAssert
-};
-
-function assertRawModule (path, rawModule) {
-  Object.keys(assertTypes).forEach(function (key) {
-    if (!rawModule[key]) { return }
-
-    var assertOptions = assertTypes[key];
-
-    forEachValue(rawModule[key], function (value, type) {
-      assert(
-        assertOptions.assert(value),
-        makeAssertionMessage(path, key, type, value, assertOptions.expected)
-      );
-    });
-  });
-}
-
-function makeAssertionMessage (path, key, type, value, expected) {
-  var buf = key + " should be " + expected + " but \"" + key + "." + type + "\"";
-  if (path.length > 0) {
-    buf += " in module \"" + (path.join('.')) + "\"";
-  }
-  buf += " is " + (JSON.stringify(value)) + ".";
-  return buf
-}
-
-var Vue; // bind on install
-
-var Store = function Store (options) {
-  var this$1 = this;
-  if ( options === void 0 ) options = {};
-
-  // Auto install if it is not done yet and `window` has `Vue`.
-  // To allow users to avoid auto-installation in some cases,
-  // this code should be placed here. See #731
-  if (!Vue && typeof window !== 'undefined' && window.Vue) {
-    install(window.Vue);
-  }
-
-  if (true) {
-    assert(Vue, "must call Vue.use(Vuex) before creating a store instance.");
-    assert(typeof Promise !== 'undefined', "vuex requires a Promise polyfill in this browser.");
-    assert(this instanceof Store, "Store must be called with the new operator.");
-  }
-
-  var plugins = options.plugins; if ( plugins === void 0 ) plugins = [];
-  var strict = options.strict; if ( strict === void 0 ) strict = false;
-
-  var state = options.state; if ( state === void 0 ) state = {};
-  if (typeof state === 'function') {
-    state = state() || {};
-  }
-
-  // store internal state
-  this._committing = false;
-  this._actions = Object.create(null);
-  this._actionSubscribers = [];
-  this._mutations = Object.create(null);
-  this._wrappedGetters = Object.create(null);
-  this._modules = new ModuleCollection(options);
-  this._modulesNamespaceMap = Object.create(null);
-  this._subscribers = [];
-  this._watcherVM = new Vue();
-
-  // bind commit and dispatch to self
-  var store = this;
-  var ref = this;
-  var dispatch = ref.dispatch;
-  var commit = ref.commit;
-  this.dispatch = function boundDispatch (type, payload) {
-    return dispatch.call(store, type, payload)
-  };
-  this.commit = function boundCommit (type, payload, options) {
-    return commit.call(store, type, payload, options)
-  };
-
-  // strict mode
-  this.strict = strict;
-
-  // init root module.
-  // this also recursively registers all sub-modules
-  // and collects all module getters inside this._wrappedGetters
-  installModule(this, state, [], this._modules.root);
-
-  // initialize the store vm, which is responsible for the reactivity
-  // (also registers _wrappedGetters as computed properties)
-  resetStoreVM(this, state);
-
-  // apply plugins
-  plugins.forEach(function (plugin) { return plugin(this$1); });
-
-  if (Vue.config.devtools) {
-    devtoolPlugin(this);
-  }
-};
-
-var prototypeAccessors = { state: { configurable: true } };
-
-prototypeAccessors.state.get = function () {
-  return this._vm._data.$$state
-};
-
-prototypeAccessors.state.set = function (v) {
-  if (true) {
-    assert(false, "Use store.replaceState() to explicit replace store state.");
-  }
-};
-
-Store.prototype.commit = function commit (_type, _payload, _options) {
-    var this$1 = this;
-
-  // check object-style commit
-  var ref = unifyObjectStyle(_type, _payload, _options);
-    var type = ref.type;
-    var payload = ref.payload;
-    var options = ref.options;
-
-  var mutation = { type: type, payload: payload };
-  var entry = this._mutations[type];
-  if (!entry) {
-    if (true) {
-      console.error(("[vuex] unknown mutation type: " + type));
-    }
-    return
-  }
-  this._withCommit(function () {
-    entry.forEach(function commitIterator (handler) {
-      handler(payload);
-    });
-  });
-  this._subscribers.forEach(function (sub) { return sub(mutation, this$1.state); });
-
-  if (
-    "development" !== 'production' &&
-    options && options.silent
-  ) {
-    console.warn(
-      "[vuex] mutation type: " + type + ". Silent option has been removed. " +
-      'Use the filter functionality in the vue-devtools'
-    );
-  }
-};
-
-Store.prototype.dispatch = function dispatch (_type, _payload) {
-    var this$1 = this;
-
-  // check object-style dispatch
-  var ref = unifyObjectStyle(_type, _payload);
-    var type = ref.type;
-    var payload = ref.payload;
-
-  var action = { type: type, payload: payload };
-  var entry = this._actions[type];
-  if (!entry) {
-    if (true) {
-      console.error(("[vuex] unknown action type: " + type));
-    }
-    return
-  }
-
-  this._actionSubscribers.forEach(function (sub) { return sub(action, this$1.state); });
-
-  return entry.length > 1
-    ? Promise.all(entry.map(function (handler) { return handler(payload); }))
-    : entry[0](payload)
-};
-
-Store.prototype.subscribe = function subscribe (fn) {
-  return genericSubscribe(fn, this._subscribers)
-};
-
-Store.prototype.subscribeAction = function subscribeAction (fn) {
-  return genericSubscribe(fn, this._actionSubscribers)
-};
-
-Store.prototype.watch = function watch (getter, cb, options) {
-    var this$1 = this;
-
-  if (true) {
-    assert(typeof getter === 'function', "store.watch only accepts a function.");
-  }
-  return this._watcherVM.$watch(function () { return getter(this$1.state, this$1.getters); }, cb, options)
-};
-
-Store.prototype.replaceState = function replaceState (state) {
-    var this$1 = this;
-
-  this._withCommit(function () {
-    this$1._vm._data.$$state = state;
-  });
-};
-
-Store.prototype.registerModule = function registerModule (path, rawModule, options) {
-    if ( options === void 0 ) options = {};
-
-  if (typeof path === 'string') { path = [path]; }
-
-  if (true) {
-    assert(Array.isArray(path), "module path must be a string or an Array.");
-    assert(path.length > 0, 'cannot register the root module by using registerModule.');
-  }
-
-  this._modules.register(path, rawModule);
-  installModule(this, this.state, path, this._modules.get(path), options.preserveState);
-  // reset store to update getters...
-  resetStoreVM(this, this.state);
-};
-
-Store.prototype.unregisterModule = function unregisterModule (path) {
-    var this$1 = this;
-
-  if (typeof path === 'string') { path = [path]; }
-
-  if (true) {
-    assert(Array.isArray(path), "module path must be a string or an Array.");
-  }
-
-  this._modules.unregister(path);
-  this._withCommit(function () {
-    var parentState = getNestedState(this$1.state, path.slice(0, -1));
-    Vue.delete(parentState, path[path.length - 1]);
-  });
-  resetStore(this);
-};
-
-Store.prototype.hotUpdate = function hotUpdate (newOptions) {
-  this._modules.update(newOptions);
-  resetStore(this, true);
-};
-
-Store.prototype._withCommit = function _withCommit (fn) {
-  var committing = this._committing;
-  this._committing = true;
-  fn();
-  this._committing = committing;
-};
-
-Object.defineProperties( Store.prototype, prototypeAccessors );
-
-function genericSubscribe (fn, subs) {
-  if (subs.indexOf(fn) < 0) {
-    subs.push(fn);
-  }
-  return function () {
-    var i = subs.indexOf(fn);
-    if (i > -1) {
-      subs.splice(i, 1);
-    }
-  }
-}
-
-function resetStore (store, hot) {
-  store._actions = Object.create(null);
-  store._mutations = Object.create(null);
-  store._wrappedGetters = Object.create(null);
-  store._modulesNamespaceMap = Object.create(null);
-  var state = store.state;
-  // init all modules
-  installModule(store, state, [], store._modules.root, true);
-  // reset vm
-  resetStoreVM(store, state, hot);
-}
-
-function resetStoreVM (store, state, hot) {
-  var oldVm = store._vm;
-
-  // bind store public getters
-  store.getters = {};
-  var wrappedGetters = store._wrappedGetters;
-  var computed = {};
-  forEachValue(wrappedGetters, function (fn, key) {
-    // use computed to leverage its lazy-caching mechanism
-    computed[key] = function () { return fn(store); };
-    Object.defineProperty(store.getters, key, {
-      get: function () { return store._vm[key]; },
-      enumerable: true // for local getters
-    });
-  });
-
-  // use a Vue instance to store the state tree
-  // suppress warnings just in case the user has added
-  // some funky global mixins
-  var silent = Vue.config.silent;
-  Vue.config.silent = true;
-  store._vm = new Vue({
-    data: {
-      $$state: state
-    },
-    computed: computed
-  });
-  Vue.config.silent = silent;
-
-  // enable strict mode for new vm
-  if (store.strict) {
-    enableStrictMode(store);
-  }
-
-  if (oldVm) {
-    if (hot) {
-      // dispatch changes in all subscribed watchers
-      // to force getter re-evaluation for hot reloading.
-      store._withCommit(function () {
-        oldVm._data.$$state = null;
-      });
-    }
-    Vue.nextTick(function () { return oldVm.$destroy(); });
-  }
-}
-
-function installModule (store, rootState, path, module, hot) {
-  var isRoot = !path.length;
-  var namespace = store._modules.getNamespace(path);
-
-  // register in namespace map
-  if (module.namespaced) {
-    store._modulesNamespaceMap[namespace] = module;
-  }
-
-  // set state
-  if (!isRoot && !hot) {
-    var parentState = getNestedState(rootState, path.slice(0, -1));
-    var moduleName = path[path.length - 1];
-    store._withCommit(function () {
-      Vue.set(parentState, moduleName, module.state);
-    });
-  }
-
-  var local = module.context = makeLocalContext(store, namespace, path);
-
-  module.forEachMutation(function (mutation, key) {
-    var namespacedType = namespace + key;
-    registerMutation(store, namespacedType, mutation, local);
-  });
-
-  module.forEachAction(function (action, key) {
-    var type = action.root ? key : namespace + key;
-    var handler = action.handler || action;
-    registerAction(store, type, handler, local);
-  });
-
-  module.forEachGetter(function (getter, key) {
-    var namespacedType = namespace + key;
-    registerGetter(store, namespacedType, getter, local);
-  });
-
-  module.forEachChild(function (child, key) {
-    installModule(store, rootState, path.concat(key), child, hot);
-  });
-}
-
-/**
- * make localized dispatch, commit, getters and state
- * if there is no namespace, just use root ones
- */
-function makeLocalContext (store, namespace, path) {
-  var noNamespace = namespace === '';
-
-  var local = {
-    dispatch: noNamespace ? store.dispatch : function (_type, _payload, _options) {
-      var args = unifyObjectStyle(_type, _payload, _options);
-      var payload = args.payload;
-      var options = args.options;
-      var type = args.type;
-
-      if (!options || !options.root) {
-        type = namespace + type;
-        if ("development" !== 'production' && !store._actions[type]) {
-          console.error(("[vuex] unknown local action type: " + (args.type) + ", global type: " + type));
-          return
-        }
-      }
-
-      return store.dispatch(type, payload)
-    },
-
-    commit: noNamespace ? store.commit : function (_type, _payload, _options) {
-      var args = unifyObjectStyle(_type, _payload, _options);
-      var payload = args.payload;
-      var options = args.options;
-      var type = args.type;
-
-      if (!options || !options.root) {
-        type = namespace + type;
-        if ("development" !== 'production' && !store._mutations[type]) {
-          console.error(("[vuex] unknown local mutation type: " + (args.type) + ", global type: " + type));
-          return
-        }
-      }
-
-      store.commit(type, payload, options);
-    }
-  };
-
-  // getters and state object must be gotten lazily
-  // because they will be changed by vm update
-  Object.defineProperties(local, {
-    getters: {
-      get: noNamespace
-        ? function () { return store.getters; }
-        : function () { return makeLocalGetters(store, namespace); }
-    },
-    state: {
-      get: function () { return getNestedState(store.state, path); }
-    }
-  });
-
-  return local
-}
-
-function makeLocalGetters (store, namespace) {
-  var gettersProxy = {};
-
-  var splitPos = namespace.length;
-  Object.keys(store.getters).forEach(function (type) {
-    // skip if the target getter is not match this namespace
-    if (type.slice(0, splitPos) !== namespace) { return }
-
-    // extract local getter type
-    var localType = type.slice(splitPos);
-
-    // Add a port to the getters proxy.
-    // Define as getter property because
-    // we do not want to evaluate the getters in this time.
-    Object.defineProperty(gettersProxy, localType, {
-      get: function () { return store.getters[type]; },
-      enumerable: true
-    });
-  });
-
-  return gettersProxy
-}
-
-function registerMutation (store, type, handler, local) {
-  var entry = store._mutations[type] || (store._mutations[type] = []);
-  entry.push(function wrappedMutationHandler (payload) {
-    handler.call(store, local.state, payload);
-  });
-}
-
-function registerAction (store, type, handler, local) {
-  var entry = store._actions[type] || (store._actions[type] = []);
-  entry.push(function wrappedActionHandler (payload, cb) {
-    var res = handler.call(store, {
-      dispatch: local.dispatch,
-      commit: local.commit,
-      getters: local.getters,
-      state: local.state,
-      rootGetters: store.getters,
-      rootState: store.state
-    }, payload, cb);
-    if (!isPromise(res)) {
-      res = Promise.resolve(res);
-    }
-    if (store._devtoolHook) {
-      return res.catch(function (err) {
-        store._devtoolHook.emit('vuex:error', err);
-        throw err
-      })
-    } else {
-      return res
-    }
-  });
-}
-
-function registerGetter (store, type, rawGetter, local) {
-  if (store._wrappedGetters[type]) {
-    if (true) {
-      console.error(("[vuex] duplicate getter key: " + type));
-    }
-    return
-  }
-  store._wrappedGetters[type] = function wrappedGetter (store) {
-    return rawGetter(
-      local.state, // local state
-      local.getters, // local getters
-      store.state, // root state
-      store.getters // root getters
-    )
-  };
-}
-
-function enableStrictMode (store) {
-  store._vm.$watch(function () { return this._data.$$state }, function () {
-    if (true) {
-      assert(store._committing, "Do not mutate vuex store state outside mutation handlers.");
-    }
-  }, { deep: true, sync: true });
-}
-
-function getNestedState (state, path) {
-  return path.length
-    ? path.reduce(function (state, key) { return state[key]; }, state)
-    : state
-}
-
-function unifyObjectStyle (type, payload, options) {
-  if (isObject(type) && type.type) {
-    options = payload;
-    payload = type;
-    type = type.type;
-  }
-
-  if (true) {
-    assert(typeof type === 'string', ("Expects string as the type, but found " + (typeof type) + "."));
-  }
-
-  return { type: type, payload: payload, options: options }
-}
-
-function install (_Vue) {
-  if (Vue && _Vue === Vue) {
-    if (true) {
-      console.error(
-        '[vuex] already installed. Vue.use(Vuex) should be called only once.'
-      );
-    }
-    return
-  }
-  Vue = _Vue;
-  applyMixin(Vue);
-}
-
-var mapState = normalizeNamespace(function (namespace, states) {
-  var res = {};
-  normalizeMap(states).forEach(function (ref) {
-    var key = ref.key;
-    var val = ref.val;
-
-    res[key] = function mappedState () {
-      var state = this.$store.state;
-      var getters = this.$store.getters;
-      if (namespace) {
-        var module = getModuleByNamespace(this.$store, 'mapState', namespace);
-        if (!module) {
-          return
-        }
-        state = module.context.state;
-        getters = module.context.getters;
-      }
-      return typeof val === 'function'
-        ? val.call(this, state, getters)
-        : state[val]
-    };
-    // mark vuex getter for devtools
-    res[key].vuex = true;
-  });
-  return res
-});
-
-var mapMutations = normalizeNamespace(function (namespace, mutations) {
-  var res = {};
-  normalizeMap(mutations).forEach(function (ref) {
-    var key = ref.key;
-    var val = ref.val;
-
-    res[key] = function mappedMutation () {
-      var args = [], len = arguments.length;
-      while ( len-- ) args[ len ] = arguments[ len ];
-
-      var commit = this.$store.commit;
-      if (namespace) {
-        var module = getModuleByNamespace(this.$store, 'mapMutations', namespace);
-        if (!module) {
-          return
-        }
-        commit = module.context.commit;
-      }
-      return typeof val === 'function'
-        ? val.apply(this, [commit].concat(args))
-        : commit.apply(this.$store, [val].concat(args))
-    };
-  });
-  return res
-});
-
-var mapGetters = normalizeNamespace(function (namespace, getters) {
-  var res = {};
-  normalizeMap(getters).forEach(function (ref) {
-    var key = ref.key;
-    var val = ref.val;
-
-    val = namespace + val;
-    res[key] = function mappedGetter () {
-      if (namespace && !getModuleByNamespace(this.$store, 'mapGetters', namespace)) {
-        return
-      }
-      if ("development" !== 'production' && !(val in this.$store.getters)) {
-        console.error(("[vuex] unknown getter: " + val));
-        return
-      }
-      return this.$store.getters[val]
-    };
-    // mark vuex getter for devtools
-    res[key].vuex = true;
-  });
-  return res
-});
-
-var mapActions = normalizeNamespace(function (namespace, actions) {
-  var res = {};
-  normalizeMap(actions).forEach(function (ref) {
-    var key = ref.key;
-    var val = ref.val;
-
-    res[key] = function mappedAction () {
-      var args = [], len = arguments.length;
-      while ( len-- ) args[ len ] = arguments[ len ];
-
-      var dispatch = this.$store.dispatch;
-      if (namespace) {
-        var module = getModuleByNamespace(this.$store, 'mapActions', namespace);
-        if (!module) {
-          return
-        }
-        dispatch = module.context.dispatch;
-      }
-      return typeof val === 'function'
-        ? val.apply(this, [dispatch].concat(args))
-        : dispatch.apply(this.$store, [val].concat(args))
-    };
-  });
-  return res
-});
-
-var createNamespacedHelpers = function (namespace) { return ({
-  mapState: mapState.bind(null, namespace),
-  mapGetters: mapGetters.bind(null, namespace),
-  mapMutations: mapMutations.bind(null, namespace),
-  mapActions: mapActions.bind(null, namespace)
-}); };
-
-function normalizeMap (map) {
-  return Array.isArray(map)
-    ? map.map(function (key) { return ({ key: key, val: key }); })
-    : Object.keys(map).map(function (key) { return ({ key: key, val: map[key] }); })
-}
-
-function normalizeNamespace (fn) {
-  return function (namespace, map) {
-    if (typeof namespace !== 'string') {
-      map = namespace;
-      namespace = '';
-    } else if (namespace.charAt(namespace.length - 1) !== '/') {
-      namespace += '/';
-    }
-    return fn(namespace, map)
-  }
-}
-
-function getModuleByNamespace (store, helper, namespace) {
-  var module = store._modulesNamespaceMap[namespace];
-  if ("development" !== 'production' && !module) {
-    console.error(("[vuex] module namespace not found in " + helper + "(): " + namespace));
-  }
-  return module
-}
-
-var index_esm = {
-  Store: Store,
-  install: install,
-  version: '3.0.1',
-  mapState: mapState,
-  mapMutations: mapMutations,
-  mapGetters: mapGetters,
-  mapActions: mapActions,
-  createNamespacedHelpers: createNamespacedHelpers
-};
-
-
-/* harmony default export */ __webpack_exports__["a"] = (index_esm);
-
-
-/***/ }),
-
-/***/ 251:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var state = {
-
-	/*
- | The current user
- */
-	user: null,
-	// roles: null,
-
-	/*
- | Diverse configs
- */
-	config: null,
-
-	navbar: [],
-
-	// /*
-	// | content
-	// */
-	// content:
-	// {
-	// 	top_bar_menu: [],
-	// 	menu: null,
-	// },
-
-	/*
- | TRUE, If all asyncron infos are loaded
- */
-	ready: false
-
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (state);
-
-/***/ }),
-
-/***/ 252:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var getters = {
-
-	/*
- | Entire current user record and his roles
- */
-	user: function user(state) {
-		return state.user;
-	},
-	// roles: state => state.roles,
-
-	// /*
-	// | The user first role
-	// */
-	// role: state => {
-	// 	if( ! state.user )
-	// 	{
-	// 		return '';
-	// 	}
-	// 	if( state.user.hasOwnProperty('roles') )
-	// 	{
-	// 		if( state.user.roles.length )
-	// 		{
-	// 			return state.user.roles[0];
-	// 		}
-	// 	}
-	// 	return '';
-	// },
-
-	config: function config(state) {
-		return state.config;
-	},
-
-	navbar: function navbar(state) {
-		return state.navbar;
-	},
-
-	ready: function ready(state) {
-		return state.ready;
-	}
-
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (getters);
-
-/***/ }),
-
-/***/ 253:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var mutations = {
-	setConfig: function setConfig(state) {
-		state.ready = false;
-		Requests.post('get-system-configuration', { app: $('html').data('app') }).then(function (r) {
-
-			state.user = r.data.user ? r.data.user : null;
-			state.config = r.data.config;
-			state.navbar = r.data.navbar;
-
-			state.ready = true;
-		});
-	},
-	setCurrentNavbar: function setCurrentNavbar(state, bar) {
-		state.navbar.current = bar;
-	}
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (mutations);
-
-/***/ }),
-
-/***/ 254:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var actions = {
-
-	setConfig: function setConfig(_ref) {
-		var commit = _ref.commit;
-		return commit('setConfig');
-	},
-
-	setCurrentNavbar: function setCurrentNavbar(_ref2, bar) {
-		var commit = _ref2.commit;
-		return commit('setCurrentNavbar', bar);
-	}
-
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (actions);
-
-/***/ }),
-
-/***/ 255:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(256)
-}
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(258)
-/* template */
-var __vue_template__ = __webpack_require__(267)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-694d0c29"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\frontend\\~components\\navbar\\Navbar.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-694d0c29", Component.options)
-  } else {
-    hotAPI.reload("data-v-694d0c29", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 256:
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(257);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(3)("484ad302", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-694d0c29\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Navbar.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-694d0c29\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Navbar.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-
-/***/ 257:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n#main-nav li a[data-v-694d0c29]:hover {\n  opacity: 0.75;\n}\n#main-nav li.active a[data-v-694d0c29] {\n  background-color: #3d84e6;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ 258:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_LoginForm__ = __webpack_require__(259);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_LoginForm___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_LoginForm__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_RegisterForm__ = __webpack_require__(264);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_RegisterForm___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_RegisterForm__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-    components: {
-        'loginform': __WEBPACK_IMPORTED_MODULE_0__components_LoginForm___default.a,
-        'registerform': __WEBPACK_IMPORTED_MODULE_1__components_RegisterForm___default.a
-    },
-
-    props: {
-        app: { required: true }
-    },
-
-    data: function data() {
-        return {
-            modal_visible: false,
-
-            notification: null
-        };
-    },
-
-
-    computed: {
-        ready: function ready() {
-            return Quizz.$store.getters.ready;
-        },
-        user: function user() {
-            return Quizz.$store.getters.user;
-        },
-        options: function options() {
-            return Quizz.$store.getters.navbar.options;
-        },
-        current: function current() {
-            return Quizz.$store.getters.navbar.current;
-        },
-        config: function config() {
-            return Quizz.$store.getters.config;
-        },
-        visible: function visible() {
-            if (this.current == null) {
-                return false;
-            }
-            return this.modal_visible;
-        },
-        rules: function rules() {
-            return {
-                login: {
-                    email: 'required|email',
-                    password: 'required'
-                },
-
-                register: {}
-            };
-        },
-        endpoint: function endpoint() {
-            return {
-                login: 'login',
-                register: 'register'
-            };
-        }
-    },
-
-    methods: {
-        onClicklogin: function onClicklogin(bar) {
-            this.modal_visible = true;
-        },
-        onClickregister: function onClickregister(bar) {
-            this.modal_visible = true;
-        },
-        onClicklogout: function onClicklogout(bar) {
-            if (this.app == 'frontend') {
-                Requests.post('logout').then(function (r) {
-                    Requests.redirect(r.data.url);
-                });
-            } else {
-                Requests.post('admin/logout').then(function (r) {
-                    Requests.redirect(r.data.url);
-                });
-            }
-        },
-
-
-        /*
-        | Admin. Quizes list
-        */
-        onClickquizes: function onClickquizes(bar) {
-            if (this.app == 'admin') {
-                Requests.redirect('admin/quizes/list');
-            }
-        },
-        onClickquizz: function onClickquizz(bar) {
-            Requests.redirect('quiz');
-        },
-        onBar: function onBar(bar) {
-            Quizz.$store.dispatch('setCurrentNavbar', bar);
-            this['onClick' + bar.id](bar);
-        },
-        onCloseModal: function onCloseModal(e) {
-            this.modal_visible = false;
-            Quizz.$store.dispatch('setCurrentNavbar', null);
-        },
-        onEndSubmiting: function onEndSubmiting(r) {
-            if (!r.success) {
-                this.notification = r.notification;
-            } else {
-                Requests.redirect(r.redirect);
-            }
-        }
-    },
-
-    name: 'app-navbar'
-});
-
-/***/ }),
-
-/***/ 259:
+/***/ 348:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(260)
+var __vue_script__ = __webpack_require__(349)
 /* template */
-var __vue_template__ = __webpack_require__(263)
+var __vue_template__ = __webpack_require__(362)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -9026,7 +7516,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\frontend\\~components\\navbar\\components\\LoginForm.vue"
+Component.options.__file = "resources\\assets\\js\\admin\\quizes\\list\\~components\\QuizList.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -9035,9 +7525,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6f050d20", Component.options)
+    hotAPI.createRecord("data-v-9f4ab268", Component.options)
   } else {
-    hotAPI.reload("data-v-6f050d20", Component.options)
+    hotAPI.reload("data-v-9f4ab268", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -9049,12 +7539,19 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 260:
+/***/ 349:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__boot_modules_form_form_mix_js__ = __webpack_require__(261);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Item_Title__ = __webpack_require__(350);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Item_Title___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Item_Title__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Item_Details__ = __webpack_require__(353);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Item_Details___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Item_Details__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Item_Actions__ = __webpack_require__(356);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Item_Actions___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Item_Actions__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Item_Form__ = __webpack_require__(359);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Item_Form___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__Item_Form__);
 //
 //
 //
@@ -9108,532 +7605,140 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+
+
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mixins: [__WEBPACK_IMPORTED_MODULE_0__boot_modules_form_form_mix_js__["a" /* default */]],
 
-    props: {
-        app: { required: true }
+    components: {
+        'quiz-title': __WEBPACK_IMPORTED_MODULE_0__Item_Title___default.a,
+        'quiz-details': __WEBPACK_IMPORTED_MODULE_1__Item_Details___default.a,
+        'quiz-actions': __WEBPACK_IMPORTED_MODULE_2__Item_Actions___default.a,
+        'quiz-form': __WEBPACK_IMPORTED_MODULE_3__Item_Form___default.a
     },
+
+    props: {},
+
+    computed: {},
 
     data: function data() {
         return {
-            fields: {
-                email: '',
-                password: '',
-                remember_me: 0
+            loading: false,
+            records: [],
+
+            paginate: {
+                per_page: 10
             },
 
-            email_field_name: 'fakeusernameremembered',
-            password_field_name: 'fakepasswordremembered',
-            password_field_type: 'text',
-            visible_credentials_row: false
+            orderBy: [{
+                field: 'created_at',
+                direction: 'desc'
+            }],
+
+            form: {
+                visible: false,
+                record: null
+            }
         };
     },
 
 
     methods: {
-        onClickLogin: function onClickLogin() {
+        onClick: function onClick(e) {
+            this['onClick' + Strings.capitalize(e.action)](e.record);
+        },
+        onClickDelete: function onClickDelete(record) {
+            var vm = this;
+            $.confirm({
+                title: 'Confirm quiz deletion ',
+                content: 'Are you sure you want delete the quiz?',
+                buttons: {
+                    finish: {
+                        text: 'Delete',
+                        btnClass: 'btn-red',
+                        action: function action() {
+                            vm.delete(record);
+                        }
+                    },
+                    cancel: {
+                        text: 'Cancel'
+                    }
+                }
+            });
+        },
+        onClickEdit: function onClickEdit(record) {
+            this.form.visible = true;
+            this.form.record = record;
+        },
+        hideForm: function hideForm() {
+            this.form.visible = false;
+            this.form.record = null;
+        },
+        delete: function _delete(record) {
             var _this = this;
 
-            this.$emit('start-submiting');
-            this.form.onClickSubmit(function (r) {
-                _this.$emit('end-submiting', r);
+            Requests.post('admin/quizez/delete', {
+                id: record.id
+            }).then(function (r) {
+                $.notify('The quiz was deleted.', "success");
+                _this.populate();
             });
-        }
-    },
-
-    mounted: function mounted() {
-        this.visible_credentials_row = true;
-        var vm = this,
-            i = setTimeout(function () {
-            vm.email_field_name = 'email';
-            vm.password_field_name = 'password';
-            vm.password_field_type = 'password';
-            vm.fields['app'] = vm.app;
-        }, 1000);
-    },
-
-
-    name: 'login-form'
-});
-
-/***/ }),
-
-/***/ 261:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Form_js__ = __webpack_require__(262);
-
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-
-    props: {
-        /*
-        | Form Rules: Object Or Function
-        */
-        rules: { required: true },
-
-        /*
-        | Endponintul care salveaza datele
-        */
-        endpoint: { type: String, required: true }
-    },
-
-    data: function data() {
-        return {
-            form: null
-        };
-    },
-
-
-    computed: {
-        ready: function ready() {
-            return this.form != null;
         },
-        errors: function errors() {
-            return this.form.getErrors();
-        },
-        response: function response() {
-            return this.form.getResponse();
-        },
-        submiting: function submiting() {
-            if (this.form == null) {
-                return false;
+        update: function update(e) {
+            if (e.success) {
+                var records = _.map(this.records, function (record) {
+                    if (record.id == e.record.id) {
+                        return e.record;
+                    }
+                    return record;
+                });
+                this.records = records;
+                this.hideForm();
+                this.populate();
+                $.notify(e.notification.message, "success");
             }
-            return this.form.getSubmiting();
         },
-        visible: function visible() {
-            if (this.response == null) {
-                return true;
-            }
-            if (this.response.type != 'success') {
-                return true;
-            }
-            return false;
-        }
-    },
+        afterPopulate: function afterPopulate(r) {
+            this.records = r.data;
 
-    methods: {
-        onKeydown: function onKeydown(e) {
-            this.form.removeError(e.target.id);
+            this.loading = false;
         },
-        setResponse: function setResponse(response) {
-            if (this.form == null) {
-                return null;
-            }
-            this.form.setResponse(response);
-        }
-    },
-
-    mounted: function mounted() {
-        this.form = new __WEBPACK_IMPORTED_MODULE_0__Form_js__["a" /* default */]().setFields(this.fields).setEndpoint(this.endpoint).setRules(this.rules);
-    }
-});
-
-/***/ }),
-
-/***/ 262:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__validation_Validation_js__ = __webpack_require__(7);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-var Form = function () {
-    function Form() {
-        _classCallCheck(this, Form);
-
-        this.setSubmiting(false);
-        this.response = null;
-    }
-
-    _createClass(Form, [{
-        key: 'setSubmiting',
-        value: function setSubmiting(flag) {
-            this.submiting = flag;
-            return this;
-        }
-    }, {
-        key: 'getSubmiting',
-        value: function getSubmiting() {
-            return this.submiting;
-        }
-    }, {
-        key: 'setFields',
-        value: function setFields(fields) {
-            this.fields = fields;
-            return this;
-        }
-    }, {
-        key: 'setRules',
-        value: function setRules(rules) {
-            this.rules = rules;
-            this.validator = new __WEBPACK_IMPORTED_MODULE_0__validation_Validation_js__["a" /* default */](rules);
-            return this;
-        }
-    }, {
-        key: 'setEndpoint',
-        value: function setEndpoint(endpoint) {
-            this.endpoint = endpoint;
-            return this;
-        }
-    }, {
-        key: 'validate',
-        value: function validate() {
-            return this.validator.validate(this.fields);
-        }
-    }, {
-        key: 'validateField',
-        value: function validateField(field, value) {
-            return this.validator.validateField(field, value);
-        }
-    }, {
-        key: 'getErrors',
-        value: function getErrors() {
-            return this.validator.getErrors();
-        }
-    }, {
-        key: 'removeError',
-        value: function removeError(field) {
-            return this.validator.removeError(field);
-        }
-    }, {
-        key: 'removeErrors',
-        value: function removeErrors() {
-            return this.validator.removeErrors();
-        }
-    }, {
-        key: 'onClickSubmit',
-        value: function onClickSubmit() {
+        populate: function populate() {
             var _this2 = this;
 
-            var onSuccess = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function (r) {};
-            var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-
-
-            if (!this.submiting) {
-                var number_of_arguments = arguments.length;
-
-                this.submit_result = null;
-
-                if (0) {
-                    Strings.debug(this.rules, 'Rules');
-                    Strings.debug(this.fields, 'Fields');
-                }
-
-                if (config == null || config.action != 'delete') {
-                    this.validate().then(function (valid) {
-                        if (valid) {
-                            var submit = _this2.submit();
-                            if (number_of_arguments >= 1) {
-                                submit.then(function (r) {
-                                    return onSuccess(r);
-                                });
-                            }
-                        } else {
-                            console.log('Validation Errors....');
-                        }
-                    });
-                } else {
-                    var submit = this.submit();
-                    submit.then(function (r) {
-                        return onSuccess(r);
-                    });
-                }
-            }
-        }
-    }, {
-        key: 'submit',
-        value: function submit() {
-            var _this3 = this;
-
-            this.removeErrors();
-            this.setSubmiting(true);
-
-            /*
-             | Make the request
-             */
-            var _this = this;
-            return new Promise(function (resolve, reject) {
-
-                try {
-                    Requests.post(_this3.endpoint, _this3.fields).then(function (r) {
-
-                        if (r.data.hasOwnProperty('notification')) {
-                            _this.setResponse(r.data.notification);
-                        }
-                        resolve(r.data);
-                        _this3.setSubmiting(false);
-                    }).catch(function (error) {
-
-                        if (error.response) {
-                            /*
-                            | The request was made and the server responded 
-                            | with a status code that falls out of the range of 2xx
-                            */
-                            // _this.errorsManager.set(error.response.data);
-                        } else {
-                            if (error.request) {
-                                /*
-                                | The request was made but no response was received
-                                | `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-                                | http.ClientRequest in node.js
-                                */
-                                console.log('Cazul 2', error.request, error.config);
-                            } else {
-                                /*
-                                | Something happened in setting up the request that triggered an Error
-                                */
-                                console.log('Cazul 3', error.message, error.config);
-                            }
-                        }
-
-                        reject(error);
-
-                        _this3.setSubmiting(false);
-                    });
-                } catch (e) {
-                    console.log(' == Runtime Error ==');
-                    console.log(e);
-                    _this3.setSubmiting(false);
-                }
+            this.loading = true;
+            Requests.post('admin/quizez/populate', {
+                per_page: this.paginate.per_page,
+                orderBy: this.orderBy
+            }).then(function (r) {
+                _this2.afterPopulate(r.data);
             });
         }
-    }, {
-        key: 'getResponse',
-        value: function getResponse() {
-            return this.response;
-        }
-    }, {
-        key: 'setResponse',
-        value: function setResponse(response) {
-            this.response = response;
-            return this;
-        }
-    }]);
+    },
 
-    return Form;
-}();
+    mounted: function mounted() {
+        this.populate();
+    },
 
-/* harmony default export */ __webpack_exports__["a"] = (Form);
+
+    name: 'quizes-list'
+});
 
 /***/ }),
 
-/***/ 263:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm.ready
-    ? _c("div", [
-        _c("form", { on: { keydown: _vm.onKeydown } }, [
-          _vm.visible_credentials_row
-            ? _c("div", { staticClass: "row" }, [
-                _c(
-                  "div",
-                  { staticClass: "col-xs-12 col-sm-12 col-md-6" },
-                  [
-                    _c("vue-textbox", {
-                      attrs: {
-                        field: _vm.email_field_name,
-                        placeholder: "Email",
-                        label: "Email *",
-                        errors: _vm.errors
-                      },
-                      model: {
-                        value: _vm.fields.email,
-                        callback: function($$v) {
-                          _vm.$set(_vm.fields, "email", $$v)
-                        },
-                        expression: "fields.email"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col-xs-12 col-sm-12 col-md-6" },
-                  [
-                    _c("vue-textbox", {
-                      attrs: {
-                        field: _vm.password_field_name,
-                        type: _vm.password_field_type,
-                        placeholder: "Password",
-                        label: "Password *",
-                        errors: _vm.errors
-                      },
-                      model: {
-                        value: _vm.fields.password,
-                        callback: function($$v) {
-                          _vm.$set(_vm.fields, "password", $$v)
-                        },
-                        expression: "fields.password"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm._m(0),
-          _vm._v(" "),
-          false
-            ? _c(
-                "div",
-                { staticClass: "row", attrs: { id: "row-social-links" } },
-                [_vm._m(1)]
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-xs-5" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn",
-                  attrs: { type: "button" },
-                  on: { click: _vm.onClickLogin }
-                },
-                [
-                  _vm.submiting
-                    ? _c("i", { staticClass: "fa fa-spinner fa-spin" })
-                    : _vm._e(),
-                  _vm._v("\n                    Login\n                ")
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-xs-7 text-right" },
-              [
-                _c("vue-icheck-box", {
-                  attrs: {
-                    type: "integer",
-                    caption: "Remember Me",
-                    field: "remember_me",
-                    errors: _vm.errors
-                  },
-                  model: {
-                    value: _vm.fields.remember_me,
-                    callback: function($$v) {
-                      _vm.$set(_vm.fields, "remember_me", $$v)
-                    },
-                    expression: "fields.remember_me"
-                  }
-                })
-              ],
-              1
-            )
-          ])
-        ])
-      ])
-    : _vm._e()
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "row", attrs: { id: "row-forgot-password" } },
-      [
-        _c("div", { staticClass: "col-xs-12 text-right" }, [
-          _c("a", { staticClass: "text-white", attrs: { href: "#" } }, [
-            _vm._v("I forgot my password")
-          ])
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-xs-12 text-center" }, [
-      _c("div", { staticClass: "clearfix" }, [
-        _c(
-          "button",
-          { staticClass: "btn btn-facebook-login", attrs: { type: "button" } },
-          [
-            _vm._v(
-              "\n                        Sign in with Facebook \n                        "
-            ),
-            _c("i", { staticClass: "fa fa-facebook" })
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-linkedin-login", attrs: { type: "button" } },
-          [
-            _vm._v(
-              "\n                        Login with LinkedIn\n                        "
-            ),
-            _c("i", { staticClass: "fa fa-linkedin-square" })
-          ]
-        )
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6f050d20", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 264:
+/***/ 350:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(265)
+var __vue_script__ = __webpack_require__(351)
 /* template */
-var __vue_template__ = __webpack_require__(266)
+var __vue_template__ = __webpack_require__(352)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -9650,7 +7755,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\frontend\\~components\\navbar\\components\\RegisterForm.vue"
+Component.options.__file = "resources\\assets\\js\\admin\\quizes\\list\\~components\\Item\\Title.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -9659,9 +7764,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-34293a04", Component.options)
+    hotAPI.createRecord("data-v-653b67b0", Component.options)
   } else {
-    hotAPI.reload("data-v-34293a04", Component.options)
+    hotAPI.reload("data-v-653b67b0", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -9673,7 +7778,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 265:
+/***/ 351:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9684,36 +7789,48 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
-  props: {},
+    props: {
+        record: { required: true },
+        index: { required: true }
+    },
 
-  computed: {},
+    computed: {},
 
-  data: function data() {
-    return {};
-  },
+    data: function data() {
+        return {};
+    },
 
 
-  methods: {},
+    methods: {},
 
-  name: 'register-form'
+    name: 'quiz-title'
 });
 
 /***/ }),
 
-/***/ 266:
+/***/ 352:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm._v("\n        Register "),
-    true ? _c("i", { staticClass: "fa fa-spinner fa-spin" }) : _vm._e()
+  return _c("div", { staticClass: "quiz-title" }, [
+    _c("h4", [
+      _vm._v(
+        "\n            " +
+          _vm._s(_vm.index + 1) +
+          ". " +
+          _vm._s(_vm.record.name) +
+          "\n        "
+      )
+    ])
   ])
 }
 var staticRenderFns = []
@@ -9722,197 +7839,916 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-34293a04", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-653b67b0", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 267:
+/***/ 353:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(354)
+/* template */
+var __vue_template__ = __webpack_require__(355)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\admin\\quizes\\list\\~components\\Item\\Details.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-b605addc", Component.options)
+  } else {
+    hotAPI.reload("data-v-b605addc", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 354:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    props: {
+        record: { required: true }
+    },
+
+    computed: {},
+
+    data: function data() {
+        return {
+            fields: [{
+                caption: 'Name',
+                field: 'name'
+            }, {
+                caption: 'Slug',
+                field: 'slug'
+            }, {
+                caption: 'Title',
+                field: 'title'
+            }, {
+                caption: 'Description',
+                field: 'description'
+            }, {
+                caption: 'Time to solve in minutes',
+                field: 'time'
+            }, {
+                caption: 'Minimum percentage for success (%)',
+                field: 'success_percentage'
+            }, {
+                caption: 'Created At',
+                field: 'created_at'
+            }, {
+                caption: 'Updated At',
+                field: 'updated_at'
+            }]
+        };
+    },
+
+
+    methods: {},
+
+    name: 'quiz-details'
+});
+
+/***/ }),
+
+/***/ 355:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.ready
-    ? _c(
+  return _c("div", { staticClass: "quiz-details" }, [
+    _c("div", { staticClass: "row" }, [
+      _vm.record.image_url
+        ? _c("div", { staticClass: "col-xs-4" }, [
+            _c("img", {
+              staticClass: "img-respomsive",
+              attrs: { src: _vm.record.image_url }
+            })
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c(
         "div",
-        { staticClass: "container" },
+        {
+          class: {
+            "col-xs-8": _vm.record.image_url,
+            "col-xs-12": !_vm.record.image_url
+          }
+        },
         [
-          _c("div", { staticClass: "navbar-header" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "navbar-brand",
-                attrs: { href: _vm.config.base_url }
-              },
-              [
-                _c("img", {
-                  attrs: { src: _vm.config.logo, alt: "Quizz Logo" }
-                })
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "navbar-collapse collapse" }, [
-            _c(
-              "ul",
-              {
-                staticClass: "nav navbar-nav pull-right mainNav",
-                attrs: { id: "main-nav" }
-              },
-              [
-                _vm.user
-                  ? _c(
-                      "li",
-                      {
-                        staticClass: "no-option-item",
-                        attrs: { id: "hello-item" }
-                      },
-                      [
-                        _vm._v(
-                          "\n                Hi " +
-                            _vm._s(_vm.user.username) +
-                            "\n            "
-                        )
-                      ]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm._l(_vm.options, function(bar) {
-                  return _c(
-                    "li",
-                    {
-                      class: {
-                        active: _vm.current != null && bar.id == _vm.current.id
-                      }
-                    },
-                    [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              _vm.onBar(bar)
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                    " +
-                              _vm._s(bar.caption) +
-                              "\n                "
-                          )
-                        ]
-                      )
-                    ]
+          _c(
+            "ul",
+            { staticClass: "list-group" },
+            _vm._l(_vm.fields, function(item) {
+              return _c("li", { staticClass: "list-group-item" }, [
+                _c("h5", { staticClass: "detail-caption" }, [
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(item.caption) +
+                      "\n                        "
                   )
+                ]),
+                _vm._v(" "),
+                _c("div", {
+                  staticClass: "detail-value",
+                  domProps: { innerHTML: _vm._s(_vm.record[item.field]) }
                 })
-              ],
-              2
-            )
-          ]),
-          _vm._v(" "),
-          _vm.visible
-            ? _c(
-                "vue-modal",
-                {
-                  attrs: { visible: _vm.visible, id: _vm.current.id },
-                  on: { close: _vm.onCloseModal }
-                },
-                [
-                  _c("h2", { attrs: { slot: "header" }, slot: "header" }, [
-                    _vm._v(
-                      "\n            " +
-                        _vm._s(_vm.current.caption) +
-                        "\n        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c(
+              ])
+            })
+          )
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-b605addc", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 356:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(357)
+/* template */
+var __vue_template__ = __webpack_require__(358)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\admin\\quizes\\list\\~components\\Item\\Actions.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7d94aa4d", Component.options)
+  } else {
+    hotAPI.reload("data-v-7d94aa4d", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 357:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    props: {
+        record: { required: true }
+    },
+
+    computed: {},
+
+    data: function data() {
+        return {};
+    },
+
+
+    methods: {
+        onAction: function onAction(action) {
+            this.$emit('click', { action: action, record: this.record });
+        }
+    },
+
+    name: 'quiz-actions'
+});
+
+/***/ }),
+
+/***/ 358:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "quiz-actions" }, [
+    _c(
+      "button",
+      {
+        staticClass: "btn btn-primary",
+        attrs: { type: "button" },
+        on: {
+          click: function($event) {
+            _vm.onAction("edit")
+          }
+        }
+      },
+      [_vm._v("\n            Edit quiz\n        ")]
+    ),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        staticClass: "btn btn-danger",
+        attrs: { type: "button" },
+        on: {
+          click: function($event) {
+            _vm.onAction("delete")
+          }
+        }
+      },
+      [_vm._v("\n            Delete quiz\n        ")]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-7d94aa4d", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 359:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(360)
+/* template */
+var __vue_template__ = __webpack_require__(361)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\admin\\quizes\\list\\~components\\Item\\Form.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-60b51324", Component.options)
+  } else {
+    hotAPI.reload("data-v-60b51324", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 360:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__boot_modules_validation_Validation__ = __webpack_require__(7);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    props: {
+        record: { required: true }
+    },
+
+    computed: {},
+
+    data: function data() {
+        return {
+            name: '',
+            title: '',
+            time: 0,
+            success_percentage: 0,
+            description: '',
+            image_url: '',
+
+            errors: null,
+
+            saving: false
+        };
+    },
+
+
+    methods: {
+        onImageValidationFail: function onImageValidationFail(e) {
+            this.image_url = '';
+        },
+        onImageUploadSuccess: function onImageUploadSuccess(e) {
+            this.image_url = e.image.s3_path;
+        },
+        onSave: function onSave() {
+            var _this = this;
+
+            this.errors = null;
+
+            var data = {
+                id: this.record.id,
+                name: this.name,
+                title: this.title,
+                time: this.time,
+                success_percentage: this.success_percentage,
+                description: this.description,
+                image_url: this.image_url
+            };
+
+            var validator = new __WEBPACK_IMPORTED_MODULE_0__boot_modules_validation_Validation__["a" /* default */]({
+                name: 'required',
+                title: 'required',
+                time: 'required|min_value:1',
+                success_percentage: 'required|min_value:1|max_value:100',
+                description: 'required',
+                image_url: 'required'
+            });
+
+            validator.validate(data).then(function (valid) {
+                if (valid) {
+                    _this.saving = true;
+                    Requests.post('admin/quizez/update', data).then(function (r) {
+                        _this.saving = false;
+                        _this.$emit('update', r.data);
+                    });
+                } else {
+                    _this.errors = validator.getErrors();
+                }
+            });
+        }
+    },
+
+    mounted: function mounted() {
+        this.name = this.record.name;
+        this.title = this.record.title;
+        this.time = this.record.time;
+        this.success_percentage = this.record.success_percentage;
+        this.description = this.record.description;
+        this.image_url = this.record.image_url;
+    },
+
+
+    name: 'quiz-form'
+});
+
+/***/ }),
+
+/***/ 361:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "quiz-form" }, [
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-xs-12" },
+        [
+          _c("vue-textbox", {
+            attrs: {
+              field: "name",
+              placeholder: "Quiz Name",
+              label: "Quiz Name",
+              errors: _vm.errors
+            },
+            model: {
+              value: _vm.name,
+              callback: function($$v) {
+                _vm.name = $$v
+              },
+              expression: "name"
+            }
+          })
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-xs-12" },
+        [
+          _c("vue-textbox", {
+            attrs: {
+              field: "title",
+              placeholder: "Quiz Title",
+              label: "Quiz Title",
+              errors: _vm.errors
+            },
+            model: {
+              value: _vm.title,
+              callback: function($$v) {
+                _vm.title = $$v
+              },
+              expression: "title"
+            }
+          })
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-xs-12 col-sm-6" },
+        [
+          _c("vue-number", {
+            attrs: {
+              field: "time",
+              placeholder: "Time [min]",
+              label: "Time [min]",
+              maxlength: "3",
+              autonumeric: {
+                digitGroupSeparator: "",
+                minimumValue: 0,
+                maximumValue: 999,
+                decimalPlaces: 0
+              },
+              errors: _vm.errors
+            },
+            model: {
+              value: _vm.time,
+              callback: function($$v) {
+                _vm.time = $$v
+              },
+              expression: "time"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-xs-12 col-sm-6" },
+        [
+          _c("vue-number", {
+            attrs: {
+              field: "success_percentage",
+              placeholder: "Success percentage [%]",
+              label: "Success percentage [%]",
+              maxlength: "3",
+              autonumeric: {
+                digitGroupSeparator: "",
+                minimumValue: 0,
+                maximumValue: 100,
+                decimalPlaces: 0
+              },
+              errors: _vm.errors
+            },
+            model: {
+              value: _vm.success_percentage,
+              callback: function($$v) {
+                _vm.success_percentage = $$v
+              },
+              expression: "success_percentage"
+            }
+          })
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-xs-12" },
+        [
+          _c("vue-summernote", {
+            attrs: {
+              field: "description",
+              label: "Descripton",
+              errors: _vm.errors
+            },
+            model: {
+              value: _vm.description,
+              callback: function($$v) {
+                _vm.description = $$v
+              },
+              expression: "description"
+            }
+          })
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-xs-12" },
+        [
+          _c("vue-image-uploader", {
+            attrs: {
+              label: "Quiz image",
+              id: "image_url",
+              field: "image_url",
+              maxsize: "5",
+              maxheight: "128",
+              folder: "quizes",
+              extensions: ["png", "jpg", "jpeg"],
+              errors: _vm.errors,
+              initial_image: { s3_path: _vm.record.image_url, width: 160 }
+            },
+            on: {
+              "upload-validation-fail": _vm.onImageValidationFail,
+              "uploading-process-end-success": _vm.onImageUploadSuccess
+            }
+          })
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-xs-12" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary",
+            attrs: { type: "button" },
+            on: { click: _vm.onSave }
+          },
+          [
+            _vm._v("\n                    Save\n                    "),
+            _vm.saving
+              ? _c("i", { staticClass: "fa fa-spinner fa-spin" })
+              : _vm._e()
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-default",
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                _vm.$emit("cancel")
+              }
+            }
+          },
+          [_vm._v("\n                    Cancel\n                ")]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-60b51324", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 362:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "row", attrs: { id: "quizes-list-component" } },
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm.loading
+        ? _c("div", { staticClass: "col-xs-12" }, [
+            _c("i", { staticClass: "fa fa-spinner fa-spin" }),
+            _vm._v(" Loading...\n    ")
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-xs-12" },
+        _vm._l(_vm.records, function(record, index) {
+          return _c(
+            "div",
+            { staticClass: "quiz-render-item" },
+            [
+              _c("quiz-title", { attrs: { record: record, index: index } }),
+              _vm._v(" "),
+              _vm.form.visible && record.id == _vm.form.record.id
+                ? _c(
                     "div",
-                    { attrs: { slot: "body" }, slot: "body" },
                     [
-                      _vm.notification != null
-                        ? _c(
-                            "vue-alert",
-                            {
-                              attrs: { type: _vm.notification.type },
-                              on: {
-                                close: function($event) {
-                                  _vm.notification = null
-                                }
-                              }
-                            },
-                            [
-                              _c(
-                                "div",
-                                { attrs: { slot: "body" }, slot: "body" },
-                                [
-                                  _vm._v(
-                                    "\n                    " +
-                                      _vm._s(_vm.notification.message) +
-                                      "\n                "
-                                  )
-                                ]
-                              )
-                            ]
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _c(_vm.current.id + "form", {
-                        tag: "component",
-                        attrs: {
-                          rules: _vm.rules[_vm.current.id],
-                          endpoint: _vm.endpoint[_vm.current.id],
-                          app: _vm.app
-                        },
-                        on: {
-                          "start-submiting": function($event) {
-                            _vm.notification = null
-                          },
-                          "end-submiting": _vm.onEndSubmiting
-                        }
+                      _c("quiz-form", {
+                        attrs: { record: _vm.form.record },
+                        on: { update: _vm.update, cancel: _vm.hideForm }
                       })
                     ],
                     1
                   )
-                ]
-              )
-            : _vm._e()
-        ],
-        1
+                : _c(
+                    "div",
+                    [
+                      _c("quiz-details", { attrs: { record: record } }),
+                      _vm._v(" "),
+                      !_vm.form.visible
+                        ? _c("quiz-actions", {
+                            attrs: { record: record },
+                            on: { click: _vm.onClick }
+                          })
+                        : _vm._e()
+                    ],
+                    1
+                  )
+            ],
+            1
+          )
+        })
       )
-    : _c("i", { staticClass: "fa fa-spinner fa-spin" })
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "navbar-toggle",
-        attrs: {
-          type: "button",
-          "data-toggle": "collapse",
-          "data-target": ".navbar-collapse"
-        }
-      },
-      [
-        _c("span", { staticClass: "icon-bar" }),
-        _vm._v(" "),
-        _c("span", { staticClass: "icon-bar" }),
-        _vm._v(" "),
-        _c("span", { staticClass: "icon-bar" })
-      ]
-    )
+    return _c("div", { staticClass: "col-xs-12 col-quizes-toolbar" }, [
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-primary",
+          attrs: { id: "btn-new-quiz", href: "/admin/quizes/new" }
+        },
+        [_vm._v("\n            Create a new quiz\n        ")]
+      )
+    ])
   }
 ]
 render._withStripped = true
@@ -9920,238 +8756,9 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-694d0c29", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-9f4ab268", module.exports)
   }
 }
-
-/***/ }),
-
-/***/ 3:
-/***/ (function(module, exports, __webpack_require__) {
-
-/*
-  MIT License http://www.opensource.org/licenses/mit-license.php
-  Author Tobias Koppers @sokra
-  Modified by Evan You @yyx990803
-*/
-
-var hasDocument = typeof document !== 'undefined'
-
-if (typeof DEBUG !== 'undefined' && DEBUG) {
-  if (!hasDocument) {
-    throw new Error(
-    'vue-style-loader cannot be used in a non-browser environment. ' +
-    "Use { target: 'node' } in your Webpack config to indicate a server-rendering environment."
-  ) }
-}
-
-var listToStyles = __webpack_require__(8)
-
-/*
-type StyleObject = {
-  id: number;
-  parts: Array<StyleObjectPart>
-}
-
-type StyleObjectPart = {
-  css: string;
-  media: string;
-  sourceMap: ?string
-}
-*/
-
-var stylesInDom = {/*
-  [id: number]: {
-    id: number,
-    refs: number,
-    parts: Array<(obj?: StyleObjectPart) => void>
-  }
-*/}
-
-var head = hasDocument && (document.head || document.getElementsByTagName('head')[0])
-var singletonElement = null
-var singletonCounter = 0
-var isProduction = false
-var noop = function () {}
-var options = null
-var ssrIdKey = 'data-vue-ssr-id'
-
-// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-// tags it will allow on a page
-var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\b/.test(navigator.userAgent.toLowerCase())
-
-module.exports = function (parentId, list, _isProduction, _options) {
-  isProduction = _isProduction
-
-  options = _options || {}
-
-  var styles = listToStyles(parentId, list)
-  addStylesToDom(styles)
-
-  return function update (newList) {
-    var mayRemove = []
-    for (var i = 0; i < styles.length; i++) {
-      var item = styles[i]
-      var domStyle = stylesInDom[item.id]
-      domStyle.refs--
-      mayRemove.push(domStyle)
-    }
-    if (newList) {
-      styles = listToStyles(parentId, newList)
-      addStylesToDom(styles)
-    } else {
-      styles = []
-    }
-    for (var i = 0; i < mayRemove.length; i++) {
-      var domStyle = mayRemove[i]
-      if (domStyle.refs === 0) {
-        for (var j = 0; j < domStyle.parts.length; j++) {
-          domStyle.parts[j]()
-        }
-        delete stylesInDom[domStyle.id]
-      }
-    }
-  }
-}
-
-function addStylesToDom (styles /* Array<StyleObject> */) {
-  for (var i = 0; i < styles.length; i++) {
-    var item = styles[i]
-    var domStyle = stylesInDom[item.id]
-    if (domStyle) {
-      domStyle.refs++
-      for (var j = 0; j < domStyle.parts.length; j++) {
-        domStyle.parts[j](item.parts[j])
-      }
-      for (; j < item.parts.length; j++) {
-        domStyle.parts.push(addStyle(item.parts[j]))
-      }
-      if (domStyle.parts.length > item.parts.length) {
-        domStyle.parts.length = item.parts.length
-      }
-    } else {
-      var parts = []
-      for (var j = 0; j < item.parts.length; j++) {
-        parts.push(addStyle(item.parts[j]))
-      }
-      stylesInDom[item.id] = { id: item.id, refs: 1, parts: parts }
-    }
-  }
-}
-
-function createStyleElement () {
-  var styleElement = document.createElement('style')
-  styleElement.type = 'text/css'
-  head.appendChild(styleElement)
-  return styleElement
-}
-
-function addStyle (obj /* StyleObjectPart */) {
-  var update, remove
-  var styleElement = document.querySelector('style[' + ssrIdKey + '~="' + obj.id + '"]')
-
-  if (styleElement) {
-    if (isProduction) {
-      // has SSR styles and in production mode.
-      // simply do nothing.
-      return noop
-    } else {
-      // has SSR styles but in dev mode.
-      // for some reason Chrome can't handle source map in server-rendered
-      // style tags - source maps in <style> only works if the style tag is
-      // created and inserted dynamically. So we remove the server rendered
-      // styles and inject new ones.
-      styleElement.parentNode.removeChild(styleElement)
-    }
-  }
-
-  if (isOldIE) {
-    // use singleton mode for IE9.
-    var styleIndex = singletonCounter++
-    styleElement = singletonElement || (singletonElement = createStyleElement())
-    update = applyToSingletonTag.bind(null, styleElement, styleIndex, false)
-    remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true)
-  } else {
-    // use multi-style-tag mode in all other cases
-    styleElement = createStyleElement()
-    update = applyToTag.bind(null, styleElement)
-    remove = function () {
-      styleElement.parentNode.removeChild(styleElement)
-    }
-  }
-
-  update(obj)
-
-  return function updateStyle (newObj /* StyleObjectPart */) {
-    if (newObj) {
-      if (newObj.css === obj.css &&
-          newObj.media === obj.media &&
-          newObj.sourceMap === obj.sourceMap) {
-        return
-      }
-      update(obj = newObj)
-    } else {
-      remove()
-    }
-  }
-}
-
-var replaceText = (function () {
-  var textStore = []
-
-  return function (index, replacement) {
-    textStore[index] = replacement
-    return textStore.filter(Boolean).join('\n')
-  }
-})()
-
-function applyToSingletonTag (styleElement, index, remove, obj) {
-  var css = remove ? '' : obj.css
-
-  if (styleElement.styleSheet) {
-    styleElement.styleSheet.cssText = replaceText(index, css)
-  } else {
-    var cssNode = document.createTextNode(css)
-    var childNodes = styleElement.childNodes
-    if (childNodes[index]) styleElement.removeChild(childNodes[index])
-    if (childNodes.length) {
-      styleElement.insertBefore(cssNode, childNodes[index])
-    } else {
-      styleElement.appendChild(cssNode)
-    }
-  }
-}
-
-function applyToTag (styleElement, obj) {
-  var css = obj.css
-  var media = obj.media
-  var sourceMap = obj.sourceMap
-
-  if (media) {
-    styleElement.setAttribute('media', media)
-  }
-  if (options.ssrId) {
-    styleElement.setAttribute(ssrIdKey, obj.id)
-  }
-
-  if (sourceMap) {
-    // https://developer.chrome.com/devtools/docs/javascript-debugging
-    // this makes source maps inside style tags work properly in Chrome
-    css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */'
-    // http://stackoverflow.com/a/26603875
-    css += '\n/*# sourceMappingURL=data:application/json;base64,' + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + ' */'
-  }
-
-  if (styleElement.styleSheet) {
-    styleElement.styleSheet.cssText = css
-  } else {
-    while (styleElement.firstChild) {
-      styleElement.removeChild(styleElement.firstChild)
-    }
-    styleElement.appendChild(document.createTextNode(css))
-  }
-}
-
 
 /***/ }),
 
@@ -10213,40 +8820,6 @@ var Validation = function () {
 }();
 
 /* harmony default export */ __webpack_exports__["a"] = (Validation);
-
-/***/ }),
-
-/***/ 8:
-/***/ (function(module, exports) {
-
-/**
- * Translates the list format produced by css-loader into something
- * easier to manipulate.
- */
-module.exports = function listToStyles (parentId, list) {
-  var styles = []
-  var newStyles = {}
-  for (var i = 0; i < list.length; i++) {
-    var item = list[i]
-    var id = item[0]
-    var css = item[1]
-    var media = item[2]
-    var sourceMap = item[3]
-    var part = {
-      id: parentId + ':' + i,
-      css: css,
-      media: media,
-      sourceMap: sourceMap
-    }
-    if (!newStyles[id]) {
-      styles.push(newStyles[id] = { id: id, parts: [part] })
-    } else {
-      newStyles[id].parts.push(part)
-    }
-  }
-  return styles
-}
-
 
 /***/ })
 

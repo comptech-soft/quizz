@@ -17,6 +17,7 @@ mix
 
 
 	.js(assetsJsPath + 'admin/quizes/create/index.js', publicJsPath + 'admin/quizes/create/index.js')
+	.js(assetsJsPath + 'admin/quizes/list/index.js', publicJsPath + 'admin/quizes/list/index.js')
 ;
 
 /**

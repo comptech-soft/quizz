@@ -2,5 +2,6 @@
     "/js/boot/boot.js": "/js/boot/boot.js",
     "/css/frontend/app.css": "/css/frontend/app.css",
     "/js/admin/quizes/create/index.js": "/js/admin/quizes/create/index.js",
-    "/js/frontend/app.js": "/js/frontend/app.js"
+    "/js/frontend/app.js": "/js/frontend/app.js",
+    "/js/admin/quizes/list/index.js": "/js/admin/quizes/list/index.js"
 }

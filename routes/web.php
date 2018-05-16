@@ -1,5 +1,7 @@
 <?php
 
+Route::post('upload-image', 'System\UploadController@uploadImage')->name('upload-image');
+
 /*
 | FRONTEND
 */
@@ -27,15 +29,21 @@ Route::group(['middleware' => 'authenticated', 'namespace' => 'Frontend'], funct
 /*
 | ADMIN
 */
-// Route::group(['middleware' => 'visitor', 'namespace' => 'Admin'], function(){
-// 	Route::get('admin/login', 'Auth\LoginController@login')->name('admin-login');
-// });
-
 Route::group(['middleware' => 'admin', 'namespace' => 'Admin', 'prefix' => 'admin'], function(){
 
-	// Route::get('/', 'WelcomeController@index')->name('admin-welcome-index');
 	Route::post('logout', 'Auth\LoginController@logout')->name('admin-logout');
 
+
+	/* ======================================
+	| QUIZES
+	| =======================================*/
+	/* #1. Quizes list */
+	Route::get('quizes/list', 'Quiz\ListController@index')->name('quiz-list-index');
+	Route::post('quizez/populate', 'Quiz\ListController@populate')->name('quiz-list-populate');
+	Route::post('quizez/delete', 'Quiz\ListController@delete')->name('quiz-list-delete');
+	Route::post('quizez/update', 'Quiz\ListController@update')->name('quiz-list-update');
+
+	/* #2. Creating a quiz */
 	Route::get('quizes/new', 'Quiz\CreateController@index')->name('quiz-create-index');
 	Route::post('quizes/insert', 'Quiz\CreateController@insert')->name('quiz-create-insert');
 });

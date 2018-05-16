@@ -1,0 +1,50 @@
+#quiz-create-container
+{
+    margin-top: 20px;
+
+    a
+    {
+        border-radius: 0px;
+        span
+        {
+            color: #333;
+        }
+
+        span.active
+        {
+            font-weight: bold;
+            color: #3d84e6;
+        }
+    }
+}
+
+#questions-row, #actions-row
+{
+    margin-top: 20px;
+}
+
+#questions
+{
+    .toolbar, .number-of-questions
+    {
+        margin: 6px 0px;
+    }
+
+    #question-form-container
+    {
+        margin-top: 30px;
+    }
+
+    .number-of-questions
+    {
+        line-height: 34px;
+    }
+}
+
+form.question-form
+{
+    .col-answer-description
+    {
+        margin-top: 10px;
+    }
+}

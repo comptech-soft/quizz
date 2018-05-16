@@ -39,6 +39,7 @@
         'js/jquery-ui.min.js',
         'vendors/scrollto/scrollto.js',
         'vendors/jquery-confirm/jquery-confirm.js',
+        'vendors/notify/notify.min.js',
         /*
         'js/fancybox/jquery.fancybox.pack.js',
         'js/jquery.mobile.customized.min.js',

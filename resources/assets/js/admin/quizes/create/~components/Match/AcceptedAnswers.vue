@@ -63,7 +63,7 @@
                     <button 
                         type="button"
                         class="btn btn-primary"
-                        :disabled="answer_item.length == 0"
+                        :disabled="(answer_item.trim().length == 0) || (answer_match.trim().length == 0)"
                         @click.prevent="addItem"
                     >
                         {{ action == 'insert' ? 'Add' : 'Save' }}

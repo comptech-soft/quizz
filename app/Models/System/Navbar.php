@@ -5,7 +5,6 @@ namespace App\Models\System;
 class Navbar
 {
 
-	
 	public static function get($user, $app)
 	{
 		/*
@@ -47,6 +46,11 @@ class Navbar
 			if($user)
 			{
 				$result['options'][] = [
+        			'id' => 'quizes',
+        			'caption' => 'Quizes'
+        		];
+
+				$result['options'][] = [
         			'id' => 'logout',
         			'caption' => 'Logout'
         		];
@@ -62,29 +66,5 @@ class Navbar
 
 		return $result;
 	}
-
 	
 }
-
-/*
-
-[
-            	,
-            	'options' => 
-	            	$user 
-	            	? 
-	            	[
-
-	            		,
-
-	            		,
-	            	]
-	            	:
-	            	[
-	            		,
-
-	            		
-	            	]
-            ]
-
-            */

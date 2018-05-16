@@ -178,7 +178,7 @@ label {
 }
 .btn:hover, .btn:active {
 	color: #e3e3e3;
-	background-color: #3d84e6;
+	/* background-color: #3d84e6; */
 }
 .btn:hover
 {

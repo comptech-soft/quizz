@@ -1,12 +1,13 @@
 <template>
 	<div id="general-infos" class="tab-pane fade in active">
 
-        <h3 class="tab-header">General infos</h3>
+        <h3 class="tab-header">
+            General infos
+        </h3>
     
         <div class="row">
-
+            <!-- Quiz Name -->
             <div class="col-xs-12">
-                <!-- Name  -->
                 <vue-textbox
                     field="name"
                     placeholder="Quiz Name"
@@ -17,13 +18,11 @@
                 >
                 </vue-textbox>
             </div>
-
         </div>
 
         <div class="row">
-
+            <!-- Quiz Title  -->
             <div class="col-xs-12">
-                <!-- Title  -->
                 <vue-textbox
                     field="title"
                     placeholder="Quiz Title"
@@ -34,12 +33,11 @@
                 >
                 </vue-textbox>
             </div>
-
         </div>
 
         <div class="row">
+            <!-- Quiz Time -->
             <div class="col-xs-12 col-sm-6">
-                <!-- Time -->
                 <vue-number
                     field="time"
                     placeholder="Time [min]"
@@ -57,9 +55,8 @@
                 >
                 </vue-number>
             </div>
-
+            <!-- Quiz Success Percentage -->
             <div class="col-xs-12 col-sm-6">
-                <!-- Success percentage -->
                 <vue-number
                     field="success_percentage"
                     placeholder="Success percentage [%]"
@@ -77,10 +74,10 @@
                 >
                 </vue-number>
             </div>
-
         </div>
 
         <div class="row">
+            <!-- Quiz Descripton -->
             <div class="col-xs-12">
                 <vue-summernote
                     field="description"
@@ -105,11 +102,6 @@
     	{
     		errors: {required: true}
     	},
-
-        computed:
-        {
-
-        },
 
         data()
         {

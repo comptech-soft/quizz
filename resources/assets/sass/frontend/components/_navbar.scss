@@ -1,5 +1,6 @@
 #main-nav
 {
+	padding: 13px 0px;
 	li.no-option-item
 	{
 		line-height: 44px;
@@ -9,4 +10,23 @@
 		font-weight: 400 !important;
     	font-size: 16px;
 	}
+}
+
+.navbar-inverse 
+{
+    border-radius: 0;
+    background-color: #fff;
+    border-bottom: 1px solid #e3e3e3;
+    height: 70px;
+    min-height: 70px;
+    max-height: 70px;
+    margin-bottom: 0;
+}
+
+a.navbar-brand
+{
+	padding:5px 0px;
+	height: 70px;
+    min-height: 70px;
+    max-height: 70px;
 }

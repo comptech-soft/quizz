@@ -199,6 +199,17 @@
                 }
             },
 
+            /*
+            | Admin. Quizes list
+            */
+            onClickquizes(bar)
+            {
+                if( this.app == 'admin' )
+                {
+                    Requests.redirect('admin/quizes/list');
+                }
+            },
+
             onClickquizz(bar)
             {
                 Requests.redirect('quiz')

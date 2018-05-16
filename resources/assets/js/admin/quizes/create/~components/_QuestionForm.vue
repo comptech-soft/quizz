@@ -1,12 +1,10 @@
 <template>
-	<form>
+	<form class="question-form">
         <div class="panel panel-default">
-            
             <div class="panel-body">
-
                 <div class="row">
+                    <!-- Question Type  -->
                     <div class="col-xs-12 col-sm-4">
-                        <!-- Type  -->
                         <vue-select-simple
                             field="type"
                             label="Question type"
@@ -23,9 +21,8 @@
                         >
                         </vue-select-simple>
                     </div>
-
+                    <!-- Question Order Number -->
                     <div class="col-xs-12 col-sm-4">
-                        <!-- Order -->
                         <vue-number
                             field="order_no"
                             placeholder="Order position"
@@ -42,9 +39,8 @@
                         >
                         </vue-number>
                     </div>
-
+                    <!-- Question Points -->
                     <div class="col-xs-12 col-sm-4">
-                        <!-- Points -->
                         <vue-number
                             field="points"
                             placeholder="Points"
@@ -63,8 +59,8 @@
                     </div>
                 </div>
 
-
                 <div class="row">
+                    <!-- Question Body -->
                     <div class="col-xs-12">
                         <vue-summernote
                             field="question"
@@ -76,9 +72,7 @@
                     </div>
                 </div>
 
-                <!--
-                    Componenta pentru definirea raspunsurilor
-                -->
+                <!-- Question Answers -->
                 <div v-if="type != '-'" class="row">
                     <div class="col-xs-12">
                         <component
@@ -90,9 +84,7 @@
                     </div>                    
                 </div>
 
-                <!--
-                    Descrierea/explicatia raspunsului corect
-                -->
+                <!-- Correct Answer description -->
                 <div v-if="type != '-'" class="row">
                     <div class="col-xs-12 col-answer-description">
                         <vue-summernote
@@ -105,9 +97,9 @@
                 </div>
             </div>
             
+            <!-- Footer with Actions -->
             <div class="panel-footer">
-                <div class="btn-group pull-right" role="group">
-                   
+                <div class="btn-group pull-right" role="group">       
                     <button 
                         type="button" 
                         class="btn btn-default"
@@ -115,7 +107,6 @@
                     >
                         Add
                     </button>
-                   
                     <button 
                         type="button" 
                         class="btn btn-default"
@@ -132,13 +123,14 @@
 
 <script>
 
-
     import veeValidation from './../../../../boot/modules/validation/Validation'
 
     import vueAnswersText from './Text/_AnswersText'
     import vueAnswersRadio from './Radio/_AnswersRadio'
     import vueAnswersCheck from './Check/_AnswersCheck'
     import vueAnswersMatch from './Match/_AnswersMatch'
+
+    import Question from './_Modules/Question'
 
     export default 
     {
@@ -255,91 +247,26 @@
             onUpdateAnswers(e)
             {
                 this.answers = e.answers;
-                if( this.type == 'text')
-                {
-                    this.correct_answer = _.join(e.accepted_answers, ', ');
-                    if(this.correct_answer.trim().length > 0)
-                    {
-                        this.error_by_type = '';
-                    }
-                }
-                if( this.type == 'radio')
-                {
-                    this.correct_answer = e.accepted_answers;
-                    if(this.correct_answer.trim().length > 0)
-                    {
-                        this.error_by_type = '';
-                    }
-                }
-                if( this.type == 'check')
-                {
-                    this.correct_answer = e.accepted_answers; 
-                    if(this.correct_answer.length > 0)
-                    {
-                        this.error_by_type = '';
-                    }
-                }
-                if( this.type == 'match')
-                {
-                    this.correct_answer = e.accepted_answers; 
-                    if(_.keys(this.correct_answer).length > 0)
-                    {
-                        this.error_by_type = '';
-                    }
-                }
+                let _question = new Question({
+                    answers: this.answers,
+                    type: this.type,
+                    accepted_answers: e.accepted_answers,
+                    correct_answer: this.correct_answer,
+                });
+                let r = _question.updateAnswers();
+                this.correct_answer = r.correct_answer;
+                this.error_by_type = r.error_by_type;
             },
 
             isValidByType()
             {
-                if( this.type == 'text' )
-                {
-                    return {
-                        valid: this.correct_answer.trim().length > 0,
-                        message: 'Please define the accepted answers'
-                    }
-                }
-                if( this.type == 'radio' )
-                {
-                    if(this.answers.length == 0)
-                    {
-                        return {
-                            valid: false,
-                            message: 'Please define the options list'
-                        }
-                    }
-                    return {
-                        valid: this.correct_answer.trim().length > 0,
-                        message: 'Please define the correct option'
-                    }
-                }
-                if( this.type == 'check' )
-                {
-                    if(this.answers.length == 0)
-                    {
-                        return {
-                            valid: false,
-                            message: 'Please define the options list'
-                        }
-                    }
-                    return {
-                        valid: this.correct_answer.length > 0,
-                        message: 'Please define the corrects option'
-                    }
-                }
-                if( this.type == 'match' )
-                {
-                    if(this.answers.length == 0)
-                    {
-                        return {
-                            valid: false,
-                            message: 'Please define the options list'
-                        }
-                    }
-                    return {
-                        valid: _.keys(this.correct_answer).length > 0,
-                        message: 'Please define the matching option'
-                    }
-                }
+                let _question = new Question({
+                    answers: this.answers,
+                    type: this.type,
+                    accepted_answers: null,
+                    correct_answer: this.correct_answer,
+                });
+                return _question.validateByType();
             },
 
             addQuestion()
@@ -387,10 +314,3 @@
     }
 
 </script>
-
-<style scoped lang="scss">
-    .col-answer-description
-    {
-        margin-top: 10px;
-    }
-</style>
