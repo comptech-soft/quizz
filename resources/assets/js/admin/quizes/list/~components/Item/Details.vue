@@ -1,11 +1,23 @@
 <template>
 	<div class="quiz-details">
         <div class="row">
-            <div v-if="record.image_url" class="col-xs-4">
-                <img :src="record.image_url" class="img-respomsive" />
+            <div v-if="record.image_url" class="col-xs-6">
+                <div class="detail-block">
+                    <h5 class="detail-caption">
+                        Quiz image
+                    </h5>
+                    <img :src="record.image_url" class="img-respomsive" />
+                </div>
+                <div class="detail-block">
+                    <h5 class="detail-caption">
+                        Description
+                    </h5>
+                    <div class="detail-value" v-html="record.description">
+                    </div>
+                </div>
             </div>
 
-            <div :class="{'col-xs-8': record.image_url, 'col-xs-12': ! record.image_url}">
+            <div :class="{'col-xs-6': record.image_url, 'col-xs-12': ! record.image_url}">
                 <ul class="list-group">
                     <li 
                         v-for="item in fields"
@@ -14,7 +26,7 @@
                         <h5 class="detail-caption">
                             {{ item.caption }}
                         </h5>
-                        <div class="detail-value" v-html="record[item.field]">
+                        <div class="detail-value" v-html="item.render(record)">
                         </div>
                     </li>
                 </ul>
@@ -44,35 +56,35 @@
                 fields: [
                     {
                         caption: 'Name',
-                        field: 'name',
+                        render: record => record.name
                     },
                     {
                         caption: 'Slug',
-                        field: 'slug',
+                        render: record => record.slug
                     },
                     {
                         caption: 'Title',
-                        field: 'title',
+                        render: record => record.title
                     },
                     {
-                        caption: 'Description',
-                        field: 'description',
+                        caption: 'Questions',
+                        render: record => record.questions.length
                     },
                     {
-                        caption: 'Time to solve in minutes',
-                        field: 'time',
+                        caption: 'Time to solve',
+                        render: record => record.time + ' min'
                     },
                     {
-                        caption: 'Minimum percentage for success (%)',
-                        field: 'success_percentage',
+                        caption: 'Minimum percentage for success',
+                        render: record => record.success_percentage + ' %'
                     },
                     {
                         caption: 'Created At',
-                        field: 'created_at',
+                        render: record => DateTime.humanFromNow(record.created_at)
                     },
                     {
                         caption: 'Updated At',
-                        field: 'updated_at',
+                        render: record => DateTime.humanFromNow(record.updated_at)
                     }
                 ]
             };

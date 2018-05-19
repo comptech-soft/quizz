@@ -104,7 +104,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row row-actions">
             <div class="col-xs-12">
                 <button 
                     type="button" 
@@ -200,7 +200,7 @@
                     if(valid)
                     {
                         this.saving = true;
-                        Requests.post('admin/quizez/update', data)
+                        Requests.post('admin/quizes/update', data)
                             .then(r => {
                                 this.saving = false;
                                 this.$emit('update', r.data);

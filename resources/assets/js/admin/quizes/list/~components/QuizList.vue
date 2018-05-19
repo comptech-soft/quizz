@@ -10,6 +10,7 @@
         <div v-if="loading" class="col-xs-12">
             <i class="fa fa-spinner fa-spin"></i> Loading...
         </div>
+
         <div class="col-xs-12">            
             <div 
                 v-for="(record, index) in records"
@@ -30,16 +31,21 @@
                     </quiz-form>
                 </div>
 
-                <div v-else>
-                    
+                <div v-else-if="questions.visible && (record.id == questions.record.id)">
+                    <quiz-questions
+                        :record="questions.record"
+                        @close="hideQuestions"
+                    >
+                    </quiz-questions>
+                </div>
 
+                <div v-else>
                     <quiz-details
                         :record="record"
                     >
                     </quiz-details>
-                    
                     <quiz-actions 
-                        v-if="! form.visible"
+                        v-if="! form.visible && ! questions.visible"
                         :record="record"
                         @click="onClick"
                     >
@@ -57,6 +63,7 @@
     import vueQuizDetails from './Item/Details'
     import vueQuizActions from './Item/Actions'
     import vueQuizForm from './Item/Form'
+    import vueQuizQuestions from './Item/Questions'
 
     export default 
     {
@@ -66,7 +73,8 @@
             'quiz-title': vueQuizTitle,
             'quiz-details': vueQuizDetails,
             'quiz-actions': vueQuizActions,
-            'quiz-form': vueQuizForm
+            'quiz-form': vueQuizForm,
+            'quiz-questions': vueQuizQuestions
         },
 
     	props:
@@ -95,6 +103,11 @@
                 }],
 
                 form: {
+                    visible: false,
+                    record: null,
+                },
+
+                questions: {
                     visible: false,
                     record: null,
                 }
@@ -135,15 +148,27 @@
                 this.form.record = record;
             },
 
+            onClickQuestions(record)
+            {
+                this.questions.visible = true;
+                this.questions.record = record;
+            },
+
             hideForm()
             {
                 this.form.visible = false;
                 this.form.record = null;
             },
 
+            hideQuestions()
+            {
+                this.questions.visible = false;
+                this.questions.record = null;
+            },
+
             delete(record)
             {
-                Requests.post('admin/quizez/delete', {
+                Requests.post('admin/quizes/delete', {
                     id: record.id
                 })
                     .then(r => {
@@ -175,12 +200,14 @@
                 this.records = r.data;
 
                 this.loading = false;
+
+                $('#quizes-count').html(this.records.length)
             },
 
             populate()
             {
                 this.loading = true;
-                Requests.post('admin/quizez/populate', {
+                Requests.post('admin/quizes/populate', {
                     per_page: this.paginate.per_page,
                     orderBy: this.orderBy,
                 })

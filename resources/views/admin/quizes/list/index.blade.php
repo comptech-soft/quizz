@@ -10,7 +10,7 @@
 @section('header')
 	<header id="head" class="secondary admin">
         <div class="container">
-            <h1>Quizes list</h1>
+            <h1>Quizes list (<span id="quizes-count"></span>)</h1>
         </div>
     </header>
 @endsection

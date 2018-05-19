@@ -4787,7 +4787,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(8)
+var listToStyles = __webpack_require__(7)
 
 /*
 type StyleObject = {
@@ -5374,8 +5374,7 @@ module.exports = {
 });
 
 /***/ }),
-/* 7 */,
-/* 8 */
+/* 7 */
 /***/ (function(module, exports) {
 
 /**
@@ -5408,6 +5407,7 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
+/* 8 */,
 /* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -62542,6 +62542,7 @@ var ImageUploader = function () {
         },
         uploader_control_class: function uploader_control_class() {
             var r = this.control_class;
+            r['image-uploader'] = true;
             if (this.validation_errors) {
                 r['has-error'] = true;
             }
@@ -63242,7 +63243,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -63284,43 +63284,50 @@ var render = function() {
     _vm.visible
       ? _c("div", { staticClass: "modal modal-mask" }, [
           _c("div", { class: _vm.modal_class, attrs: { role: "document" } }, [
-            _c("div", { staticClass: "modal-content" }, [
-              _c(
-                "div",
-                { staticClass: "modal-header" },
-                [
-                  _vm.closable
-                    ? _c(
-                        "button",
-                        {
-                          staticClass: "close",
-                          attrs: { type: "button" },
-                          on: {
-                            click: function($event) {
-                              _vm.$emit("close")
+            _c(
+              "div",
+              {
+                staticClass: "modal-content",
+                attrs: { id: "modal-content-" + _vm.id }
+              },
+              [
+                _c(
+                  "div",
+                  { staticClass: "modal-header" },
+                  [
+                    _vm.closable
+                      ? _c(
+                          "button",
+                          {
+                            staticClass: "close",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                _vm.$emit("close")
+                              }
                             }
-                          }
-                        },
-                        [_vm._v("×")]
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm._t("header")
-                ],
-                2
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [_vm._t("body")], 2),
-              _vm._v(" "),
-              _vm.has_footer
-                ? _c(
-                    "div",
-                    { staticClass: "modal-footer" },
-                    [_vm._t("footer")],
-                    2
-                  )
-                : _vm._e()
-            ])
+                          },
+                          [_vm._v("×")]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm._t("header")
+                  ],
+                  2
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body" }, [_vm._t("body")], 2),
+                _vm._v(" "),
+                _vm.has_footer
+                  ? _c(
+                      "div",
+                      { staticClass: "modal-footer" },
+                      [_vm._t("footer")],
+                      2
+                    )
+                  : _vm._e()
+              ]
+            )
           ])
         ])
       : _vm._e()

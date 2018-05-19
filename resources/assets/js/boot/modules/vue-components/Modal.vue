@@ -1,9 +1,8 @@
 <template>
-
     <transition name="modal">
         <div v-if="visible" class="modal modal-mask">
             <div :class="modal_class" role="document">
-                <div class="modal-content">
+                <div :id="'modal-content-' + id" class="modal-content">
                     <div class="modal-header">
                         <button v-if="closable" type="button" class="close" @click="$emit('close')">&times;</button>
                         <slot name="header"></slot>

@@ -25,6 +25,7 @@
 			li.list-group-item
 			{
 				padding: 5px 6px;
+				border: none;
 			}
 			p:last-child
 			{
@@ -34,6 +35,14 @@
 			{
 				color: #000;
 			}
+			.detail-block
+			{
+				margin-bottom: 10px;
+			}
+			.detail-block:last-child
+			{
+				margin-bottom: 0px;
+			}
 		}
 
 		.quiz-actions
@@ -41,6 +50,48 @@
 			border-top: 1px solid #e3e3e3;
 			background-color: #f7f7f7;
 			padding: 10px 10px 10px 10px;
+		}
+
+		.quiz-questions
+		{
+			padding:10px;
+
+			.question-container
+			{
+				border: 1px solid #e3e3e3;
+				margin-bottom: 6px;
+
+				h5
+				{
+					margin: 2px 0px;
+				}
+
+				.question-correct-answer, .question-answer-description, .correct-to-string
+				{
+					margin-top: 8px;
+				}
+
+				.question-body, .question-correct-answer
+				{
+					margin-bottom: 8px;
+				}
+
+				.question-body, .answer-component-container, .question-answer-description
+				{
+					padding: 10px;
+				}
+			}
+
+			.modal-body
+			{
+    			max-height: calc(100vh - 200px);
+    			overflow-y: auto;
+			}
+
+			.row-after-answers
+			{
+				margin-top:10px;
+			}
 		}
 	}
 
@@ -60,6 +111,19 @@
 {
 	padding:10px;
 
+	.row-actions
+	{
+		margin-top: 10px;
+	}
+}
+
+.questions-toolbar
+{
+	margin-bottom: 8px;
+}
+
+.image-uploader
+{
 	.input-group-btn
 	{
 		.btn

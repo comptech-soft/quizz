@@ -39,9 +39,14 @@ Route::group(['middleware' => 'admin', 'namespace' => 'Admin', 'prefix' => 'admi
 	| =======================================*/
 	/* #1. Quizes list */
 	Route::get('quizes/list', 'Quiz\ListController@index')->name('quiz-list-index');
-	Route::post('quizez/populate', 'Quiz\ListController@populate')->name('quiz-list-populate');
-	Route::post('quizez/delete', 'Quiz\ListController@delete')->name('quiz-list-delete');
-	Route::post('quizez/update', 'Quiz\ListController@update')->name('quiz-list-update');
+	Route::post('quizes/populate', 'Quiz\ListController@populate')->name('quiz-list-populate');
+	Route::post('quizes/delete', 'Quiz\ListController@delete')->name('quiz-list-delete');
+	Route::post('quizes/update', 'Quiz\ListController@update')->name('quiz-list-update');
+
+
+	Route::post('quizes/questions/populate', 'Quiz\ListController@getQuestions')->name('quiz-questions-populate');
+	Route::post('quizes/questions/insert', 'Quiz\ListController@insertQuestion')->name('quiz-questions-insert');
+	
 
 	/* #2. Creating a quiz */
 	Route::get('quizes/new', 'Quiz\CreateController@index')->name('quiz-create-index');

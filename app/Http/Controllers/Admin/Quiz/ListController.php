@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Quiz;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Quizes\Quizes\Quiz;
+use App\Models\Quizes\Questions\Question;
 
 class ListController extends Controller
 {
@@ -47,6 +48,19 @@ class ListController extends Controller
                 'message' => 'The quiz was successfull updated.'
             ]
         ];
+	}
+
+	public function getQuestions(Request $request)
+	{
+		return Question::with(['answers'])->where('quiz_id', $request->quiz_id)->orderBy('order_no')->paginate($request->per_page);
+	}
+
+	public function insertQuestion(Request $request)
+	{
+		if( $request->action == 'insert' )
+		{
+			return Question::insertRecord($request->question);
+		}
 	}
 	
 }

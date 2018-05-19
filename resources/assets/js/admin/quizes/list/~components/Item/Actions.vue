@@ -5,6 +5,7 @@
             class="btn btn-primary"
             @click="onAction('edit')"
         >
+            <i class="fa fa-fw fa-pencil"></i> 
             Edit quiz
         </button>
 
@@ -13,7 +14,17 @@
             class="btn btn-danger"
             @click="onAction('delete')"
         >
+            <i class="fa fa-fw fa-trash-o"></i> 
             Delete quiz
+        </button>
+
+        <button 
+            type="button" 
+            class="btn btn-primary"
+            @click="onAction('questions')"
+        >
+            <i class="fa fa-fw fa-question"></i>
+            Questions ({{record.questions.length}})
         </button>
     </div>
 </template>
@@ -27,18 +38,6 @@
     	{
     		record: {required: true},
     	},
-
-        computed:
-        {
-
-        },
-
-        data()
-        {
-            return {
-
-            };
-        },
 
         methods:
         {

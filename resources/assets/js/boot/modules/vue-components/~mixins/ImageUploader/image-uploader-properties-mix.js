@@ -80,6 +80,7 @@ export default
         uploader_control_class()
         {
             let r = this.control_class;
+            r['image-uploader'] = true;
             if( this.validation_errors )
             {
                 r['has-error'] = true;

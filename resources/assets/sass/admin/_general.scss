@@ -48,3 +48,22 @@ ul.list-group
 		border-radius: 0px;
 	}
 }
+
+div.alert, input.form-control
+{
+	margin-bottom:0px;
+}
+
+div.form-group
+{
+	margin-bottom:5px;
+	label
+	{
+		margin-bottom: 0px;
+	}
+}
+
+body.modal-open 
+{
+    overflow: hidden;
+}
