@@ -5,7 +5,7 @@
         <div class="container">
             <div class="heading-text">
                 <h1 class="animated flipInY delay1 start-quiz">
-                    Start Online Education
+                    Start your Mars Quiz
                 </h1>
                 <p class="start-quiz">
                     Free Online education template for elearning and online education institute.

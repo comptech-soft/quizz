@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 269);
+/******/ 	return __webpack_require__(__webpack_require__.s = 334);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -175,68 +175,7 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 12:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vee_validate__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__VeeExtender_js__ = __webpack_require__(14);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-
-Object(__WEBPACK_IMPORTED_MODULE_1__VeeExtender_js__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_0_vee_validate__["a" /* Validator */]);
-
-var Validation = function () {
-    function Validation(rules) {
-        _classCallCheck(this, Validation);
-
-        this.validator = new __WEBPACK_IMPORTED_MODULE_0_vee_validate__["a" /* Validator */](rules);
-    }
-
-    _createClass(Validation, [{
-        key: 'validate',
-        value: function validate(data) {
-            return this.validator.validateAll(data);
-        }
-
-        /*
-        | return Promise
-        */
-
-    }, {
-        key: 'validateField',
-        value: function validateField(field, value) {
-            return this.validator.validate(field, value);
-        }
-    }, {
-        key: 'getErrors',
-        value: function getErrors() {
-            return this.validator.errors;
-        }
-    }, {
-        key: 'removeError',
-        value: function removeError(field) {
-            return this.validator.errors.remove(field);
-        }
-    }, {
-        key: 'removeErrors',
-        value: function removeErrors() {
-            return this.validator.errors.clear();
-        }
-    }]);
-
-    return Validation;
-}();
-
-/* harmony default export */ __webpack_exports__["a"] = (Validation);
-
-/***/ }),
-
-/***/ 13:
+/***/ 10:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7264,7 +7203,7 @@ var index_esm = {
 
 /***/ }),
 
-/***/ 14:
+/***/ 11:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7522,20 +7461,1731 @@ var index_esm = {
 
 /***/ }),
 
-/***/ 269:
+/***/ 15:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(270);
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(16)
+/* template */
+var __vue_template__ = __webpack_require__(34)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\_PlayQuiz.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2b49ecfc", Component.options)
+  } else {
+    hotAPI.reload("data-v-2b49ecfc", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
 
 
 /***/ }),
 
-/***/ 270:
+/***/ 16:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Play__ = __webpack_require__(271);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Question__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Question___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Question__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    components: {
+        'vue-question': __WEBPACK_IMPORTED_MODULE_0__Question___default.a
+    },
+
+    props: {
+        record: { required: true },
+        user_answers: { required: true },
+        current: { required: true }
+    },
+
+    computed: {
+        questions: function questions() {
+            return this.record.questions;
+        },
+        current_question: function current_question() {
+            return this.questions[this.current];
+        },
+        current_user_answer: function current_user_answer() {
+            var _this = this;
+
+            return _.find(this.user_answers, function (answer) {
+                return answer.question_id == _this.current_question.id;
+            });
+        }
+    },
+
+    methods: {
+        onUserAnswer: function onUserAnswer(e) {
+            this.$emit('user-answer', e);
+        }
+    },
+
+    name: 'play-quiz'
+});
+
+/***/ }),
+
+/***/ 17:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(18)
+/* template */
+var __vue_template__ = __webpack_require__(33)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\_Question.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4834773f", Component.options)
+  } else {
+    hotAPI.reload("data-v-4834773f", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 18:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Radio__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Radio___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Radio__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Check__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Check___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Check__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Match__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Match___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Match__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Text__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Text___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__Text__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    components: {
+        'vue-answer-radio': __WEBPACK_IMPORTED_MODULE_0__Radio___default.a,
+        'vue-answer-check': __WEBPACK_IMPORTED_MODULE_1__Check___default.a,
+        'vue-answer-match': __WEBPACK_IMPORTED_MODULE_2__Match___default.a,
+        'vue-answer-text': __WEBPACK_IMPORTED_MODULE_3__Text___default.a
+    },
+
+    props: {
+        question: { required: true },
+        total: { required: true },
+        user_answer: { required: true },
+        current: { required: true }
+    },
+
+    computed: {
+        percent: function percent() {
+            var r = (this.current + 1) * 100 / this.total;
+            return r.toFixed(2);
+        }
+    },
+
+    methods: {
+        onUserAnswer: function onUserAnswer(e) {
+            this.$emit('user-answer', e);
+        }
+    },
+
+    mounted: function mounted() {
+        var i = setInterval(function () {
+            if ($('#quiz-detail-container').length == 1) {
+                clearInterval(i);
+                $.scrollTo('#quiz-detail-container', 1000);
+            }
+        }, 10);
+    },
+
+
+    name: 'question'
+});
+
+/***/ }),
+
+/***/ 19:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(20)
+/* template */
+var __vue_template__ = __webpack_require__(21)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\__Radio.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-115d7755", Component.options)
+  } else {
+    hotAPI.reload("data-v-115d7755", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 2:
+/***/ (function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
+}
+
+
+/***/ }),
+
+/***/ 20:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__boot_modules_jquery_ICheck_js__ = __webpack_require__(4);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    props: {
+        id: { required: true },
+        question: { required: true },
+        user_answer: { required: true }
+    },
+
+    computed: {
+        answers: function answers() {
+            return this.question.answers;
+        }
+    },
+
+    data: function data() {
+        return {
+            selected: '',
+            icheck: null
+        };
+    },
+
+
+    methods: {
+        onRadioClick: function onRadioClick(jq_option) {
+            var _this = this;
+
+            var vm = this,
+                id = jq_option.attr('id'),
+                value = $('#' + vm.id + ' #' + id).val();
+            setTimeout(function () {
+                if (_this.selected == value) {
+                    _this.selected = '';
+                    $('#' + vm.id + ' #' + id).iCheck('uncheck');
+                    $('#' + vm.id + ' #' + id).removeAttr('checked').iCheck('update');
+                } else {
+                    _this.selected = value;
+                }
+                _this.$emit('user-answer', {
+                    question_id: _this.question.id,
+                    answer: _this.selected
+                });
+            }, 10);
+        },
+        iCheck: function iCheck() {
+            var _this2 = this;
+
+            var vm = this,
+                i = setInterval(function () {
+                var selector = '#' + vm.id + ' #listview-radio-question-' + _this2.question.id + ' label.radio-button-question input';
+                if ($(selector).length == vm.answers.length) {
+                    clearInterval(i);
+                    var _icheck = new __WEBPACK_IMPORTED_MODULE_0__boot_modules_jquery_ICheck_js__["a" /* default */](selector);
+                    vm.icheck = _icheck.create();
+                    vm.icheck.on('ifClicked', function (event) {
+                        vm.onRadioClick($(this));
+                    });
+                }
+            }, 10);
+        }
+    },
+
+    mounted: function mounted() {
+        this.iCheck();
+    },
+
+
+    name: 'question-answers-radio'
+});
+
+/***/ }),
+
+/***/ 21:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "radio-answer-container", attrs: { id: _vm.id } },
+    [
+      _c(
+        "ul",
+        {
+          staticClass: "listview-radio-question",
+          attrs: { id: "listview-radio-question-" + _vm.question.id }
+        },
+        _vm._l(_vm.answers, function(answer) {
+          return _c("li", [
+            _c("label", { staticClass: "radio-button-question" }, [
+              _c("input", {
+                attrs: {
+                  name: "question-" + _vm.question.id,
+                  id: "answer-question-" + answer.id,
+                  type: "radio"
+                },
+                domProps: {
+                  value: answer.value,
+                  checked: answer.value == _vm.user_answer.answer
+                }
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "label-text" }, [
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(answer.caption) +
+                    "\n                    "
+                )
+              ])
+            ])
+          ])
+        })
+      )
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-115d7755", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 22:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(23)
+/* template */
+var __vue_template__ = __webpack_require__(24)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\__Check.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-62f3f9e2", Component.options)
+  } else {
+    hotAPI.reload("data-v-62f3f9e2", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 23:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__boot_modules_jquery_ICheck_js__ = __webpack_require__(4);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    props: {
+        id: { required: true },
+        question: { required: true },
+        user_answer: { required: true }
+    },
+
+    computed: {
+        answers: function answers() {
+            return this.question.answers;
+        },
+        user_selected: function user_selected() {
+            return this.user_answer.answer;
+        }
+    },
+
+    data: function data() {
+        return {
+            selected: [],
+            icheck: null
+        };
+    },
+
+
+    methods: {
+        existsInUserAnswer: function existsInUserAnswer(value, id) {
+            var r = _.find(this.user_selected, function (item) {
+                return item.selected == value && item.answer_id == id;
+            });
+            return r != undefined;
+        },
+        existsInSelected: function existsInSelected(value, id) {
+            var r = _.find(this.selected, function (item) {
+                return item.selected == value && item.answer_id == id;
+            });
+            return r != undefined;
+        },
+        addToSelected: function addToSelected(value, id) {
+            if (!this.existsInSelected(value, id)) {
+                this.selected.push({
+                    answer_id: id,
+                    selected: value
+                });
+            }
+        },
+        removeFromSelected: function removeFromSelected(value, id) {
+            if (this.existsInSelected(value, id)) {
+                _.remove(this.selected, function (item) {
+                    return item.selected == value && item.answer_id == id;
+                });
+            }
+            this.selected = this.selected;
+        },
+        onClickCheckbox: function onClickCheckbox(jqObject) {
+            var _this = this;
+
+            var id = jqObject.attr('id'),
+                value = $('#' + id).val(),
+                answer_id = jqObject.data('answer_id');
+            setTimeout(function () {
+                if (_this.existsInSelected(value, answer_id)) {
+                    $('#' + id).iCheck('uncheck');
+                    $('#' + id).removeAttr('checked').iCheck('update');
+                    _this.removeFromSelected(value, answer_id);
+                } else {
+                    _this.addToSelected(value, answer_id);
+                }
+                _this.$emit('user-answer', {
+                    question_id: _this.question.id,
+                    answer: _this.selected
+                });
+            }, 10);
+        },
+        iCheck: function iCheck() {
+            var _this2 = this;
+
+            var vm = this,
+                i = setInterval(function () {
+                var selector = '#' + vm.id + ' #listview-check-question-' + _this2.question.id + ' label.check-button-question input';
+                if ($(selector).length == vm.answers.length) {
+                    clearInterval(i);
+                    var _icheck = new __WEBPACK_IMPORTED_MODULE_0__boot_modules_jquery_ICheck_js__["a" /* default */](selector);
+                    vm.icheck = _icheck.create();
+                    vm.icheck.on('ifClicked', function (event) {
+                        vm.onClickCheckbox($(this));
+                    });
+                }
+            }, 10);
+        }
+    },
+
+    mounted: function mounted() {
+        this.iCheck();
+    },
+
+
+    name: 'answers-check'
+});
+
+/***/ }),
+
+/***/ 24:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "check-answer-container", attrs: { id: _vm.id } },
+    [
+      _c(
+        "ul",
+        {
+          staticClass: "listview-check-question",
+          attrs: { id: "listview-check-question-" + _vm.question.id }
+        },
+        _vm._l(_vm.answers, function(answer) {
+          return _c("li", [
+            _c("label", { staticClass: "check-button-question" }, [
+              _c("input", {
+                attrs: {
+                  name: "question-" + _vm.question.id,
+                  id: "answer-" + answer.id,
+                  "data-answer_id": answer.id,
+                  type: "checkbox"
+                },
+                domProps: {
+                  value: answer.value,
+                  checked: _vm.existsInUserAnswer(answer.value, answer.id)
+                }
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "label-text" }, [
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(answer.caption) +
+                    "\n                    "
+                )
+              ])
+            ])
+          ])
+        })
+      )
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-62f3f9e2", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 25:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(26)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(28)
+/* template */
+var __vue_template__ = __webpack_require__(29)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-6fcb481f"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\__Match.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6fcb481f", Component.options)
+  } else {
+    hotAPI.reload("data-v-6fcb481f", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 26:
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(27);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("295c1e74", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6fcb481f\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./__Match.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6fcb481f\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./__Match.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ 27:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.is-draggable[data-v-6fcb481f] {\n  /*background-color: red;\n    color: #fff;*/\n}\n.is-droppable[data-v-6fcb481f] {\n  /*background-color: green;*/\n}\n.is-snaper[data-v-6fcb481f] {\n  /* height: 20px;\n    border:1px solid red;*/\n}\n.is-hovered[data-v-6fcb481f] {\n  /* border:2px solid #000;*/\n}\n.is-dropped[data-v-6fcb481f] {\n  /* border:2px solid yellow;*/\n}\n.is-activate[data-v-6fcb481f] {\n  /* background-color: yellow;*/\n}\n.is-dragged[data-v-6fcb481f] {\n  font-weight: bold;\n  color: #000;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ 28:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    props: {
+        id: { required: true },
+        question: { required: true },
+        user_answer: { required: true }
+    },
+
+    computed: {
+        answers: function answers() {
+            return this.question.answers;
+        }
+    },
+
+    data: function data() {
+        return {
+            // selected: '',
+            // icheck: null,
+            responses: [],
+            dragged: null
+        };
+    },
+
+
+    methods: {
+        shuffleResponses: function shuffleResponses() {
+            this.responses = _.shuffle(this.answers);
+            _.each(this.responses, function (response) {
+                response['status'] = 'initial';
+            });
+        },
+        makeResponse: function makeResponse() {
+            var r = [];
+            $('li.has-response').each(function (i) {
+                var jq = $(this).find('div'),
+                    response_id = null;
+                if (jq.length == 1) {
+                    response_id = jq.data('response-id');
+                }
+                r.push({
+                    answer_id: $(this).data('answer-id'),
+                    response_id: response_id
+                });
+            });
+            return r;
+        },
+        getAnswerUserResponse: function getAnswerUserResponse(answer) {
+            var r = _.find(this.user_answer.answer, function (item) {
+                return item.answer_id == answer.id;
+            });
+            if (r == undefined || r.response_id == null) {
+                return null;
+            }
+            return _.find(this.question.answers, function (answer) {
+                return answer.id == r.response_id;
+            });
+        },
+        responseExists: function responseExists(response) {
+            var r = _.find(this.user_answer.answer, function (item) {
+                return item.response_id == response.id;
+            });
+            return r != undefined;
+        },
+        draggable: function draggable() {
+            var vm = this;
+            $('.is-draggable').draggable({
+                containment: '#match-container',
+                cursor: 'move',
+                opacity: 0.5,
+                zIndex: 100,
+                helper: 'clone',
+                revert: 'invalid',
+                revertDuration: 500,
+                start: function start(e, ui) {
+                    vm.dragged = $(this).closest('li');
+                    var response_id = $(this).data('response-id');
+                    $(this).addClass('is-dragged');
+                    var response = _.find(vm.responses, function (response) {
+                        return response.id == response_id;
+                    });
+                    response.status = 'start';
+                    vm.$forceUpdate();
+                    console.log('(' + response.value + ', ' + response_id + ', start) >> ');
+                },
+                stop: function stop(e, ui) {
+                    var response_id = $(this).data('response-id');
+                    var response = _.find(vm.responses, function (response) {
+                        return response.id == response_id;
+                    });
+                    $(this).removeClass('is-dragged');
+                    if (response.status != 'drop') {
+                        response.status = 'initial';
+                    }
+                    vm.$forceUpdate();
+                    console.log('(' + response.value + ', ' + response_id + ', stop) >> ');
+                },
+                drag: function drag(e, ui) {}
+            });
+        },
+        droppable: function droppable() {
+            var vm = this;
+            $('.is-droppable').droppable({
+                accept: function accept(droppables) {
+                    var id = $(this).attr('id');
+                    var answer_id = $(this).data('answer-id');
+                    var has_answer = $(this).find('div.is-draggable');
+                    return has_answer.length == 0;
+                },
+                tolerance: 'pointer',
+                hoverClass: 'is-hovered',
+                activeClass: 'is-activate',
+
+                drop: function drop(e, ui) {
+                    var response_id = ui.draggable.data('response-id');
+                    var response = _.find(vm.responses, function (response) {
+                        return response.id == response_id;
+                    });
+                    response.status = 'drop';
+                    vm.$forceUpdate();
+                    console.log('(' + response.value + ', ' + response_id + ', drop) >> ');
+                    $(this).removeClass('is-hovered').addClass('is-dropped').append(ui.draggable);
+                    console.log('Destroy...');
+                    $('.is-droppable').droppable('destroy');
+                    vm.dragged.addClass('is-droppable');
+                    setTimeout(function () {
+                        console.log('Recreate...' + $('.is-droppable').length);
+                        vm.droppable();
+                        vm.$emit('user-answer', {
+                            question_id: vm.question.id,
+                            answer: vm.makeResponse()
+                        });
+                    }, 50);
+                }
+            });
+        },
+        makeDraggable: function makeDraggable() {
+            var vm = this,
+                i = setInterval(function () {
+                if ($('.is-draggable').length && $('.is-droppable').length) {
+                    clearInterval(i);
+                    vm.draggable();
+                    vm.droppable();
+                }
+            }, 100);
+        }
+    },
+
+    mounted: function mounted() {
+        this.shuffleResponses();
+        this.makeDraggable();
+    },
+
+
+    name: 'answers-match'
+});
+
+/***/ }),
+
+/***/ 29:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "match-container row", attrs: { id: "match-container" } },
+    [
+      _c("div", { staticClass: "col-xs-12 col-sm-4" }, [
+        _c(
+          "ul",
+          { staticClass: "list-group" },
+          _vm._l(_vm.answers, function(answer) {
+            return _c("li", { staticClass: "list-group-item" }, [
+              _vm._v(
+                "\n                    " +
+                  _vm._s(answer.caption) +
+                  "\n                "
+              )
+            ])
+          })
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-xs-12 col-sm-4" }, [
+        _c(
+          "ul",
+          { staticClass: "list-group" },
+          _vm._l(_vm.answers, function(answer) {
+            return _c(
+              "li",
+              {
+                staticClass:
+                  "list-group-item is-snaper is-droppable has-response",
+                attrs: {
+                  id: "is-droppable-" + answer.id,
+                  "data-answer-id": answer.id
+                }
+              },
+              [
+                _vm.getAnswerUserResponse(answer) != null
+                  ? _c(
+                      "div",
+                      {
+                        staticClass: "is-draggable",
+                        attrs: {
+                          "data-response-id": _vm.getAnswerUserResponse(answer)
+                            .id
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(_vm.getAnswerUserResponse(answer).value) +
+                            "\n                    "
+                        )
+                      ]
+                    )
+                  : _vm._e()
+              ]
+            )
+          })
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-xs-12 col-sm-4" }, [
+        _c(
+          "ul",
+          { staticClass: "list-group" },
+          _vm._l(_vm.responses, function(response) {
+            return _c("li", { staticClass: "list-group-item" }, [
+              !_vm.responseExists(response)
+                ? _c(
+                    "div",
+                    {
+                      staticClass: "is-draggable",
+                      attrs: { "data-response-id": response.id }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(response.value) +
+                          "\n                    "
+                      )
+                    ]
+                  )
+                : _vm._e()
+            ])
+          })
+        )
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6fcb481f", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 3:
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+  Modified by Evan You @yyx990803
+*/
+
+var hasDocument = typeof document !== 'undefined'
+
+if (typeof DEBUG !== 'undefined' && DEBUG) {
+  if (!hasDocument) {
+    throw new Error(
+    'vue-style-loader cannot be used in a non-browser environment. ' +
+    "Use { target: 'node' } in your Webpack config to indicate a server-rendering environment."
+  ) }
+}
+
+var listToStyles = __webpack_require__(7)
+
+/*
+type StyleObject = {
+  id: number;
+  parts: Array<StyleObjectPart>
+}
+
+type StyleObjectPart = {
+  css: string;
+  media: string;
+  sourceMap: ?string
+}
+*/
+
+var stylesInDom = {/*
+  [id: number]: {
+    id: number,
+    refs: number,
+    parts: Array<(obj?: StyleObjectPart) => void>
+  }
+*/}
+
+var head = hasDocument && (document.head || document.getElementsByTagName('head')[0])
+var singletonElement = null
+var singletonCounter = 0
+var isProduction = false
+var noop = function () {}
+var options = null
+var ssrIdKey = 'data-vue-ssr-id'
+
+// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+// tags it will allow on a page
+var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\b/.test(navigator.userAgent.toLowerCase())
+
+module.exports = function (parentId, list, _isProduction, _options) {
+  isProduction = _isProduction
+
+  options = _options || {}
+
+  var styles = listToStyles(parentId, list)
+  addStylesToDom(styles)
+
+  return function update (newList) {
+    var mayRemove = []
+    for (var i = 0; i < styles.length; i++) {
+      var item = styles[i]
+      var domStyle = stylesInDom[item.id]
+      domStyle.refs--
+      mayRemove.push(domStyle)
+    }
+    if (newList) {
+      styles = listToStyles(parentId, newList)
+      addStylesToDom(styles)
+    } else {
+      styles = []
+    }
+    for (var i = 0; i < mayRemove.length; i++) {
+      var domStyle = mayRemove[i]
+      if (domStyle.refs === 0) {
+        for (var j = 0; j < domStyle.parts.length; j++) {
+          domStyle.parts[j]()
+        }
+        delete stylesInDom[domStyle.id]
+      }
+    }
+  }
+}
+
+function addStylesToDom (styles /* Array<StyleObject> */) {
+  for (var i = 0; i < styles.length; i++) {
+    var item = styles[i]
+    var domStyle = stylesInDom[item.id]
+    if (domStyle) {
+      domStyle.refs++
+      for (var j = 0; j < domStyle.parts.length; j++) {
+        domStyle.parts[j](item.parts[j])
+      }
+      for (; j < item.parts.length; j++) {
+        domStyle.parts.push(addStyle(item.parts[j]))
+      }
+      if (domStyle.parts.length > item.parts.length) {
+        domStyle.parts.length = item.parts.length
+      }
+    } else {
+      var parts = []
+      for (var j = 0; j < item.parts.length; j++) {
+        parts.push(addStyle(item.parts[j]))
+      }
+      stylesInDom[item.id] = { id: item.id, refs: 1, parts: parts }
+    }
+  }
+}
+
+function createStyleElement () {
+  var styleElement = document.createElement('style')
+  styleElement.type = 'text/css'
+  head.appendChild(styleElement)
+  return styleElement
+}
+
+function addStyle (obj /* StyleObjectPart */) {
+  var update, remove
+  var styleElement = document.querySelector('style[' + ssrIdKey + '~="' + obj.id + '"]')
+
+  if (styleElement) {
+    if (isProduction) {
+      // has SSR styles and in production mode.
+      // simply do nothing.
+      return noop
+    } else {
+      // has SSR styles but in dev mode.
+      // for some reason Chrome can't handle source map in server-rendered
+      // style tags - source maps in <style> only works if the style tag is
+      // created and inserted dynamically. So we remove the server rendered
+      // styles and inject new ones.
+      styleElement.parentNode.removeChild(styleElement)
+    }
+  }
+
+  if (isOldIE) {
+    // use singleton mode for IE9.
+    var styleIndex = singletonCounter++
+    styleElement = singletonElement || (singletonElement = createStyleElement())
+    update = applyToSingletonTag.bind(null, styleElement, styleIndex, false)
+    remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true)
+  } else {
+    // use multi-style-tag mode in all other cases
+    styleElement = createStyleElement()
+    update = applyToTag.bind(null, styleElement)
+    remove = function () {
+      styleElement.parentNode.removeChild(styleElement)
+    }
+  }
+
+  update(obj)
+
+  return function updateStyle (newObj /* StyleObjectPart */) {
+    if (newObj) {
+      if (newObj.css === obj.css &&
+          newObj.media === obj.media &&
+          newObj.sourceMap === obj.sourceMap) {
+        return
+      }
+      update(obj = newObj)
+    } else {
+      remove()
+    }
+  }
+}
+
+var replaceText = (function () {
+  var textStore = []
+
+  return function (index, replacement) {
+    textStore[index] = replacement
+    return textStore.filter(Boolean).join('\n')
+  }
+})()
+
+function applyToSingletonTag (styleElement, index, remove, obj) {
+  var css = remove ? '' : obj.css
+
+  if (styleElement.styleSheet) {
+    styleElement.styleSheet.cssText = replaceText(index, css)
+  } else {
+    var cssNode = document.createTextNode(css)
+    var childNodes = styleElement.childNodes
+    if (childNodes[index]) styleElement.removeChild(childNodes[index])
+    if (childNodes.length) {
+      styleElement.insertBefore(cssNode, childNodes[index])
+    } else {
+      styleElement.appendChild(cssNode)
+    }
+  }
+}
+
+function applyToTag (styleElement, obj) {
+  var css = obj.css
+  var media = obj.media
+  var sourceMap = obj.sourceMap
+
+  if (media) {
+    styleElement.setAttribute('media', media)
+  }
+  if (options.ssrId) {
+    styleElement.setAttribute(ssrIdKey, obj.id)
+  }
+
+  if (sourceMap) {
+    // https://developer.chrome.com/devtools/docs/javascript-debugging
+    // this makes source maps inside style tags work properly in Chrome
+    css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */'
+    // http://stackoverflow.com/a/26603875
+    css += '\n/*# sourceMappingURL=data:application/json;base64,' + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + ' */'
+  }
+
+  if (styleElement.styleSheet) {
+    styleElement.styleSheet.cssText = css
+  } else {
+    while (styleElement.firstChild) {
+      styleElement.removeChild(styleElement.firstChild)
+    }
+    styleElement.appendChild(document.createTextNode(css))
+  }
+}
+
+
+/***/ }),
+
+/***/ 30:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(31)
+/* template */
+var __vue_template__ = __webpack_require__(32)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\__Text.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-089aa2c3", Component.options)
+  } else {
+    hotAPI.reload("data-v-089aa2c3", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 31:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    props: {
+        id: { required: true },
+        question: { required: true },
+        user_answer: { required: true }
+    },
+
+    computed: {
+        answer: function answer() {
+            return this.question.answers[0];
+        },
+        user_selected: function user_selected() {
+            return this.user_answer.answer;
+        }
+    },
+
+    data: function data() {
+        return {
+            value: ''
+        };
+    },
+
+
+    methods: {
+        onChangeValue: function onChangeValue(e) {
+            this.$emit('user-answer', {
+                question_id: this.question.id,
+                answer: this.value
+            });
+        }
+    },
+
+    mounted: function mounted() {
+        this.value = this.user_selected;
+        var vm = this,
+            i = setInterval(function () {
+            if ($('div#' + vm.id + ' input').length == 1) {
+                $('div#' + vm.id + ' input').focus();
+            }
+        }, 10);
+    },
+
+
+    name: 'answers-text'
+});
+
+/***/ }),
+
+/***/ 32:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "text-answer-container", attrs: { id: _vm.id } },
+    [
+      _c("vue-textbox", {
+        attrs: { field: "value", placeholder: _vm.answer.caption },
+        on: { input: _vm.onChangeValue },
+        model: {
+          value: _vm.value,
+          callback: function($$v) {
+            _vm.value = $$v
+          },
+          expression: "value"
+        }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-089aa2c3", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 33:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("section", { staticClass: "maincontent" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-xs-8" }, [
+          _c("h4", { staticClass: "question-number" }, [
+            _vm._v(
+              "\n                    Question " +
+                _vm._s(_vm.question.order_no) +
+                " of " +
+                _vm._s(_vm.total) +
+                "\n                "
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-xs-4 text-right" }, [
+          _c("h4", [
+            _vm._v(
+              "\n                    " +
+                _vm._s(_vm.question.points) +
+                " points\n                "
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-xs-12" }, [
+          _c("div", { staticClass: "progress" }, [
+            _c(
+              "div",
+              {
+                staticClass: "progress-bar",
+                style: {
+                  width: _vm.percent + "%"
+                },
+                attrs: {
+                  role: "progressbar",
+                  "aria-valuenow": _vm.percent,
+                  "aria-valuemin": "0",
+                  "aria-valuemax": "100"
+                }
+              },
+              [_c("span", [_vm._v(_vm._s(_vm.percent) + " %")])]
+            )
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "section",
+      { staticClass: "maincontent", attrs: { id: "question-text-section" } },
+      [_c("p", { domProps: { innerHTML: _vm._s(_vm.question.question) } })]
+    ),
+    _vm._v(" "),
+    _c(
+      "section",
+      { staticClass: "maincontent", attrs: { id: "question-options" } },
+      [
+        _c("vue-answer-" + _vm.question.type, {
+          key: "question-" + _vm.question.id,
+          tag: "component",
+          attrs: {
+            id: "question-" + _vm.question.id,
+            question: _vm.question,
+            user_answer: _vm.user_answer
+          },
+          on: { "user-answer": _vm.onUserAnswer }
+        })
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4834773f", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 334:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(335);
+
+
+/***/ }),
+
+/***/ 335:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Play__ = __webpack_require__(336);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Play___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_Play__);
 
 
@@ -7552,15 +9202,15 @@ new window.Vue({
 
 /***/ }),
 
-/***/ 271:
+/***/ 336:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(272)
+var __vue_script__ = __webpack_require__(337)
 /* template */
-var __vue_template__ = __webpack_require__(325)
+var __vue_template__ = __webpack_require__(338)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -7600,16 +9250,16 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 272:
+/***/ 337:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__quiz_detail_components_PlayQuiz__ = __webpack_require__(273);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__quiz_detail_components_PlayQuiz__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__quiz_detail_components_PlayQuiz___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__quiz_detail_components_PlayQuiz__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__quiz_detail_components_ResponseReport__ = __webpack_require__(293);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__quiz_detail_components_ResponseReport__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__quiz_detail_components_ResponseReport___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__quiz_detail_components_ResponseReport__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__boot_modules_validation_Validation__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__boot_modules_validation_Validation__ = __webpack_require__(8);
 //
 //
 //
@@ -7984,3537 +9634,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 273:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(274)
-/* template */
-var __vue_template__ = __webpack_require__(292)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\_PlayQuiz.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2b49ecfc", Component.options)
-  } else {
-    hotAPI.reload("data-v-2b49ecfc", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 274:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Question__ = __webpack_require__(275);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Question___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Question__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-    components: {
-        'vue-question': __WEBPACK_IMPORTED_MODULE_0__Question___default.a
-    },
-
-    props: {
-        record: { required: true },
-        user_answers: { required: true },
-        current: { required: true }
-    },
-
-    computed: {
-        questions: function questions() {
-            return this.record.questions;
-        },
-        current_question: function current_question() {
-            return this.questions[this.current];
-        },
-        current_user_answer: function current_user_answer() {
-            var _this = this;
-
-            return _.find(this.user_answers, function (answer) {
-                return answer.question_id == _this.current_question.id;
-            });
-        }
-    },
-
-    methods: {
-        onUserAnswer: function onUserAnswer(e) {
-            this.$emit('user-answer', e);
-        }
-    },
-
-    name: 'play-quiz'
-});
-
-/***/ }),
-
-/***/ 275:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(276)
-/* template */
-var __vue_template__ = __webpack_require__(291)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\_Question.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4834773f", Component.options)
-  } else {
-    hotAPI.reload("data-v-4834773f", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 276:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Radio__ = __webpack_require__(277);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Radio___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Radio__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Check__ = __webpack_require__(280);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Check___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Check__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Match__ = __webpack_require__(283);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Match___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Match__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Text__ = __webpack_require__(288);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Text___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__Text__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-    components: {
-        'vue-answer-radio': __WEBPACK_IMPORTED_MODULE_0__Radio___default.a,
-        'vue-answer-check': __WEBPACK_IMPORTED_MODULE_1__Check___default.a,
-        'vue-answer-match': __WEBPACK_IMPORTED_MODULE_2__Match___default.a,
-        'vue-answer-text': __WEBPACK_IMPORTED_MODULE_3__Text___default.a
-    },
-
-    props: {
-        question: { required: true },
-        total: { required: true },
-        user_answer: { required: true },
-        current: { required: true }
-    },
-
-    computed: {
-        percent: function percent() {
-            var r = (this.current + 1) * 100 / this.total;
-            return r.toFixed(2);
-        }
-    },
-
-    methods: {
-        onUserAnswer: function onUserAnswer(e) {
-            this.$emit('user-answer', e);
-        }
-    },
-
-    mounted: function mounted() {
-        var i = setInterval(function () {
-            if ($('#quiz-detail-container').length == 1) {
-                clearInterval(i);
-                $.scrollTo('#quiz-detail-container', 1000);
-            }
-        }, 10);
-    },
-
-
-    name: 'question'
-});
-
-/***/ }),
-
-/***/ 277:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(278)
-/* template */
-var __vue_template__ = __webpack_require__(279)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\__Radio.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-115d7755", Component.options)
-  } else {
-    hotAPI.reload("data-v-115d7755", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 278:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__boot_modules_jquery_ICheck_js__ = __webpack_require__(7);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-    props: {
-        id: { required: true },
-        question: { required: true },
-        user_answer: { required: true }
-    },
-
-    computed: {
-        answers: function answers() {
-            return this.question.answers;
-        }
-    },
-
-    data: function data() {
-        return {
-            selected: '',
-            icheck: null
-        };
-    },
-
-
-    methods: {
-        onRadioClick: function onRadioClick(jq_option) {
-            var _this = this;
-
-            var vm = this,
-                id = jq_option.attr('id'),
-                value = $('#' + vm.id + ' #' + id).val();
-            setTimeout(function () {
-                if (_this.selected == value) {
-                    _this.selected = '';
-                    $('#' + vm.id + ' #' + id).iCheck('uncheck');
-                    $('#' + vm.id + ' #' + id).removeAttr('checked').iCheck('update');
-                } else {
-                    _this.selected = value;
-                }
-                _this.$emit('user-answer', {
-                    question_id: _this.question.id,
-                    answer: _this.selected
-                });
-            }, 10);
-        },
-        iCheck: function iCheck() {
-            var _this2 = this;
-
-            var vm = this,
-                i = setInterval(function () {
-                var selector = '#' + vm.id + ' #listview-radio-question-' + _this2.question.id + ' label.radio-button-question input';
-                if ($(selector).length == vm.answers.length) {
-                    clearInterval(i);
-                    var _icheck = new __WEBPACK_IMPORTED_MODULE_0__boot_modules_jquery_ICheck_js__["a" /* default */](selector);
-                    vm.icheck = _icheck.create();
-                    vm.icheck.on('ifClicked', function (event) {
-                        vm.onRadioClick($(this));
-                    });
-                }
-            }, 10);
-        }
-    },
-
-    mounted: function mounted() {
-        this.iCheck();
-    },
-
-
-    name: 'question-answers-radio'
-});
-
-/***/ }),
-
-/***/ 279:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "radio-answer-container", attrs: { id: _vm.id } },
-    [
-      _c(
-        "ul",
-        {
-          staticClass: "listview-radio-question",
-          attrs: { id: "listview-radio-question-" + _vm.question.id }
-        },
-        _vm._l(_vm.answers, function(answer) {
-          return _c("li", [
-            _c("label", { staticClass: "radio-button-question" }, [
-              _c("input", {
-                attrs: {
-                  name: "question-" + _vm.question.id,
-                  id: "answer-question-" + answer.id,
-                  type: "radio"
-                },
-                domProps: {
-                  value: answer.value,
-                  checked: answer.value == _vm.user_answer.answer
-                }
-              }),
-              _vm._v(" "),
-              _c("span", { staticClass: "label-text" }, [
-                _vm._v(
-                  "\n                        " +
-                    _vm._s(answer.caption) +
-                    "\n                    "
-                )
-              ])
-            ])
-          ])
-        })
-      )
-    ]
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-115d7755", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 280:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(281)
-/* template */
-var __vue_template__ = __webpack_require__(282)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\__Check.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-62f3f9e2", Component.options)
-  } else {
-    hotAPI.reload("data-v-62f3f9e2", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 281:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__boot_modules_jquery_ICheck_js__ = __webpack_require__(7);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-    props: {
-        id: { required: true },
-        question: { required: true },
-        user_answer: { required: true }
-    },
-
-    computed: {
-        answers: function answers() {
-            return this.question.answers;
-        },
-        user_selected: function user_selected() {
-            return this.user_answer.answer;
-        }
-    },
-
-    data: function data() {
-        return {
-            selected: [],
-            icheck: null
-        };
-    },
-
-
-    methods: {
-        existsInUserAnswer: function existsInUserAnswer(value, id) {
-            var r = _.find(this.user_selected, function (item) {
-                return item.selected == value && item.answer_id == id;
-            });
-            return r != undefined;
-        },
-        existsInSelected: function existsInSelected(value, id) {
-            var r = _.find(this.selected, function (item) {
-                return item.selected == value && item.answer_id == id;
-            });
-            return r != undefined;
-        },
-        addToSelected: function addToSelected(value, id) {
-            if (!this.existsInSelected(value, id)) {
-                this.selected.push({
-                    answer_id: id,
-                    selected: value
-                });
-            }
-        },
-        removeFromSelected: function removeFromSelected(value, id) {
-            if (this.existsInSelected(value, id)) {
-                _.remove(this.selected, function (item) {
-                    return item.selected == value && item.answer_id == id;
-                });
-            }
-            this.selected = this.selected;
-        },
-        onClickCheckbox: function onClickCheckbox(jqObject) {
-            var _this = this;
-
-            var id = jqObject.attr('id'),
-                value = $('#' + id).val(),
-                answer_id = jqObject.data('answer_id');
-            setTimeout(function () {
-                if (_this.existsInSelected(value, answer_id)) {
-                    $('#' + id).iCheck('uncheck');
-                    $('#' + id).removeAttr('checked').iCheck('update');
-                    _this.removeFromSelected(value, answer_id);
-                } else {
-                    _this.addToSelected(value, answer_id);
-                }
-                _this.$emit('user-answer', {
-                    question_id: _this.question.id,
-                    answer: _this.selected
-                });
-            }, 10);
-        },
-        iCheck: function iCheck() {
-            var _this2 = this;
-
-            var vm = this,
-                i = setInterval(function () {
-                var selector = '#' + vm.id + ' #listview-check-question-' + _this2.question.id + ' label.check-button-question input';
-                if ($(selector).length == vm.answers.length) {
-                    clearInterval(i);
-                    var _icheck = new __WEBPACK_IMPORTED_MODULE_0__boot_modules_jquery_ICheck_js__["a" /* default */](selector);
-                    vm.icheck = _icheck.create();
-                    vm.icheck.on('ifClicked', function (event) {
-                        vm.onClickCheckbox($(this));
-                    });
-                }
-            }, 10);
-        }
-    },
-
-    mounted: function mounted() {
-        this.iCheck();
-    },
-
-
-    name: 'answers-check'
-});
-
-/***/ }),
-
-/***/ 282:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "check-answer-container", attrs: { id: _vm.id } },
-    [
-      _c(
-        "ul",
-        {
-          staticClass: "listview-check-question",
-          attrs: { id: "listview-check-question-" + _vm.question.id }
-        },
-        _vm._l(_vm.answers, function(answer) {
-          return _c("li", [
-            _c("label", { staticClass: "check-button-question" }, [
-              _c("input", {
-                attrs: {
-                  name: "question-" + _vm.question.id,
-                  id: "answer-" + answer.id,
-                  "data-answer_id": answer.id,
-                  type: "checkbox"
-                },
-                domProps: {
-                  value: answer.value,
-                  checked: _vm.existsInUserAnswer(answer.value, answer.id)
-                }
-              }),
-              _vm._v(" "),
-              _c("span", { staticClass: "label-text" }, [
-                _vm._v(
-                  "\n                        " +
-                    _vm._s(answer.caption) +
-                    "\n                    "
-                )
-              ])
-            ])
-          ])
-        })
-      )
-    ]
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-62f3f9e2", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 283:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(284)
-}
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(286)
-/* template */
-var __vue_template__ = __webpack_require__(287)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-6fcb481f"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\__Match.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6fcb481f", Component.options)
-  } else {
-    hotAPI.reload("data-v-6fcb481f", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 284:
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(285);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(5)("295c1e74", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6fcb481f\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./__Match.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6fcb481f\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./__Match.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-
-/***/ 285:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(4)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.is-draggable[data-v-6fcb481f] {\n  /*background-color: red;\n    color: #fff;*/\n}\n.is-droppable[data-v-6fcb481f] {\n  /*background-color: green;*/\n}\n.is-snaper[data-v-6fcb481f] {\n  /* height: 20px;\n    border:1px solid red;*/\n}\n.is-hovered[data-v-6fcb481f] {\n  /* border:2px solid #000;*/\n}\n.is-dropped[data-v-6fcb481f] {\n  /* border:2px solid yellow;*/\n}\n.is-activate[data-v-6fcb481f] {\n  /* background-color: yellow;*/\n}\n.is-dragged[data-v-6fcb481f] {\n  font-weight: bold;\n  color: #000;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ 286:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-    props: {
-        id: { required: true },
-        question: { required: true },
-        user_answer: { required: true }
-    },
-
-    computed: {
-        answers: function answers() {
-            return this.question.answers;
-        }
-    },
-
-    data: function data() {
-        return {
-            // selected: '',
-            // icheck: null,
-            responses: [],
-            dragged: null
-        };
-    },
-
-
-    methods: {
-        shuffleResponses: function shuffleResponses() {
-            this.responses = _.shuffle(this.answers);
-            _.each(this.responses, function (response) {
-                response['status'] = 'initial';
-            });
-        },
-        makeResponse: function makeResponse() {
-            var r = [];
-            $('li.has-response').each(function (i) {
-                var jq = $(this).find('div'),
-                    response_id = null;
-                if (jq.length == 1) {
-                    response_id = jq.data('response-id');
-                }
-                r.push({
-                    answer_id: $(this).data('answer-id'),
-                    response_id: response_id
-                });
-            });
-            return r;
-        },
-        getAnswerUserResponse: function getAnswerUserResponse(answer) {
-            var r = _.find(this.user_answer.answer, function (item) {
-                return item.answer_id == answer.id;
-            });
-            if (r == undefined || r.response_id == null) {
-                return null;
-            }
-            return _.find(this.question.answers, function (answer) {
-                return answer.id == r.response_id;
-            });
-        },
-        responseExists: function responseExists(response) {
-            var r = _.find(this.user_answer.answer, function (item) {
-                return item.response_id == response.id;
-            });
-            return r != undefined;
-        },
-        draggable: function draggable() {
-            var vm = this;
-            $('.is-draggable').draggable({
-                containment: '#match-container',
-                cursor: 'move',
-                opacity: 0.5,
-                zIndex: 100,
-                helper: 'clone',
-                revert: 'invalid',
-                revertDuration: 500,
-                start: function start(e, ui) {
-                    vm.dragged = $(this).closest('li');
-                    var response_id = $(this).data('response-id');
-                    $(this).addClass('is-dragged');
-                    var response = _.find(vm.responses, function (response) {
-                        return response.id == response_id;
-                    });
-                    response.status = 'start';
-                    vm.$forceUpdate();
-                    console.log('(' + response.value + ', ' + response_id + ', start) >> ');
-                },
-                stop: function stop(e, ui) {
-                    var response_id = $(this).data('response-id');
-                    var response = _.find(vm.responses, function (response) {
-                        return response.id == response_id;
-                    });
-                    $(this).removeClass('is-dragged');
-                    if (response.status != 'drop') {
-                        response.status = 'initial';
-                    }
-                    vm.$forceUpdate();
-                    console.log('(' + response.value + ', ' + response_id + ', stop) >> ');
-                },
-                drag: function drag(e, ui) {}
-            });
-        },
-        droppable: function droppable() {
-            var vm = this;
-            $('.is-droppable').droppable({
-                accept: function accept(droppables) {
-                    var id = $(this).attr('id');
-                    var answer_id = $(this).data('answer-id');
-                    var has_answer = $(this).find('div.is-draggable');
-                    return has_answer.length == 0;
-                },
-                tolerance: 'pointer',
-                hoverClass: 'is-hovered',
-                activeClass: 'is-activate',
-
-                drop: function drop(e, ui) {
-                    var response_id = ui.draggable.data('response-id');
-                    var response = _.find(vm.responses, function (response) {
-                        return response.id == response_id;
-                    });
-                    response.status = 'drop';
-                    vm.$forceUpdate();
-                    console.log('(' + response.value + ', ' + response_id + ', drop) >> ');
-                    $(this).removeClass('is-hovered').addClass('is-dropped').append(ui.draggable);
-                    console.log('Destroy...');
-                    $('.is-droppable').droppable('destroy');
-                    vm.dragged.addClass('is-droppable');
-                    setTimeout(function () {
-                        console.log('Recreate...' + $('.is-droppable').length);
-                        vm.droppable();
-                        vm.$emit('user-answer', {
-                            question_id: vm.question.id,
-                            answer: vm.makeResponse()
-                        });
-                    }, 50);
-                }
-            });
-        },
-        makeDraggable: function makeDraggable() {
-            var vm = this,
-                i = setInterval(function () {
-                if ($('.is-draggable').length && $('.is-droppable').length) {
-                    clearInterval(i);
-                    vm.draggable();
-                    vm.droppable();
-                }
-            }, 100);
-        }
-    },
-
-    mounted: function mounted() {
-        this.shuffleResponses();
-        this.makeDraggable();
-    },
-
-
-    name: 'answers-match'
-});
-
-/***/ }),
-
-/***/ 287:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "match-container row", attrs: { id: "match-container" } },
-    [
-      _c("div", { staticClass: "col-xs-12 col-sm-4" }, [
-        _c(
-          "ul",
-          { staticClass: "list-group" },
-          _vm._l(_vm.answers, function(answer) {
-            return _c("li", { staticClass: "list-group-item" }, [
-              _vm._v(
-                "\n                    " +
-                  _vm._s(answer.caption) +
-                  "\n                "
-              )
-            ])
-          })
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-xs-12 col-sm-4" }, [
-        _c(
-          "ul",
-          { staticClass: "list-group" },
-          _vm._l(_vm.answers, function(answer) {
-            return _c(
-              "li",
-              {
-                staticClass:
-                  "list-group-item is-snaper is-droppable has-response",
-                attrs: {
-                  id: "is-droppable-" + answer.id,
-                  "data-answer-id": answer.id
-                }
-              },
-              [
-                _vm.getAnswerUserResponse(answer) != null
-                  ? _c(
-                      "div",
-                      {
-                        staticClass: "is-draggable",
-                        attrs: {
-                          "data-response-id": _vm.getAnswerUserResponse(answer)
-                            .id
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(_vm.getAnswerUserResponse(answer).value) +
-                            "\n                    "
-                        )
-                      ]
-                    )
-                  : _vm._e()
-              ]
-            )
-          })
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-xs-12 col-sm-4" }, [
-        _c(
-          "ul",
-          { staticClass: "list-group" },
-          _vm._l(_vm.responses, function(response) {
-            return _c("li", { staticClass: "list-group-item" }, [
-              !_vm.responseExists(response)
-                ? _c(
-                    "div",
-                    {
-                      staticClass: "is-draggable",
-                      attrs: { "data-response-id": response.id }
-                    },
-                    [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(response.value) +
-                          "\n                    "
-                      )
-                    ]
-                  )
-                : _vm._e()
-            ])
-          })
-        )
-      ])
-    ]
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6fcb481f", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 288:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(289)
-/* template */
-var __vue_template__ = __webpack_require__(290)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\__Text.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-089aa2c3", Component.options)
-  } else {
-    hotAPI.reload("data-v-089aa2c3", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 289:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-    props: {
-        id: { required: true },
-        question: { required: true },
-        user_answer: { required: true }
-    },
-
-    computed: {
-        answer: function answer() {
-            return this.question.answers[0];
-        },
-        user_selected: function user_selected() {
-            return this.user_answer.answer;
-        }
-    },
-
-    data: function data() {
-        return {
-            value: ''
-        };
-    },
-
-
-    methods: {
-        onChangeValue: function onChangeValue(e) {
-            this.$emit('user-answer', {
-                question_id: this.question.id,
-                answer: this.value
-            });
-        }
-    },
-
-    mounted: function mounted() {
-        this.value = this.user_selected;
-        var vm = this,
-            i = setInterval(function () {
-            if ($('div#' + vm.id + ' input').length == 1) {
-                $('div#' + vm.id + ' input').focus();
-            }
-        }, 10);
-    },
-
-
-    name: 'answers-text'
-});
-
-/***/ }),
-
-/***/ 290:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "text-answer-container", attrs: { id: _vm.id } },
-    [
-      _c("vue-textbox", {
-        attrs: { field: "value", placeholder: _vm.answer.caption },
-        on: { input: _vm.onChangeValue },
-        model: {
-          value: _vm.value,
-          callback: function($$v) {
-            _vm.value = $$v
-          },
-          expression: "value"
-        }
-      })
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-089aa2c3", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 291:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("section", { staticClass: "maincontent" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-xs-8" }, [
-          _c("h4", { staticClass: "question-number" }, [
-            _vm._v(
-              "\n                    Question " +
-                _vm._s(_vm.question.order_no) +
-                " of " +
-                _vm._s(_vm.total) +
-                "\n                "
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xs-4 text-right" }, [
-          _c("h4", [
-            _vm._v(
-              "\n                    " +
-                _vm._s(_vm.question.points) +
-                " points\n                "
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-xs-12" }, [
-          _c("div", { staticClass: "progress" }, [
-            _c(
-              "div",
-              {
-                staticClass: "progress-bar",
-                style: {
-                  width: _vm.percent + "%"
-                },
-                attrs: {
-                  role: "progressbar",
-                  "aria-valuenow": _vm.percent,
-                  "aria-valuemin": "0",
-                  "aria-valuemax": "100"
-                }
-              },
-              [_c("span", [_vm._v(_vm._s(_vm.percent) + " %")])]
-            )
-          ])
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c(
-      "section",
-      { staticClass: "maincontent", attrs: { id: "question-text-section" } },
-      [_c("p", { domProps: { innerHTML: _vm._s(_vm.question.question) } })]
-    ),
-    _vm._v(" "),
-    _c(
-      "section",
-      { staticClass: "maincontent", attrs: { id: "question-options" } },
-      [
-        _c("vue-answer-" + _vm.question.type, {
-          key: "question-" + _vm.question.id,
-          tag: "component",
-          attrs: {
-            id: "question-" + _vm.question.id,
-            question: _vm.question,
-            user_answer: _vm.user_answer
-          },
-          on: { "user-answer": _vm.onUserAnswer }
-        })
-      ],
-      1
-    )
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-4834773f", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 292:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("vue-question", {
-        attrs: {
-          question: _vm.current_question,
-          total: _vm.questions.length,
-          current: _vm.current,
-          user_answer: _vm.current_user_answer
-        },
-        on: { "user-answer": _vm.onUserAnswer }
-      })
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-2b49ecfc", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 293:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(294)
-}
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(296)
-/* template */
-var __vue_template__ = __webpack_require__(324)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-57c61024"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\_ResponseReport.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-57c61024", Component.options)
-  } else {
-    hotAPI.reload("data-v-57c61024", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 294:
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(295);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(5)("1abb173c", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-57c61024\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./_ResponseReport.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-57c61024\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./_ResponseReport.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-
-/***/ 295:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(4)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\nul.list-group[data-v-57c61024] {\n  margin-bottom: 0px;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ 296:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Report_Response_vue__ = __webpack_require__(297);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Report_Response_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Report_Response_vue__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-    components: {
-        'vue-response': __WEBPACK_IMPORTED_MODULE_0__Report_Response_vue___default.a
-    },
-
-    props: {
-        record: { required: true },
-        responses: { required: true },
-        solving: { required: true }
-    },
-
-    computed: {
-        questions: function questions() {
-            return this.record.questions;
-        },
-        percentage: function percentage() {
-            if (this.solving != null) {
-                var r = 100 * this.solving.total_real_points / this.record.total_available_points;
-                return r.toFixed(2);
-            }
-            return '??';
-        }
-    },
-
-    data: function data() {
-        return {};
-    },
-
-
-    methods: {
-        getResponseByQuestion: function getResponseByQuestion(question_id) {
-            var r = _.find(this.responses, function (response) {
-                return response.question_id == question_id;
-            });
-            return r;
-        }
-    },
-
-    name: 'report'
-});
-
-/***/ }),
-
-/***/ 297:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(298)
-/* template */
-var __vue_template__ = __webpack_require__(323)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\Report\\_Response.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-648b83ce", Component.options)
-  } else {
-    hotAPI.reload("data-v-648b83ce", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 298:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__CorrectAnswerText__ = __webpack_require__(299);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__CorrectAnswerText___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__CorrectAnswerText__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CorrectAnswerCheck__ = __webpack_require__(302);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CorrectAnswerCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__CorrectAnswerCheck__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CorrectAnswerRadio__ = __webpack_require__(305);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CorrectAnswerRadio___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__CorrectAnswerRadio__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CorrectAnswerMatch__ = __webpack_require__(308);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CorrectAnswerMatch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__CorrectAnswerMatch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__UserAnswerText__ = __webpack_require__(311);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__UserAnswerText___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__UserAnswerText__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__UserAnswerCheck__ = __webpack_require__(314);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__UserAnswerCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__UserAnswerCheck__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__UserAnswerRadio__ = __webpack_require__(317);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__UserAnswerRadio___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__UserAnswerRadio__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__UserAnswerMatch__ = __webpack_require__(320);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__UserAnswerMatch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__UserAnswerMatch__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-
-
-
-
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-    components: {
-        'correct-answer-text': __WEBPACK_IMPORTED_MODULE_0__CorrectAnswerText___default.a,
-        'correct-answer-check': __WEBPACK_IMPORTED_MODULE_1__CorrectAnswerCheck___default.a,
-        'correct-answer-radio': __WEBPACK_IMPORTED_MODULE_2__CorrectAnswerRadio___default.a,
-        'correct-answer-match': __WEBPACK_IMPORTED_MODULE_3__CorrectAnswerMatch___default.a,
-
-        'user-answer-text': __WEBPACK_IMPORTED_MODULE_4__UserAnswerText___default.a,
-        'user-answer-check': __WEBPACK_IMPORTED_MODULE_5__UserAnswerCheck___default.a,
-        'user-answer-radio': __WEBPACK_IMPORTED_MODULE_6__UserAnswerRadio___default.a,
-        'user-answer-match': __WEBPACK_IMPORTED_MODULE_7__UserAnswerMatch___default.a
-    },
-
-    props: {
-        record: { required: true },
-        question: { required: true },
-        index: { required: true },
-        response: { required: true }
-    },
-
-    computed: {
-        answers: function answers() {
-            return this.question.answers;
-        },
-        user_answer: function user_answer() {
-            if (this.response.response != null) {
-                if (this.question.type == 'text') {
-                    return this.response.response.toLowerCase();
-                }
-                if (this.question.type == 'check') {
-                    return JSON.parse(this.response.response);
-                }
-                if (this.question.type == 'radio') {
-                    return this.response.response.toLowerCase();
-                }
-                if (this.question.type == 'match') {
-                    return JSON.parse(this.response.response);
-                }
-            }
-            return '';
-        },
-        is_correct: function is_correct() {
-            if (this.question.type == 'text') {
-                return this.is_correct_text.is_correct;
-            }
-            if (this.question.type == 'check') {
-                return this.is_correct_check.is_correct;
-            }
-            if (this.question.type == 'radio') {
-                return this.is_correct_radio.is_correct;
-            }
-            if (this.question.type == 'match') {
-                return this.is_correct_match.is_correct;
-            }
-            return false;
-        },
-        is_correct_text: function is_correct_text() {
-            var _this = this;
-
-            if (this.question.type != 'text') {
-                return false;
-            }
-            var correct_answers = _.split(this.question.correct_answer, ',');
-            correct_answers = _.map(correct_answers, function (answer) {
-                return answer.trim().toLowerCase();
-            });
-            var founded = _.find(correct_answers, function (item) {
-                return item == _this.user_answer;
-            });
-            var is_correct = false;
-            if (founded != undefined) {
-                is_correct = true;
-            }
-            return {
-                correct_answers: correct_answers,
-                user_answer: this.user_answer,
-                founded: founded == undefined ? null : founded,
-                is_correct: is_correct
-            };
-        },
-        is_correct_check: function is_correct_check() {
-            if (this.question.type != 'check') {
-                return false;
-            }
-            var correct_answers = JSON.parse(this.question.correct_answer);
-            correct_answers = _.map(correct_answers, function (answer) {
-                return answer.trim().toLowerCase();
-            });
-            correct_answers = _.orderBy(correct_answers);
-
-            var user_answers = _.map(this.user_answer, function (item) {
-                return item.selected.toLowerCase();
-            });
-            user_answers = _.orderBy(user_answers);
-
-            return {
-                correct_answers: correct_answers,
-                user_answer: user_answers,
-                is_correct: _.isEmpty(_.xor(correct_answers, user_answers))
-            };
-        },
-        is_correct_radio: function is_correct_radio() {
-            if (this.question.type != 'radio') {
-                return false;
-            }
-            return {
-                correct_answers: this.question.correct_answer.toLowerCase(),
-                user_answer: this.user_answer.toLowerCase(),
-                is_correct: this.question.correct_answer.toLowerCase() == this.user_answer.toLowerCase()
-            };
-        },
-        is_correct_match: function is_correct_match() {
-            if (this.question.type != 'match') {
-                return false;
-            }
-            if (this.user_answer.length < this.answers.length) {
-                return false;
-            }
-            var is_correct = true;
-            for (var i = 0; i < this.user_answer.length; i++) {
-                if (this.user_answer[i].answer_id != this.user_answer[i].response_id) {
-                    is_correct = false;
-                    break;
-                }
-            }
-            return {
-                correct_answers: this.question.correct_answer,
-                user_answer: this.user_answer,
-                is_correct: is_correct
-            };
-        }
-    },
-
-    data: function data() {
-        return {};
-    },
-
-
-    methods: {},
-
-    name: 'response'
-});
-
-/***/ }),
-
-/***/ 299:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(300)
-/* template */
-var __vue_template__ = __webpack_require__(301)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\Report\\__CorrectAnswerText.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0cf3a3ba", Component.options)
-  } else {
-    hotAPI.reload("data-v-0cf3a3ba", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 300:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-	props: {
-		correct: { required: true },
-		question: { required: true }
-	},
-
-	name: 'correct-answer-text'
-});
-
-/***/ }),
-
-/***/ 301:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "correct-answer-component" }, [
-    _vm._v("\n        " + _vm._s(_vm.correct) + "\n    ")
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-0cf3a3ba", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 302:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(303)
-/* template */
-var __vue_template__ = __webpack_require__(304)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\Report\\__CorrectAnswerCheck.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-e10c4afc", Component.options)
-  } else {
-    hotAPI.reload("data-v-e10c4afc", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 303:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__boot_modules_jquery_ICheck_js__ = __webpack_require__(7);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-    props: {
-        correct: { required: true },
-        question: { required: true }
-    },
-
-    computed: {
-        correct_answer: function correct_answer() {
-            return JSON.parse(this.correct);
-        },
-        answers: function answers() {
-            return this.question.answers;
-        }
-    },
-
-    data: function data() {
-        return {
-            icheck: null
-        };
-    },
-
-
-    methods: {
-        existsInCorrectAnswer: function existsInCorrectAnswer(value, id) {
-            var r = _.find(this.correct_answer, function (item) {
-                return item.toLowerCase() == value;
-            });
-            return r != undefined;
-        },
-        iCheck: function iCheck() {
-            var _this = this;
-
-            var vm = this,
-                i = setInterval(function () {
-
-                var selector = '#listview-check-correct-' + _this.question.id + ' label.check-button-correct input';
-
-                if ($(selector).length == vm.answers.length) {
-                    clearInterval(i);
-                    var _icheck = new __WEBPACK_IMPORTED_MODULE_0__boot_modules_jquery_ICheck_js__["a" /* default */](selector);
-                    vm.icheck = _icheck.create();
-                    vm.icheck.iCheck('disable');
-                    $('#listview-check-correct-' + _this.question.id + ' .icheckbox_square-blue').removeClass('disabled');
-                }
-            }, 10);
-        }
-    },
-
-    mounted: function mounted() {
-        this.iCheck();
-    },
-
-
-    name: 'correct-answer-check'
-});
-
-/***/ }),
-
-/***/ 304:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "correct-answer-component" }, [
-    _c(
-      "ul",
-      {
-        staticClass: "listview-check-correct",
-        attrs: { id: "listview-check-correct-" + _vm.question.id }
-      },
-      _vm._l(_vm.answers, function(answer) {
-        return _c("li", [
-          _c("label", { staticClass: "check-button-correct" }, [
-            _c("input", {
-              attrs: {
-                name: "question-correct-" + _vm.question.id,
-                id: "answer-correct-" + answer.id,
-                "data-answer_id": answer.id,
-                type: "checkbox"
-              },
-              domProps: {
-                value: answer.value,
-                checked: _vm.existsInCorrectAnswer(answer.value, answer.id)
-              }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "label-text" }, [
-              _vm._v(
-                "\n                        " +
-                  _vm._s(answer.caption) +
-                  "\n                    "
-              )
-            ])
-          ])
-        ])
-      })
-    )
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-e10c4afc", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 305:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(306)
-/* template */
-var __vue_template__ = __webpack_require__(307)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\Report\\__CorrectAnswerRadio.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3de357f5", Component.options)
-  } else {
-    hotAPI.reload("data-v-3de357f5", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 306:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__boot_modules_jquery_ICheck_js__ = __webpack_require__(7);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-    props: {
-        correct: { required: true },
-        question: { required: true }
-    },
-
-    computed: {
-        correct_answer: function correct_answer() {
-            return this.correct.toLowerCase();
-        },
-        answers: function answers() {
-            return this.question.answers;
-        }
-    },
-
-    data: function data() {
-        return {
-            icheck: null
-        };
-    },
-
-
-    methods: {
-        iCheck: function iCheck() {
-            var _this = this;
-
-            var vm = this,
-                i = setInterval(function () {
-
-                var selector = '#listview-radio-correct-' + _this.question.id + ' label.radio-button-correct input';
-
-                if ($(selector).length == vm.answers.length) {
-                    clearInterval(i);
-                    var _icheck = new __WEBPACK_IMPORTED_MODULE_0__boot_modules_jquery_ICheck_js__["a" /* default */](selector);
-                    vm.icheck = _icheck.create();
-                    vm.icheck.iCheck('disable');
-                    $('#listview-radio-correct-' + _this.question.id + ' .iradio_square-blue').removeClass('disabled');
-                }
-            }, 10);
-        }
-    },
-
-    mounted: function mounted() {
-        this.iCheck();
-    },
-
-
-    name: 'correct-answer-radio'
-});
-
-/***/ }),
-
-/***/ 307:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "correct-answer-component" }, [
-    _c(
-      "ul",
-      {
-        staticClass: "listview-radio-correct",
-        attrs: { id: "listview-radio-correct-" + _vm.question.id }
-      },
-      _vm._l(_vm.answers, function(answer) {
-        return _c("li", [
-          _c("label", { staticClass: "radio-button-correct" }, [
-            _c("input", {
-              attrs: {
-                name: "question-correct-" + _vm.question.id,
-                id: "answer-correct-" + answer.id,
-                "data-value": answer.value,
-                "data-correct": _vm.correct_answer,
-                type: "radio"
-              },
-              domProps: {
-                value: answer.value,
-                checked: answer.value == _vm.correct_answer
-              }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "label-text" }, [
-              _vm._v(
-                "\n                        " +
-                  _vm._s(answer.caption) +
-                  " / " +
-                  _vm._s(answer.value == _vm.correct_answer) +
-                  "\n                    "
-              )
-            ])
-          ])
-        ])
-      })
-    )
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3de357f5", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 308:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(309)
-/* template */
-var __vue_template__ = __webpack_require__(310)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\Report\\__CorrectAnswerMatch.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-c75dae82", Component.options)
-  } else {
-    hotAPI.reload("data-v-c75dae82", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 309:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-    props: {
-        correct: { required: true },
-        question: { required: true }
-    },
-
-    computed: {
-        correct_answer: function correct_answer() {
-            return JSON.parse(this.correct);
-        },
-        answers: function answers() {
-            return this.question.answers;
-        }
-    },
-
-    data: function data() {
-        return {};
-    },
-
-
-    methods: {},
-
-    name: 'correct-answer-match'
-});
-
-/***/ }),
-
-/***/ 310:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "correct-answer-component" }, [
-    _c(
-      "ul",
-      { staticClass: "list-group" },
-      _vm._l(_vm.answers, function(answer) {
-        return _c("li", { staticClass: "list-group-item" }, [
-          _vm._v(
-            "\n                " +
-              _vm._s(answer.caption) +
-              " \n                "
-          ),
-          _c("span", { staticClass: "badge" }, [
-            _vm._v(
-              "\n                    " +
-                _vm._s(_vm.correct_answer[answer.caption]) +
-                "\n                "
-            )
-          ])
-        ])
-      })
-    )
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-c75dae82", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 311:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(312)
-/* template */
-var __vue_template__ = __webpack_require__(313)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\Report\\__UserAnswerText.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-29e8af98", Component.options)
-  } else {
-    hotAPI.reload("data-v-29e8af98", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 312:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-	props: {
-		user_answer: { required: true },
-		question: { required: true }
-	},
-
-	name: 'user-answer-text'
-});
-
-/***/ }),
-
-/***/ 313:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("span", [_vm._v("\n        " + _vm._s(_vm.user_answer) + "\n    ")])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-29e8af98", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 314:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(315)
-/* template */
-var __vue_template__ = __webpack_require__(316)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\Report\\__UserAnswerCheck.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6b6787ad", Component.options)
-  } else {
-    hotAPI.reload("data-v-6b6787ad", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 315:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__boot_modules_jquery_ICheck_js__ = __webpack_require__(7);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-    props: {
-        user_answer: { required: true },
-        question: { required: true }
-    },
-
-    data: function data() {
-        return {
-            icheck: null
-        };
-    },
-
-
-    computed: {
-        answers: function answers() {
-            return this.question.answers;
-        }
-    },
-
-    methods: {
-        existsInUserAnswer: function existsInUserAnswer(value, id) {
-            var r = _.find(this.user_answer, function (item) {
-                return item.selected == value && item.answer_id == id;
-            });
-            return r != undefined;
-        },
-        iCheck: function iCheck() {
-            var _this = this;
-
-            var vm = this,
-                i = setInterval(function () {
-
-                var selector = '#listview-check-user-' + _this.question.id + ' label.check-button-user input';
-                if ($(selector).length == vm.answers.length) {
-                    clearInterval(i);
-                    var _icheck = new __WEBPACK_IMPORTED_MODULE_0__boot_modules_jquery_ICheck_js__["a" /* default */](selector);
-                    vm.icheck = _icheck.create();
-                    vm.icheck.iCheck('disable');
-                    $('#listview-check-user-' + _this.question.id + ' .icheckbox_square-blue').removeClass('disabled');
-                }
-            }, 10);
-        }
-    },
-
-    mounted: function mounted() {
-        this.iCheck();
-    },
-
-
-    name: 'user-answer-check'
-});
-
-/***/ }),
-
-/***/ 316:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "ul",
-      {
-        staticClass: "listview-check-user",
-        attrs: { id: "listview-check-user-" + _vm.question.id }
-      },
-      _vm._l(_vm.answers, function(answer) {
-        return _c("li", [
-          _c("label", { staticClass: "check-button-user" }, [
-            _c("input", {
-              attrs: {
-                name: "question-user-" + _vm.question.id,
-                id: "answer-user-" + answer.id,
-                "data-answer_id": answer.id,
-                type: "checkbox"
-              },
-              domProps: {
-                value: answer.value,
-                checked: _vm.existsInUserAnswer(answer.value, answer.id)
-              }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "label-text" }, [
-              _vm._v(
-                "\n                        " +
-                  _vm._s(answer.caption) +
-                  "\n                    "
-              )
-            ])
-          ])
-        ])
-      })
-    )
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6b6787ad", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 317:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(318)
-/* template */
-var __vue_template__ = __webpack_require__(319)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\Report\\__UserAnswerRadio.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-19d10520", Component.options)
-  } else {
-    hotAPI.reload("data-v-19d10520", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 318:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__boot_modules_jquery_ICheck_js__ = __webpack_require__(7);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-    props: {
-        user_answer: { required: true },
-        question: { required: true }
-    },
-
-    data: function data() {
-        return {
-            icheck: null
-        };
-    },
-
-
-    computed: {
-        answers: function answers() {
-            return this.question.answers;
-        }
-    },
-
-    methods: {
-        iCheck: function iCheck() {
-            var _this = this;
-
-            var vm = this,
-                i = setInterval(function () {
-
-                var selector = '#listview-radio-user-' + _this.question.id + ' label.radio-button-user input';
-
-                if ($(selector).length == vm.answers.length) {
-                    clearInterval(i);
-                    var _icheck = new __WEBPACK_IMPORTED_MODULE_0__boot_modules_jquery_ICheck_js__["a" /* default */](selector);
-                    vm.icheck = _icheck.create();
-                    vm.icheck.iCheck('disable');
-                    $('#listview-radio-user-' + _this.question.id + ' .iradio_square-blue').removeClass('disabled');
-                }
-            }, 10);
-        }
-    },
-
-    mounted: function mounted() {
-        this.iCheck();
-    },
-
-
-    name: 'user-answer-radio'
-});
-
-/***/ }),
-
-/***/ 319:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "ul",
-      {
-        staticClass: "listview-radio-user",
-        attrs: { id: "listview-radio-user-" + _vm.question.id }
-      },
-      _vm._l(_vm.answers, function(answer) {
-        return _c("li", [
-          _c("label", { staticClass: "radio-button-user" }, [
-            _c("input", {
-              attrs: {
-                name: "question-user-" + _vm.question.id,
-                id: "answer-user-" + answer.id,
-                type: "radio"
-              },
-              domProps: {
-                value: answer.value,
-                checked: answer.value == _vm.user_answer.toLowerCase()
-              }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "label-text" }, [
-              _vm._v(
-                "\n                        " +
-                  _vm._s(answer.caption) +
-                  "\n                    "
-              )
-            ])
-          ])
-        ])
-      })
-    )
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-19d10520", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 320:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(321)
-/* template */
-var __vue_template__ = __webpack_require__(322)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\Report\\__UserAnswerMatch.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-783ed5ea", Component.options)
-  } else {
-    hotAPI.reload("data-v-783ed5ea", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 321:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-    props: {
-        user_answer: { required: true },
-        question: { required: true },
-        correct: { required: true }
-    },
-
-    computed: {
-        correct_answer: function correct_answer() {
-            return JSON.parse(this.correct);
-        },
-        answers: function answers() {
-            return this.question.answers;
-        }
-    },
-
-    methods: {
-        getUserResponse: function getUserResponse(answer_id) {
-            var r = _.find(this.user_answer, function (item) {
-                return item.answer_id == answer_id;
-            });
-            if (r == undefined) {
-                return '';
-            }
-            var response = _.find(this.answers, function (item) {
-                return item.id == r.response_id;
-            });
-            if (response == undefined) {
-                return '';
-            }
-            return response.value;
-        }
-    },
-
-    name: 'user-answer-match'
-});
-
-/***/ }),
-
-/***/ 322:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "user-response-match-container" }, [
-    _c(
-      "ul",
-      { staticClass: "list-group" },
-      _vm._l(_vm.answers, function(answer) {
-        return _c("li", { staticClass: "list-group-item" }, [
-          _c(
-            "span",
-            {
-              class: {
-                "is-correct":
-                  _vm.correct_answer[answer.caption] ==
-                  _vm.getUserResponse(answer.id),
-                "is-wrong":
-                  _vm.correct_answer[answer.caption] !=
-                  _vm.getUserResponse(answer.id)
-              }
-            },
-            [
-              _vm._v(
-                "\n                    " +
-                  _vm._s(answer.caption) +
-                  "\n                "
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _vm.getUserResponse(answer.id)
-            ? _c(
-                "span",
-                {
-                  class: {
-                    badge: true,
-                    "badge-is-correct":
-                      _vm.correct_answer[answer.caption] ==
-                      _vm.getUserResponse(answer.id),
-                    "badge-is-wrong":
-                      _vm.correct_answer[answer.caption] !=
-                      _vm.getUserResponse(answer.id)
-                  }
-                },
-                [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.getUserResponse(answer.id)) +
-                      "\n                "
-                  )
-                ]
-              )
-            : _vm._e()
-        ])
-      })
-    )
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-783ed5ea", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 323:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "response-container" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-xs-8" }, [
-        _c(
-          "h4",
-          {
-            class: {
-              is_correct: _vm.is_correct,
-              is_not_correct: !_vm.is_correct
-            }
-          },
-          [
-            _vm._v(
-              "\n                Question " +
-                _vm._s(_vm.index) +
-                " of " +
-                _vm._s(_vm.record.questions.length) +
-                "\n            "
-            )
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-xs-4 text-right" }, [
-        _c(
-          "h4",
-          {
-            class: {
-              is_correct: _vm.is_correct,
-              is_not_correct: !_vm.is_correct
-            }
-          },
-          [
-            _vm._v(
-              "\n                " +
-                _vm._s(_vm.question.points) +
-                " points\n            "
-            )
-          ]
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", [
-      _c("span", { domProps: { innerHTML: _vm._s(_vm.question.question) } })
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "question-container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c(
-          "div",
-          { staticClass: "col-xs-12 col-sm-6" },
-          [
-            _vm._m(0),
-            _vm._v(" "),
-            _c("correct-answer-" + _vm.question.type, {
-              tag: "component",
-              attrs: {
-                correct: _vm.question.correct_answer,
-                question: _vm.question
-              }
-            })
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            class: {
-              "col-xs-12": true,
-              "col-sm-6": true,
-              is_correct: _vm.is_correct,
-              is_not_correct: !_vm.is_correct
-            }
-          },
-          [
-            _c("div", [
-              _c("h5", [
-                _c("i", {
-                  class: {
-                    fa: true,
-                    "fa-fw": true,
-                    "fa-thumbs-up": _vm.is_correct,
-                    "fa-thumbs-down": !_vm.is_correct
-                  }
-                }),
-                _vm._v(
-                  "\n                        Your Answer\n                    "
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                [
-                  _c("user-answer-" + _vm.question.type, {
-                    tag: "component",
-                    attrs: {
-                      user_answer: _vm.user_answer,
-                      question: _vm.question,
-                      correct: _vm.question.correct_answer
-                    }
-                  })
-                ],
-                1
-              )
-            ])
-          ]
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _vm.question.answer_description
-      ? _c("div", [
-          _vm._m(1),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _vm.question.answer_image_url != null
-              ? _c("div", { staticClass: "col-xs-12 col-sm-6" }, [
-                  _c("img", {
-                    staticClass: "img-responsive",
-                    attrs: { src: "/" + _vm.question.answer_image_url }
-                  })
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                class: {
-                  "col-xs-12": _vm.question.answer_image_url == null,
-                  "col-sm-12": _vm.question.answer_image_url == null,
-                  "col-sm-6": _vm.question.answer_image_url != null
-                }
-              },
-              [
-                _c("div", {
-                  domProps: {
-                    innerHTML: _vm._s(_vm.question.answer_description)
-                  }
-                })
-              ]
-            )
-          ])
-        ])
-      : _vm._e()
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h5", [
-      _c("i", { staticClass: "fa fa-fw fa-thumbs-up" }),
-      _vm._v("Accepted Answer")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h5", [
-      _c("i", { staticClass: "fa fa-fw fa-exclamation-circle" }),
-      _vm._v("Explanation")
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-648b83ce", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 324:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "panel panel-default" }, [
-    _c("div", { staticClass: "panel-heading" }, [
-      _c("h3", { staticClass: "panel-title" }, [
-        _vm._v("\n            " + _vm._s(_vm.record.title) + "\n        ")
-      ])
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "panel-body" },
-      _vm._l(_vm.questions, function(question, index) {
-        return _c("vue-response", {
-          key: "question-" + question.id,
-          attrs: {
-            question: question,
-            record: _vm.record,
-            index: 1 + index,
-            response: _vm.getResponseByQuestion(question.id)
-          }
-        })
-      })
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "panel-footer" }, [
-      _c("ul", { staticClass: "list-group" }, [
-        _c("li", { staticClass: "list-group-item" }, [
-          _vm._v(
-            "\n                Number of points achieved\n                "
-          ),
-          _c("span", { staticClass: "badge" }, [
-            _vm._v(
-              "\n                    " +
-                _vm._s(
-                  _vm.solving != null ? _vm.solving.total_real_points : "???"
-                ) +
-                "\n                "
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "list-group-item" }, [
-          _vm._v(
-            "\n                Number of points available\n                "
-          ),
-          _c("span", { staticClass: "badge" }, [
-            _vm._v(
-              "\n                    " +
-                _vm._s(_vm.record.total_available_points) +
-                "\n                "
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _vm.solving != null
-          ? _c("li", { staticClass: "list-group-item" }, [
-              _vm._v("\n                Percentage\n                "),
-              _c("span", { staticClass: "badge" }, [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.percentage) +
-                    " %\n                "
-                )
-              ])
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.solving != null
-          ? _c("li", { staticClass: "list-group-item" }, [
-              _vm._v("\n                Success Percentage\n                "),
-              _c("span", { staticClass: "badge" }, [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.record.success_percentage) +
-                    " %\n                "
-                )
-              ])
-            ])
-          : _vm._e()
-      ])
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-57c61024", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 325:
+/***/ 338:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -11813,319 +9933,290 @@ if (false) {
 
 /***/ }),
 
-/***/ 4:
-/***/ (function(module, exports) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
-
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
-
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
-
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
-
-	return [content].join('\n');
-}
-
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-	return '/*# ' + data + ' */';
-}
-
-
-/***/ }),
-
-/***/ 5:
+/***/ 34:
 /***/ (function(module, exports, __webpack_require__) {
 
-/*
-  MIT License http://www.opensource.org/licenses/mit-license.php
-  Author Tobias Koppers @sokra
-  Modified by Evan You @yyx990803
-*/
-
-var hasDocument = typeof document !== 'undefined'
-
-if (typeof DEBUG !== 'undefined' && DEBUG) {
-  if (!hasDocument) {
-    throw new Error(
-    'vue-style-loader cannot be used in a non-browser environment. ' +
-    "Use { target: 'node' } in your Webpack config to indicate a server-rendering environment."
-  ) }
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("vue-question", {
+        attrs: {
+          question: _vm.current_question,
+          total: _vm.questions.length,
+          current: _vm.current,
+          user_answer: _vm.current_user_answer
+        },
+        on: { "user-answer": _vm.onUserAnswer }
+      })
+    ],
+    1
+  )
 }
-
-var listToStyles = __webpack_require__(8)
-
-/*
-type StyleObject = {
-  id: number;
-  parts: Array<StyleObjectPart>
-}
-
-type StyleObjectPart = {
-  css: string;
-  media: string;
-  sourceMap: ?string
-}
-*/
-
-var stylesInDom = {/*
-  [id: number]: {
-    id: number,
-    refs: number,
-    parts: Array<(obj?: StyleObjectPart) => void>
-  }
-*/}
-
-var head = hasDocument && (document.head || document.getElementsByTagName('head')[0])
-var singletonElement = null
-var singletonCounter = 0
-var isProduction = false
-var noop = function () {}
-var options = null
-var ssrIdKey = 'data-vue-ssr-id'
-
-// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-// tags it will allow on a page
-var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\b/.test(navigator.userAgent.toLowerCase())
-
-module.exports = function (parentId, list, _isProduction, _options) {
-  isProduction = _isProduction
-
-  options = _options || {}
-
-  var styles = listToStyles(parentId, list)
-  addStylesToDom(styles)
-
-  return function update (newList) {
-    var mayRemove = []
-    for (var i = 0; i < styles.length; i++) {
-      var item = styles[i]
-      var domStyle = stylesInDom[item.id]
-      domStyle.refs--
-      mayRemove.push(domStyle)
-    }
-    if (newList) {
-      styles = listToStyles(parentId, newList)
-      addStylesToDom(styles)
-    } else {
-      styles = []
-    }
-    for (var i = 0; i < mayRemove.length; i++) {
-      var domStyle = mayRemove[i]
-      if (domStyle.refs === 0) {
-        for (var j = 0; j < domStyle.parts.length; j++) {
-          domStyle.parts[j]()
-        }
-        delete stylesInDom[domStyle.id]
-      }
-    }
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2b49ecfc", module.exports)
   }
 }
 
-function addStylesToDom (styles /* Array<StyleObject> */) {
-  for (var i = 0; i < styles.length; i++) {
-    var item = styles[i]
-    var domStyle = stylesInDom[item.id]
-    if (domStyle) {
-      domStyle.refs++
-      for (var j = 0; j < domStyle.parts.length; j++) {
-        domStyle.parts[j](item.parts[j])
-      }
-      for (; j < item.parts.length; j++) {
-        domStyle.parts.push(addStyle(item.parts[j]))
-      }
-      if (domStyle.parts.length > item.parts.length) {
-        domStyle.parts.length = item.parts.length
-      }
-    } else {
-      var parts = []
-      for (var j = 0; j < item.parts.length; j++) {
-        parts.push(addStyle(item.parts[j]))
-      }
-      stylesInDom[item.id] = { id: item.id, refs: 1, parts: parts }
-    }
-  }
+/***/ }),
+
+/***/ 35:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(36)
 }
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(38)
+/* template */
+var __vue_template__ = __webpack_require__(66)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-57c61024"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\_ResponseReport.vue"
 
-function createStyleElement () {
-  var styleElement = document.createElement('style')
-  styleElement.type = 'text/css'
-  head.appendChild(styleElement)
-  return styleElement
-}
-
-function addStyle (obj /* StyleObjectPart */) {
-  var update, remove
-  var styleElement = document.querySelector('style[' + ssrIdKey + '~="' + obj.id + '"]')
-
-  if (styleElement) {
-    if (isProduction) {
-      // has SSR styles and in production mode.
-      // simply do nothing.
-      return noop
-    } else {
-      // has SSR styles but in dev mode.
-      // for some reason Chrome can't handle source map in server-rendered
-      // style tags - source maps in <style> only works if the style tag is
-      // created and inserted dynamically. So we remove the server rendered
-      // styles and inject new ones.
-      styleElement.parentNode.removeChild(styleElement)
-    }
-  }
-
-  if (isOldIE) {
-    // use singleton mode for IE9.
-    var styleIndex = singletonCounter++
-    styleElement = singletonElement || (singletonElement = createStyleElement())
-    update = applyToSingletonTag.bind(null, styleElement, styleIndex, false)
-    remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true)
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-57c61024", Component.options)
   } else {
-    // use multi-style-tag mode in all other cases
-    styleElement = createStyleElement()
-    update = applyToTag.bind(null, styleElement)
-    remove = function () {
-      styleElement.parentNode.removeChild(styleElement)
-    }
+    hotAPI.reload("data-v-57c61024", Component.options)
   }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
 
-  update(obj)
-
-  return function updateStyle (newObj /* StyleObjectPart */) {
-    if (newObj) {
-      if (newObj.css === obj.css &&
-          newObj.media === obj.media &&
-          newObj.sourceMap === obj.sourceMap) {
-        return
-      }
-      update(obj = newObj)
-    } else {
-      remove()
-    }
-  }
-}
-
-var replaceText = (function () {
-  var textStore = []
-
-  return function (index, replacement) {
-    textStore[index] = replacement
-    return textStore.filter(Boolean).join('\n')
-  }
-})()
-
-function applyToSingletonTag (styleElement, index, remove, obj) {
-  var css = remove ? '' : obj.css
-
-  if (styleElement.styleSheet) {
-    styleElement.styleSheet.cssText = replaceText(index, css)
-  } else {
-    var cssNode = document.createTextNode(css)
-    var childNodes = styleElement.childNodes
-    if (childNodes[index]) styleElement.removeChild(childNodes[index])
-    if (childNodes.length) {
-      styleElement.insertBefore(cssNode, childNodes[index])
-    } else {
-      styleElement.appendChild(cssNode)
-    }
-  }
-}
-
-function applyToTag (styleElement, obj) {
-  var css = obj.css
-  var media = obj.media
-  var sourceMap = obj.sourceMap
-
-  if (media) {
-    styleElement.setAttribute('media', media)
-  }
-  if (options.ssrId) {
-    styleElement.setAttribute(ssrIdKey, obj.id)
-  }
-
-  if (sourceMap) {
-    // https://developer.chrome.com/devtools/docs/javascript-debugging
-    // this makes source maps inside style tags work properly in Chrome
-    css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */'
-    // http://stackoverflow.com/a/26603875
-    css += '\n/*# sourceMappingURL=data:application/json;base64,' + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + ' */'
-  }
-
-  if (styleElement.styleSheet) {
-    styleElement.styleSheet.cssText = css
-  } else {
-    while (styleElement.firstChild) {
-      styleElement.removeChild(styleElement.firstChild)
-    }
-    styleElement.appendChild(document.createTextNode(css))
-  }
-}
+module.exports = Component.exports
 
 
 /***/ }),
 
-/***/ 7:
+/***/ 36:
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(37);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("1abb173c", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-57c61024\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./_ResponseReport.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-57c61024\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./_ResponseReport.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ 37:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\nul.list-group[data-v-57c61024] {\n  margin-bottom: 0px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ 38:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Report_Response_vue__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Report_Response_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Report_Response_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    components: {
+        'vue-response': __WEBPACK_IMPORTED_MODULE_0__Report_Response_vue___default.a
+    },
+
+    props: {
+        record: { required: true },
+        responses: { required: true },
+        solving: { required: true }
+    },
+
+    computed: {
+        questions: function questions() {
+            return this.record.questions;
+        },
+        percentage: function percentage() {
+            if (this.solving != null) {
+                var r = 100 * this.solving.total_real_points / this.record.total_available_points;
+                return r.toFixed(2);
+            }
+            return '??';
+        }
+    },
+
+    data: function data() {
+        return {};
+    },
+
+
+    methods: {
+        getResponseByQuestion: function getResponseByQuestion(question_id) {
+            var r = _.find(this.responses, function (response) {
+                return response.question_id == question_id;
+            });
+            return r;
+        }
+    },
+
+    name: 'report'
+});
+
+/***/ }),
+
+/***/ 39:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(40)
+/* template */
+var __vue_template__ = __webpack_require__(65)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\Report\\_Response.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-648b83ce", Component.options)
+  } else {
+    hotAPI.reload("data-v-648b83ce", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 4:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12158,7 +10249,1855 @@ var ICheck = function () {
 
 /***/ }),
 
-/***/ 8:
+/***/ 40:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__CorrectAnswerText__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__CorrectAnswerText___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__CorrectAnswerText__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CorrectAnswerCheck__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CorrectAnswerCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__CorrectAnswerCheck__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CorrectAnswerRadio__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CorrectAnswerRadio___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__CorrectAnswerRadio__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CorrectAnswerMatch__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CorrectAnswerMatch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__CorrectAnswerMatch__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__UserAnswerText__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__UserAnswerText___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__UserAnswerText__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__UserAnswerCheck__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__UserAnswerCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__UserAnswerCheck__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__UserAnswerRadio__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__UserAnswerRadio___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__UserAnswerRadio__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__UserAnswerMatch__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__UserAnswerMatch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__UserAnswerMatch__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    components: {
+        'correct-answer-text': __WEBPACK_IMPORTED_MODULE_0__CorrectAnswerText___default.a,
+        'correct-answer-check': __WEBPACK_IMPORTED_MODULE_1__CorrectAnswerCheck___default.a,
+        'correct-answer-radio': __WEBPACK_IMPORTED_MODULE_2__CorrectAnswerRadio___default.a,
+        'correct-answer-match': __WEBPACK_IMPORTED_MODULE_3__CorrectAnswerMatch___default.a,
+
+        'user-answer-text': __WEBPACK_IMPORTED_MODULE_4__UserAnswerText___default.a,
+        'user-answer-check': __WEBPACK_IMPORTED_MODULE_5__UserAnswerCheck___default.a,
+        'user-answer-radio': __WEBPACK_IMPORTED_MODULE_6__UserAnswerRadio___default.a,
+        'user-answer-match': __WEBPACK_IMPORTED_MODULE_7__UserAnswerMatch___default.a
+    },
+
+    props: {
+        record: { required: true },
+        question: { required: true },
+        index: { required: true },
+        response: { required: true }
+    },
+
+    computed: {
+        answers: function answers() {
+            return this.question.answers;
+        },
+        user_answer: function user_answer() {
+            if (this.response.response != null) {
+                if (this.question.type == 'text') {
+                    return this.response.response.toLowerCase();
+                }
+                if (this.question.type == 'check') {
+                    return JSON.parse(this.response.response);
+                }
+                if (this.question.type == 'radio') {
+                    return this.response.response.toLowerCase();
+                }
+                if (this.question.type == 'match') {
+                    return JSON.parse(this.response.response);
+                }
+            }
+            return '';
+        },
+        is_correct: function is_correct() {
+            if (this.question.type == 'text') {
+                return this.is_correct_text.is_correct;
+            }
+            if (this.question.type == 'check') {
+                return this.is_correct_check.is_correct;
+            }
+            if (this.question.type == 'radio') {
+                return this.is_correct_radio.is_correct;
+            }
+            if (this.question.type == 'match') {
+                return this.is_correct_match.is_correct;
+            }
+            return false;
+        },
+        is_correct_text: function is_correct_text() {
+            var _this = this;
+
+            if (this.question.type != 'text') {
+                return false;
+            }
+            var correct_answers = _.split(this.question.correct_answer, ',');
+            correct_answers = _.map(correct_answers, function (answer) {
+                return answer.trim().toLowerCase();
+            });
+            var founded = _.find(correct_answers, function (item) {
+                return item == _this.user_answer;
+            });
+            var is_correct = false;
+            if (founded != undefined) {
+                is_correct = true;
+            }
+            return {
+                correct_answers: correct_answers,
+                user_answer: this.user_answer,
+                founded: founded == undefined ? null : founded,
+                is_correct: is_correct
+            };
+        },
+        is_correct_check: function is_correct_check() {
+            if (this.question.type != 'check') {
+                return false;
+            }
+            var correct_answers = JSON.parse(this.question.correct_answer);
+            correct_answers = _.map(correct_answers, function (answer) {
+                return answer.trim().toLowerCase();
+            });
+            correct_answers = _.orderBy(correct_answers);
+
+            var user_answers = _.map(this.user_answer, function (item) {
+                return item.selected.toLowerCase();
+            });
+            user_answers = _.orderBy(user_answers);
+
+            return {
+                correct_answers: correct_answers,
+                user_answer: user_answers,
+                is_correct: _.isEmpty(_.xor(correct_answers, user_answers))
+            };
+        },
+        is_correct_radio: function is_correct_radio() {
+            if (this.question.type != 'radio') {
+                return false;
+            }
+            return {
+                correct_answers: this.question.correct_answer.toLowerCase(),
+                user_answer: this.user_answer.toLowerCase(),
+                is_correct: this.question.correct_answer.toLowerCase() == this.user_answer.toLowerCase()
+            };
+        },
+        is_correct_match: function is_correct_match() {
+            if (this.question.type != 'match') {
+                return false;
+            }
+            if (this.user_answer.length < this.answers.length) {
+                return false;
+            }
+            var is_correct = true;
+            for (var i = 0; i < this.user_answer.length; i++) {
+                if (this.user_answer[i].answer_id != this.user_answer[i].response_id) {
+                    is_correct = false;
+                    break;
+                }
+            }
+            return {
+                correct_answers: this.question.correct_answer,
+                user_answer: this.user_answer,
+                is_correct: is_correct
+            };
+        }
+    },
+
+    data: function data() {
+        return {};
+    },
+
+
+    methods: {},
+
+    name: 'response'
+});
+
+/***/ }),
+
+/***/ 41:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(42)
+/* template */
+var __vue_template__ = __webpack_require__(43)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\Report\\__CorrectAnswerText.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0cf3a3ba", Component.options)
+  } else {
+    hotAPI.reload("data-v-0cf3a3ba", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 42:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+	props: {
+		correct: { required: true },
+		question: { required: true }
+	},
+
+	name: 'correct-answer-text'
+});
+
+/***/ }),
+
+/***/ 43:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "correct-answer-component" }, [
+    _vm._v("\n        " + _vm._s(_vm.correct) + "\n    ")
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0cf3a3ba", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 44:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(45)
+/* template */
+var __vue_template__ = __webpack_require__(46)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\Report\\__CorrectAnswerCheck.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e10c4afc", Component.options)
+  } else {
+    hotAPI.reload("data-v-e10c4afc", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 45:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__boot_modules_jquery_ICheck_js__ = __webpack_require__(4);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    props: {
+        correct: { required: true },
+        question: { required: true }
+    },
+
+    computed: {
+        correct_answer: function correct_answer() {
+            return JSON.parse(this.correct);
+        },
+        answers: function answers() {
+            return this.question.answers;
+        }
+    },
+
+    data: function data() {
+        return {
+            icheck: null
+        };
+    },
+
+
+    methods: {
+        existsInCorrectAnswer: function existsInCorrectAnswer(value, id) {
+            var r = _.find(this.correct_answer, function (item) {
+                return item.toLowerCase() == value;
+            });
+            return r != undefined;
+        },
+        iCheck: function iCheck() {
+            var _this = this;
+
+            var vm = this,
+                i = setInterval(function () {
+
+                var selector = '#listview-check-correct-' + _this.question.id + ' label.check-button-correct input';
+
+                if ($(selector).length == vm.answers.length) {
+                    clearInterval(i);
+                    var _icheck = new __WEBPACK_IMPORTED_MODULE_0__boot_modules_jquery_ICheck_js__["a" /* default */](selector);
+                    vm.icheck = _icheck.create();
+                    vm.icheck.iCheck('disable');
+                    $('#listview-check-correct-' + _this.question.id + ' .icheckbox_square-blue').removeClass('disabled');
+                }
+            }, 10);
+        }
+    },
+
+    mounted: function mounted() {
+        this.iCheck();
+    },
+
+
+    name: 'correct-answer-check'
+});
+
+/***/ }),
+
+/***/ 46:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "correct-answer-component" }, [
+    _c(
+      "ul",
+      {
+        staticClass: "listview-check-correct",
+        attrs: { id: "listview-check-correct-" + _vm.question.id }
+      },
+      _vm._l(_vm.answers, function(answer) {
+        return _c("li", [
+          _c("label", { staticClass: "check-button-correct" }, [
+            _c("input", {
+              attrs: {
+                name: "question-correct-" + _vm.question.id,
+                id: "answer-correct-" + answer.id,
+                "data-answer_id": answer.id,
+                type: "checkbox"
+              },
+              domProps: {
+                value: answer.value,
+                checked: _vm.existsInCorrectAnswer(answer.value, answer.id)
+              }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "label-text" }, [
+              _vm._v(
+                "\n                        " +
+                  _vm._s(answer.caption) +
+                  "\n                    "
+              )
+            ])
+          ])
+        ])
+      })
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-e10c4afc", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 47:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(48)
+/* template */
+var __vue_template__ = __webpack_require__(49)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\Report\\__CorrectAnswerRadio.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3de357f5", Component.options)
+  } else {
+    hotAPI.reload("data-v-3de357f5", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 48:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__boot_modules_jquery_ICheck_js__ = __webpack_require__(4);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    props: {
+        correct: { required: true },
+        question: { required: true }
+    },
+
+    computed: {
+        correct_answer: function correct_answer() {
+            return this.correct.toLowerCase();
+        },
+        answers: function answers() {
+            return this.question.answers;
+        }
+    },
+
+    data: function data() {
+        return {
+            icheck: null
+        };
+    },
+
+
+    methods: {
+        iCheck: function iCheck() {
+            var _this = this;
+
+            var vm = this,
+                i = setInterval(function () {
+
+                var selector = '#listview-radio-correct-' + _this.question.id + ' label.radio-button-correct input';
+
+                if ($(selector).length == vm.answers.length) {
+                    clearInterval(i);
+                    var _icheck = new __WEBPACK_IMPORTED_MODULE_0__boot_modules_jquery_ICheck_js__["a" /* default */](selector);
+                    vm.icheck = _icheck.create();
+                    vm.icheck.iCheck('disable');
+                    $('#listview-radio-correct-' + _this.question.id + ' .iradio_square-blue').removeClass('disabled');
+                }
+            }, 10);
+        }
+    },
+
+    mounted: function mounted() {
+        this.iCheck();
+    },
+
+
+    name: 'correct-answer-radio'
+});
+
+/***/ }),
+
+/***/ 49:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "correct-answer-component" }, [
+    _c(
+      "ul",
+      {
+        staticClass: "listview-radio-correct",
+        attrs: { id: "listview-radio-correct-" + _vm.question.id }
+      },
+      _vm._l(_vm.answers, function(answer) {
+        return _c("li", [
+          _c("label", { staticClass: "radio-button-correct" }, [
+            _c("input", {
+              attrs: {
+                name: "question-correct-" + _vm.question.id,
+                id: "answer-correct-" + answer.id,
+                "data-value": answer.value,
+                "data-correct": _vm.correct_answer,
+                type: "radio"
+              },
+              domProps: {
+                value: answer.value,
+                checked: answer.value == _vm.correct_answer
+              }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "label-text" }, [
+              _vm._v(
+                "\n                        " +
+                  _vm._s(answer.caption) +
+                  " / " +
+                  _vm._s(answer.value == _vm.correct_answer) +
+                  "\n                    "
+              )
+            ])
+          ])
+        ])
+      })
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3de357f5", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 50:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(51)
+/* template */
+var __vue_template__ = __webpack_require__(52)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\Report\\__CorrectAnswerMatch.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-c75dae82", Component.options)
+  } else {
+    hotAPI.reload("data-v-c75dae82", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 51:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    props: {
+        correct: { required: true },
+        question: { required: true }
+    },
+
+    computed: {
+        correct_answer: function correct_answer() {
+            return JSON.parse(this.correct);
+        },
+        answers: function answers() {
+            return this.question.answers;
+        }
+    },
+
+    data: function data() {
+        return {};
+    },
+
+
+    methods: {},
+
+    name: 'correct-answer-match'
+});
+
+/***/ }),
+
+/***/ 52:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "correct-answer-component" }, [
+    _c(
+      "ul",
+      { staticClass: "list-group" },
+      _vm._l(_vm.answers, function(answer) {
+        return _c("li", { staticClass: "list-group-item" }, [
+          _vm._v(
+            "\n                " +
+              _vm._s(answer.caption) +
+              " \n                "
+          ),
+          _c("span", { staticClass: "badge" }, [
+            _vm._v(
+              "\n                    " +
+                _vm._s(_vm.correct_answer[answer.caption]) +
+                "\n                "
+            )
+          ])
+        ])
+      })
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-c75dae82", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 53:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(54)
+/* template */
+var __vue_template__ = __webpack_require__(55)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\Report\\__UserAnswerText.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-29e8af98", Component.options)
+  } else {
+    hotAPI.reload("data-v-29e8af98", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 54:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+	props: {
+		user_answer: { required: true },
+		question: { required: true }
+	},
+
+	name: 'user-answer-text'
+});
+
+/***/ }),
+
+/***/ 55:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("span", [_vm._v("\n        " + _vm._s(_vm.user_answer) + "\n    ")])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-29e8af98", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 56:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(57)
+/* template */
+var __vue_template__ = __webpack_require__(58)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\Report\\__UserAnswerCheck.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6b6787ad", Component.options)
+  } else {
+    hotAPI.reload("data-v-6b6787ad", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 57:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__boot_modules_jquery_ICheck_js__ = __webpack_require__(4);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    props: {
+        user_answer: { required: true },
+        question: { required: true }
+    },
+
+    data: function data() {
+        return {
+            icheck: null
+        };
+    },
+
+
+    computed: {
+        answers: function answers() {
+            return this.question.answers;
+        }
+    },
+
+    methods: {
+        existsInUserAnswer: function existsInUserAnswer(value, id) {
+            var r = _.find(this.user_answer, function (item) {
+                return item.selected == value && item.answer_id == id;
+            });
+            return r != undefined;
+        },
+        iCheck: function iCheck() {
+            var _this = this;
+
+            var vm = this,
+                i = setInterval(function () {
+
+                var selector = '#listview-check-user-' + _this.question.id + ' label.check-button-user input';
+                if ($(selector).length == vm.answers.length) {
+                    clearInterval(i);
+                    var _icheck = new __WEBPACK_IMPORTED_MODULE_0__boot_modules_jquery_ICheck_js__["a" /* default */](selector);
+                    vm.icheck = _icheck.create();
+                    vm.icheck.iCheck('disable');
+                    $('#listview-check-user-' + _this.question.id + ' .icheckbox_square-blue').removeClass('disabled');
+                }
+            }, 10);
+        }
+    },
+
+    mounted: function mounted() {
+        this.iCheck();
+    },
+
+
+    name: 'user-answer-check'
+});
+
+/***/ }),
+
+/***/ 58:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "ul",
+      {
+        staticClass: "listview-check-user",
+        attrs: { id: "listview-check-user-" + _vm.question.id }
+      },
+      _vm._l(_vm.answers, function(answer) {
+        return _c("li", [
+          _c("label", { staticClass: "check-button-user" }, [
+            _c("input", {
+              attrs: {
+                name: "question-user-" + _vm.question.id,
+                id: "answer-user-" + answer.id,
+                "data-answer_id": answer.id,
+                type: "checkbox"
+              },
+              domProps: {
+                value: answer.value,
+                checked: _vm.existsInUserAnswer(answer.value, answer.id)
+              }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "label-text" }, [
+              _vm._v(
+                "\n                        " +
+                  _vm._s(answer.caption) +
+                  "\n                    "
+              )
+            ])
+          ])
+        ])
+      })
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6b6787ad", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 59:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(60)
+/* template */
+var __vue_template__ = __webpack_require__(61)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\Report\\__UserAnswerRadio.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-19d10520", Component.options)
+  } else {
+    hotAPI.reload("data-v-19d10520", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 60:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__boot_modules_jquery_ICheck_js__ = __webpack_require__(4);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    props: {
+        user_answer: { required: true },
+        question: { required: true }
+    },
+
+    data: function data() {
+        return {
+            icheck: null
+        };
+    },
+
+
+    computed: {
+        answers: function answers() {
+            return this.question.answers;
+        }
+    },
+
+    methods: {
+        iCheck: function iCheck() {
+            var _this = this;
+
+            var vm = this,
+                i = setInterval(function () {
+
+                var selector = '#listview-radio-user-' + _this.question.id + ' label.radio-button-user input';
+
+                if ($(selector).length == vm.answers.length) {
+                    clearInterval(i);
+                    var _icheck = new __WEBPACK_IMPORTED_MODULE_0__boot_modules_jquery_ICheck_js__["a" /* default */](selector);
+                    vm.icheck = _icheck.create();
+                    vm.icheck.iCheck('disable');
+                    $('#listview-radio-user-' + _this.question.id + ' .iradio_square-blue').removeClass('disabled');
+                }
+            }, 10);
+        }
+    },
+
+    mounted: function mounted() {
+        this.iCheck();
+    },
+
+
+    name: 'user-answer-radio'
+});
+
+/***/ }),
+
+/***/ 61:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "ul",
+      {
+        staticClass: "listview-radio-user",
+        attrs: { id: "listview-radio-user-" + _vm.question.id }
+      },
+      _vm._l(_vm.answers, function(answer) {
+        return _c("li", [
+          _c("label", { staticClass: "radio-button-user" }, [
+            _c("input", {
+              attrs: {
+                name: "question-user-" + _vm.question.id,
+                id: "answer-user-" + answer.id,
+                type: "radio"
+              },
+              domProps: {
+                value: answer.value,
+                checked: answer.value == _vm.user_answer.toLowerCase()
+              }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "label-text" }, [
+              _vm._v(
+                "\n                        " +
+                  _vm._s(answer.caption) +
+                  "\n                    "
+              )
+            ])
+          ])
+        ])
+      })
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-19d10520", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 62:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(63)
+/* template */
+var __vue_template__ = __webpack_require__(64)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\frontend\\quiz-detail\\~components\\Report\\__UserAnswerMatch.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-783ed5ea", Component.options)
+  } else {
+    hotAPI.reload("data-v-783ed5ea", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 63:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    props: {
+        user_answer: { required: true },
+        question: { required: true },
+        correct: { required: true }
+    },
+
+    computed: {
+        correct_answer: function correct_answer() {
+            return JSON.parse(this.correct);
+        },
+        answers: function answers() {
+            return this.question.answers;
+        }
+    },
+
+    methods: {
+        getUserResponse: function getUserResponse(answer_id) {
+            var r = _.find(this.user_answer, function (item) {
+                return item.answer_id == answer_id;
+            });
+            if (r == undefined) {
+                return '';
+            }
+            var response = _.find(this.answers, function (item) {
+                return item.id == r.response_id;
+            });
+            if (response == undefined) {
+                return '';
+            }
+            return response.value;
+        }
+    },
+
+    name: 'user-answer-match'
+});
+
+/***/ }),
+
+/***/ 64:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "user-response-match-container" }, [
+    _c(
+      "ul",
+      { staticClass: "list-group" },
+      _vm._l(_vm.answers, function(answer) {
+        return _c("li", { staticClass: "list-group-item" }, [
+          _c(
+            "span",
+            {
+              class: {
+                "is-correct":
+                  _vm.correct_answer[answer.caption] ==
+                  _vm.getUserResponse(answer.id),
+                "is-wrong":
+                  _vm.correct_answer[answer.caption] !=
+                  _vm.getUserResponse(answer.id)
+              }
+            },
+            [
+              _vm._v(
+                "\n                    " +
+                  _vm._s(answer.caption) +
+                  "\n                "
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _vm.getUserResponse(answer.id)
+            ? _c(
+                "span",
+                {
+                  class: {
+                    badge: true,
+                    "badge-is-correct":
+                      _vm.correct_answer[answer.caption] ==
+                      _vm.getUserResponse(answer.id),
+                    "badge-is-wrong":
+                      _vm.correct_answer[answer.caption] !=
+                      _vm.getUserResponse(answer.id)
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.getUserResponse(answer.id)) +
+                      "\n                "
+                  )
+                ]
+              )
+            : _vm._e()
+        ])
+      })
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-783ed5ea", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 65:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "response-container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-xs-8" }, [
+        _c(
+          "h4",
+          {
+            class: {
+              is_correct: _vm.is_correct,
+              is_not_correct: !_vm.is_correct
+            }
+          },
+          [
+            _vm._v(
+              "\n                Question " +
+                _vm._s(_vm.index) +
+                " of " +
+                _vm._s(_vm.record.questions.length) +
+                "\n            "
+            )
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-xs-4 text-right" }, [
+        _c(
+          "h4",
+          {
+            class: {
+              is_correct: _vm.is_correct,
+              is_not_correct: !_vm.is_correct
+            }
+          },
+          [
+            _vm._v(
+              "\n                " +
+                _vm._s(_vm.question.points) +
+                " points\n            "
+            )
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", [
+      _c("span", { domProps: { innerHTML: _vm._s(_vm.question.question) } })
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "question-container" }, [
+      _c("div", { staticClass: "row" }, [
+        _c(
+          "div",
+          { staticClass: "col-xs-12 col-sm-6" },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("correct-answer-" + _vm.question.type, {
+              tag: "component",
+              attrs: {
+                correct: _vm.question.correct_answer,
+                question: _vm.question
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            class: {
+              "col-xs-12": true,
+              "col-sm-6": true,
+              is_correct: _vm.is_correct,
+              is_not_correct: !_vm.is_correct
+            }
+          },
+          [
+            _c("div", [
+              _c("h5", [
+                _c("i", {
+                  class: {
+                    fa: true,
+                    "fa-fw": true,
+                    "fa-thumbs-up": _vm.is_correct,
+                    "fa-thumbs-down": !_vm.is_correct
+                  }
+                }),
+                _vm._v(
+                  "\n                        Your Answer\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                [
+                  _c("user-answer-" + _vm.question.type, {
+                    tag: "component",
+                    attrs: {
+                      user_answer: _vm.user_answer,
+                      question: _vm.question,
+                      correct: _vm.question.correct_answer
+                    }
+                  })
+                ],
+                1
+              )
+            ])
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _vm.question.answer_description
+      ? _c("div", [
+          _vm._m(1),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _vm.question.answer_image_url != null
+              ? _c("div", { staticClass: "col-xs-12 col-sm-6" }, [
+                  _c("img", {
+                    staticClass: "img-responsive",
+                    attrs: { src: "/" + _vm.question.answer_image_url }
+                  })
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                class: {
+                  "col-xs-12": _vm.question.answer_image_url == null,
+                  "col-sm-12": _vm.question.answer_image_url == null,
+                  "col-sm-6": _vm.question.answer_image_url != null
+                }
+              },
+              [
+                _c("div", {
+                  domProps: {
+                    innerHTML: _vm._s(_vm.question.answer_description)
+                  }
+                })
+              ]
+            )
+          ])
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h5", [
+      _c("i", { staticClass: "fa fa-fw fa-thumbs-up" }),
+      _vm._v("Accepted Answer")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h5", [
+      _c("i", { staticClass: "fa fa-fw fa-exclamation-circle" }),
+      _vm._v("Explanation")
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-648b83ce", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 66:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "panel panel-default" }, [
+    _c("div", { staticClass: "panel-heading" }, [
+      _c("h3", { staticClass: "panel-title" }, [
+        _vm._v("\n            " + _vm._s(_vm.record.title) + "\n        ")
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "panel-body" },
+      _vm._l(_vm.questions, function(question, index) {
+        return _c("vue-response", {
+          key: "question-" + question.id,
+          attrs: {
+            question: question,
+            record: _vm.record,
+            index: 1 + index,
+            response: _vm.getResponseByQuestion(question.id)
+          }
+        })
+      })
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "panel-footer" }, [
+      _c("ul", { staticClass: "list-group" }, [
+        _c("li", { staticClass: "list-group-item" }, [
+          _vm._v(
+            "\n                Number of points achieved\n                "
+          ),
+          _c("span", { staticClass: "badge" }, [
+            _vm._v(
+              "\n                    " +
+                _vm._s(
+                  _vm.solving != null ? _vm.solving.total_real_points : "???"
+                ) +
+                "\n                "
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "list-group-item" }, [
+          _vm._v(
+            "\n                Number of points available\n                "
+          ),
+          _c("span", { staticClass: "badge" }, [
+            _vm._v(
+              "\n                    " +
+                _vm._s(_vm.record.total_available_points) +
+                "\n                "
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _vm.solving != null
+          ? _c("li", { staticClass: "list-group-item" }, [
+              _vm._v("\n                Percentage\n                "),
+              _c("span", { staticClass: "badge" }, [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.percentage) +
+                    " %\n                "
+                )
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.solving != null
+          ? _c("li", { staticClass: "list-group-item" }, [
+              _vm._v("\n                Success Percentage\n                "),
+              _c("span", { staticClass: "badge" }, [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.record.success_percentage) +
+                    " %\n                "
+                )
+              ])
+            ])
+          : _vm._e()
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-57c61024", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 7:
 /***/ (function(module, exports) {
 
 /**
@@ -12189,6 +12128,67 @@ module.exports = function listToStyles (parentId, list) {
   return styles
 }
 
+
+/***/ }),
+
+/***/ 8:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vee_validate__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__VeeExtender_js__ = __webpack_require__(11);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+
+Object(__WEBPACK_IMPORTED_MODULE_1__VeeExtender_js__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_0_vee_validate__["a" /* Validator */]);
+
+var Validation = function () {
+    function Validation(rules) {
+        _classCallCheck(this, Validation);
+
+        this.validator = new __WEBPACK_IMPORTED_MODULE_0_vee_validate__["a" /* Validator */](rules);
+    }
+
+    _createClass(Validation, [{
+        key: 'validate',
+        value: function validate(data) {
+            return this.validator.validateAll(data);
+        }
+
+        /*
+        | return Promise
+        */
+
+    }, {
+        key: 'validateField',
+        value: function validateField(field, value) {
+            return this.validator.validate(field, value);
+        }
+    }, {
+        key: 'getErrors',
+        value: function getErrors() {
+            return this.validator.errors;
+        }
+    }, {
+        key: 'removeError',
+        value: function removeError(field) {
+            return this.validator.errors.remove(field);
+        }
+    }, {
+        key: 'removeErrors',
+        value: function removeErrors() {
+            return this.validator.errors.clear();
+        }
+    }]);
+
+    return Validation;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (Validation);
 
 /***/ })
 
