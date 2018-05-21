@@ -31,6 +31,7 @@ class Navbar
 			}
 			else
 			{
+				/*
 				$result['options'][] = [
         			'id' => 'login',
         			'caption' => 'Login'
@@ -39,6 +40,7 @@ class Navbar
         			'id' => 'register',
         			'caption' => 'Register'
         		];
+        		*/
 			}
 		}
 		else
