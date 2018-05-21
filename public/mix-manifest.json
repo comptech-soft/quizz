@@ -1,6 +1,6 @@
 {
     "/js/boot/boot.js": "/js/boot/boot.js",
     "/css/frontend/app.css": "/css/frontend/app.css",
-    "/js/frontend/app.js": "/js/frontend/app.js",
-    "/js/frontend/play/index.js": "/js/frontend/play/index.js"
+    "/js/frontend/play/index.js": "/js/frontend/play/index.js",
+    "/js/frontend/app.js": "/js/frontend/app.js"
 }

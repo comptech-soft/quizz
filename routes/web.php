@@ -1,9 +1,11 @@
 <?php
 
+Route::post('validation', 'Utilities\ValidationController@veeValidate')->name('validate');
 Route::post('upload-image', 'System\UploadController@uploadImage')->name('upload-image');
 
 Route::get('play-quiz', 'Frontend\Quizz\PlayquizController@index')->name('play-quiz-index');
-
+Route::post('play-quiz/start-contest', 'Frontend\Quizz\PlayquizController@startContest')->name('play-quiz-start-contest');
+Route::post('play-quiz/send-responses', 'Frontend\Quizz\PlayquizController@sendResponses')->name('play-quiz-send-responses');
 /*
 | FRONTEND
 */

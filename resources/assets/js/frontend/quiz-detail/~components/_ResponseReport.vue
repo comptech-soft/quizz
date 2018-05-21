@@ -23,7 +23,7 @@
                 <li class="list-group-item">
                     Number of points achieved
                     <span class="badge">
-                        {{ solving.total_real_points }}
+                        {{ solving != null ? solving.total_real_points : '???'}}
                     </span>
                 </li>
                 <li class="list-group-item">
@@ -32,13 +32,13 @@
                         {{ record.total_available_points }}
                     </span>
                 </li>
-                <li class="list-group-item">
+                <li v-if="solving != null" class="list-group-item">
                     Percentage
                     <span class="badge">
                         {{ percentage }} %
                     </span>
                 </li>
-                <li class="list-group-item">
+                <li v-if="solving != null" class="list-group-item">
                     Success Percentage
                     <span class="badge">
                         {{ record.success_percentage }} %
@@ -77,8 +77,12 @@
 
             percentage()
             {
-                let r = 100 * this.solving.total_real_points / this.record.total_available_points;
-                return r.toFixed(2);
+                if( this.solving != null )
+                {
+                    let r = 100 * this.solving.total_real_points / this.record.total_available_points;
+                    return r.toFixed(2);
+                }
+                return '??';
             }
         },
 

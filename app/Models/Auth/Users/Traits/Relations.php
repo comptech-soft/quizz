@@ -10,4 +10,8 @@ trait Relations
         return $this->hasOne(\App\Models\Auth\Profiles\Profile::class);
     }
 
+    public function questions()
+    {
+    	return $this->belongsToMany(\App\Models\Quizes\Questions\Question::class, 'users_questions')->withTimestamps();
+    }
 }

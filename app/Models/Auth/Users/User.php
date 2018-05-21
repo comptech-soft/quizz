@@ -39,11 +39,22 @@ class User extends EloquentUser
 		Relations
 	;
 	
+	protected $guarded = ['id'];
+	protected $fillable = [
+        'email',
+        'password',
+        'last_name',
+        'first_name',
+        'permissions',
+        'class', 
+        'username'
+    ];
+
 	/*
 	| Computed attributes appended
 	*/
-	protected $appends = [
-		'full_name',
-		'avatar'
-	];
+	// protected $appends = [
+	// 	'full_name',
+	// 	'avatar'
+	// ];
 }
