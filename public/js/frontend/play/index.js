@@ -9481,8 +9481,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             errors: null,
 
             player: {
-                first_name: 'Test name',
-                last_name: 'Test surname ',
+                first_name: 'Test Name',
+                last_name: 'Test Vorname ',
                 class: '7',
                 email: 'aaa@test.ro',
                 password: Math.random().toString(36).substring(10)
@@ -9679,7 +9679,7 @@ var render = function() {
                     attrs: {
                       field: "last_name",
                       placeholder: "Surname",
-                      label: "Surname",
+                      label: "Vorname",
                       errors: _vm.errors
                     },
                     model: {
@@ -9702,7 +9702,7 @@ var render = function() {
                     attrs: {
                       field: "class",
                       placeholder: "Class",
-                      label: "Class",
+                      label: "Klasse",
                       errors: _vm.errors
                     },
                     model: {
@@ -9727,7 +9727,7 @@ var render = function() {
                     attrs: {
                       field: "email",
                       placeholder: "Email",
-                      label: "Email",
+                      label: "E-Mail Adresse",
                       errors: _vm.errors
                     },
                     model: {
@@ -9751,7 +9751,7 @@ var render = function() {
                 staticClass: "btn btn-primary",
                 on: { click: _vm.onClickStartContest }
               },
-              [_vm._v("\n                Start contest\n            ")]
+              [_vm._v("\n                Starte das Quiz\n            ")]
             )
           ])
         ])
@@ -9918,7 +9918,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "panel-heading" }, [
-      _c("h4", [_vm._v("\n                Contestant infos\n            ")])
+      _c("h4", [_vm._v("\n                Teilnehmer Informationen\n            ")])
     ])
   }
 ]
