@@ -22,6 +22,7 @@
     </div>
 
     <div v-else class="question-form-component">
+
         <div class="row">
             <div class="col-xs-12 col-sm-2 text-right">
                 <img :src="'/images/question-types/' + type + '.png'" style="width: 48px; padding-top: 20px"/>
@@ -164,15 +165,16 @@
         data()
         {
             return {
+                id: null,
                 type: '-',
                 order_no: 0,
                 points: 0,
                 question_body: '',
                 answer_description: '',
                 answer_image_url: '',
+                correct_answer: '',
 
                 answers: [],
-                correct_answer: '',
             };
         },
 
@@ -180,16 +182,11 @@
         {
             'type': function(newValue, oldValue)
             {
-                console.log('Watch Type: ' + oldValue + ' ---> ' + newValue);
                 if(newValue != '-')
                 {
-                    // let x = 0;
                     let i = setInterval( () => {
-
-                        // console.log(x++ + '>' + $('#modal-content-question-modal-form .modal-body').length);
                         if( $('#modal-content-question-modal-form > div.modal-body').length == 1)
                         {
-                            // alert('OKKKK');
                             clearInterval(i);
                             $('#modal-content-question-modal-form > div.modal-body').scrollTo(0, 250);
                         }
@@ -260,8 +257,8 @@
             {
                 this.correct_answer = e.correct_answer;
                 this.answers = e.answers;
-
                 this.$emit('update', {
+                    id: this.id,
                     type: this.type,
                     order_no: this.order_no,
                     points: this.points,
@@ -275,12 +272,15 @@
 
             fillQuestionRecord()
             {
+                this.id = this.question.id;
                 this.type = this.question.type;
                 this.order_no = this.question.order_no;
                 this.points = this.question.points;
                 this.question_body = this.question.question;
+                this.correct_answer = this.question.correct_answer;
                 this.answer_description = this.question.answer_description;
                 this.answer_image_url = this.question.answer_image_url;
+                this.answers = this.question.answers;
             }
         },
 

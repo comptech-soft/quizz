@@ -61,6 +61,10 @@ class ListController extends Controller
 		{
 			return Question::insertRecord($request->question);
 		}
+		if( $request->action == 'update' )
+		{
+			return Question::updateRecord($request->question);
+		}
 	}
 	
 }

@@ -15,9 +15,11 @@ mix
 	//.js(assetsJsPath + 'frontend/quizz/index.js', publicJsPath + 'frontend/quizz/index.js')
 	//.js(assetsJsPath + 'frontend/quiz-detail/index.js', publicJsPath + 'frontend/quiz-detail/index.js')
 
+	.js(assetsJsPath + 'frontend/play/index.js', publicJsPath + 'frontend/play/index.js')
 
-	.js(assetsJsPath + 'admin/quizes/create/index.js', publicJsPath + 'admin/quizes/create/index.js')
-	.js(assetsJsPath + 'admin/quizes/list/index.js', publicJsPath + 'admin/quizes/list/index.js')
+
+	// .js(assetsJsPath + 'admin/quizes/create/index.js', publicJsPath + 'admin/quizes/create/index.js')
+	// .js(assetsJsPath + 'admin/quizes/list/index.js', publicJsPath + 'admin/quizes/list/index.js')
 ;
 
 /**

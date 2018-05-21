@@ -123,4 +123,43 @@ class Question extends Model
 			'exception' => NULL
 		];
 	}
+
+	public static function updateRecord($question)
+	{
+		$data = 
+			collect($question)
+			->only(['quiz_id', 'type', 'order_no', 'points', 'question', 'correct_answer', 'answer_description', 'answer_image_url'])
+			->toArray();
+		DB::beginTransaction();
+		try
+		{
+			$record = self::find($question['id']);
+			$record->update($data);
+			$record->answers()->delete();
+			$record->answers()->createMany($question['answers']);
+		}
+		catch(Exception $e)
+		{
+			DB::rollback();
+			return [
+				'success' => false,
+				'notification' => [
+					'type' => 'danger',
+					'message' => 'Something went wrong!'
+				],
+				'exception' => [
+					'message' => $e->getMessage()
+				]
+			];
+		}
+		DB::commit();
+		return [
+			'success' => true,
+			'notification' => [
+				'type' => 'success',
+				'message' => 'Success'
+			],
+			'exception' => NULL
+		];
+	}
 }

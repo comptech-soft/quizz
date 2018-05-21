@@ -73,48 +73,13 @@
 
 <script>
 
+    import answersMix from './~mixins.js';
 
     export default 
     {
-    	props:
-    	{
-    		question: {required: true},
-            action: {required: true},
-            errors: {required: true},
-    	},
-
-        computed:
-        {
-            has_correct_answer_error()
-            {
-                if( this.errors == null )
-                {
-                    return false;
-                }
-                return this.errors.has('correct_answer')
-            },
-
-            correct_answer_error()
-            {
-                if( this.has_correct_answer_error )
-                {
-                    return this.errors.collect('correct_answer').toString();
-                }
-                return null;
-            },
-        },
-
-        data()
-        {
-            return {
-                answers: [],
-                correct_answer: [],
-
-                list_action: 'insert',
-                answer_item: '',
-                answer_old: '',
-            };
-        },
+        mixins: [
+            answersMix
+        ],
 
         methods:
         {
@@ -127,10 +92,7 @@
                 });
             },
 
-            saveItem()
-            {
-                this[this.list_action + 'Item']();
-            },
+            
 
             insertItem()
             {
@@ -210,49 +172,7 @@
             }
         },
 
-        name: 'question-answers-type'
+        name: 'question-answers-text'
     }
 
 </script>
-
-<style scoped lang="scss">
-    .accepted-answer-item
-    {
-        float: left;
-        width: 50%;
-        padding: 3px;
-        >div
-        {
-            border:1px solid #2d8c0b;
-            background-color: #effcea !important;
-            color: #2d8c0b !important;
-            padding: 2px;
-        }
-    }
-
-    .answer-item
-    {
-        .answer-actions
-        {
-            display: none;
-        }
-    }
-
-    .answer-item:hover
-    {
-        .answer-actions
-        {
-            display: inline-block;
-            cursor:pointer;
-            .fa-trash-o
-            {
-                color: red;
-            }
-            .fa-pencil
-            {
-                color: #666;
-            }
-        }
-    }
-
-</style>

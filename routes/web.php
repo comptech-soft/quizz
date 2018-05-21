@@ -2,6 +2,8 @@
 
 Route::post('upload-image', 'System\UploadController@uploadImage')->name('upload-image');
 
+Route::get('play-quiz', 'Frontend\Quizz\PlayquizController@index')->name('play-quiz-index');
+
 /*
 | FRONTEND
 */

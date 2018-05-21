@@ -83,12 +83,25 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-xs-12">
+                        <div class="col-xs-12 col-sm-8">
                             <div class="question-answer-description">
                                 <h5>
                                     Explanation
                                 </h5>
                                 <div v-if="question.answer_description" v-html="question.answer_description">
+                                </div>
+                                <div v-else>
+                                    -
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4">
+                            <div class="question-answer-image">
+                                <h5>
+                                    Answer image
+                                </h5>
+                                <div v-if="question.answer_image_url">
+                                        <img :src="question.answer_image_url" class="img-responsive" />
                                 </div>
                                 <div v-else>
                                     -
@@ -193,14 +206,6 @@
             };
         },
 
-        // watch:
-        // {
-        //     'form.visible': function(newValue, oldValue)
-        //     {
-        //         console.log('form.visible: ' + oldValue + '--->' + newValue);
-        //     }
-        // },
-
         computed:
         {
             form_header_caption()
@@ -209,7 +214,7 @@
                 {
                     return '';
                 }
-                return this.record.title + '. ' + (this.form.action == 'insert' ? ' Adding a new question' : 'Edit question')
+                return this.record.title + ' - ' + (this.form.action == 'insert' ? ' Adding a new question' : 'Edit question')
             },
 
             form_action_caption()

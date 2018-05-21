@@ -28,8 +28,21 @@ a.navbar-brand {
   max-height: 70px;
 }
 
+#head {
+  margin-top: 40px;
+}
+
 #head h1 {
-  margin-top: 20px;
+  margin-top: 50px;
+}
+
+#head .start-quiz {
+  cursor: pointer;
+}
+
+#head .start-quiz:hover {
+  opacity: 0.75;
+  text-decoration: underline;
 }
 
 .modal-content {
@@ -351,7 +364,8 @@ body.modal-open {
 
 #quizes-list-component .quiz-render-item .quiz-questions .question-container .question-correct-answer,
 #quizes-list-component .quiz-render-item .quiz-questions .question-container .question-answer-description,
-#quizes-list-component .quiz-render-item .quiz-questions .question-container .correct-to-string {
+#quizes-list-component .quiz-render-item .quiz-questions .question-container .correct-to-string,
+#quizes-list-component .quiz-render-item .quiz-questions .question-container .question-answer-image {
   margin-top: 8px;
 }
 
@@ -362,7 +376,8 @@ body.modal-open {
 
 #quizes-list-component .quiz-render-item .quiz-questions .question-container .question-body,
 #quizes-list-component .quiz-render-item .quiz-questions .question-container .answer-component-container,
-#quizes-list-component .quiz-render-item .quiz-questions .question-container .question-answer-description {
+#quizes-list-component .quiz-render-item .quiz-questions .question-container .question-answer-description,
+#quizes-list-component .quiz-render-item .quiz-questions .question-container .question-answer-image {
   padding: 10px;
 }
 
@@ -397,6 +412,36 @@ body.modal-open {
 
 .image-uploader .input-group-btn .btn {
   padding: 10px 12px 9px 12px;
+}
+
+.question-answers-component .accepted-answer-item {
+  float: left;
+  width: 50%;
+  padding: 3px;
+}
+
+.question-answers-component .accepted-answer-item > div {
+  border: 1px solid #2d8c0b;
+  background-color: #effcea !important;
+  color: #2d8c0b !important;
+  padding: 2px;
+}
+
+.question-answers-component .answer-item .answer-actions {
+  display: none;
+}
+
+.question-answers-component .answer-item:hover .answer-actions {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.question-answers-component .answer-item:hover .answer-actions .fa-trash-o {
+  color: red;
+}
+
+.question-answers-component .answer-item:hover .answer-actions .fa-pencil {
+  color: #666;
 }
 
 #quiz-create-container {
