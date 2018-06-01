@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 303);
+/******/ 	return __webpack_require__(__webpack_require__.s = 305);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -5867,21 +5867,21 @@ function applyToTag (styleElement, obj) {
 
 /***/ }),
 
-/***/ 303:
+/***/ 305:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(304);
+module.exports = __webpack_require__(306);
 
 
 /***/ }),
 
-/***/ 304:
+/***/ 306:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__store_Store__ = __webpack_require__(305);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_navbar_Navbar__ = __webpack_require__(315);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__store_Store__ = __webpack_require__(307);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_navbar_Navbar__ = __webpack_require__(317);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_navbar_Navbar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_navbar_Navbar__);
 
 
@@ -5907,19 +5907,19 @@ new window.Vue({
 
 /***/ }),
 
-/***/ 305:
+/***/ 307:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(306);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex_i18n__ = __webpack_require__(307);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__locales_en_js__ = __webpack_require__(308);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__locales_de_js__ = __webpack_require__(309);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__locales_ro_js__ = __webpack_require__(310);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__state_js__ = __webpack_require__(311);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__getters_js__ = __webpack_require__(312);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__mutations_js__ = __webpack_require__(313);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__actions_js__ = __webpack_require__(314);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(308);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex_i18n__ = __webpack_require__(309);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__locales_en_js__ = __webpack_require__(310);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__locales_de_js__ = __webpack_require__(311);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__locales_ro_js__ = __webpack_require__(312);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__state_js__ = __webpack_require__(313);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__getters_js__ = __webpack_require__(314);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__mutations_js__ = __webpack_require__(315);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__actions_js__ = __webpack_require__(316);
 
 
 
@@ -5957,7 +5957,7 @@ var i = setInterval(function () {
 
 /***/ }),
 
-/***/ 306:
+/***/ 308:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6903,7 +6903,7 @@ var index_esm = {
 
 /***/ }),
 
-/***/ 307:
+/***/ 309:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7719,7 +7719,7 @@ var index = {
 
 /***/ }),
 
-/***/ 308:
+/***/ 310:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7731,7 +7731,7 @@ var en = {
 
 /***/ }),
 
-/***/ 309:
+/***/ 311:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7744,15 +7744,23 @@ var de = {
 
 /***/ }),
 
-/***/ 310:
+/***/ 312:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 var translations = {
 
+	'quiz': {
+		'points': '{count} punct ::: {count} puncte',
+		'question': 'Întrebarea {index} din {total}',
+		'accepted-answer': 'Răspunsul corect',
+		'your-answer': 'Răspunsul dat de tine',
+		'explanation': 'Explicații'
+	},
+
 	'welcome': {
 		'header': 'Mars Quiz',
-		'info': '<b>Teste Dein Wissen über den Mars, und gewinne einer der 3 Preise!<b><p>1. Preis: Ein Amazon Gutschein in Wert von 25 Euro</p><p>2. Preis: Ein Amazon Gutschein in Wert von 20 Euro</p><p>3. Preis: Ein Amazon Gutschein in Wert von 15 Euro</p>'
+		'info': '<h2>Teste Dein Wissen über den Mars, und gewinne einer der 3 Preise!</h2><p>1. Preis: Ein Amazon Gutschein in Wert von 25 Euro</p><p>2. Preis: Ein Amazon Gutschein in Wert von 20 Euro</p><p>3. Preis: Ein Amazon Gutschein in Wert von 15 Euro</p>'
 	},
 
 	'play': {
@@ -7798,6 +7806,15 @@ var translations = {
 			}
 		}
 
+	},
+
+	'report': {
+		'summary': {
+			'points-achieved': 'Număr de puncte realizate',
+			'points-available': 'Număr de puncte disponibil',
+			'percent-achieved': 'Procentaj realizat',
+			'percent-available': 'Procentaj minim pentru succes'
+		}
 	}
 
 };
@@ -7806,7 +7823,7 @@ var translations = {
 
 /***/ }),
 
-/***/ 311:
+/***/ 313:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7836,7 +7853,7 @@ var state = {
 
 /***/ }),
 
-/***/ 312:
+/***/ 314:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7880,7 +7897,7 @@ var getters = {
 
 /***/ }),
 
-/***/ 313:
+/***/ 315:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7903,7 +7920,7 @@ var mutations = {
 
 /***/ }),
 
-/***/ 314:
+/***/ 316:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7922,19 +7939,19 @@ var actions = {
 
 /***/ }),
 
-/***/ 315:
+/***/ 317:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(316)
+  __webpack_require__(318)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(318)
+var __vue_script__ = __webpack_require__(320)
 /* template */
-var __vue_template__ = __webpack_require__(327)
+var __vue_template__ = __webpack_require__(329)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -7974,13 +7991,13 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 316:
+/***/ 318:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(317);
+var content = __webpack_require__(319);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -8001,7 +8018,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 317:
+/***/ 319:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -8016,14 +8033,14 @@ exports.push([module.i, "\n#main-nav li a[data-v-694d0c29]:hover {\n  opacity: 0
 
 /***/ }),
 
-/***/ 318:
+/***/ 320:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_LoginForm__ = __webpack_require__(319);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_LoginForm__ = __webpack_require__(321);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_LoginForm___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_LoginForm__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_RegisterForm__ = __webpack_require__(324);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_RegisterForm__ = __webpack_require__(326);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_RegisterForm___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_RegisterForm__);
 //
 //
@@ -8227,15 +8244,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 319:
+/***/ 321:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(320)
+var __vue_script__ = __webpack_require__(322)
 /* template */
-var __vue_template__ = __webpack_require__(323)
+var __vue_template__ = __webpack_require__(325)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -8275,12 +8292,12 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 320:
+/***/ 322:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__boot_modules_form_form_mix_js__ = __webpack_require__(321);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__boot_modules_form_form_mix_js__ = __webpack_require__(323);
 //
 //
 //
@@ -8411,11 +8428,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 321:
+/***/ 323:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Form_js__ = __webpack_require__(322);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Form_js__ = __webpack_require__(324);
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -8485,7 +8502,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 322:
+/***/ 324:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8676,7 +8693,7 @@ var Form = function () {
 
 /***/ }),
 
-/***/ 323:
+/***/ 325:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -8851,15 +8868,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 324:
+/***/ 326:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(325)
+var __vue_script__ = __webpack_require__(327)
 /* template */
-var __vue_template__ = __webpack_require__(326)
+var __vue_template__ = __webpack_require__(328)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -8899,7 +8916,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 325:
+/***/ 327:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8930,7 +8947,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 326:
+/***/ 328:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -8954,7 +8971,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 327:
+/***/ 329:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

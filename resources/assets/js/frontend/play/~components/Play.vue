@@ -251,6 +251,7 @@
                     title: this.user_infos,
                     questions: this.questions,
                     total_available_points: _.sumBy(this.questions, function(o) { return o.points; }),
+                    success_percentage: null,
                 }
             },
 
@@ -300,6 +301,8 @@
                 contest: null,
 
                 clock: '00:00:00',
+                timer: null,
+
                 responses: [],
                 user_answers: [],
                 current: 0,
@@ -377,6 +380,7 @@
             startContest()
             {
                 this.loading = true;
+                let vm = this;
                 Requests.post('/play-quiz/start-contest', {player: this.player})
                     .then( r => {
                         this.user = r.data.user;
@@ -385,6 +389,12 @@
                         this.prepareUserAnswers();
                         this.gettting_player_infos = false;
                         this.loading = false;
+
+                        this.timer = new Timer();
+                        this.timer.start({});
+                        this.timer.addEventListener('secondsUpdated', function(e) {
+                            vm.clock = vm.timer.getTimeValues().toString();
+                        });
                     })
                 ;
             },

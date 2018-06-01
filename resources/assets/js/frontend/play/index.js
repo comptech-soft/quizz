@@ -1,3 +1,5 @@
+window.Timer = require('easytimer.js');
+
 import vuePlay from './~components/Play'
 
 new window.Vue({

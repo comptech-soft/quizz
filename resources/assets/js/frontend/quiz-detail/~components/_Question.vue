@@ -4,13 +4,13 @@
             <div class="row">
                 <div class="col-xs-8">
                     <h4 class="question-number">
-                        Question {{question.order_no}} of {{total}}
+                        {{ $t('quiz.question', {index: current + 1, total: total}) }}
                     </h4>
                 </div>
 
                 <div class="col-xs-4 text-right">
                     <h4>
-                        {{question.points}} points
+                        {{ $t('quiz.points', {count: question.points}, question.points) }}
                     </h4>
                 </div>
             </div>

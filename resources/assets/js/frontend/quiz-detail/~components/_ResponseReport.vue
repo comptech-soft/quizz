@@ -21,25 +21,28 @@
         <div class="panel-footer">
             <ul class="list-group">
                 <li class="list-group-item">
-                    Number of points achieved
+                    {{ $t('report.summary.points-achieved') }}
                     <span class="badge">
                         {{ solving != null ? solving.total_real_points : '???'}}
                     </span>
                 </li>
                 <li class="list-group-item">
-                    Number of points available
+                    {{ $t('report.summary.points-available') }}
                     <span class="badge">
                         {{ record.total_available_points }}
                     </span>
                 </li>
                 <li v-if="solving != null" class="list-group-item">
-                    Percentage
+                    {{ $t('report.summary.percent-achieved') }}
                     <span class="badge">
                         {{ percentage }} %
                     </span>
                 </li>
-                <li v-if="solving != null" class="list-group-item">
-                    Success Percentage
+                <li 
+                    v-if="(solving != null) && (record.success_percentage != null)" 
+                    class="list-group-item"
+                >
+                   {{ $t('report.summary.percent-available') }}
                     <span class="badge">
                         {{ record.success_percentage }} %
                     </span>

@@ -9,7 +9,7 @@
                         is_not_correct: !is_correct,
                     }"
                 >
-                    Question {{index}} of {{record.questions.length}}
+                    {{ $t('quiz.question', {index: index, total: record.questions.length}) }}
                 </h4>
             </div>
             <div class="col-xs-4 text-right">
@@ -19,7 +19,7 @@
                         is_not_correct: !is_correct,
                     }"
                 >
-                    {{ question.points }} points
+                    {{ $t('quiz.points', {count: question.points}, question.points) }}
                 </h4>
             </div>
         </div>
@@ -32,7 +32,10 @@
         <div class="question-container">
             <div class="row">
                 <div class="col-xs-12 col-sm-6">
-                    <h5><i class="fa fa-fw fa-thumbs-up"></i>Accepted Answer</h5>
+                    <h5>
+                        <i class="fa fa-fw fa-thumbs-up"></i>
+                        {{ $t('quiz.accepted-answer') }}
+                    </h5>
                     <component
                         :is="'correct-answer-' + question.type"
                         :correct="question.correct_answer"
@@ -57,7 +60,7 @@
                                 'fa-thumbs-down': !is_correct
                             }">
                             </i>
-                            Your Answer
+                            {{ $t('quiz.your-answer') }}
                         </h5>
                         <div>
                             <component
@@ -74,7 +77,10 @@
         </div>
 
         <div v-if="question.answer_description">
-            <h5><i class="fa fa-fw fa-exclamation-circle"></i>Explanation</h5>
+            <h5>
+                <i class="fa fa-fw fa-exclamation-circle"></i>
+                {{ $t('quiz.explanation') }}
+            </h5>
             <div class="row">
                 <div v-if="question.answer_image_url != null" class="col-xs-12 col-sm-6">
                     <img :src="question.answer_image_url" class="img-responsive" />

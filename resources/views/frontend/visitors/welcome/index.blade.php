@@ -2,12 +2,8 @@
 
 @section('content')
     <header id="head">
-
         <vue-welcome>
         </vue-welcome>
-
-
-
     </header>
 @endsection
 
