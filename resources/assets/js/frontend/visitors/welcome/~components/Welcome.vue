@@ -4,9 +4,8 @@
             <h1 class="animated flipInY delay1 start-quiz">
                 {{ $t('welcome.header') }}
             </h1>
-            <p class="start-quiz">
-                {{ $t('welcome.info') }}
-            </p>
+            <div v-html="$t('welcome.info')">
+            </div>
         </div>
 
         <div class="fluid_container">
@@ -40,9 +39,10 @@
         {
             return {
                 slides: [
-                    'img1.jpg',
-                    'img2.jpg',
-                    'img3.jpg',
+                    'mars01.jpg',
+                    'mars02.jpg',
+                    'mars03.jpg',
+                    'mars04.jpg',  
                 ],
             };
         },

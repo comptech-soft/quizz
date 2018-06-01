@@ -281,7 +281,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -294,7 +293,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-            slides: ['img1.jpg', 'img2.jpg', 'img3.jpg']
+            slides: ['mars01.jpg', 'mars02.jpg', 'mars03.jpg', 'mars04.jpg']
         };
     },
 
@@ -357,13 +356,7 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c("p", { staticClass: "start-quiz" }, [
-            _vm._v(
-              "\n                " +
-                _vm._s(_vm.$t("welcome.info")) +
-                "\n            "
-            )
-          ])
+          _c("div", { domProps: { innerHTML: _vm._s(_vm.$t("welcome.info")) } })
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "fluid_container" }, [

@@ -1,8 +1,8 @@
 const translations = {
 	
 	'welcome': {
-		'header': 'Începe testul tău Mars',
-		'info': 'Phasellus mi nisl, accumsan id laoreet sed, cursus ac ipsum.',
+		'header': 'Mars Quiz',
+		'info': '<b>Teste Dein Wissen über den Mars, und gewinne einer der 3 Preise!<b><p>1. Preis: Ein Amazon Gutschein in Wert von 25 Euro</p><p>2. Preis: Ein Amazon Gutschein in Wert von 20 Euro</p><p>3. Preis: Ein Amazon Gutschein in Wert von 15 Euro</p>',
 	},
 
 	'play': {
