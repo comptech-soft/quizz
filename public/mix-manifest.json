@@ -6,5 +6,6 @@
     "/js/frontend/quiz-detail/index.js": "/js/frontend/quiz-detail/index.js",
     "/js/admin/quizes/list/index.js": "/js/admin/quizes/list/index.js",
     "/js/frontend/app.js": "/js/frontend/app.js",
+    "/js/frontend/visitors/welcome/index.js": "/js/frontend/visitors/welcome/index.js",
     "/js/frontend/quizz/index.js": "/js/frontend/quizz/index.js"
 }

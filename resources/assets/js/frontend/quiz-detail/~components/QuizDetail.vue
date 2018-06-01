@@ -26,7 +26,7 @@
                         </p>
                     </div>
                     <div class="col-xs-12 col-sm-6">
-                        <img :src="'/' + record.image_url" class="img-responsive" />
+                        <img :src="record.image_url" class="img-responsive" />
                     </div>
                 </div>
             </div>

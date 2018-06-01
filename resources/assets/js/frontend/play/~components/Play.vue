@@ -1,178 +1,212 @@
 <template>
 	
-    <div 
-        id="get-player-infos" 
-        v-if="gettting_player_infos"
-    >
-        <div class="panel panel-default">    
-            <div class="panel-heading">
-                <h4>
-                    Contestant infos
-                </h4>
-            </div>
-
-            <div class="panel-body">
+    <div v-if="ready">
+        <div 
+            id="get-player-infos" 
+            v-if="gettting_player_infos"
+        >
+            <!-- Contestant panel -->
+            <div class="panel panel-default">    
                 
-                <div class="row">
-                    <!-- Name -->
-                    <div class="col-xs-12 col-sm-5">
-                        <vue-textbox
-                            field="first_name"
-                            placeholder="Name"
-                            label="Name"
-                            v-model="player.first_name"
-                            :errors="errors"
-                        >
-                        </vue-textbox>
-                    </div>
-
-                    <!-- Surname -->
-                    <div class="col-xs-12 col-sm-5">
-                        <vue-textbox
-                            field="last_name"
-                            placeholder="Surname"
-                            label="Surname"
-                            v-model="player.last_name"
-                            :errors="errors"
-                        >
-                        </vue-textbox>
-                    </div>
-
-                    <!-- class -->
-                    <div class="col-xs-12 col-sm-2">
-                        <vue-textbox
-                            field="class"
-                            placeholder="Class"
-                            label="Class"
-                            v-model="player.class"
-                            :errors="errors"
-                        >
-                        </vue-textbox>
-                    </div>
-
+                <!-- Panel Heading -->
+                <div class="panel-heading">
+                    <h4>
+                        {{ $t('play.player-caption') }}
+                    </h4>
                 </div>
 
-                <div class="row">
-                
-                    <!-- Email -->
-                    <div class="col-xs-12 col-sm-12">
-                        <vue-textbox
-                            field="email"
-                            placeholder="Email"
-                            label="Email"
-                            v-model="player.email"
-                            :errors="errors"
-                        >
-                        </vue-textbox>
+                <!-- Panel body -->
+                <div class="panel-body">
+                    
+                    <div class="row row-info">
+                        <div class="col-xs-12">
+                            <div class="alert alert-info">
+                                <img src="/images/1.png" alt="">
+                                <span class="info-message">
+                                    {{ $t('play.player-info') }}
+                                </span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
                     </div>
 
-                </div>
-            </div>
+                    <div id="person-infos-container">
+                        <div class="row">
+                            <!-- Name -->
+                            <div class="col-xs-12 col-sm-5">
+                                <vue-textbox
+                                    field="first_name"
+                                    :label="$t('play.form.labels.first_name')"
+                                    v-model="player.first_name"
+                                    :errors="errors"
+                                >
+                                </vue-textbox>
+                            </div>
 
-            <div class="panel-footer">
-                <button
-                    class="btn btn-primary"
-                    @click="onClickStartContest"
-                >
-                    Start contest
-                </button>
+                            <!-- Surname -->
+                            <div class="col-xs-12 col-sm-5">
+                                <vue-textbox
+                                    field="last_name"
+                                    :label="$t('play.form.labels.last_name')"
+                                    v-model="player.last_name"
+                                    :errors="errors"
+                                >
+                                </vue-textbox>
+                            </div>
+
+                            <!-- class -->
+                            <div class="col-xs-12 col-sm-2">
+                                <vue-textbox
+                                    field="class"
+                                    :label="$t('play.form.labels.class')"
+                                    v-model="player.class"
+                                    :errors="errors"
+                                >
+                                </vue-textbox>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <!-- Email -->
+                            <div class="col-xs-12 col-sm-12">
+                                <vue-textbox
+                                    field="email"
+                                    :label="$t('play.form.labels.email')"
+                                    v-model="player.email"
+                                    :errors="errors"
+                                >
+                                </vue-textbox>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-footer">
+                    <button
+                        class="btn btn-primary"
+                        :disabled="(errors != null) && (errors.items.length > 0)"
+                        @click="onClickStartContest"
+                    >
+                        {{ $t('play.form.labels.start-contest') }}
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div
-        v-else
-    >
-
-        <vue-response-report
-            v-if="! loading && (0 < responses.length)"
-            :record="record"
-            :responses="responses"
-            :solving="solving"
+        <div
+            v-else
         >
-        </vue-response-report>
 
-        <div 
-            v-if="! loading && (responses.length == 0)" 
-            class="panel panel-default"
-        >
-            <!-- Heading -->
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-xs-8">
-                        <h3 class="panel-title">
-                            {{ user.first_name }}, {{ user.last_name }}, {{ user.class }}, {{ user.email }}
-                        </h3>
-                    </div>
-                    <div class="col-xs-4 text-right">
-                        <i class="fa fa-fw fa-clock-o"></i>
-                        {{ clock }}
-                    </div>
+            <div
+                v-if="! loading && (0 < responses.length)"
+                class="alert alert-success"
+                style="margin-bottom: 30px"
+            >
+                <h4>
+                    {{ $t('play.finish.header') }}
+                </h4>
+                <div class="row-info">
+                    <img src="/images/1.png" alt="">
+                    <span class="info-message">
+                        {{ $t('play.finish.body') }}
+                    </span>
+                    <div class="clearfix"></div>
                 </div>
             </div>
 
-            <!-- Body -->
-            <div class="panel-body">
-                <vue-play-quiz
-                    :record="record"
-                    :user_answers="user_answers"
-                    :current="current"
-                    @user-answer="onUserAnswer"
-                >
-                </vue-play-quiz>
-            </div>
+            <vue-response-report
+                v-if="! loading && (0 < responses.length)"
+                :record="record"
+                :responses="responses"
+                :solving="solving"
+            >
+            </vue-response-report>
 
-            <!-- Footer -->
-            <div class="panel-footer" id="questions-actions">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="btn-group pull-left">
-                            <button
-                                class="btn btn-success"
-                                @click="restart"
-                            >
-                                Restart
-                            </button>
+            <div 
+                v-if="! loading && (responses.length == 0)" 
+                class="panel panel-default"
+            >
+                <!-- Heading -->
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <h3 class="panel-title">
+                                {{ user_infos }}
+                            </h3>
                         </div>
-
-                        <div class="btn-group pull-right">
-                            <!-- Previous -->
-                            <button 
-                                v-if="current > 0"
-                                type="button" 
-                                class="btn btn-primary"
-                                :disabled="current == 0"
-                                style="margin-right:4px"
-                                @click="prev"
-                            >
-                                <i class="fa fa-fw fa-chevron-left"></i>
-                                Previous
-                            </button>
-                            <!-- Next -->
-                            <button
-                                v-if="current < this.questions.length - 1" 
-                                type="button" 
-                                class="btn btn-primary"
-                                @click="next"
-                            >
-                                Next
-                                <i class="fa fa-fw fa-chevron-right"></i>
-                            </button>
-                            <!-- Finish -->
-                            <button
-                                v-if="current == this.questions.length - 1" 
-                                type="button" 
-                                class="btn btn-success"
-                                @click="finish"
-                            >
-                                <i class="fa fa-fw fa-check-square"></i>
-                                Finish
-                            </button>
+                        <div class="col-xs-4 text-right">
+                            <i class="fa fa-fw fa-clock-o"></i>
+                            {{ clock }}
                         </div>
-                    </div>                
+                    </div>
                 </div>
-            </div>
 
+                <!-- Body -->
+                <div class="panel-body">
+                    <div id="plaing-container">
+                        <vue-play-quiz
+                            :record="record"
+                            :user_answers="user_answers"
+                            :current="current"
+                            @user-answer="onUserAnswer"
+                        >
+                        </vue-play-quiz>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="panel-footer" id="questions-actions">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="btn-group pull-left">
+                                <button
+                                    class="btn btn-success"
+                                    @click="restart"
+                                >
+                                    {{ $t('play.actions.restart') }}
+                                </button>
+                            </div>
+
+                            <div class="btn-group pull-right">
+                                <!-- Previous -->
+                                <button 
+                                    v-if="current > 0"
+                                    type="button" 
+                                    class="btn btn-primary"
+                                    :disabled="current == 0"
+                                    style="margin-right:4px"
+                                    @click="prev"
+                                >
+                                    <i class="fa fa-fw fa-chevron-left"></i>
+                                    {{ $t('play.actions.prev') }}
+                                </button>
+                                <!-- Next -->
+                                <button
+                                    v-if="current < this.questions.length - 1" 
+                                    type="button" 
+                                    class="btn btn-primary"
+                                    @click="next"
+                                >
+                                    {{ $t('play.actions.next') }}
+                                    <i class="fa fa-fw fa-chevron-right"></i>
+                                </button>
+                                <!-- Finish -->
+                                <button
+                                    v-if="current == this.questions.length - 1" 
+                                    type="button" 
+                                    class="btn btn-success"
+                                    @click="finish"
+                                >
+                                    <i class="fa fa-fw fa-flag-checkered"></i>
+                                    {{ $t('play.actions.finish') }}
+                                </button>
+                            </div>
+                        </div>                
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 </template>
@@ -193,16 +227,28 @@
             'vue-response-report': vueResponseReport
         },
 
-    	props:
-    	{
-    		
-    	},
-
         computed:
         {
+
+            ready()
+            {
+                return Quizz.$store.getters.ready
+            },
+
+            locale()
+            {
+                return Quizz.$store.getters.config.locale
+            },
+
+            user_infos()
+            {
+                return this.user.first_name + ', ' + this.user.last_name + ', ' + this.user.class + ', ' + this.user.email
+            },
+
             record()
             {
                 return {
+                    title: this.user_infos,
                     questions: this.questions,
                     total_available_points: _.sumBy(this.questions, function(o) { return o.points; }),
                 }
@@ -213,6 +259,15 @@
                 return {
                     total_real_points: _.sumBy(this.responses, function(o) { return o.points; }),
                 }
+            },
+
+            errors()
+            {
+                if(this.validator == null)
+                {
+                    return null;
+                }
+                return this.validator.getErrors();
             }
         },
 
@@ -222,18 +277,28 @@
                 gettting_player_infos: true,
                 loading: false,
 
-                errors: null,
+                validator: null,
 
                 player: {
-                    first_name: 'Test name',
-                    last_name: 'Test surname ',
-                    class: '7',
-                    email: 'aaa@test.ro',
+                    first_name: 'Popescu',
+                    last_name: 'Leordel',
+                    class: Math.random().toString(36).substring(10, 11),
+                    email: 'popescu_' + Math.random().toString(36).substring(10, 13) + '@yahoo.com',
                     password: Math.random().toString(36).substring(10),
                 },
 
+                // player: {
+                //     first_name: '',
+                //     last_name: '',
+                //     class: '',
+                //     email: '',
+                //     password: Math.random().toString(36).substring(2),
+                // },
+
                 user: null,
                 questions: null,
+                contest: null,
+
                 clock: '00:00:00',
                 responses: [],
                 user_answers: [],
@@ -241,25 +306,45 @@
             };
         },
 
+        watch: 
+        {
+            'player.first_name': function(newValue, oldValue)
+            {
+                this.validator.validateField('first_name', newValue);
+            },
+
+            'player.last_name': function(newValue, oldValue)
+            {
+                this.validator.validateField('last_name', newValue);
+            },
+
+            'player.class': function(newValue, oldValue)
+            {
+                this.validator.validateField('class', newValue);
+            },
+
+            'player.email': function(newValue, oldValue)
+            {
+                this.validator.validateField('email', newValue);
+            }
+        },
+
         methods:
         {
+
+            /*
+            | Cand se face click pe butonul start contest.
+            | Se reseteaza erorile formularului si se reface validarea datelor
+            | In caz de succes, se apeleaza "startContest"
+            | In caz de eroare, se seteaza erorile formularului pentru afisare.
+            */
             onClickStartContest()
             {
-                let validator = new veeValidation({
-                    first_name: 'required',
-                    last_name: 'required',
-                    class: 'required',
-                    email: 'required|email|unique:users,email',
-                });
-
-                validator.validate(this.player).then( valid => {
+                this.validator.removeErrors();
+                this.validator.validate(this.player).then( valid => {
                     if(valid)
                     {
                         this.startContest();
-                    }
-                    else
-                    {
-                        this.errors = validator.getErrors();
                     }
                 })
             },
@@ -296,6 +381,7 @@
                     .then( r => {
                         this.user = r.data.user;
                         this.questions = r.data.questions;
+                        this.contest = r.data.contest;
                         this.prepareUserAnswers();
                         this.gettting_player_infos = false;
                         this.loading = false;
@@ -323,11 +409,11 @@
             {
                 let vm = this;
                 $.confirm({
-                    title: 'Confirm restart',
-                    content: 'Are you sure you want to restart?<br/>You will lose any responses!',
+                    title: this.$t('play.modals.restart.title'),
+                    content: this.$t('play.modals.restart.content'),
                     buttons: {
                         restart: {
-                            text: 'Restart',
+                            text: this.$t('play.modals.restart.yes'),
                             btnClass: 'btn-blue',
                             action: function(){
                                 vm.current = 0;
@@ -338,7 +424,7 @@
                             }
                         },
                         cancel: {
-                            text: 'Cancel',
+                           text: this.$t('play.modals.restart.no'),
                         },
                     }
                 });
@@ -364,18 +450,18 @@
             {
                 let vm = this;
                 $.confirm({
-                    title: 'Confirm finish',
-                    content: 'Are you sure you want to finish?<br/>Your responses will be send!',
+                    title: this.$t('play.modals.finish.title'),
+                    content: this.$t('play.modals.finish.content'),
                     buttons: {
                         finish: {
-                            text: 'Finish',
+                            text: this.$t('play.modals.finish.yes'),
                             btnClass: 'btn-blue',
                             action: function(){
                                 vm.sendResponses();
                             }
                         },
                         cancel: {
-                            text: 'Cancel',
+                            text: this.$t('play.modals.finish.no'),
                         },
                     }
                 });
@@ -387,17 +473,79 @@
                 vm.sending_responses = true;
                 Requests.post('play-quiz/send-responses', {
                     user: this.user,
-                    user_answers: this.user_answers
+                    user_answers: this.user_answers,
+                    contest_id: this.contest.id,
                 })
                     .then(r => {
+
                         console.log(r);
                         vm.responses = r.data.responses;
-                        // vm.solving = r.data.solving;
                     })
             },
         },
 
+        mounted()
+        {
+            let vm = this, i = setInterval(() => {
+                if(vm.ready)
+                {
+                    clearInterval(i);
+                    vm.validator = new veeValidation({
+                        first_name: 'required',
+                        last_name: 'required',
+                        class: 'required',
+                        email: 'required|email|unique:users,email',
+                    }, vm.locale);
+                }
+            }, 10);
+        },
+
         name: 'play'
+
     }
 
 </script>
+
+
+<style lang="scss" scoped>
+    .panel-body
+    {
+        padding: 0px;
+
+        .row-info
+        {
+            .alert-info
+            {
+                margin-bottom: 20px;
+                border-left: none;
+                border-right: none;
+                border-top: none;
+            }
+        }
+
+        #person-infos-container, #plaing-container
+        {
+            padding: 0px 15px 20px 15px;
+        }
+    }
+
+    .row-info
+    {
+        img
+        {
+            width: 64px;
+            height: 64px;
+            float: left;
+            display: block;
+        }
+
+        span.info-message
+        {
+            display: block;
+            width: calc(100% - 64px);
+            padding: 0px 10px;
+            float: left;
+        }
+    }
+
+</style>

@@ -5,13 +5,10 @@ const mutations = {
 		state.ready = false;
 		Requests.post('get-system-configuration', {app: $('html').data('app')})
 			.then( r => {
-
 				state.user = r.data.user ? r.data.user : null;
 				state.config = r.data.config
 				state.navbar = r.data.navbar
-				
-				state.ready = true;
-
+				// state.ready = true;
 			})
 	},
 

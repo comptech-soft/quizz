@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 333);
+/******/ 	return __webpack_require__(__webpack_require__.s = 328);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -175,45 +175,44 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 333:
+/***/ 328:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(334);
+module.exports = __webpack_require__(329);
 
 
 /***/ }),
 
-/***/ 334:
+/***/ 329:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_QuizzSelector__ = __webpack_require__(335);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_QuizzSelector___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_QuizzSelector__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Welcome__ = __webpack_require__(330);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Welcome___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_Welcome__);
 
 
 new window.Vue({
 
-    el: '#quizz-selector',
-
+    el: '#head',
     components: {
-        'vue-quizz-selector': __WEBPACK_IMPORTED_MODULE_0__components_QuizzSelector___default.a
+        'vue-welcome': __WEBPACK_IMPORTED_MODULE_0__components_Welcome___default.a
     },
+    name: 'frontend-welcome-entry-point'
 
-    name: 'frontend-quizz-selector'
 });
 
 /***/ }),
 
-/***/ 335:
+/***/ 330:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(336)
+var __vue_script__ = __webpack_require__(331)
 /* template */
-var __vue_template__ = __webpack_require__(337)
+var __vue_template__ = __webpack_require__(332)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -230,7 +229,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\frontend\\quizz\\~components\\QuizzSelector.vue"
+Component.options.__file = "resources\\assets\\js\\frontend\\visitors\\welcome\\~components\\Welcome.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -239,9 +238,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-b936b88c", Component.options)
+    hotAPI.createRecord("data-v-13f0e084", Component.options)
   } else {
-    hotAPI.reload("data-v-b936b88c", Component.options)
+    hotAPI.reload("data-v-13f0e084", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -253,25 +252,11 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 336:
+/***/ 331:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -301,54 +286,60 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
-    props: {},
-
     computed: {
         ready: function ready() {
             return Quizz.$store.getters.ready;
-        },
-        user: function user() {
-            return Quizz.$store.getters.user;
-        },
-        records: function records() {
-            if (this.result == null) {
-                return [];
-            }
-            return this.result.data;
         }
     },
 
     data: function data() {
         return {
-            result: null,
-            loading: false
+            slides: ['img1.jpg', 'img2.jpg', 'img3.jpg']
         };
     },
 
 
     methods: {
-        fetch: function fetch() {
-            var vm = this;
-            vm.loading = true;
-            Requests.post('quizes/fetch').then(function (r) {
+        applyCamera: function applyCamera() {
+            var vm = this,
+                i = setInterval(function () {
+                if ($('#camera_wrap_4').length == 1) {
+                    if ($('.camera-items').length = vm.slides.length) {
+                        clearInterval(i);
+                        $('#camera_wrap_4').camera({
+                            transPeriod: 500,
+                            time: 3000,
+                            height: '600',
+                            loader: 'false',
+                            pagination: true,
+                            thumbnails: false,
+                            hover: false,
+                            playPause: false,
+                            navigation: false,
+                            opacityOnGrid: false,
+                            imagePath: 'images/'
+                        });
 
-                vm.result = r.data;
-                vm.loading = false;
-            });
+                        $('.start-quiz').click(function (e) {
+                            location.href = '/play-quiz';
+                        });
+                    }
+                }
+            }, 100);
         }
     },
 
     mounted: function mounted() {
-        this.fetch();
+        this.applyCamera();
     },
 
 
-    name: 'quizz-selector'
+    name: 'welcome'
 });
 
 /***/ }),
 
-/***/ 337:
+/***/ 332:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -356,44 +347,45 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.ready
-    ? _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-12" }, [
-          _c("div", { staticClass: "row" }, [
-            _c(
-              "div",
-              { staticClass: "portfolio-items isotopeWrapper clearfix" },
-              _vm._l(_vm.records, function(record) {
-                return _c("article", { staticClass: "col-sm-4 isotopeItem" }, [
-                  _c("div", { staticClass: "portfolio-item" }, [
-                    _c("img", {
-                      staticClass: "img-responsive",
-                      attrs: { src: record.image_url, alt: "" }
-                    }),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "portfolio-desc align-center" }, [
-                      _c("div", { staticClass: "folio-info" }, [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "fancybox",
-                            attrs: { href: "quiz-detail/" + record.slug }
-                          },
-                          [
-                            _c("h5", [_vm._v(_vm._s(record.name))]),
-                            _vm._v(" "),
-                            _c("i", { staticClass: "fa fa-link fa-2x" })
-                          ]
-                        )
-                      ])
-                    ])
-                  ])
-                ])
-              })
+    ? _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "heading-text" }, [
+          _c("h1", { staticClass: "animated flipInY delay1 start-quiz" }, [
+            _vm._v(
+              "\n                " +
+                _vm._s(_vm.$t("welcome.header")) +
+                "\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "start-quiz" }, [
+            _vm._v(
+              "\n                " +
+                _vm._s(_vm.$t("welcome.info")) +
+                "\n            "
             )
           ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "fluid_container" }, [
+          _c(
+            "div",
+            {
+              staticClass: "camera_wrap camera_emboss pattern_1",
+              attrs: { id: "camera_wrap_4" }
+            },
+            _vm._l(_vm.slides, function(image) {
+              return _c("div", {
+                staticClass: "camera-items",
+                attrs: {
+                  "data-thumb": "/images/slides/thumbs/" + image,
+                  "data-src": "/images/slides/" + image
+                }
+              })
+            })
+          )
         ])
       ])
-    : _c("i", { staticClass: "fa fa-spinner fa-spin" })
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -401,7 +393,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-b936b88c", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-13f0e084", module.exports)
   }
 }
 

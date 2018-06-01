@@ -1,3 +1,6 @@
+import ro from 'vee-validate/dist/locale/ro';
+import de from 'vee-validate/dist/locale/de';
+
 import {Validator} from 'vee-validate'
 import VeeExtender from './VeeExtender.js';
 
@@ -6,8 +9,16 @@ VeeExtender(Validator);
 class Validation
 {
 
-	constructor(rules)
+	constructor(rules, locale)
     {
+        let files = {
+            'ro': ro,
+            'de': de,
+        }
+        if( (locale != undefined) &&  (locale != 'en') )
+        {
+            Validator.localize(locale, files[locale]);
+        }
         this.validator = new Validator(rules);
     }
 

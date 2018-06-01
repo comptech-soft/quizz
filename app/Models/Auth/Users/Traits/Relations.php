@@ -12,6 +12,6 @@ trait Relations
 
     public function questions()
     {
-    	return $this->belongsToMany(\App\Models\Quizes\Questions\Question::class, 'users_questions')->withTimestamps();
+    	return $this->belongsToMany(\App\Models\Quizes\Questions\Question::class, 'users_questions')->withTimestamps()->withPivot('contest_id');
     }
 }

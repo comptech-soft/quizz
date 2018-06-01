@@ -77,7 +77,7 @@
             <h5><i class="fa fa-fw fa-exclamation-circle"></i>Explanation</h5>
             <div class="row">
                 <div v-if="question.answer_image_url != null" class="col-xs-12 col-sm-6">
-                    <img :src="'/' + question.answer_image_url" class="img-responsive" />
+                    <img :src="question.answer_image_url" class="img-responsive" />
                 </div>
                 <div :class="{
                     'col-xs-12': question.answer_image_url == null,

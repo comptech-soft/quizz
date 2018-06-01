@@ -25,10 +25,13 @@
     "jquery-confirm": "^3.3.2",
     "jquery.scrollto": "^2.1.2",
     "moment": "^2.22.0",
-    "vee-validate": "^2.0.6",
+    "vee-validate": "^2.0.9",
+    "vue-i18n": "^7.7.0",
+    "vue-i18n-plugin": "^0.2.2",
     "vue-select": "^2.4.0",
     "vuedraggable": "^2.16.0",
     "vueify": "^9.4.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "vuex-i18n": "^1.10.5"
   }
 }

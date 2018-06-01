@@ -10,18 +10,8 @@ const state = {
 	| Diverse configs
 	*/
 	config: null,
-	
-	
+		
 	navbar: [],
-
-	// /*
-	// | content
-	// */
-	// content:
-	// {
-	// 	top_bar_menu: [],
-	// 	menu: null,
-	// },
 
 	/*
 	| TRUE, If all asyncron infos are loaded

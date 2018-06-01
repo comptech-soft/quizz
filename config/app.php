@@ -3,25 +3,15 @@
 return [
 
     'name' => env('APP_NAME', 'Laravel'),
-
-    'env' => env('APP_ENV', 'production'),
-
-    'debug' => env('APP_DEBUG', false),
-
+    'env' => env('APP_ENV', 'development'),
+    'debug' => env('APP_DEBUG', true),
     'url' => env('APP_URL', ''),
-
-    'timezone' => 'UTC',
-
-    'locale' => 'en',
-
+    'timezone' => 'Europe/Bucharest',
+    'locale' => env('APP_LOCALE', 'en'),
     'fallback_locale' => 'en',
-
     'key' => env('APP_KEY', 'base64:0o4/ZdoedVgRgzujFLzFwXfPorceKtVaCGbCoTWPrLI='),
-
     'cipher' => 'AES-256-CBC',
-
     'log' => env('APP_LOG', 'daily'),
-
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
     'providers' => [

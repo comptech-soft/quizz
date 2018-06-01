@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Sentinel;
 use App\Models\System\Navbar;
+use App;
 
 class ConfigurationController extends Controller
 {
@@ -21,6 +22,8 @@ class ConfigurationController extends Controller
             	'logo' => asset('images/logo.png'),
             	'app' => $request->app,
                 'roles' => $user ? $user->roles : [],
+                'locale' => App::getLocale(),
+                'timezone' => config('app.timezone'),
             ],
 
             'navbar' => Navbar::get($user, $request->app),
