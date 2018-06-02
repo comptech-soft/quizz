@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 335);
+/******/ 	return __webpack_require__(__webpack_require__.s = 340);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -175,20 +175,20 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 335:
+/***/ 340:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(336);
+module.exports = __webpack_require__(341);
 
 
 /***/ }),
 
-/***/ 336:
+/***/ 341:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_QuizzSelector__ = __webpack_require__(337);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_QuizzSelector__ = __webpack_require__(342);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_QuizzSelector___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_QuizzSelector__);
 
 
@@ -205,15 +205,15 @@ new window.Vue({
 
 /***/ }),
 
-/***/ 337:
+/***/ 342:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(338)
+var __vue_script__ = __webpack_require__(343)
 /* template */
-var __vue_template__ = __webpack_require__(339)
+var __vue_template__ = __webpack_require__(344)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -253,7 +253,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 338:
+/***/ 343:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -348,7 +348,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 339:
+/***/ 344:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

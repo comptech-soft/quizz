@@ -1,5 +1,5 @@
 <template>
-	<div v-if="ready" class="container">
+	<div v-if="ready" class="welcome-container">
         <div class="heading-text">
             <h1 class="animated flipInY delay1 start-quiz">
                 <div>

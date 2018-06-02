@@ -10,7 +10,7 @@
 
                 <div class="col-xs-4 text-right">
                     <h4>
-                        {{ $t('quiz.points', {count: question.points}, question.points) }}
+                        {{ $t('quiz.points', {count: question.points}, 2) }}
                     </h4>
                 </div>
             </div>

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 340);
+/******/ 	return __webpack_require__(__webpack_require__.s = 345);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1948,7 +1948,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(7)
+var listToStyles = __webpack_require__(6)
 
 /*
 type StyleObject = {
@@ -2577,20 +2577,20 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 340:
+/***/ 345:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(341);
+module.exports = __webpack_require__(346);
 
 
 /***/ }),
 
-/***/ 341:
+/***/ 346:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_QuizDetail__ = __webpack_require__(342);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_QuizDetail__ = __webpack_require__(347);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_QuizDetail___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_QuizDetail__);
 window.Timer = __webpack_require__(17);
 
@@ -2609,15 +2609,15 @@ new window.Vue({
 
 /***/ }),
 
-/***/ 342:
+/***/ 347:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(343)
+var __vue_script__ = __webpack_require__(348)
 /* template */
-var __vue_template__ = __webpack_require__(344)
+var __vue_template__ = __webpack_require__(349)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -2657,7 +2657,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 343:
+/***/ 348:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3007,7 +3007,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 344:
+/***/ 349:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -3389,11 +3389,7 @@ var render = function() {
             _vm._v(
               "\n                    " +
                 _vm._s(
-                  _vm.$t(
-                    "quiz.points",
-                    { count: _vm.question.points },
-                    _vm.question.points
-                  )
+                  _vm.$t("quiz.points", { count: _vm.question.points }, 2)
                 ) +
                 "\n                "
             )
@@ -4777,6 +4773,40 @@ if (false) {
 
 /***/ }),
 
+/***/ 6:
+/***/ (function(module, exports) {
+
+/**
+ * Translates the list format produced by css-loader into something
+ * easier to manipulate.
+ */
+module.exports = function listToStyles (parentId, list) {
+  var styles = []
+  var newStyles = {}
+  for (var i = 0; i < list.length; i++) {
+    var item = list[i]
+    var id = item[0]
+    var css = item[1]
+    var media = item[2]
+    var sourceMap = item[3]
+    var part = {
+      id: parentId + ':' + i,
+      css: css,
+      media: media,
+      sourceMap: sourceMap
+    }
+    if (!newStyles[id]) {
+      styles.push(newStyles[id] = { id: id, parts: [part] })
+    } else {
+      newStyles[id].parts.push(part)
+    }
+  }
+  return styles
+}
+
+
+/***/ }),
+
 /***/ 60:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -5394,11 +5424,7 @@ var render = function() {
             _vm._v(
               "\n                " +
                 _vm._s(
-                  _vm.$t(
-                    "quiz.points",
-                    { count: _vm.question.points },
-                    _vm.question.points
-                  )
+                  _vm.$t("quiz.points", { count: _vm.question.points }, 2)
                 ) +
                 "\n            "
             )
@@ -5537,40 +5563,6 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-648b83ce", module.exports)
   }
 }
-
-/***/ }),
-
-/***/ 7:
-/***/ (function(module, exports) {
-
-/**
- * Translates the list format produced by css-loader into something
- * easier to manipulate.
- */
-module.exports = function listToStyles (parentId, list) {
-  var styles = []
-  var newStyles = {}
-  for (var i = 0; i < list.length; i++) {
-    var item = list[i]
-    var id = item[0]
-    var css = item[1]
-    var media = item[2]
-    var sourceMap = item[3]
-    var part = {
-      id: parentId + ':' + i,
-      css: css,
-      media: media,
-      sourceMap: sourceMap
-    }
-    if (!newStyles[id]) {
-      styles.push(newStyles[id] = { id: id, parts: [part] })
-    } else {
-      newStyles[id].parts.push(part)
-    }
-  }
-  return styles
-}
-
 
 /***/ }),
 

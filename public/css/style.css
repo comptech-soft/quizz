@@ -897,14 +897,14 @@ left: 0px;
 }
 .grey-box-icon {
 background: #f6f6f6;
-padding: 15px 20px 20px 20px;
+padding: 5px 20px 20px 20px;
 text-align: center;
-margin-top: 113px;
+margin-top: 0px;
 position: relative;
 }
 .grey-box-icon-pos{
-    margin-top: -88px;
-    margin-bottom: 31px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 .grey-box-icon:hover .fontawesome-icon.circle-white {
 background-color: #f6f6f6;

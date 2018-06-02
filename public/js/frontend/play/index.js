@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 345);
+/******/ 	return __webpack_require__(__webpack_require__.s = 350);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -7328,7 +7328,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(7)
+var listToStyles = __webpack_require__(6)
 
 /*
 type StyleObject = {
@@ -7957,131 +7957,6 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 345:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(346);
-
-
-/***/ }),
-
-/***/ 346:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Play__ = __webpack_require__(347);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Play___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_Play__);
-window.Timer = __webpack_require__(17);
-
-
-
-new window.Vue({
-
-    el: '#play',
-    components: {
-        'vue-play': __WEBPACK_IMPORTED_MODULE_0__components_Play___default.a
-    },
-    name: 'frontend-play-entry-point'
-
-});
-
-/***/ }),
-
-/***/ 347:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(348)
-}
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(350)
-/* template */
-var __vue_template__ = __webpack_require__(351)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-209ae0b9"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\frontend\\play\\~components\\Play.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-209ae0b9", Component.options)
-  } else {
-    hotAPI.reload("data-v-209ae0b9", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 348:
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(349);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(3)("11c59bf3", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-209ae0b9\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Play.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-209ae0b9\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Play.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-
-/***/ 349:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.panel-body[data-v-209ae0b9] {\n  padding: 0px;\n}\n.panel-body .row-info .alert-info[data-v-209ae0b9] {\n    margin-bottom: 20px;\n    border-left: none;\n    border-right: none;\n    border-top: none;\n}\n.panel-body #person-infos-container[data-v-209ae0b9], .panel-body #plaing-container[data-v-209ae0b9] {\n    padding: 0px 15px 20px 15px;\n}\n.row-info img[data-v-209ae0b9] {\n  width: 64px;\n  height: 64px;\n  float: left;\n  display: block;\n}\n.row-info span.info-message[data-v-209ae0b9] {\n  display: block;\n  width: calc(100% - 64px);\n  padding: 0px 10px;\n  float: left;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-
 /***/ 35:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -8151,6 +8026,131 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ }),
 
 /***/ 350:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(351);
+
+
+/***/ }),
+
+/***/ 351:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Play__ = __webpack_require__(352);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Play___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_Play__);
+window.Timer = __webpack_require__(17);
+
+
+
+new window.Vue({
+
+    el: '#play',
+    components: {
+        'vue-play': __WEBPACK_IMPORTED_MODULE_0__components_Play___default.a
+    },
+    name: 'frontend-play-entry-point'
+
+});
+
+/***/ }),
+
+/***/ 352:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(353)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(355)
+/* template */
+var __vue_template__ = __webpack_require__(356)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-209ae0b9"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\frontend\\play\\~components\\Play.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-209ae0b9", Component.options)
+  } else {
+    hotAPI.reload("data-v-209ae0b9", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 353:
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(354);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("11c59bf3", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-209ae0b9\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Play.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-209ae0b9\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Play.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ 354:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.panel-body[data-v-209ae0b9] {\n  padding: 0px;\n}\n.panel-body .row-info .alert-info[data-v-209ae0b9] {\n    margin-bottom: 20px;\n    border-left: none;\n    border-right: none;\n    border-top: none;\n}\n.panel-body #person-infos-container[data-v-209ae0b9], .panel-body #plaing-container[data-v-209ae0b9] {\n    padding: 0px 15px 20px 15px;\n}\n.row-info img[data-v-209ae0b9] {\n  width: 64px;\n  height: 64px;\n  float: left;\n  display: block;\n}\n.row-info span.info-message[data-v-209ae0b9] {\n  display: block;\n  width: calc(100% - 64px);\n  padding: 0px 10px;\n  float: left;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ 355:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8429,21 +8429,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             validator: null,
 
-            player: {
-                first_name: 'Popescu',
-                last_name: 'Leordel',
-                class: Math.random().toString(36).substring(10, 11),
-                email: 'popescu_' + Math.random().toString(36).substring(10, 13) + '@yahoo.com',
-                password: Math.random().toString(36).substring(10)
-            },
-
             // player: {
-            //     first_name: '',
-            //     last_name: '',
-            //     class: '',
-            //     email: '',
-            //     password: Math.random().toString(36).substring(2),
+            //     first_name: 'Popescu',
+            //     last_name: 'Leordel',
+            //     class: Math.random().toString(36).substring(10, 11),
+            //     email: 'popescu_' + Math.random().toString(36).substring(10, 13) + '@yahoo.com',
+            //     password: Math.random().toString(36).substring(10),
             // },
+
+            player: {
+                first_name: '',
+                last_name: '',
+                class: '',
+                email: '',
+                password: Math.random().toString(36).substring(2)
+            },
 
             user: null,
             questions: null,
@@ -8638,7 +8638,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 351:
+/***/ 356:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -9094,11 +9094,7 @@ var render = function() {
             _vm._v(
               "\n                    " +
                 _vm._s(
-                  _vm.$t(
-                    "quiz.points",
-                    { count: _vm.question.points },
-                    _vm.question.points
-                  )
+                  _vm.$t("quiz.points", { count: _vm.question.points }, 2)
                 ) +
                 "\n                "
             )
@@ -10482,6 +10478,40 @@ if (false) {
 
 /***/ }),
 
+/***/ 6:
+/***/ (function(module, exports) {
+
+/**
+ * Translates the list format produced by css-loader into something
+ * easier to manipulate.
+ */
+module.exports = function listToStyles (parentId, list) {
+  var styles = []
+  var newStyles = {}
+  for (var i = 0; i < list.length; i++) {
+    var item = list[i]
+    var id = item[0]
+    var css = item[1]
+    var media = item[2]
+    var sourceMap = item[3]
+    var part = {
+      id: parentId + ':' + i,
+      css: css,
+      media: media,
+      sourceMap: sourceMap
+    }
+    if (!newStyles[id]) {
+      styles.push(newStyles[id] = { id: id, parts: [part] })
+    } else {
+      newStyles[id].parts.push(part)
+    }
+  }
+  return styles
+}
+
+
+/***/ }),
+
 /***/ 60:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11099,11 +11129,7 @@ var render = function() {
             _vm._v(
               "\n                " +
                 _vm._s(
-                  _vm.$t(
-                    "quiz.points",
-                    { count: _vm.question.points },
-                    _vm.question.points
-                  )
+                  _vm.$t("quiz.points", { count: _vm.question.points }, 2)
                 ) +
                 "\n            "
             )
@@ -11242,40 +11268,6 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-648b83ce", module.exports)
   }
 }
-
-/***/ }),
-
-/***/ 7:
-/***/ (function(module, exports) {
-
-/**
- * Translates the list format produced by css-loader into something
- * easier to manipulate.
- */
-module.exports = function listToStyles (parentId, list) {
-  var styles = []
-  var newStyles = {}
-  for (var i = 0; i < list.length; i++) {
-    var item = list[i]
-    var id = item[0]
-    var css = item[1]
-    var media = item[2]
-    var sourceMap = item[3]
-    var part = {
-      id: parentId + ':' + i,
-      css: css,
-      media: media,
-      sourceMap: sourceMap
-    }
-    if (!newStyles[id]) {
-      styles.push(newStyles[id] = { id: id, parts: [part] })
-    } else {
-      newStyles[id].parts.push(part)
-    }
-  }
-  return styles
-}
-
 
 /***/ }),
 

@@ -19,7 +19,7 @@
                         is_not_correct: !is_correct,
                     }"
                 >
-                    {{ $t('quiz.points', {count: question.points}, question.points) }}
+                    {{ $t('quiz.points', {count: question.points}, 2) }}
                 </h4>
             </div>
         </div>

@@ -280,21 +280,21 @@
 
                 validator: null,
 
-                player: {
-                    first_name: 'Popescu',
-                    last_name: 'Leordel',
-                    class: Math.random().toString(36).substring(10, 11),
-                    email: 'popescu_' + Math.random().toString(36).substring(10, 13) + '@yahoo.com',
-                    password: Math.random().toString(36).substring(10),
-                },
-
                 // player: {
-                //     first_name: '',
-                //     last_name: '',
-                //     class: '',
-                //     email: '',
-                //     password: Math.random().toString(36).substring(2),
+                //     first_name: 'Popescu',
+                //     last_name: 'Leordel',
+                //     class: Math.random().toString(36).substring(10, 11),
+                //     email: 'popescu_' + Math.random().toString(36).substring(10, 13) + '@yahoo.com',
+                //     password: Math.random().toString(36).substring(10),
                 // },
+
+                player: {
+                    first_name: '',
+                    last_name: '',
+                    class: '',
+                    email: '',
+                    password: Math.random().toString(36).substring(2),
+                },
 
                 user: null,
                 questions: null,

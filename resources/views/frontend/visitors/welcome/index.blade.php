@@ -13,7 +13,8 @@
             
             <div class="col-xs-12 col-sm-4">
                 <div id="ranking">
-                    ???
+                    <vue-ranking>
+                    </vue-ranking>
                 </div>
             </div>
         </div>

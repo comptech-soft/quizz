@@ -6,6 +6,9 @@ Route::post('upload-image', 'System\UploadController@uploadImage')->name('upload
 Route::get('play-quiz', 'Frontend\Quizz\PlayquizController@index')->name('play-quiz-index');
 Route::post('play-quiz/start-contest', 'Frontend\Quizz\PlayquizController@startContest')->name('play-quiz-start-contest');
 Route::post('play-quiz/send-responses', 'Frontend\Quizz\PlayquizController@sendResponses')->name('play-quiz-send-responses');
+
+Route::post('get-ranking', 'Frontend\Quizz\RankingController@getRanking')->name('get-ranking');
+
 /*
 | FRONTEND
 */

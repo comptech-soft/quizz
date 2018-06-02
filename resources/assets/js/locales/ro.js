@@ -13,6 +13,12 @@ const translations = {
 		'info': '<h2>Teste Dein Wissen über den Mars, und gewinne einer der 3 Preise!</h2><p>1. Preis: Ein Amazon Gutschein in Wert von 25 Euro</p><p>2. Preis: Ein Amazon Gutschein in Wert von 20 Euro</p><p>3. Preis: Ein Amazon Gutschein in Wert von 15 Euro</p>',
 	},
 
+	'ranking': {
+		'title': 'Topul actual',
+		'total': 'A participat {total} concurent ::: Au participat {total} concurenți',
+		'class': 'Elev în clasa  {class}',
+	},
+
 	'play': {
 
 		'player-caption': 'Informații personale',

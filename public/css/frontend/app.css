@@ -76,7 +76,7 @@
 
   #ranking {
     margin-top: 50px;
-    border: 1px solid red;
+    border: 1px solid #f7f7f7;
   }
 }
 
@@ -97,10 +97,6 @@
   #head p {
     font-size: 20px;
     padding: 10px 40px;
-  }
-
-  #ranking {
-    border: 1px solid blue;
   }
 }
 
@@ -128,10 +124,6 @@
     font-size: 24px;
     padding: 10px 40px;
   }
-
-  #ranking {
-    border: 1px solid green;
-  }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -151,10 +143,6 @@
   #head p {
     font-size: 28px;
     padding: 20px 40px;
-  }
-
-  #ranking {
-    border: 1px solid green;
   }
 }
 
