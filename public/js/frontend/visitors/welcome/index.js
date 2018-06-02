@@ -281,6 +281,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -349,11 +351,13 @@ var render = function() {
     ? _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "heading-text" }, [
           _c("h1", { staticClass: "animated flipInY delay1 start-quiz" }, [
-            _vm._v(
-              "\n                " +
-                _vm._s(_vm.$t("welcome.header")) +
-                "\n            "
-            )
+            _c("div", [
+              _vm._v(
+                "\n                    " +
+                  _vm._s(_vm.$t("welcome.header")) +
+                  "\n                "
+              )
+            ])
           ]),
           _vm._v(" "),
           _c("div", { domProps: { innerHTML: _vm._s(_vm.$t("welcome.info")) } })

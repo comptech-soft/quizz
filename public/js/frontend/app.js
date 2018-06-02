@@ -8126,6 +8126,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -8984,7 +8986,26 @@ var render = function() {
         { staticClass: "container" },
         [
           _c("div", { staticClass: "navbar-header" }, [
-            _vm._m(0),
+            _vm.options.length > 0
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "navbar-toggle",
+                    attrs: {
+                      type: "button",
+                      "data-toggle": "collapse",
+                      "data-target": ".navbar-collapse"
+                    }
+                  },
+                  [
+                    _c("span", { staticClass: "icon-bar" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "icon-bar" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "icon-bar" })
+                  ]
+                )
+              : _vm._e(),
             _vm._v(" "),
             _c(
               "a",
@@ -9133,31 +9154,7 @@ var render = function() {
       )
     : _c("i", { staticClass: "fa fa-spinner fa-spin" })
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "navbar-toggle",
-        attrs: {
-          type: "button",
-          "data-toggle": "collapse",
-          "data-target": ".navbar-collapse"
-        }
-      },
-      [
-        _c("span", { staticClass: "icon-bar" }),
-        _vm._v(" "),
-        _c("span", { staticClass: "icon-bar" }),
-        _vm._v(" "),
-        _c("span", { staticClass: "icon-bar" })
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

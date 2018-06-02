@@ -59,9 +59,8 @@ label {
 	border: 1px solid #ccc;
 	border-radius: 0px;
 }
-.navbar-inverse .navbar-brand img {
-	width: 171px;
-}
+
+
 .section-title {
 	margin-bottom: 20px;
 }
@@ -258,21 +257,7 @@ color: #fff !important;
     border-radius: 0px;
     background: #3d84e6;
 }
-.heading-text{
-    position: absolute;
-    z-index: 999;
-    text-align: center;
-    width: 100%;
-    left: 0px;
-    right: 0px;
-    top: 15%;
-}
-.heading-text h1{
-    font-size: 45px;
-}
-.heading-text p{
-font-size: 27px;
-}
+
 /* Highlights*/
 .highlight {
 	margin-top: 40px;

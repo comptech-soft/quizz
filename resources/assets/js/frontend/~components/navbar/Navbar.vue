@@ -2,8 +2,10 @@
     <div v-if="ready" class="container">
 
         <div class="navbar-header">
+            
             <!-- Button for smallest screens -->
             <button 
+                v-if="options.length > 0"
                 type="button" 
                 class="navbar-toggle" 
                 data-toggle="collapse" 

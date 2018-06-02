@@ -1,0 +1,36 @@
+@media only screen and (min-width : 480px) 
+{
+
+	#head
+	{
+		
+		.heading-text
+		{
+		    top: 10px;
+		}
+
+		h1
+		{
+			margin-top: 20px;
+			font-size: 45px;
+		}
+
+		h2
+		{
+			margin: 20px 5px 20px 5px;
+		}
+
+		p
+		{
+			font-size: 20px;
+			padding: 10px 40px;
+		}
+
+	}
+
+	#ranking
+	{
+		border: 1px solid blue;
+	}
+
+}

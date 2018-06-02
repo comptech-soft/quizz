@@ -2,7 +2,9 @@
 	<div v-if="ready" class="container">
         <div class="heading-text">
             <h1 class="animated flipInY delay1 start-quiz">
-                {{ $t('welcome.header') }}
+                <div>
+                    {{ $t('welcome.header') }}
+                </div>
             </h1>
             <div v-html="$t('welcome.info')">
             </div>

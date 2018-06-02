@@ -1,10 +1,23 @@
 @extends('layouts.master')
 
 @section('content')
-    <header id="head">
-        <vue-welcome>
-        </vue-welcome>
-    </header>
+    
+        <div class="row">
+                
+            <div class="col-xs-12 col-sm-8">
+                <header id="head">
+                    <vue-welcome>
+                    </vue-welcome>
+                </header>
+            </div>
+            
+            <div class="col-xs-12 col-sm-4">
+                <div id="ranking">
+                    ???
+                </div>
+            </div>
+        </div>
+    
 @endsection
 
 @section('styles')

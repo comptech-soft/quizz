@@ -21,28 +21,141 @@
   margin-bottom: 0;
 }
 
-a.navbar-brand {
-  padding: 5px 0px;
-  height: 70px;
-  min-height: 70px;
-  max-height: 70px;
+@media only screen and (min-width: 320px) {
+  a.navbar-brand {
+    padding: 15px 0px 0px 20px;
+    height: 70px;
+    min-height: 70px;
+    max-height: 70px;
+  }
+
+  a.navbar-brand img {
+    width: 171px;
+  }
+
+  #head {
+    margin-top: 10px;
+  }
+
+  #head .heading-text {
+    position: absolute;
+    z-index: 999;
+    text-align: center;
+    width: 100%;
+    left: 0px;
+    right: 0px;
+    top: 10px;
+  }
+
+  #head h1 {
+    margin-top: 0px;
+    font-size: 45px;
+  }
+
+  #head h2 {
+    margin: 5px 5px 5px 5px;
+  }
+
+  #head p {
+    font-size: 20px;
+    padding: 0px 10px;
+    margin-bottom: 8px;
+  }
+
+  #head .start-quiz > div {
+    width: 200px;
+    margin: 0px auto;
+    cursor: pointer;
+    border: 2px solid #fff;
+    padding: 6px 12px;
+  }
+
+  #head .start-quiz > div:hover {
+    opacity: 0.75;
+  }
+
+  #ranking {
+    margin-top: 50px;
+    border: 1px solid red;
+  }
 }
 
-#head {
-  margin-top: 40px;
+@media only screen and (min-width: 480px) {
+  #head .heading-text {
+    top: 10px;
+  }
+
+  #head h1 {
+    margin-top: 20px;
+    font-size: 45px;
+  }
+
+  #head h2 {
+    margin: 20px 5px 20px 5px;
+  }
+
+  #head p {
+    font-size: 20px;
+    padding: 10px 40px;
+  }
+
+  #ranking {
+    border: 1px solid blue;
+  }
 }
 
-#head h1 {
-  margin-top: 50px;
+@media only screen and (min-width: 768px) {
+  #ranking {
+    margin-top: 10px;
+  }
 }
 
-#head .start-quiz {
-  cursor: pointer;
+@media only screen and (min-width: 992px) {
+  #head .heading-text {
+    top: 40px;
+  }
+
+  #head h1 {
+    margin-top: 40px;
+    font-size: 45px;
+  }
+
+  #head h2 {
+    margin: 30px 5px 30px 5px;
+  }
+
+  #head p {
+    font-size: 24px;
+    padding: 10px 40px;
+  }
+
+  #ranking {
+    border: 1px solid green;
+  }
 }
 
-#head .start-quiz:hover {
-  opacity: 0.75;
-  text-decoration: underline;
+@media only screen and (min-width: 1200px) {
+  #head .heading-text {
+    top: 40px;
+  }
+
+  #head h1 {
+    margin-top: 60px;
+    font-size: 45px;
+  }
+
+  #head h2 {
+    margin: 40px 5px 40px 5px;
+  }
+
+  #head p {
+    font-size: 28px;
+    padding: 20px 40px;
+  }
+
+  #ranking {
+    border: 1px solid green;
+  }
 }
 
 .modal-content {
