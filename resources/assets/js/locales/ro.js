@@ -17,6 +17,8 @@ const translations = {
 		'title': 'Topul actual',
 		'total': 'A participat {total} concurent ::: Au participat {total} concurenți',
 		'class': 'Elev în clasa  {class}',
+		'reload': 'Reîncarcă topul',
+		'current-page': 'Pagina {page} din {total}',
 	},
 
 	'play': {

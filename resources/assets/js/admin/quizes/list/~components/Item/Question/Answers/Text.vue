@@ -92,8 +92,6 @@
                 });
             },
 
-            
-
             insertItem()
             {
                 this.correct_answer.push(this.answer_item);

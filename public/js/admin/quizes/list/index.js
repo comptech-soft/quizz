@@ -7294,6 +7294,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         action: _this.form.action
                     }).then(function (r) {
                         console.log(r);
+                        alert('After save...');
                     });
                 } else {
                     _this.errors = validator.getErrors();
@@ -8865,6 +8866,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -8986,8 +8992,13 @@ var render = function() {
               _vm._l(_vm.correct_answer, function(answer, index) {
                 return _c("div", { staticClass: "accepted-answer-item" }, [
                   _c("div", { staticClass: "answer-item" }, [
+                    answer.is_correct
+                      ? _c("span", [
+                          _c("i", { staticClass: "fa fa-fw fa-check" })
+                        ])
+                      : _vm._e(),
                     _vm._v(
-                      "\n                    " +
+                      "\n                        " +
                         _vm._s(answer.item) +
                         " \n                    "
                     ),

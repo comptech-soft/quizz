@@ -891,6 +891,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -929,6 +934,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         difference: function difference(record) {
             var r = DateTime.difference(record.finished_at, record.start_at);
             return _.padStart(r.hours, 2, '0') + ':' + _.padStart(r.minutes, 2, '0') + ':' + _.padStart(r.seconds, 2, '0');
+        },
+        reload: function reload() {
+            this.getRanking();
         },
         getRanking: function getRanking() {
             var _this = this;
@@ -987,6 +995,24 @@ var render = function() {
                 "                \n            "
             )
           ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary btn-xs",
+              on: { click: _vm.reload }
+            },
+            [
+              _vm.loading
+                ? _c("i", { staticClass: "fa fa-spinner fa-spin" })
+                : _vm._e(),
+              _vm._v(
+                "\n                " +
+                  _vm._s(_vm.$t("ranking.reload")) +
+                  "   \n            "
+              )
+            ]
+          ),
           _vm._v(" "),
           _vm.data != null
             ? _c(
@@ -1058,7 +1084,7 @@ var render = function() {
           _vm._v(" "),
           _vm.data != null
             ? _c("div", { staticClass: "row row-navigation" }, [
-                _c("div", { staticClass: "col-xs-4 col-prev" }, [
+                _c("div", { staticClass: "col-xs-3 col-prev" }, [
                   _vm.page > 1
                     ? _c("p", [
                         _c(
@@ -1072,35 +1098,26 @@ var render = function() {
                               }
                             }
                           },
-                          [
-                            _c("em", [
-                              _vm.loading
-                                ? _c("i", {
-                                    staticClass: "fa fa-spinner fa-spin"
-                                  })
-                                : _vm._e(),
-                              _vm._v(" "),
-                              _c("i", {
-                                staticClass: "fa fa-fw fa-chevron-left"
-                              })
-                            ])
-                          ]
+                          [_vm._m(1)]
                         )
                       ])
                     : _vm._e()
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-xs-4" }, [
+                _c("div", { staticClass: "col-xs-6" }, [
                   _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.page) +
-                      " / " +
-                      _vm._s(_vm.data.last_page) +
+                    "\n                     " +
+                      _vm._s(
+                        _vm.$t("ranking.current-page", {
+                          page: _vm.page,
+                          total: _vm.data.last_page
+                        })
+                      ) +
                       "\n                "
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-xs-4 col-next" }, [
+                _c("div", { staticClass: "col-xs-3 col-next" }, [
                   _vm.page < _vm.data.last_page
                     ? _c("p", [
                         _c(
@@ -1114,19 +1131,7 @@ var render = function() {
                               }
                             }
                           },
-                          [
-                            _c("em", [
-                              _c("i", {
-                                staticClass: "fa fa-fw fa-chevron-right"
-                              }),
-                              _vm._v(" "),
-                              _vm.loading
-                                ? _c("i", {
-                                    staticClass: "fa fa-spinner fa-spin"
-                                  })
-                                : _vm._e()
-                            ])
-                          ]
+                          [_vm._m(2)]
                         )
                       ])
                     : _vm._e()
@@ -1145,6 +1150,18 @@ var staticRenderFns = [
     return _c("div", { staticClass: "icon-box-top grey-box-icon-pos" }, [
       _c("img", { attrs: { src: "/images/1.png", alt: "" } })
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("em", [_c("i", { staticClass: "fa fa-fw fa-chevron-left" })])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("em", [_c("i", { staticClass: "fa fa-fw fa-chevron-right" })])
   }
 ]
 render._withStripped = true

@@ -11,7 +11,12 @@
                     v-for="(answer, index) in correct_answer"
                 >
                     <div class="answer-item">
-                        {{ answer.item }} 
+                        <span
+                            v-if="answer.is_correct"
+                        >
+                            <i class="fa fa-fw fa-check"></i>
+                        </span>
+                            {{ answer.item }} 
                         <div class="pull-right answer-actions">
                             
                             <i 

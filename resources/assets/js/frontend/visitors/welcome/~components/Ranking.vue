@@ -12,6 +12,13 @@
             <h4>
                 {{ $t('ranking.title') }}                
             </h4>
+            <button
+                class="btn btn-primary btn-xs"
+                @click="reload"
+            >
+                <i v-if="loading" class="fa fa-spinner fa-spin"></i>
+                {{ $t('ranking.reload') }}   
+            </button>
 
             <div v-if="data != null" id="ranking-list-container">
                 
@@ -41,25 +48,23 @@
             </div>
 
             <div v-if="data != null" class="row row-navigation">
-                <div class="col-xs-4 col-prev">
+                <div class="col-xs-3 col-prev">
                     <p v-if="page > 1">
                         <a href="#" @click.prevent="prev">
                             <em>
-                                <i v-if="loading" class="fa fa-spinner fa-spin"></i>
                                 <i class="fa fa-fw fa-chevron-left"></i>
                             </em>
                         </a>
                     </p>
                 </div>
-                <div class="col-xs-4">
-                    {{ page }} / {{ data.last_page }}
+                <div class="col-xs-6">
+                     {{ $t('ranking.current-page', {page: page, total: data.last_page  }) }}
                 </div>
-                <div class="col-xs-4 col-next">
+                <div class="col-xs-3 col-next">
                     <p v-if="page < data.last_page">
                         <a href="#" @click.prevent="next">
                             <em>
                                 <i class="fa fa-fw fa-chevron-right"></i>
-                                <i v-if="loading" class="fa fa-spinner fa-spin"></i>
                             </em>
                         </a>
                     </p>
@@ -119,6 +124,11 @@
             {
                 let r = DateTime.difference(record.finished_at, record.start_at);
                 return _.padStart(r.hours, 2, '0') + ':' + _.padStart(r.minutes, 2, '0') + ':' + _.padStart(r.seconds, 2, '0');
+            },
+
+            reload()
+            {
+                this.getRanking();
             },
 
             getRanking()
