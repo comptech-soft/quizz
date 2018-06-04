@@ -2,6 +2,7 @@
 /__project
 /public/hot
 /public/storage
+/public/media/
 /storage/*.key
 /vendor
 /.idea
