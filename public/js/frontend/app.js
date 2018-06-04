@@ -8234,7 +8234,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         onBar: function onBar(bar) {
             Quizz.$store.dispatch('setCurrentNavbar', bar);
-            this['onClick' + bar.id](bar);
+            if (bar.endpoint == undefined) {
+                this['onClick' + bar.id](bar);
+            } else {
+                Requests.redirect(bar.endpoint);
+            }
         },
         onCloseModal: function onCloseModal(e) {
             this.modal_visible = false;

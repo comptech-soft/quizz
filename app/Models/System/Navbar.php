@@ -31,6 +31,19 @@ class Navbar
 			}
 			else
 			{
+
+				$result['options'][] = [
+        			'id' => 'photos',
+        			'caption' => __('navbar.Photos Gallery'),
+        			'endpoint' => 'photos-gallery'
+        		];
+
+        		$result['options'][] = [
+        			'id' => 'videos',
+        			'caption' => __('navbar.Videos Gallery'),
+        			'endpoint' => 'videos-gallery'
+        		];
+
 				/*
 				$result['options'][] = [
         			'id' => 'login',

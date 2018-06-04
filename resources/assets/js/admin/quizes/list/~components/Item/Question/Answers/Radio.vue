@@ -101,10 +101,18 @@
 
             updateQuestion()
             {
-                // this.$emit('update', {
-                //     answers: this.answers,
-                //     correct_answer: this.correct_answer.join(', '),
-                // });
+                let answers = _.map(this.correct_answer, (element, index) => {
+                    return {
+                        caption: element.item,
+                        value: element.item.toLowerCase(),
+                        order_no: index + 1,
+                    }
+                });
+                let correct_answer = _.find(this.correct_answer, (element) => {return element.is_correct});
+                this.$emit('update', {
+                    answers: answers,
+                    correct_answer: correct_answer == undefined ? '' : correct_answer.item,
+                });
             },
 
             insertItem()
@@ -143,7 +151,7 @@
                 let vm = this;
                 $.confirm({
                     title: '',
-                    content: 'Are you sure you want delete the options <strong>' + answer.item + '</strong>?',
+                    content: 'Are you sure you want delete the option <strong>' + answer.item + '</strong>?',
                     buttons: {
                         finish: {
                             text: 'Delete',
@@ -192,11 +200,6 @@
             }
             else
             {
-                this.answers = [{
-                    caption: 'Type your answer',
-                    value: null,
-                    order_no: 1,
-                }];
             }
         },
 

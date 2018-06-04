@@ -1,5 +1,5 @@
 <?php
 
 return [
-	'number-of-questions' => 3,
+	'number-of-questions' => 10,
 ];

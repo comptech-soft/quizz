@@ -9,6 +9,9 @@ Route::post('play-quiz/send-responses', 'Frontend\Quizz\PlayquizController@sendR
 
 Route::post('get-ranking', 'Frontend\Quizz\RankingController@getRanking')->name('get-ranking');
 
+Route::get('photos-gallery', 'Frontend\Media\PhotosgalleryController@index')->name('photos-gallery-index');
+Route::get('videos-gallery', 'Frontend\Media\VideosgalleryController@index')->name('videos-gallery-index');
+
 /*
 | FRONTEND
 */
@@ -50,11 +53,9 @@ Route::group(['middleware' => 'admin', 'namespace' => 'Admin', 'prefix' => 'admi
 	Route::post('quizes/delete', 'Quiz\ListController@delete')->name('quiz-list-delete');
 	Route::post('quizes/update', 'Quiz\ListController@update')->name('quiz-list-update');
 
-
 	Route::post('quizes/questions/populate', 'Quiz\ListController@getQuestions')->name('quiz-questions-populate');
 	Route::post('quizes/questions/insert', 'Quiz\ListController@insertQuestion')->name('quiz-questions-insert');
 	
-
 	/* #2. Creating a quiz */
 	Route::get('quizes/new', 'Quiz\CreateController@index')->name('quiz-create-index');
 	Route::post('quizes/insert', 'Quiz\CreateController@insert')->name('quiz-create-insert');

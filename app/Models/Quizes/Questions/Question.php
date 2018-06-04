@@ -93,6 +93,20 @@ class Question extends Model
 			->only(['quiz_id', 'type', 'order_no', 'points', 'question', 'correct_answer', 'answer_description', 'answer_image_url'])
 			->toArray();
 
+		if( $data['type'] == 'check')
+		{
+			$data['correct_answer'] = json_encode(collect($data['correct_answer'])->map( function($item) {
+				return $item['item'];
+			})->toArray());
+		}
+		else
+		{
+			if( $data['type'] == 'match')
+			{
+				$data['correct_answer'] = json_encode($data['correct_answer']);
+			}
+		}
+
 		DB::beginTransaction();
 		try
 		{

@@ -220,7 +220,14 @@
             onBar(bar)
             {
                 Quizz.$store.dispatch('setCurrentNavbar', bar);
-                this['onClick' + bar.id](bar);
+                if( bar.endpoint == undefined)
+                {
+                    this['onClick' + bar.id](bar);
+                }
+                else
+                {
+                    Requests.redirect(bar.endpoint);
+                }
             },
 
             onCloseModal(e)

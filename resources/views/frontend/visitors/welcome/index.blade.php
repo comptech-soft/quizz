@@ -2,22 +2,21 @@
 
 @section('content')
     
-        <div class="row">
-                
-            <div class="col-xs-12 col-sm-8">
-                <header id="head">
-                    <vue-welcome>
-                    </vue-welcome>
-                </header>
-            </div>
-            
-            <div class="col-xs-12 col-sm-4">
-                <div id="ranking">
-                    <vue-ranking>
-                    </vue-ranking>
-                </div>
+    <div class="row">            
+        <div class="col-xs-12 col-sm-8">
+            <header id="head">
+                <vue-welcome>
+                </vue-welcome>
+            </header>
+        </div>
+        
+        <div class="col-xs-12 col-sm-4">
+            <div id="ranking">
+                <vue-ranking>
+                </vue-ranking>
             </div>
         </div>
+    </div>
     
 @endsection
 

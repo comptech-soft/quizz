@@ -5555,7 +5555,7 @@ var index_esm = {
 
 /***/ }),
 
-/***/ 204:
+/***/ 16:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5573,7 +5573,10 @@ var index_esm = {
 
             list_action: 'insert',
             answer_item: '',
-            answer_old: ''
+            answer_old: '',
+
+            match_item: '',
+            match_old: ''
         };
     },
 
@@ -8316,7 +8319,14 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_js__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_js__ = __webpack_require__(16);
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -8675,32 +8685,203 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_js__ = __webpack_require__(16);
 //
 //
 //
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_js__["a" /* default */]],
 
-    props: {
-        question: { required: true }
-    },
+    methods: {
+        updateQuestion: function updateQuestion() {
+            var answers = _.map(this.correct_answer, function (element, index) {
+                return {
+                    caption: element.item,
+                    value: element.item.toLowerCase(),
+                    order_no: index + 1
+                };
+            });
+            var correct_answer = _.filter(this.correct_answer, function (element) {
+                return element.is_correct;
+            });
+            this.$emit('update', {
+                answers: answers,
+                correct_answer: correct_answer
+            });
+        },
+        insertItem: function insertItem() {
+            this.correct_answer.push({
+                item: this.answer_item,
+                is_correct: false
+            });
+            this.answer_item = '';
+            this.updateQuestion();
+            $('#answer_item').focus();
+        },
+        updateItem: function updateItem() {
+            var _this = this;
 
-    computed: {
-        answers: function answers() {
-            return this.question.answers;
+            var items = this.correct_answer;
+            this.correct_answer = _.map(items, function (answer) {
+                if (answer.item == _this.answer_old) {
+                    return {
+                        item: _this.answer_item,
+                        is_correct: answer.is_correct
+                    };
+                }
+                return answer;
+            });
+            this.list_action = 'insert';
+            this.answer_old = '';
+            this.answer_item = '';
+            this.updateQuestion();
+            $('#answer_item').focus();
+        },
+        deleteItem: function deleteItem(answer) {
+            var vm = this;
+            $.confirm({
+                title: '',
+                content: 'Are you sure you want delete the option <strong>' + answer.item + '</strong>?',
+                buttons: {
+                    finish: {
+                        text: 'Delete',
+                        btnClass: 'btn-red',
+                        action: function action() {
+                            var items = vm.correct_answer;
+                            vm.correct_answer = [];
+                            var removed = _.remove(items, function (item) {
+                                return item === answer;
+                            });
+                            vm.correct_answer = items;
+                            vm.updateQuestion();
+                        }
+                    },
+                    cancel: {
+                        text: 'Cancel'
+                    }
+                }
+            });
+        },
+        editItem: function editItem(answer) {
+            this.list_action = 'update';
+            this.answer_item = answer.item;
+            this.answer_old = answer.item;
+            $('#answer_item').focus();
+        },
+        makeCorrectOption: function makeCorrectOption(answer) {
+            answer.is_correct = !answer.is_correct;
+            this.updateQuestion();
         }
     },
 
-    data: function data() {
-        return {};
+    mounted: function mounted() {
+        if (this.action == 'update') {
+            this.answers = this.question.answers;
+            this.correct_answer = this.question.correct_answer;
+        } else {}
     },
 
-
-    methods: {},
 
     name: 'question-answers-check'
 });
@@ -8715,7 +8896,153 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "question-answers-component" }, [
-    _vm._v("\n        question-answers-check\n    ")
+    _c("div", { staticClass: "row" }, [
+      _vm.correct_answer.length > 0
+        ? _c(
+            "div",
+            { staticClass: "col-xs-12" },
+            [
+              _c("h4", [
+                _vm._v("\n                    Options\n                ")
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.correct_answer, function(answer, index) {
+                return _c("div", { staticClass: "accepted-answer-item" }, [
+                  _c("div", { staticClass: "answer-item" }, [
+                    answer.is_correct
+                      ? _c("span", [
+                          _c("i", { staticClass: "fa fa-fw fa-check" })
+                        ])
+                      : _c("span", [
+                          _c("i", { staticClass: "fa fa-fw fa-ban" })
+                        ]),
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(answer.item) +
+                        " \n                        "
+                    ),
+                    _c("div", { staticClass: "pull-right answer-actions" }, [
+                      !answer.is_correct
+                        ? _c("i", {
+                            staticClass: "fa fa-fw fa-check",
+                            attrs: { title: "Make this the correct option" },
+                            on: {
+                              click: function($event) {
+                                _vm.makeCorrectOption(answer)
+                              }
+                            }
+                          })
+                        : _c("i", {
+                            staticClass: "fa fa-fw fa-ban",
+                            attrs: { title: "Make this the correct option" },
+                            on: {
+                              click: function($event) {
+                                _vm.makeCorrectOption(answer)
+                              }
+                            }
+                          }),
+                      _vm._v(" "),
+                      _c("i", {
+                        staticClass: "fa fa-fw fa-pencil",
+                        on: {
+                          click: function($event) {
+                            _vm.editItem(answer)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("i", {
+                        staticClass: "fa fa-fw fa-trash-o",
+                        on: {
+                          click: function($event) {
+                            _vm.deleteItem(answer)
+                          }
+                        }
+                      })
+                    ])
+                  ])
+                ])
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "clearfix" })
+            ],
+            2
+          )
+        : _c("div", { staticClass: "col-xs-12" }, [
+            _c("h4", [
+              _vm._v("\n                    Options\n                ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "alert alert-info" }, [
+              _vm._v(
+                "\n                    No options defined\n                "
+              )
+            ]),
+            _vm._v(" "),
+            _vm.correct_answer_error
+              ? _c("div", { staticClass: "has-error" }, [
+                  _c("span", {
+                    staticClass: "help-block",
+                    domProps: { innerHTML: _vm._s(_vm.correct_answer_error) }
+                  })
+                ])
+              : _vm._e()
+          ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-xs-12" },
+        [
+          _c("h4", [
+            _vm._v(
+              "\n                    " +
+                _vm._s(
+                  _vm.list_action == "insert"
+                    ? "Adding new option"
+                    : "Editing option"
+                ) +
+                "\n                "
+            )
+          ]),
+          _vm._v(" "),
+          _c("vue-textbox", {
+            attrs: { field: "answer_item", placeholder: "Answer Item" },
+            model: {
+              value: _vm.answer_item,
+              callback: function($$v) {
+                _vm.answer_item = $$v
+              },
+              expression: "answer_item"
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary",
+              staticStyle: { "margin-top": "4px" },
+              attrs: { type: "button", disabled: _vm.answer_item.length == 0 },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.saveItem($event)
+                }
+              }
+            },
+            [
+              _vm._v(
+                "\n                    " +
+                  _vm._s(_vm.list_action == "insert" ? "Add" : "Save") +
+                  "\n                "
+              )
+            ]
+          )
+        ],
+        1
+      )
+    ])
   ])
 }
 var staticRenderFns = []
@@ -8783,7 +9110,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_js__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_js__ = __webpack_require__(16);
 //
 //
 //
@@ -8881,10 +9208,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         updateQuestion: function updateQuestion() {
-            // this.$emit('update', {
-            //     answers: this.answers,
-            //     correct_answer: this.correct_answer.join(', '),
-            // });
+            var answers = _.map(this.correct_answer, function (element, index) {
+                return {
+                    caption: element.item,
+                    value: element.item.toLowerCase(),
+                    order_no: index + 1
+                };
+            });
+            var correct_answer = _.find(this.correct_answer, function (element) {
+                return element.is_correct;
+            });
+            this.$emit('update', {
+                answers: answers,
+                correct_answer: correct_answer == undefined ? '' : correct_answer.item
+            });
         },
         insertItem: function insertItem() {
             this.correct_answer.push({
@@ -8918,7 +9255,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var vm = this;
             $.confirm({
                 title: '',
-                content: 'Are you sure you want delete the options <strong>' + answer.item + '</strong>?',
+                content: 'Are you sure you want delete the option <strong>' + answer.item + '</strong>?',
                 buttons: {
                     finish: {
                         text: 'Delete',
@@ -8958,13 +9295,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         if (this.action == 'update') {
             this.answers = this.question.answers;
             this.correct_answer = this.question.correct_answer;
-        } else {
-            this.answers = [{
-                caption: 'Type your answer',
-                value: null,
-                order_no: 1
-            }];
-        }
+        } else {}
     },
 
 
@@ -9179,32 +9510,199 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_js__ = __webpack_require__(16);
 //
 //
 //
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_js__["a" /* default */]],
 
-    props: {
-        question: { required: true }
-    },
+    methods: {
+        updateQuestion: function updateQuestion() {
+            var answers = _.map(this.correct_answer, function (element, index) {
+                return {
+                    caption: element.item,
+                    value: element.item.toLowerCase(),
+                    order_no: index + 1
+                };
+            });
+            var correct_answer = _.filter(this.correct_answer, function (element) {
+                return element.is_correct;
+            });
+            this.$emit('update', {
+                answers: answers,
+                correct_answer: correct_answer
+            });
+        },
+        insertItem: function insertItem() {
+            this.correct_answer.push({
+                item: this.answer_item,
+                value: this.match_item,
+                is_correct: false
+            });
+            this.answer_item = '';
+            this.match_item = '';
+            this.updateQuestion();
+            $('#answer_item').focus();
+        },
+        updateItem: function updateItem() {
+            var _this = this;
 
-    computed: {
-        answers: function answers() {
-            return this.question.answers;
+            var items = this.correct_answer;
+            this.correct_answer = _.map(items, function (answer) {
+                if (answer.item == _this.answer_old && answer.value == _this.match_old) {
+                    return {
+                        item: _this.answer_item,
+                        value: _this.match_item,
+                        is_correct: answer.is_correct
+                    };
+                }
+                return answer;
+            });
+            this.list_action = 'insert';
+            this.answer_old = '';
+            this.answer_item = '';
+            this.match_old = '';
+            this.match_item = '';
+            this.updateQuestion();
+            $('#answer_item').focus();
+        },
+        deleteItem: function deleteItem(answer) {
+            var vm = this;
+            $.confirm({
+                title: '',
+                content: 'Are you sure you want delete the option <strong>' + answer.item + '</strong>?',
+                buttons: {
+                    finish: {
+                        text: 'Delete',
+                        btnClass: 'btn-red',
+                        action: function action() {
+                            var items = vm.correct_answer;
+                            vm.correct_answer = [];
+                            var removed = _.remove(items, function (item) {
+                                return item === answer;
+                            });
+                            vm.correct_answer = items;
+                            vm.updateQuestion();
+                        }
+                    },
+                    cancel: {
+                        text: 'Cancel'
+                    }
+                }
+            });
+        },
+        editItem: function editItem(answer) {
+            this.list_action = 'update';
+            this.answer_item = answer.item;
+            this.answer_old = answer.item;
+            this.answer_item = answer.value;
+            this.answer_old = answer.value;
+            $('#answer_item').focus();
+        },
+        makeCorrectOption: function makeCorrectOption(answer) {
+            answer.is_correct = !answer.is_correct;
+            this.updateQuestion();
         }
     },
 
-    data: function data() {
-        return {};
+    mounted: function mounted() {
+        if (this.action == 'update') {
+            this.answers = this.question.answers;
+            this.correct_answer = this.question.correct_answer;
+        } else {}
     },
 
-
-    methods: {},
 
     name: 'question-answers-match'
 });
@@ -9219,7 +9717,155 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "question-answers-component" }, [
-    _vm._v("\n        question-answers-match\n    ")
+    _c("div", { staticClass: "row" }, [
+      _vm.correct_answer.length > 0
+        ? _c(
+            "div",
+            { staticClass: "col-xs-12" },
+            [
+              _c("h4", [
+                _vm._v("\n                    Options\n                ")
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.correct_answer, function(answer, index) {
+                return _c("div", { staticClass: "accepted-answer-item" }, [
+                  _c("div", { staticClass: "answer-item" }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(answer.item) +
+                        " - " +
+                        _vm._s(answer.value) +
+                        "\n                        "
+                    ),
+                    _c("div", { staticClass: "pull-right answer-actions" }, [
+                      !answer.is_correct
+                        ? _c("i", {
+                            staticClass: "fa fa-fw fa-check",
+                            attrs: { title: "Make this the correct option" },
+                            on: {
+                              click: function($event) {
+                                _vm.makeCorrectOption(answer)
+                              }
+                            }
+                          })
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c("i", {
+                        staticClass: "fa fa-fw fa-pencil",
+                        on: {
+                          click: function($event) {
+                            _vm.editItem(answer)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("i", {
+                        staticClass: "fa fa-fw fa-trash-o",
+                        on: {
+                          click: function($event) {
+                            _vm.deleteItem(answer)
+                          }
+                        }
+                      })
+                    ])
+                  ])
+                ])
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "clearfix" })
+            ],
+            2
+          )
+        : _c("div", { staticClass: "col-xs-12" }, [
+            _c("h4", [
+              _vm._v("\n                    Options\n                ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "alert alert-info" }, [
+              _vm._v(
+                "\n                    No options defined\n                "
+              )
+            ]),
+            _vm._v(" "),
+            _vm.correct_answer_error
+              ? _c("div", { staticClass: "has-error" }, [
+                  _c("span", {
+                    staticClass: "help-block",
+                    domProps: { innerHTML: _vm._s(_vm.correct_answer_error) }
+                  })
+                ])
+              : _vm._e()
+          ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-xs-12" },
+        [
+          _c("h4", [
+            _vm._v(
+              "\n                    " +
+                _vm._s(
+                  _vm.list_action == "insert"
+                    ? "Adding new option"
+                    : "Editing option"
+                ) +
+                "\n                "
+            )
+          ]),
+          _vm._v(" "),
+          _c("vue-textbox", {
+            attrs: { field: "answer_item", placeholder: "Answer Item" },
+            model: {
+              value: _vm.answer_item,
+              callback: function($$v) {
+                _vm.answer_item = $$v
+              },
+              expression: "answer_item"
+            }
+          }),
+          _vm._v(" "),
+          _c("vue-textbox", {
+            attrs: { field: "match_item", placeholder: "Match Item" },
+            model: {
+              value: _vm.match_item,
+              callback: function($$v) {
+                _vm.match_item = $$v
+              },
+              expression: "match_item"
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary",
+              staticStyle: { "margin-top": "4px" },
+              attrs: {
+                type: "button",
+                disabled:
+                  _vm.answer_item.length == 0 || _vm.match_item.length == 0
+              },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.saveItem($event)
+                }
+              }
+            },
+            [
+              _vm._v(
+                "\n                    " +
+                  _vm._s(_vm.list_action == "insert" ? "Add" : "Save") +
+                  "\n                "
+              )
+            ]
+          )
+        ],
+        1
+      )
+    ])
   ])
 }
 var staticRenderFns = []

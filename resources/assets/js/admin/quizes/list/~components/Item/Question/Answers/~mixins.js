@@ -16,6 +16,9 @@ export default
             list_action: 'insert',
             answer_item: '',
             answer_old: '',
+
+            match_item: '',
+            match_old: '',
         };
     },
 

@@ -1,11 +1,12 @@
 <template>
-	<div class="question-answers-component">
-        
+	<div class="question-answers-component">        
         <div class="row">
             <div class="col-xs-12" v-if="correct_answer.length > 0">
+                
                 <h4>
                     Accepted Answers
                 </h4>
+                
                 <div
                     class="accepted-answer-item"
                     v-for="(answer, index) in correct_answer"
@@ -22,11 +23,13 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="clearfix">
                 </div>
             </div>
 
             <div v-else class="col-xs-12">
+                
                 <h4>
                     Accepted Answers
                 </h4>
@@ -48,15 +51,18 @@
         
         <div class="row">
             <div class="col-xs-12">
+                
                 <h4>
                     {{ list_action == 'insert' ? 'Adding new accepted item' : 'Editing accepted item' }}
                 </h4>
+                
                 <vue-textbox
                     field="answer_item"
                     placeholder="Answer Item"
                     v-model="answer_item"
                 >
                 </vue-textbox>
+                
                 <button 
                     type="button"
                     class="btn btn-primary"
@@ -66,6 +72,7 @@
                 >
                     {{ list_action == 'insert' ? 'Add' : 'Save' }}
                 </button>
+            
             </div>
         </div>
     </div>
