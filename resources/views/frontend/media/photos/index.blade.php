@@ -1,17 +1,17 @@
 @extends('layouts.master')
 
 @section('content')
-    
+
    	<div class="galleria">
    		@foreach($files as $i => $record)
-   			<img 
+   			<img
    				src="/media/photos/{{$record->file_name}}"
-   				data-title="{{ $record->title }}" 
+   				data-title="{{ $record->title }}"
    				data-description="{{ $record->body }}"
    			/>
    		@endforeach
     </div>
-    
+
 @endsection
 
 @section('styles')
@@ -21,9 +21,9 @@
     	.galleria
     	{
     		margin-top: 40px;
-    		max-width: 100%; 
-    		height: 540px; 
-    		background: #ccc; 
+    		max-width: 100%;
+    		height: 540px;
+    		background: #ccc;
     	}
     </style>
 @endsection
@@ -33,11 +33,19 @@
         'vendors/galleria/galleria-1.5.7.min.js',
     ]])
     <script>
-		(function() { 
+		(function() {
 		    Galleria.loadTheme('/vendors/galleria/themes/classic/galleria.classic.min.js');
 		    Galleria.run('.galleria', {
-			    autoplay: 3000,
+			    autoplay: 10000,
 			});
+            Galleria.ready(function() {
+                var gallery = this;
+                this.bind('image', function(e) {
+                    $(e.imageTarget).unbind('click').click(function() {
+                        gallery.toggleFullscreen();
+                    });
+                });
+            });
 		}());
 	</script>
 @endsection

@@ -1,21 +1,19 @@
 @extends('layouts.master')
 
 @section('content')
-    
+
    	<div class="galleria">
-   		@foreach($files as $i => $record)
-   			<a 
-   				href="{{ $record->file_name }}" 
-   				data-title="{{ $record->title }}" 
-   				data-description="{{ $record->body }}"
-   			>
-   				<span class="video">
-   					__("Watch this at YouTube")
-   				</span>
-   			</a>
-   		@endforeach
+   		<div class="row">
+            @foreach($files as $i => $record)
+   			<div class="col-xs-12 col-sd-6 col-md-4">
+                <video controls>
+                    <source src="/media/videos/{{ $record->file_name }}" type="video/mp4">
+                </video>
+            </div>
+   		    @endforeach
+        </div>
     </div>
-    
+
 @endsection
 
 @section('styles')
@@ -25,21 +23,13 @@
     	.galleria
     	{
     		margin-top: 40px;
-    		max-width: 100%; 
-    		height: 540px; 
-    		background: #ccc; 
+    		max-width: 100%;
+    		height: 540px;
+    		background: #fff;
     	}
+        video
+        {
+            width:100%;
+        }
     </style>
-@endsection
-
-@section('scripts')
-    @include('layouts.elements.scripts', ['scripts' => [
-        'vendors/galleria/galleria-1.5.7.min.js',
-    ]])
-    <script>
-		(function() { 
-		    Galleria.loadTheme('/vendors/galleria/themes/classic/galleria.classic.min.js');
-		    Galleria.run('.galleria');
-		}());
-	</script>
 @endsection
