@@ -9,7 +9,8 @@ Route::post('play-quiz/send-responses', 'Frontend\Quizz\PlayquizController@sendR
 
 Route::post('get-ranking', 'Frontend\Quizz\RankingController@getRanking')->name('get-ranking');
 
-Route::get('photos-gallery', 'Frontend\Media\PhotosgalleryController@index')->name('photos-gallery-index');
+Route::get('photos-2d-gallery', 'Frontend\Media\Photos2DgalleryController@index')->name('photos-2d-gallery-index');
+Route::get('photos-3d-gallery', 'Frontend\Media\Photos3DgalleryController@index')->name('photos-3d-gallery-index');
 Route::get('videos-gallery', 'Frontend\Media\VideosgalleryController@index')->name('videos-gallery-index');
 
 /*
@@ -55,7 +56,7 @@ Route::group(['middleware' => 'admin', 'namespace' => 'Admin', 'prefix' => 'admi
 
 	Route::post('quizes/questions/populate', 'Quiz\ListController@getQuestions')->name('quiz-questions-populate');
 	Route::post('quizes/questions/insert', 'Quiz\ListController@insertQuestion')->name('quiz-questions-insert');
-	
+
 	/* #2. Creating a quiz */
 	Route::get('quizes/new', 'Quiz\CreateController@index')->name('quiz-create-index');
 	Route::post('quizes/insert', 'Quiz\CreateController@insert')->name('quiz-create-insert');

@@ -33,9 +33,15 @@ class Navbar
 			{
 
 				$result['options'][] = [
-        			'id' => 'photos',
-        			'caption' => __('navbar.Photos Gallery'),
-        			'endpoint' => 'photos-gallery'
+        			'id' => 'photos-d2',
+        			'caption' => __('navbar.2D Photos Gallery'),
+        			'endpoint' => 'photos-2d-gallery'
+        		];
+
+				$result['options'][] = [
+        			'id' => 'photos-3d',
+        			'caption' => __('navbar.3D Photos Gallery'),
+        			'endpoint' => 'photos-3d-gallery'
         		];
 
         		$result['options'][] = [
@@ -81,5 +87,5 @@ class Navbar
 
 		return $result;
 	}
-	
+
 }

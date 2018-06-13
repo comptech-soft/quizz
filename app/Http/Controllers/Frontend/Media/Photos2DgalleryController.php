@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Files\Medias\Media;
 
-class PhotosgalleryController extends Controller
+class Photos2DgalleryController extends Controller
 {
 
     public function index(Request $request)
