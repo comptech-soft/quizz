@@ -18,7 +18,7 @@
             
             <a 
                 class="navbar-brand" 
-                :href="config.base_url"
+                :href="config.base_url || 'http://mars.whg.test'"
             >
                 <img :src="config.logo" alt="Quizz Logo" />
             </a>

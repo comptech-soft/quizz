@@ -9097,7 +9097,7 @@ var render = function() {
               "a",
               {
                 staticClass: "navbar-brand",
-                attrs: { href: _vm.config.base_url }
+                attrs: { href: _vm.config.base_url || "http://mars.whg.test" }
               },
               [
                 _c("img", {
