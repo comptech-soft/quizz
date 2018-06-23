@@ -7738,66 +7738,66 @@ var en = {
 var translations = {
 
 	'quiz': {
-		'points': '{count} punct ::: {count} puncte',
-		'question': 'Întrebarea {index} din {total}',
-		'accepted-answer': 'Răspunsul corect',
-		'your-answer': 'Răspunsul dat de tine',
-		'explanation': 'Explicații'
+		'points': '{count} Punkt ::: {count} Punkte',
+		'question': 'Frage {index} aus {total}',
+		'accepted-answer': 'Richtige Antwort',
+		'your-answer': 'Eingegebene Antwort',
+		'explanation': 'Erklärung'
 	},
 
 	'welcome': {
-		'header': 'Mars Quiz 1234',
-		'info': '<h2>Teste Dein Wissen über den Mars, und gewinne einer der 3 Preise!</h2><p>1. Preis: Ein Amazon Gutschein in Wert von 25 Euro</p><p>2. Preis: Ein Amazon Gutschein in Wert von 20 Euro</p><p>3. Preis: Ein Amazon Gutschein in Wert von 15 Euro</p>'
+		'header': 'Mars Quiz',
+		'info': '<h2>Teste Dein Wissen über den Mars, und gewinne einer der 3 Preise!</h2><p>1. Preis: Ein Amazon Gutschein in Wert von 20 Euro</p><p>2. Preis: Ein Amazon Gutschein in Wert von 15 Euro</p><p>3. Preis: Ein Amazon Gutschein in Wert von 10 Euro</p>'
 	},
 
 	'ranking': {
-		'title': 'Topul actual',
-		'total': 'A participat {total} concurent ::: Au participat {total} concurenți',
-		'class': 'Elev în clasa  {class}',
-		'reload': 'Reîncarcă topul',
-		'current-page': 'Pagina {page} din {total}'
+		'title': 'Aktuelle Rangliste',
+		'total': 'Teilnehmer {total} ::: Teilnehmerzahl {total}',
+		'class': 'Schüler der Klasse {class}',
+		'reload': 'Rangliste aktualisieren',
+		'current-page': 'Seite {page} von {total}'
 	},
 
 	'play': {
 
-		'player-caption': 'Informații personale',
+		'player-caption': 'Teilnehmer Eingaben',
 		'player-info': 'Phasellus mi nisl, accumsan id laoreet sed, cursus ac ipsum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce eu fringilla est. Morbi vulputate in neque et euismod. Proin imperdiet lacus non urna porttitor pulvinar. Aenean quam lorem, facilisis a condimentum vel, posuere nec nunc. Aliquam erat volutpat.',
 
 		'finish': {
-			'header': 'Felicitări. Ați terminat testul!',
-			'body': 'Mai jos aveți aveși o listă cu intrebările testului, răspunsurile corecte, răspunsurile date de dumneavoastră și punctajul obținut la fiecare întrebare. În final veți vedea numărul total de puncte realizate și procentajul obținut.'
+			'header': 'Glückwunsch. Quiz beendet!',
+			'body': 'Eine Zusamenfassung der Fragen, den richtigen Antworten, den eingegebenen Antworten, sowie die erreichte Punktzahl sind hier zu sehen:'
 		},
 
 		'form': {
 			'labels': {
-				'first_name': 'Numele',
-				'last_name': 'Prenumele',
-				'class': 'Clasa',
-				'email': 'Adresa se email',
-				'start-contest': 'Începe testul'
+				'first_name': 'Name',
+				'last_name': 'Vorname',
+				'class': 'Klasse',
+				'email': 'E-Mail Adresse',
+				'start-contest': 'Starte das Mars Quiz'
 			}
 		},
 
 		'actions': {
-			'restart': 'Repornește testul',
-			'next': 'Întrebarea următoare',
-			'prev': 'Întrebarea anterioară',
-			'finish': 'Am terminat!'
+			'restart': 'Erneut starten',
+			'next': 'Nächste Frage',
+			'prev': 'Vorherige Frage',
+			'finish': 'Abschließen!'
 		},
 
 		'modals': {
 			'finish': {
-				'title': 'Confirmați terminarea testului!',
-				'content': 'Sunteți sigur că ați terminat testul? Dacă apăsați Da, răspunsurile vor fi salvate, procesate și veți primi un raport cu punctajul realizat. Dacă doriți revizuirea răspunsurilor, apăsați Nu.',
-				'yes': 'Da',
-				'no': 'Nu'
+				'title': 'Bestätigen!',
+				'content': 'Möchten Sie das Quiz abschließen? Ja, die eingegebenen Antworten werden ausgewertet und die erreichte Punktzahl wird angezeigt. Um die Antworten noch einmal zu bearbeiten, wählen Sie die Nein',
+				'yes': 'Ja',
+				'no': 'Nein'
 			},
 
 			'restart': {
-				'title': 'Confirmați reînceperea testului!',
-				'content': 'Doriți să reîncepeți testul? Dacă apăsați Da toate răspunsurile vor fi anulate și testul va reîncepe cu prima întrebare. Dacă apăsați Nu veți continua de unde ați rămas.',
-				'yes': 'Da',
-				'no': 'Nu'
+				'title': 'Neuanfang bestätigen!',
+				'content': 'Möchten Sie das Quiz neu starten? Ja, alle bisherigen Antworten werden gelöscht und das Quiz startet erneut bei Frage 1. Nein, Quiz wird fortgeführt.',
+				'yes': 'Ja',
+				'no': 'Nein'
 			}
 		}
 
@@ -7805,10 +7805,10 @@ var translations = {
 
 	'report': {
 		'summary': {
-			'points-achieved': 'Număr de puncte realizate',
-			'points-available': 'Număr de puncte disponibil',
-			'percent-achieved': 'Procentaj realizat',
-			'percent-available': 'Procentaj minim pentru succes'
+			'points-achieved': 'Erreichte Punktzahl',
+			'points-available': 'Maximale Punktzahl',
+			'percent-achieved': '%',
+			'percent-available': '%'
 		}
 	}
 

@@ -5,7 +5,7 @@ return [
     'name' => env('APP_NAME', 'Laravel'),
     'env' => env('APP_ENV', 'development'),
     'debug' => env('APP_DEBUG', true),
-    'url' => env('APP_URL', ''),
+    'url' => env('APP_URL', 'http://mars.whg.test'),
     'timezone' => 'Europe/Bucharest',
     'locale' => 'de',
     'fallback_locale' => 'de',
