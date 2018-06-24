@@ -5785,7 +5785,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             records: [],
 
             paginate: {
-                per_page: 10
+                per_page: 500
             },
 
             orderBy: [{

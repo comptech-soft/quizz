@@ -11,8 +11,8 @@
             <i class="fa fa-spinner fa-spin"></i> Loading...
         </div>
 
-        <div class="col-xs-12">            
-            <div 
+        <div class="col-xs-12">
+            <div
                 v-for="(record, index) in records"
                 class="quiz-render-item"
             >
@@ -44,14 +44,14 @@
                         :record="record"
                     >
                     </quiz-details>
-                    <quiz-actions 
+                    <quiz-actions
                         v-if="! form.visible && ! questions.visible"
                         :record="record"
                         @click="onClick"
                     >
                     </quiz-actions>
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -65,7 +65,7 @@
     import vueQuizForm from './Item/Form'
     import vueQuizQuestions from './Item/Questions'
 
-    export default 
+    export default
     {
 
         components:
@@ -79,7 +79,7 @@
 
     	props:
     	{
-    		
+
     	},
 
         computed:
@@ -94,7 +94,7 @@
                 records: [],
 
                 paginate: {
-                    per_page: 10
+                    per_page: 500,
                 },
 
                 orderBy: [{
