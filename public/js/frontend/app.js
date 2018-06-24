@@ -7746,8 +7746,8 @@ var translations = {
 	},
 
 	'welcome': {
-		'header': 'Mars Quiz',
-		'info': '<h2>Teste Dein Wissen über den Mars, und gewinne einer der 3 Preise!</h2><p>1. Preis: Ein Amazon Gutschein in Wert von 20 Euro</p><p>2. Preis: Ein Amazon Gutschein in Wert von 15 Euro</p><p>3. Preis: Ein Amazon Gutschein in Wert von 10 Euro</p>'
+		'header': 'Mars Quiz.Drücke hier um zu starten!',
+		'info': '<h2>Teste Dein Wissen über den Mars, und gewinne einen der 3 Preise!</h2><p>1. Preis: Ein Amazon Gutschein in Wert von 20 Euro</p><p>2. Preis: Ein Amazon Gutschein in Wert von 15 Euro</p><p>3. Preis: Ein Amazon Gutschein in Wert von 10 Euro</p>'
 	},
 
 	'ranking': {
@@ -7760,8 +7760,8 @@ var translations = {
 
 	'play': {
 
-		'player-caption': 'Teilnehmer Eingaben',
-		'player-info': 'Phasellus mi nisl, accumsan id laoreet sed, cursus ac ipsum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce eu fringilla est. Morbi vulputate in neque et euismod. Proin imperdiet lacus non urna porttitor pulvinar. Aenean quam lorem, facilisis a condimentum vel, posuere nec nunc. Aliquam erat volutpat.',
+		'player-caption': 'Teilnehmer Informationen',
+		'player-info': 'Bitte folgende Pflichteingabefelder ausfüllen und das Mars Quiz starten. Das Quiz umfasst 10 Fragen. Bei Fragen die eine Texteingabe erfordern, steht eine  virtuelle Tastatur zur Verfügung. Berühre das Tastatursymbol auf der rechten Seite, um die virtuelle Tastatur zu aktivieren. Die ersten 3 Teilnehmer mit der höchsten Punktzahl (bei gleicher Punktzahl gilt die kürzere Eingabezeit) erhalten jeweils einen Amazon Gutschein, an die eingetragene E-Mail Adresse. Viel Erfolg!',
 
 		'finish': {
 			'header': 'Glückwunsch. Quiz beendet!',
