@@ -2,8 +2,7 @@
 	<div v-if="ready" class="welcome-container">
         <div class="heading-text">
             <h1 class="animated flipInY delay1 start-quiz">
-                <div>
-                    {{ $t('welcome.header') }}
+                <div v-html="$t('welcome.header')">
                 </div>
             </h1>
             <div v-html="$t('welcome.info')">
@@ -12,21 +11,21 @@
 
         <div class="fluid_container">
             <div class="camera_wrap camera_emboss pattern_1" id="camera_wrap_4">
-                <div 
-                    v-for="image in slides" 
+                <div
+                    v-for="image in slides"
                     class="camera-items"
-                    :data-thumb="'/images/slides/thumbs/' + image" 
+                    :data-thumb="'/images/slides/thumbs/' + image"
                     :data-src="'/images/slides/' + image"
                 >
-                </div> 
+                </div>
             </div>
-        </div>        
+        </div>
     </div>
 </template>
 
 <script>
 
-    export default 
+    export default
     {
 
         computed:
@@ -44,7 +43,7 @@
                     'mars01.jpg',
                     'mars02.jpg',
                     'mars03.jpg',
-                    'mars04.jpg',  
+                    'mars04.jpg',
                 ],
             };
         },
