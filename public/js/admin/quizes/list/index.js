@@ -7175,7 +7175,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             loading: false,
 
             paginate: {
-                per_page: 12
+                per_page: 500
             },
 
             form: {
@@ -10122,7 +10122,7 @@ var render = function() {
               [
                 _c("i", { staticClass: "fa fa-fw fa-plus" }),
                 _vm._v(
-                  " \n                        Add a question\n                    "
+                  "\n                        Add a question\n                    "
                 )
               ]
             ),
