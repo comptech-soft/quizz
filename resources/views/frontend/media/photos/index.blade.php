@@ -37,6 +37,7 @@
 		    Galleria.loadTheme('/vendors/galleria/themes/classic/galleria.classic.min.js');
 		    Galleria.run('.galleria', {
 			    autoplay: 10000,
+                showInfo: true,
 			});
             Galleria.ready(function() {
                 var gallery = this;
