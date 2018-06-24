@@ -2,7 +2,7 @@
 	<div v-if="ready" class="welcome-container">
         <div class="heading-text">
             <h1 class="animated flipInY delay1 start-quiz">
-                <div v-html="$t('welcome.header')">
+                <div id="start-quiz" v-html="$t('welcome.header')">
                 </div>
             </h1>
             <div v-html="$t('welcome.info')">
@@ -91,3 +91,10 @@
     }
 
 </script>
+
+<style lang="scss" scoped>
+#start-quiz
+{
+	width: 90%;
+}
+</style>
