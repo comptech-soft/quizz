@@ -4,12 +4,12 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="questions-toolbar">
-                    <button 
-                        type="button" 
+                    <button
+                        type="button"
                         class="btn btn-primary"
                         @click="showAddform"
                     >
-                        <i class="fa fa-fw fa-plus"></i> 
+                        <i class="fa fa-fw fa-plus"></i>
                         Add a question
                     </button>
 
@@ -28,12 +28,12 @@
         </div>
 
         <div class="row">
-            <div 
+            <div
                 v-for="(question, index) in questions"
                 class="col-xs-12 col-sm-6"
             >
                 <div class="question-container">
-                    
+
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="question-body">
@@ -45,7 +45,7 @@
                                             Points: <span class="badge">{{question.points}}</span>
                                         </div>
                                         <div style="margin-top:4px;">
-                                            <button 
+                                            <button
                                                 class="btn btn-xs btn-primary"
                                                 style="font-family:  'Lato', sans-serif"
                                                 @click="onClickEditQuestion(question)"
@@ -54,7 +54,7 @@
                                                 Edit
                                             </button>
 
-                                            <button 
+                                            <button
                                                 class="btn btn-xs btn-danger"
                                                 style="font-family:  'Lato', sans-serif"
                                                 @click="onClickDeleteQuestion(question)"
@@ -168,7 +168,7 @@
 
     import veeValidation from './../../../../../boot/modules/validation/Validation'
 
-    export default 
+    export default
     {
 
         components:
@@ -192,7 +192,7 @@
                 loading: false,
 
                 paginate: {
-                    per_page: 12
+                    per_page: 500
                 },
 
                 form: {
@@ -306,13 +306,13 @@
                         clearInterval(i);
                         $('#order_no').focus();
                     }
-                }, 100);   
+                }, 100);
             },
 
             showAddform()
             {
                 this.form = {visible: true, action: 'insert', quiz: this.record, question: null}
-                this.afterShowForm();             
+                this.afterShowForm();
             },
 
             hideQuestionForm()
@@ -323,8 +323,8 @@
 
             onClickEditQuestion(question)
             {
-                this.form = {visible: true, action: 'update', quiz: this.record, question: question}  
-                this.afterShowForm(); 
+                this.form = {visible: true, action: 'update', quiz: this.record, question: question}
+                this.afterShowForm();
             },
 
             onClickDeleteQuestion(question)
@@ -334,7 +334,7 @@
 
             onUpdateQuestion(e)
             {
-                this.form.question = e; 
+                this.form.question = e;
             },
 
             saveQuestion()
