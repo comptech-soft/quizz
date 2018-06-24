@@ -30,7 +30,14 @@
     <div class="container">
         @yield('content')
     </div>
-    
+
+    <div>
+        <img
+            id="kbd"
+            src="{{config('app.url')}}/images/kbd.jpg"
+        />
+    </div>
+
     @include('layouts.elements.scripts', ['scripts' => [
         'js/modernizr-latest.js',
         'js/jquery.min.js',
@@ -48,6 +55,6 @@
         'js/frontend/app.js',
     ]])
 
-    @yield('scripts')    
+    @yield('scripts')
 </body>
 </html>
