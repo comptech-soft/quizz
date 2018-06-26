@@ -1034,7 +1034,7 @@ var render = function() {
             _vm._v(
               "\n                " +
                 _vm._s(_vm.$t("ranking.title")) +
-                "                \n            "
+                "\n            "
             )
           ]),
           _vm._v(" "),
@@ -1051,7 +1051,7 @@ var render = function() {
               _vm._v(
                 "\n                " +
                   _vm._s(_vm.$t("ranking.reload")) +
-                  "   \n            "
+                  "\n            "
               )
             ]
           ),
@@ -1082,7 +1082,7 @@ var render = function() {
                           )
                         ]),
                         _vm._v(
-                          ". \n                        " +
+                          ".\n                        " +
                             _vm._s(record.user.first_name) +
                             ", " +
                             _vm._s(record.user.last_name)
@@ -1146,18 +1146,20 @@ var render = function() {
                     : _vm._e()
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-xs-6" }, [
-                  _vm._v(
-                    "\n                     " +
-                      _vm._s(
-                        _vm.$t("ranking.current-page", {
-                          page: _vm.page,
-                          total: _vm.data.last_page
-                        })
-                      ) +
-                      "\n                "
-                  )
-                ]),
+                _vm.data.last_page > 0
+                  ? _c("div", { staticClass: "col-xs-6" }, [
+                      _vm._v(
+                        "\n                     " +
+                          _vm._s(
+                            _vm.$t("ranking.current-page", {
+                              page: _vm.page,
+                              total: _vm.data.last_page
+                            })
+                          ) +
+                          "\n                "
+                      )
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-xs-3 col-next" }, [
                   _vm.page < _vm.data.last_page

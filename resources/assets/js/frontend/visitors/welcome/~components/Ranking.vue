@@ -10,26 +10,26 @@
             </h4>
 
             <h4>
-                {{ $t('ranking.title') }}                
+                {{ $t('ranking.title') }}
             </h4>
             <button
                 class="btn btn-primary btn-xs"
                 @click="reload"
             >
                 <i v-if="loading" class="fa fa-spinner fa-spin"></i>
-                {{ $t('ranking.reload') }}   
+                {{ $t('ranking.reload') }}
             </button>
 
             <div v-if="data != null" id="ranking-list-container">
-                
-                <div 
+
+                <div
                     v-for="(record, index) in records"
                     :class="{
                         'record-item': true,
                     }"
                 >
                     <div class="user-info">
-                        <strong>#{{(data.current_page - 1) * data.per_page + index + 1}}</strong>. 
+                        <strong>#{{(data.current_page - 1) * data.per_page + index + 1}}</strong>.
                         {{ record.user.first_name}}, {{record.user.last_name}}<br/>
                         {{ $t('ranking.class', {class: record.user.class}) }}
                     </div>
@@ -57,7 +57,7 @@
                         </a>
                     </p>
                 </div>
-                <div class="col-xs-6">
+                <div v-if="data.last_page > 0" class="col-xs-6">
                      {{ $t('ranking.current-page', {page: page, total: data.last_page  }) }}
                 </div>
                 <div class="col-xs-3 col-next">
@@ -76,7 +76,7 @@
 
 <script>
 
-    export default 
+    export default
     {
 
         computed:
@@ -108,7 +108,7 @@
         data()
         {
             return {
-               
+
                loading: false,
 
                data: null,
